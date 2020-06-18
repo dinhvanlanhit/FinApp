@@ -23,6 +23,9 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/','ProfileController@getNews')->name('profile');
     });
+    Route::group(['prefix' => 'menu'], function () {
+        Route::get('/','MenuController@getMenu')->name('menu');
+    });
     
 });
 

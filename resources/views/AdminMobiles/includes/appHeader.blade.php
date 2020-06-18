@@ -1,8 +1,7 @@
 <div class="appHeader bg-primary text-light">
     <div class="left">
-        <a href="#" class="headerButton" data-toggle="modal" data-target="#sidebarPanel">
-            <i  name="menu-outline" class="fas fa-list-ul"></i>
- 
+        <a href="#" class="headerButton" data-toggle="modal" data-target="#SearchModal">
+            <i class="fas fa-search icon-serach"></i>
         </a>
     </div>
     <div class="pageTitle">

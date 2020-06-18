@@ -1,5 +1,5 @@
 <div class="appBottomMenu">
-    <a href="#" data-toggle="modal" data-target="#sidebarPanel" class="item">
+    <a href="{{route('menu')}}"  class="item">
         <div class="col">
             <i  name="menu-outline" class="fas fa-list-ul"></i>
             <strong>Menu</strong>
@@ -11,17 +11,16 @@
             <strong>Tin tức</strong>
         </div>
     </a>
-
-    <a href="{{route('dashboard')}}" class="item active">
+    <a href="{{route('dashboard')}}/" class="item ">
         <div class="col">
             <i class="fas fa-home"></i>
             <strong>Trang chủ</strong>
         </div>
     </a>
-    <a href="#" class="item">
+    <a href="{{route('setting')}}" class="item">
         <div class="col">
-            <i class="fas fa-search"></i>
-            <strong>Tìm kiếm</strong>
+            <i class="fas fa-cog"></i>
+            <strong>Cài đặt</strong>
         </div>
     </a>
     <a href="#" data-toggle="modal" data-target="#modal-logout" class="item">
