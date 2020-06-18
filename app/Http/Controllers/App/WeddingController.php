@@ -96,5 +96,47 @@ class WeddingController extends Controller
             return JSON2(false,"");
         }
     }
+    public function postInsert(Request $Request)
+    {
+
+        $Wedding = new Wedding();
+        $Wedding->idUser = Auth::user()->id;
+        $Wedding->name = $Request->name;
+        $Wedding->address = $Request->address;
+        $Wedding->amount = $Request->amount;
+        $Wedding->date = $Request->date;
+        if($Wedding->save()){
+            return JSON2(true,"Thêm thành công");
+        }else{
+            return JSON2(false,"Thêm thất bại");
+        }
+        # code...
+    }
+    public function postUpdate(Request $Request)
+    {
+
+        $Wedding =  Wedding::find((int)$Request->id);
+        $Wedding->idUser = Auth::user()->id;
+        $Wedding->name = $Request->name;
+        $Wedding->address = $Request->address;
+        $Wedding->amount = $Request->amount;
+        $Wedding->date = $Request->date;
+        if($Wedding->save()){
+            return JSON2(true,"Cập nhật thành công");
+        }else{
+            return JSON2(false,"Cập nhật thất bại");
+        }
+        # code...
+    }
+    public function getUpdate (Request $Request)
+    {
+        $Wedding =  Wedding::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        if($Wedding){
+            return JSON1($Wedding);
+        }else{
+            return JSON1($Wedding);
+        }
+
+    }
 
 }

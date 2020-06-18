@@ -9,8 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @include('AdminDesktops.partials.stylesheet')
 </head>
-
-<body class="hold-transition sidebar-mini layout-fixed ">
+<body class="hold-transition sidebar-mini layout-fixed text-sm">
     <div class="wrapper">
         <!-- Navbar -->
         @include('AdminDesktops.includes.header')

@@ -41,12 +41,13 @@
     </div>
     <!-- /.card-body -->
     <div class="card-footer clearfix">
-      <button  type="button" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</button>
+      <a  href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
     </div>
   </div>
 @include('AdminDesktops.pages.wedding.include')
 @endsection
 @section('javascript')
+
 <script src="{{asset('app/desktops/wedding/wedding.js')}}"></script>
 <script> 
     var wedding = new wedding(); 

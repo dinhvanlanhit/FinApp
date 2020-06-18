@@ -17,6 +17,7 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/','WeddingController@getWedding')->name('wedding');
         Route::post('/insert','WeddingController@postInsert')->name('wedding_insert');
         Route::post('/update','WeddingController@postUpdate')->name('wedding_update');
+        Route::get('/update','WeddingController@getUpdate')->name('wedding_update');
         Route::post('/delete','WeddingController@postDelete')->name('wedding_delete');
     });
     Route::group(['prefix' => 'profile'], function () {

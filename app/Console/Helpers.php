@@ -33,6 +33,7 @@ function  JSON1($data=null)
 {
     $Responses = new \stdClass;
     $Responses->data=$data;
+    $Responses->icon="success";
     return json_encode($Responses);
 }
 function  JSON2($type=false,$messages=null)
@@ -49,11 +50,13 @@ function  JSON2($type=false,$messages=null)
             $Responses->statusNumber=1;
             $Responses->statusType='success';
             $Responses->messages=$messages;
+            $Responses->icon="success";
     }else{
             $Responses->statusBoolen=$type;
             $Responses->statusNumber=0;
             $Responses->statusType='error';
             $Responses->messages=$messages;
+            $Responses->icon="error";
     }
     return json_encode($Responses);
 }
@@ -65,6 +68,7 @@ function  JSON3($data=null,$type=false,$messages=null)
     $Responses->statusType=null;
     $Responses->messages=null;
     $Responses->data=null;
+    $Responses->icon=null;
     if($type==true)
     {
             $Responses->statusBoolen=$type;
@@ -72,12 +76,14 @@ function  JSON3($data=null,$type=false,$messages=null)
             $Responses->statusType='success';
             $Responses->messages=$messages;
             $Responses->data=$data;
+            $Responses->icon="success";
     }else{
             $Responses->statusBoolen=$type;
             $Responses->statusNumber=0;
             $Responses->statusType='error';
             $Responses->messages=$messages;
             $Responses->data=$data;
+            $Responses->icon="error";
     }
     return json_encode($Responses);
 

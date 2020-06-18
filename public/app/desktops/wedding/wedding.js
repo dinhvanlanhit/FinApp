@@ -2,6 +2,9 @@ function wedding(){
     this.datas = null;
     this.runJS = function(){
         var datas = this.datas;
+        $("#date" ).datepicker();
+        $('#date').css("z-index","0");
+        $('#date').datepicker( "option", "dateFormat", 'dd-mm-yy' );
         var table = $("#wedding-table").DataTable({
             serverSide: true,
             processing:  true,
@@ -68,8 +71,8 @@ function wedding(){
                     name: "created_at",
                     className: "text-center",
                     render: function (data, type, row, meta) {
-                       var html = '<button class="btn btn-danger btn-delete btn-xs">Xóa</button>&nbsp;&nbsp;';
-                          html += '<button class="btn btn-success btn-update btn-xs">Sửa</button>';
+                       var html = '<button class="btn btn-danger btn-delete btn-xs" value="'+row.id+'">Xóa</button>&nbsp;&nbsp;';
+                          html += '<button class="btn btn-success btn-update btn-xs" value="'+row.id+'">Sửa</button>';
                        return '<div class="form-group">'+html+'</div>';
                     }
                    
@@ -77,38 +80,151 @@ function wedding(){
             ]
 
         });
+        $("#formSearch").on('submit',function(e){
+            e.preventDefault();
+            table.ajax.reload();
+        })
         $("#wedding-table").on("click", "tr td .btn-delete", function () {
             var data = table.row($(this).parents("tr")).data();
             $('#modal-text-delete').text("Bạn có muốn xóa không ?");
             $("#onDelete").attr('value',data.id);
             $("#modal-delete").modal('show');
         });
-        $("#wedding-table").on("click", "tr td .btn-update", function () {
-            var data = table.row($(this).parents("tr")).data();
+        $(document).delegate(".btn-update", "click", function () {
+            var id = $(this).val();
+            var elementbtn = $(this);
+            buttonloading(elementbtn,true);
             $('#modal-action-title').text("Chỉnh sửa");
-            $("#onSave").attr('value',data.id);
-            $("#modal-action").modal('show');
-        });
+            $.ajax({
+              url:datas.routes.update,
+              data:{id:id},
+              type:'GET',
+              dataType:'JSON',
+              success:function(data){
+                  console.log(data);
+                  $("#onSave").attr('data-url',datas.routes.update);
+                  $("#onSave").attr('data-id',data.data.id);
+                  $("#onSave").attr('data-action','update');
+                  $('#date').val(moment(data.data.date," YYYY-MM-DD").format('DD-MM-YYYY') );
+                  $('#address').val(data.data.address);
+                  $('#amount').val(data.data.amount);
+                  $('#name').val(data.data.name);
+                  $("#modal-action").modal('show');
+                  buttonloading(elementbtn,false);
+               
 
+              },error:function(error){
+
+              }
+            })
+            
+
+
+           
+           
+
+
+        });
         $("#btn-insert").on("click",function (){
             $('#modal-action-title').text("Thêm mới");
             $("#onSave").attr('data-url',datas.routes.insert);
+            $("#onSave").attr('data-action','insert');
+            $('#date').datepicker('setDate', new Date());
+            $('#address').val('');
+            $('#amount').val('');
+            $('#name').val('');
             $("#modal-action").modal('show');
         });
         $("#onDelete").on("click",function(e){
             var id = $(this).val();
-     
             e.preventDefault(e);
             var result = _AjaxDelete({id:id},datas.routes.delete);
             if(result){
                 table.ajax.reload();
                 $("#modal-delete").modal('hide');
             }
-            
         });
-        $("#formSearch").on('submit',function(e){
+        $("#amount").on("input", function () {
+          input_money_format(this);
+        });
+          $('#formAction').validate({
+                rules: {
+                  name: {
+                    required: true
+                  },
+                  address: {
+                    required: true
+                  },
+                  amount: {
+                    required: true
+                  },
+                  date: {
+                    required: true
+                  }
+                },
+                messages: {
+                  name: {
+                    required:"Vui lòng nhập tên ! ",
+                  },
+                  address: {
+                    required: "Vui lòng nhập địa chỉ ! ",
+                  },
+                  amount: {
+                    required: "Bạn chưa nhập số tiền !",
+                  },
+                  date: {
+                    required: "Bạn chửa chọn ngày !",
+                  },
+                  
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                  error.addClass('invalid-feedback');
+                  element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                  $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                  $(element).removeClass('is-invalid');
+                },
+                submitHandler: function (e) {
+                    var formData = new FormData($("#formAction")[0]);
+                    formData.append('id',$("#onSave").attr('data-id'));
+                    formData.set('date',moment(formData.get('date'),"DD-MM-YYYY").format('YYYY-MM-DD'));
+                    formData.set('amount',money_format_to_number(formData.get('amount')));
+                    var url = $("#onSave").attr('data-url');
+                    buttonloading('#onSave',true);
+                    $.ajax({
+                        url:url,
+                        type:'POST',
+                        data:formData,
+                        dataType:'JSON',
+                        processData: false,
+                        contentType: false,
+                        success:function(data){
+                            if(data.statusBoolen){
+                                buttonloading('#onSave',false);
+                                table.ajax.reload();
+                                $("#modal-action").modal('hide');
+                                Toast.fire({
+                                  icon: data.icon,
+                                  title:data.messages
+                                 });
+                            }else{
+                                buttonloading('#onSave',false);
+                                
+                            }
+                        },error:function(error){
+                            console.log(error);
+                            buttonloading('#onSave',false);
+                        }
+                    });
+                }
+        });
+        $("#formAction").on('submit',function(e){
             e.preventDefault();
-            table.ajax.reload();
-        })
+        });
+       
     }
 }
