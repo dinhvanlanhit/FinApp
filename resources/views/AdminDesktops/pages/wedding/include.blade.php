@@ -43,8 +43,8 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <button type="submit" class="btn btn-primary" value="" data-url="" id="onSave">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+          <button type="submit" class="btn btn-success" value="" data-url="" id="onSave">Lưu</button>
         </div>
       </div>
     </div>
