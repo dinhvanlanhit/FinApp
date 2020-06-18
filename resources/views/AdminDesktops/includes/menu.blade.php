@@ -8,28 +8,55 @@
           </p>
         </a>
       </li>
-      {{-- <li class="nav-item has-treeview">
+      <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-copy"></i>
           <p>
-            Phát Hành Hóa Đơn
+            Quản lý chi
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{route('getRelease')}}" class="nav-link {{ActiveMenu('getRelease')}}">
+            <a href="" class="nav-link ">
               <i class="far fa-circle nav-icon"></i>
-              <p>Danh Sach Phát Hành</p>
+              <p>Đám cưới</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('getCreate')}}" class="nav-link {{ActiveMenu('getCreate')}}">
+            <a href="" class="nav-link ">
               <i class="far fa-circle nav-icon"></i>
-              <p>Thêm Phát Hành</p>
+              <p>Sinh nhật</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="" class="nav-link ">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Mua Sắm</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link ">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Đám dỗ</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link ">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Đám tan</p>
+            </a>
+          </li>
+         
         </ul>
-      </li> --}}
+      </li>
+      <li class="nav-item">
+        <a href="{{route('profile')}}" class="nav-link">
+          <i class="nav-icon fas fa-user"></i>
+          <p>
+             Hô sơ cá nhân
+          </p>
+        </a>
+      </li>
     </ul>
   </nav>

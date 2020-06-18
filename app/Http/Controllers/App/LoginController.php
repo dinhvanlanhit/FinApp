@@ -18,48 +18,16 @@ class LoginController extends Controller
     }
     public function postLogin(Request $Request)
     {
-        $icon = '<i class="fas fa-exclamation-circle"></i>';
-        $error = new  \stdClass;
-        $error->idCompanies = null;
-        $error->email = null;
-        $error->password = null;
-        if($Request->idCompanies==null){
-            $error->idCompanies = $icon.' '.'Vui lòng nhập ID !';
-        }
-        if($Request->email==null){
-           $error->email=$icon.' '.'Vui lòng nhập Email !';
-        }
-        if($Request->password==null){
-            $error->password = $icon.' '.'Vui lòng nhập Password !';
-        }
-        if($Request->idCompanies==null||$Request->email==null||$Request->password==null){
-            return JSON2(false,$error);
-        }
-        // Kiểm tra ID công ty
-        $checkCompanies = Companies::where('id','=',$Request->idCompanies)->first();
-        if(!$checkCompanies){
-            $error->idCompanies = $icon.' '.'ID không đúng !';
-            return JSON2(false,$error);
-        }
-        // Kiểm tra Email
-        $checkUser = Users::where('email','=',$Request->email)->first();
-        if(!$checkUser){
-            $error->email = $icon.' '.'Email không đúng !';
-            return JSON2(false,$error);
-        }
-        $credentials = $Request->only('idCompanies','email', 'password');
+        $credentials = $Request->only('name','email', 'password');
         if (Auth::attempt($credentials)) {
             if(Auth::user()->status==0){
-                return JSON2(true,$error);
+                return JSON2(true,"");
             }else{
-                return JSON2(false,$error);
+                return JSON2(false,"Tài khoản của bạn đã bị khóa");
             }
         }else {
-            $error->password = $icon.' '.'Password không đúng !';
-            return JSON2(false,$error);
+            return JSON2(false,'Email hoặt mật khẩu không đúng !');
         }
-        
-      
     }
     public function getLogout(Request $Request)
     {

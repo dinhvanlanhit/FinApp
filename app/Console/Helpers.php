@@ -86,7 +86,7 @@ function template()
 {
     $agent = new \Jenssegers\Agent\Agent;
     $result = $agent->isDesktop();
-    $result  = false;
+    // $result  = false;
     if ($result){
         return "AdminDesktops";
     } 

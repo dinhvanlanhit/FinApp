@@ -12,12 +12,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'account'=>'administrators',
-            'idCompanies'=>1,
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('12345'),
-            'avatar'=>'2020-03-25-07-53-34.jpg',
+            'avatar'=>null,
             'full_name'=>'Admin Pro Code',
             'english_name'=>'Admin Pro',
             'nickname'=>'Admin Pro',

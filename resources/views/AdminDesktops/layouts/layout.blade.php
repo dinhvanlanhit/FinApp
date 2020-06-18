@@ -5,11 +5,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>MOTEL-ROOM</title>
+  <title>Fin-APP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @include('AdminDesktops.partials.stylesheet')
 </head>
-<body class="hold-transition sidebar-mini layout-fixed text-sm">
+
+<body class="hold-transition sidebar-mini layout-fixed ">
     <div class="wrapper">
         <!-- Navbar -->
         @include('AdminDesktops.includes.header')

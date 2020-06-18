@@ -21,25 +21,15 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-  <div class="login-logo">
-    <a href=""><b>MOTEL - ROOM </b>BETA</a>
-  </div>
+ 
   <div class="card">
+
     <div class="card-body login-card-body">
-      <p class="login-box-msg">
-          {{-- <img width="100%" src="{{asset('AdminDesktops/dist/img/motel-room.png')}}"/> --}}
-      </p>
+      <div class="login-logo">
+            <img class="btn-block" src="{{asset('SytemFinApp/logo/logofinapp.jpg')}}"/>
+      </div>
       <div id="alert"></div>
       <form id="form-login"  method="post">
-        <span class="idCompanies text-danger"></span>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" value="1" name="idCompanies" placeholder="ID">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-              </div>
-            </div>
-        </div>
         <span class="email text-danger"></span>
         <div class="input-group mb-3">
           <input type="email" class="form-control" value="admin@gmail.com" name="email" placeholder="Email or Username">
@@ -68,7 +58,7 @@
             </div>
           </div>
           <div class="col-6">
-            <button type="submit" id="button-login" class="btn btn-danger btn-block"> Đăng nhập </button>
+            <button type="submit" id="button-login" class="btn btn-primary btn-block"> Đăng nhập </button>
           </div>
         </div>
       </form>
@@ -89,6 +79,6 @@
 <script src="{{asset('AdminDesktops/plugins/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/dist/js/adminlte.min.js')}}"></script>
-<script src="{{asset('AdminDesktops/app/login/login.min.js')}}"></script>
+<script src="{{asset('app/login/login.min.js')}}"></script>
 </body>
 </html>
