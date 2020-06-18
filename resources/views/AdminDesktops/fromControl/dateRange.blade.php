@@ -1,6 +1,6 @@
 <div class="form-group">
     <div class="input-group">
-        <input type="text" id="daterange" class="form-control text-center">
+        <input type="text"  id="daterange" class="form-control text-center">
         <div class="input-group-prepend" >
             <span class="input-group-text">
               <i class="far fa-calendar-alt"></i>

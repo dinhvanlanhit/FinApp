@@ -13,7 +13,11 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/','NewsController@getNews')->name('news');
     });
     Route::group(['prefix' => 'wedding'], function () {
+        Route::get('/datatable','WeddingController@getDatatable')->name('wedding_table');
         Route::get('/','WeddingController@getWedding')->name('wedding');
+        Route::post('/insert','WeddingController@postInsert')->name('wedding_insert');
+        Route::post('/update','WeddingController@postUpdate')->name('wedding_update');
+        Route::post('/delete','WeddingController@postDelete')->name('wedding_delete');
     });
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/','ProfileController@getNews')->name('profile');

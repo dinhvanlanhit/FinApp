@@ -12,27 +12,39 @@
         <form id="formSearch">
             <div class="row">
                 <div class="col-md-5">
-                        <input class="form-control"/>
+                  <div class="form-group">
+                        <input class="form-control" id="search" name="search"/>
+                  </div>
                 </div>
                 <div class="col-md-3">
                         @include('AdminDesktops.fromControl.dateRange')
                 </div>
                 <div class="col-md-2">
+                  <div class="form-group">
                     <button type="submit" class="btn btn-info btn-block">Tìm kiếm</button>
+                                </div>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" id="button-modal-insert" class="btn btn-success btn-block">Thêm mới</button>
+                  <div class="form-group">
+                    <button type="button"  class="btn btn-success btn-block" id="btn-insert">Thêm mới</button>
+                   </div>
                 </div>
             </div>
         </form>
+        <div class="row">
+          <div class="col-md-12">
+              <table class="table table-bordered row-border hover" id="wedding-table"></table>
+          </div>
+        </div>
+        
         
     </div>
     <!-- /.card-body -->
     <div class="card-footer clearfix">
-      <button type="button" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</button>
+      <button  type="button" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</button>
     </div>
   </div>
-
+@include('AdminDesktops.pages.wedding.include')
 @endsection
 @section('javascript')
 <script src="{{asset('app/desktops/wedding/wedding.js')}}"></script>
@@ -40,7 +52,10 @@
     var wedding = new wedding(); 
     wedding.datas={
         routes:{
-
+          datatable:"{{route('wedding_table')}}",
+          insert:"{{route('wedding_insert')}}",
+          update:"{{route('wedding_update')}}",
+          delete:"{{route('wedding_delete')}}",
         }
     }   
     wedding.runJS();
