@@ -23,10 +23,11 @@
             <strong>Cài đặt</strong>
         </div>
     </a>
-    <a href="#" data-toggle="modal" data-target="#modal-logout" class="item">
+    <a href="#"  class="item">
         <div class="col">
-            <i class="fas fa-sign-out-alt"></i>
-            <strong>Đăng xuất</strong>
+            <i class="fas fa-search"></i>
+          
+            <strong>Tìm kiếm</strong>
         </div>
     </a>
 </div>
