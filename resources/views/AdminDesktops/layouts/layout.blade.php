@@ -17,11 +17,15 @@
         <!-- /.navbar -->
         @include('AdminDesktops.includes.sidebar')
         <div class="content-wrapper">
-          <br>
-          <section class="content">
             <div class="container-fluid">
-                @yield('desktops')
-            </div><!-- /.container-fluid -->
+              <div class="breadcrumbs" id="breadcrumbs-finApp">
+                {{ Breadcrumbs::render() }}
+              </div>
+            </div>
+            <section class="content">
+              <div class="container-fluid">
+                  @yield('desktops')
+              </div><!-- /.container-fluid -->
           </section>
           <!-- /.content -->
         </div>

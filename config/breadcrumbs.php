@@ -22,8 +22,7 @@ return [
     | Or a custom view, e.g. '_partials/breadcrumbs'.
     |
     */
-
-    'view' => 'breadcrumbs::bootstrap4',
+    'view' => 'AdminDesktops.includes.breadcrumbs',
 
     /*
     |--------------------------------------------------------------------------

@@ -16,4 +16,4 @@
 <script src="{{asset('AdminDesktops/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/toastr/toastr.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/dist/js/adminlte.js')}}"></script>
-<script src="{{asset('AdminDesktops/app/main.min.js')}}"></script>
+<script src="{{asset('app/desktops/main.min.js')}}"></script>
