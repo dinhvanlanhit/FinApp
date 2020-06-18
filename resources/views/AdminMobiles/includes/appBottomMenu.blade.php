@@ -24,10 +24,10 @@
             <strong>Tìm kiếm</strong>
         </div>
     </a>
-    <a href="{{route('setting')}}" class="item">
+    <a href="#" data-toggle="modal" data-target="#modal-logout" class="item">
         <div class="col">
-            <i class="fas fa-cog"></i>
-            <strong>Cài đặt</strong>
+            <i class="fas fa-sign-out-alt"></i>
+            <strong>Đăng xuất</strong>
         </div>
     </a>
 </div>

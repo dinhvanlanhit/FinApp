@@ -34,56 +34,43 @@
 
     <!-- App Capsule -->
     <div id="appCapsule">
-
-        <div class="section mt-2 text-center">
-            <h1>Log in</h1>
-            <h4>Fill the form to log in</h4>
-        </div>
-        <div class="section mb-5 p-2">
-
+        <div class="section mb-10 p-2">
             <form id="form-login"  method="post">
                 <div class="card">
+                    <img class="btn-block" src="{{asset('SytemFinApp/logo/logofinapp.jpg')}}"/>
+                   
                     <div class="card-body pb-1">
-                        <div class="form-group basic">
-                            
+                        <div class="form-group boxed">
+                            <div id="alert"></div>
+                        </div>
+                        <div class="form-group boxed">
                             <div class="input-wrapper">
-                                <label class="label" for="idCompanies">ID <span class="idCompanies text-danger"></span></label>
-                                <input type="text" class="form-control" id="idCompanies" value="1" name="idCompanies" placeholder="ID">
-                                <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                                <label class="label" for="email">Email 
+                                    <span class="email text-danger"></span>
+                                </label>
+                                <input type="text" class="form-control" name="email" value="admin@gmail.com" id="email" placeholder="Email">
+                                
                             </div>
                         </div>
-                        <div class="form-group basic">
-                           
+                        <div class="form-group boxed">
                             <div class="input-wrapper">
-                                <label class="label" for="email">E-mail  <span class="email text-danger"></span></label>
-                                <input type="email" class="form-control" id="email" value="admin@gmail.com" name="email" placeholder="Email or Username">
-                                <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                                <label class="label" for="password">Password 
+                                <span class="password text-danger"></span></label>
+                                <input type="password" class="form-control" name="password" value="12345" id="password" placeholder="Password">
+                                
                             </div>
                         </div>
-        
-                        <div class="form-group basic">
-                            
-                            <div class="input-wrapper">
-                                <label class="label" for="password">Password <span class="password text-danger"></span></label>
-                                <input type="password" class="form-control" value="12345" name="password"  placeholder="Password">
-                                <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                        <div class="form-group  ">
+                            <button type="submit" id="button-login" class="btn btn-primary btn-block btn-lg">Log in</button>
+                        </div>
+                        <div class="form-links mt-2">
+                            <div>
+                                <a href="app-register.html">Đăng ký </a>
                             </div>
+                            <div><a href="app-forgot-password.html" class="text-muted">Quên mật khẩu?</a></div>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="form-links mt-2">
-                    <div>
-                        <a href="app-register.html">Register Now</a>
-                    </div>
-                    <div><a href="app-forgot-password.html" class="text-muted">Forgot Password?</a></div>
-                </div>
-
-                <div class="form-button-group  transparent">
-                    <button type="submit" id="button-login" class="btn btn-primary btn-block btn-lg">Log in</button>
-                </div>
-
             </form>
         </div>
 
@@ -100,6 +87,6 @@
     <script src="{{asset('AdminMobiles/assets/js/lib/bootstrap.min.js')}}"></script>
     <script src="{{asset('AdminMobiles/assets/js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('AdminMobiles/assets/js/baseae52.js')}}"></script>
-    <script src="{{asset('AdminDesktops/app/login/login.min.js')}}"></script>
+    <script src="{{asset('app/login/login.min.js')}}"></script>
 </body>
 </html>

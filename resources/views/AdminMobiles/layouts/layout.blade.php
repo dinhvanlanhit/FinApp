@@ -20,6 +20,7 @@
     @yield('mobiles')
     @include('AdminMobiles.includes.appBottomMenu')
     @include('AdminMobiles.includes.appModalMenu')
+    @include('AdminMobiles.includes.appMain')
     <script src="{{asset('AdminMobiles/assets/js/lib/jquery-3.4.1.min.js')}}"></script>
     <script src="{{asset('AdminMobiles/assets/js/lib/popper.min.js')}}"></script>
     <script src="{{asset('AdminMobiles/assets/js/lib/bootstrap.min.js')}}"></script>

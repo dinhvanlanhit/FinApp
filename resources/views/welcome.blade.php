@@ -12,7 +12,7 @@
 	<div style="opacity:1;" class="desktop-view">
 		<div class="wrap-a">
 			<div class="wrap-b">
-				<iframe id="preview-iframe" src="http://nhatro.com/mobile" class="wrap-c"></iframe>
+				<iframe id="preview-iframe" src="{{route('dashboard')}}" class="wrap-c"></iframe>
 			</div>
 		</div>
 	

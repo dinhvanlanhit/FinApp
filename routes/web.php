@@ -25,3 +25,7 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     });
     
 });
+
+Route::get('/mobile',function(){
+    return view('welcome');
+});
