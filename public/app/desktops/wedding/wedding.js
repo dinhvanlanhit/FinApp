@@ -56,6 +56,10 @@ function wedding(){
                     data: "amount",
                     name: "amount",
                     className: "text-center",
+                    render: function (data, type, row, meta) {
+                      money_format(data);
+                   }
+                    
                    
                 },
                 {

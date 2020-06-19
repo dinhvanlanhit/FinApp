@@ -31,7 +31,7 @@
       <form id="form-login"  method="post">
         <span class="email text-danger"></span>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" value="admin@gmail.com" name="email" placeholder="Email or Username">
+          <input type="email" class="form-control" value="dinhvanlanh.it@gmail.com" name="email" placeholder="Email or Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
