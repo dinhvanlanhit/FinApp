@@ -27,6 +27,7 @@ class CreateInstallmentPurchaseTable extends Migration
             $table->double('debt')->default(0)->nullable();
             $table->date('date')->nullable();
             $table->date('expiration_date')->nullable();
+            $table->text('paymentDetals')->default("[]")->nullable();
             $table->timestamps();
         });
     }

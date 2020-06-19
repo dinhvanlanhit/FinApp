@@ -51,6 +51,11 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::post('/update','Installment_purchaseController@postUpdate')->name('installment_purchase_update');
         Route::get('/update','Installment_purchaseController@getUpdate')->name('installment_purchase_update');
         Route::post('/delete','Installment_purchaseController@postDelete')->name('installment_purchase_delete');
+        Route::get('/payment','Installment_purchaseController@getPayment')->name('installment_purchase_payment');
+        Route::post('/payment-id','Installment_purchaseController@postPaymentByID')->name('installment_purchase_payment_ByID');
+        Route::post('/payment-insert','Installment_purchaseController@postPaymentInsert')->name('installment_purchase_payment_insert');
+        Route::post('/payment-update','Installment_purchaseController@postPaymentUpdate')->name('installment_purchase_payment_update');
+        Route::post('/payment-delete','Installment_purchaseController@postPaymentDelete')->name('installment_purchase_payment_delete');
     });
     Route::group(['prefix' => 'salary'], function () {
         Route::get('/datatable','SalaryController@getDatatable')->name('salary_table');

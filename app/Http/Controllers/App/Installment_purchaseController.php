@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Installment_purchase;
+use App\Models\Installment_purchase_details;
 use Auth;
 class Installment_purchaseController extends Controller
 {
@@ -162,6 +163,53 @@ class Installment_purchaseController extends Controller
             return JSON1($Installment_purchase);
         }
 
+    }
+    public function getPayment(Request $Request)
+    {
+        $idUser = Auth::user()->id;
+        $result = Installment_purchase_details::where('idInstallment_purchase','=',$Request->id)->where('idUser','=',$idUser)->get();
+        return json_encode(array('data'=>$result));
+    }
+    public function postPaymentByID(Request $Request)
+    {
+        $idUser = Auth::user()->id;
+        $result = Installment_purchase_details::where('id','=',$Request->id)->where('idUser','=',$idUser)->first();
+        return JSON1($result);
+    }
+    public function postPaymentUpdate(Request $Request)
+    {
+        $Data = Installment_purchase_details::find((int)$Request->id);
+        $Data->idUser = Auth::user()->id;
+        $Data->idInstallment_purchase = $Request->idInstallment_purchase;
+        $Data->payment = $Request->payment;
+        $Data->date_payment = $Request->date_payment;
+        if($Data->save()){
+            return JSON2(true,"Cập Nhật thành công");
+        }else{
+            return JSON2(false,"Cập Nhật không thành công");
+        }
+    }
+    public function postPaymentInsert(Request $Request)
+    {
+        $Data = new  Installment_purchase_details();
+        $Data->idUser = Auth::user()->id;
+        $Data->idInstallment_purchase = $Request->idInstallment_purchase;
+        $Data->payment = $Request->payment;
+        $Data->date_payment = $Request->date_payment;
+        if($Data->save()){
+            return JSON2(true,"Thêm thành công");
+        }else{
+            return JSON2(false,"Thêm khống thành công");
+        }
+    }
+    public function postPaymentDelete(Request $Request)
+    {
+        $result =Installment_purchase_details::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        if($result){
+            return JSON2(true,"");
+        }else{
+            return JSON2(false,"");
+        }
     }
 
 }

@@ -59,3 +59,59 @@
 	</div>
 	
 </div>
+
+<div class="modal fade" id="modal-payment">
+	<div class="modal-dialog modal-lg" role="document">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modal-pyment-title"></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div id="hideshow" class="row d-none">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label> Số tiền <small id="payment-error" class="text-danger"></small></label>
+								<input class="form-control" id="payment"/>
+								<input class="form-control d-none" id="idInstallment_purchase"/>
+								<input class="form-control d-none" id="idUpdate"/>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Ngày</label>
+								<div class="input-group">
+									<input type="text" id="date_payment" name="date_payment" class="form-control text-center">
+									<div class="input-group-prepend"> <span class="input-group-text">
+											<i class="far fa-calendar-alt"></i>
+											</span>
+									</div>
+							
+									<div class="input-group-prepend">
+										<button class="btn btn-info full-right" id="btn-save-payment" 
+										data-idUpdate=""
+										data-urlPayment="">
+										Lưu</button>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<table class="table table-bordered row-border hover" id="payment-table"></table>
+						</div>
+					</div>
+
+					
+				</div>
+				
+            </div>
+       
+	</div>
+	
+</div>

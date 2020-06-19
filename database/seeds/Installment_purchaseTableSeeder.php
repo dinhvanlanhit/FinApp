@@ -24,7 +24,8 @@ class Installment_purchaseTableSeeder extends Seeder
                 'paid'=>10000000,
                 'debt'=>15000000,
                 'date'=>"2020-01-01",
-                'expiration_date'=>"2020-12-31"
+                'expiration_date'=>"2020-12-31",
+                'paymentDetals'=>"[]",
               ],
               [
                 'idUser'=>1,
@@ -37,7 +38,8 @@ class Installment_purchaseTableSeeder extends Seeder
                 'paid'=>10000000,
                 'debt'=>15000000,
                 'date'=>"2020-01-01",
-                'expiration_date'=>"2020-12-31"
+                'expiration_date'=>"2020-12-31",
+                'paymentDetals'=>"[]",
               ],
 
             ]

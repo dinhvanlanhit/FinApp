@@ -57,6 +57,14 @@
           insert:"{{route('installment_purchase_insert')}}",
           update:"{{route('installment_purchase_update')}}",
           delete:"{{route('installment_purchase_delete')}}",
+          payment:"{{route('installment_purchase_payment')}}",
+          paymentUpdate:"{{route('installment_purchase_payment_update')}}",
+          paymentInsert:"{{route('installment_purchase_payment_insert')}}",
+          paymentDelete:"{{route('installment_purchase_payment_delete')}}",
+          paymentByID:"{{route('installment_purchase_payment_ByID')}}",
+          
+
+          
         }
     }   
     installment_purchase.runJS();

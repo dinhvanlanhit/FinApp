@@ -95,7 +95,7 @@ function installment_purchase(){
                     render: function (data, type, row, meta) {
                        var html = '<button class="btn btn-danger btn-delete btn-xs" value="'+row.id+'">Xóa</button>&nbsp;&nbsp;';
                           html += '<button class="btn btn-success btn-update btn-xs" value="'+row.id+'">Sửa</button>&nbsp;&nbsp;';
-                          html += '<button class="btn btn-info btn-update btn-xs" value="'+row.id+'">Trả Tháng</button>';
+                          html += '<button class="btn btn-info btn-payment btn-xs" value="'+row.id+'">Trả góp</button>';
                        return '<div class="form-group">'+html+'</div>';
                     }
                    
@@ -125,6 +125,7 @@ function installment_purchase(){
               type:'GET',
               dataType:'JSON',
               success:function(data){
+                  
                   $("#onSave").attr('data-url',datas.routes.update);
                   $("#onSave").attr('data-id',data.data.id);
                   $("#onSave").attr('data-action','update');
@@ -152,7 +153,7 @@ function installment_purchase(){
           var  amount = parseInt(money_format_to_number($('#amount').val()));
           var  prepay = parseInt(money_format_to_number($('#prepay').val()));
           var  number_months = parseInt($('#number_months').val());
-          var rs = (amount-prepay)/number_months;
+          var rs = Math.round((amount-prepay)/number_months);
           $('#monthly_amount_to_pay').val(money_format(rs));
         }
         $("#number_months,#amount,#prepay").on('keyup',function(){
@@ -297,7 +298,166 @@ function installment_purchase(){
           // $("#formAction").clearValidation();
      
           $("#modal-action").modal('show');
-      });
+         });
+
+        
+
+      var id = 0;
+      var elementbtn =null;
+      var payment = $("#payment-table").DataTable({
+          // serverSide: true,
+          processing:  true,
+          paging: true,
+          lengthChange: true,
+          searching: true,
+          ordering: true,
+          info: false,
+          responsive: true,
+          autoWidth: false,
+          ajax: {
+                url: datas.routes.payment,
+                type: "GET",
+                data: function (d) {
+                    return $.extend({}, d, {
+                        id:id
+                    });
+                }
+          },
+          columns: [
+            {
+              title:"#",
+              data: "id",
+              name: "id",
+              className: "text-center",
+              render: function (data, type, row, meta) {
+                  return meta.row + meta.settings._iDisplayStart + 1;
+              }
+            },
+            {
+              title:"Tiền Trả",
+              data: "payment",
+              name: "payment",
+              className: "text-center",
+              render: function (data, type, row, meta) {
+                return   money_format(data);
+              }
+            },
+            {
+              title:"Ngày trả",
+              data: "date_payment",
+              name: "date_payment",
+              className: "text-center",
+              
+            },
+            {
+              title:"<button type='button' id='btnAddpayment' class='btn btn-info btn-sm btn-block'>Thêm mới</button>",
+              data: "id",
+              name: "id",
+              className: "text-center",
+              render: function (data, type, row, meta) {
+                var html = '<button class="btn btn-danger btn-payment-delete btn-xs" value="'+row.id+'">Xóa</button>&nbsp;&nbsp;';
+                   html += '<button class="btn btn-success btn-payment-update btn-xs" value="'+row.id+'">Sửa</button>&nbsp;&nbsp;';
+                 
+                return '<div class="form-group">'+html+'</div>';
+             }
+              
+            },
+          ],
+          initComplete: function(settings, json) {
+            // buttonloading(elementbtn,false);
+           
+          }
+        });
+        $("#payment").on("input", function () {
+          input_money_format(this);
+        });
+        $("#date_payment" ).datepicker();
+        $('#date_payment').css("z-index","0");
+        $('#date_payment').datepicker( "option", "dateFormat", 'dd-mm-yy' );
+        
+        $(document).delegate("#btnAddpayment", "click", function () {
+            $("#btn-save-payment").attr('data-urlPayment',datas.routes.paymentInsert);
+            $("#hideshow").removeClass('d-none');
+            $('#payment').val('');
+            $('#date_payment').datepicker('setDate', new Date());
+            $("#payment-error").text('');
+
+        });
+        $(document).delegate(".btn-payment-update", "click", function () {
+          $("#btn-save-payment").attr('data-urlPayment',datas.routes.paymentUpdate);
+          var id = $(this).val();
+          $("#payment-error").text('');
+          $.ajax({
+            url:datas.routes.paymentByID,
+            type:'POST',
+            data:{id:id},
+            dataType:'JSON',
+            success:function(data){
+              $("#idUpdate").val(data.data.id);
+              $('#payment').val(money_format(data.data.payment));
+              $('#date_payment').val(moment(data.data.date_payment," YYYY-MM-DD").format('DD-MM-YYYY') );
+              $("#hideshow").removeClass('d-none');
+            },error:function(error){
+              console.log(error)
+            }
+          })
+        });
+        $(document).delegate(".btn-payment", "click", function () {
+          id = $(this).val();
+          $("#idInstallment_purchase").val(id),
+          elementbtn = $(this);
+          payment.ajax.reload();
+          $('#modal-pyment-title').text("Trả góp từng tháng");
+          $("#modal-payment").modal('show');
+        });
+        $("#btn-save-payment").on('click',function(){
+          buttonloading('#btn-save-payment',true);
+           if($("#payment").val()!=''){
+            $("#payment-error").text('');
+              $.ajax({
+                url:$(this).attr('data-urlPayment'),
+                type:'POST',
+                data:{
+                  id:$("#idUpdate").val(),
+                  idInstallment_purchase:$("#idInstallment_purchase").val(),
+                  payment:money_format_to_number($("#payment").val()),
+                  date_payment: moment($("#date_payment").val(),"DD-MM-YYYY").format('YYYY-MM-DD')
+                },
+                dataType:'JSON',
+                success:function(data){
+                    if(data.statusBoolen){
+                        buttonloading('#btn-save-payment',false);
+                        payment.ajax.reload();
+                        Toast.fire({
+                          icon: data.icon,
+                          title:data.messages
+                        });
+                        $("#hideshow").addClass('d-none');
+                    }else{
+                        buttonloading('#btn-save-payment',false);
+                        
+                    }
+                },error:function(error){
+                    console.log(error);
+                    buttonloading('#btn-save-payment',false);
+                }
+              });
+           }else{
+            buttonloading('#btn-save-payment',false);
+              $("#payment-error").text(' : không được bỏ trống!');
+           }
+        });
+        $(document).delegate(".btn-payment-delete", "click", function () {
+          var id = $(this).val();
+          var result = _AjaxDelete({id:id},datas.routes.paymentDelete);
+          if(result){
+            payment.ajax.reload();
+          }
+        });
+
        
     }
+
+ 
+
 }
