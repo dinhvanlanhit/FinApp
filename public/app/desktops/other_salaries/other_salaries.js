@@ -1,11 +1,16 @@
-function wedding(){
+function other_salaries(){
     this.datas = null;
     this.runJS = function(){
         var datas = this.datas;
         $("#date" ).datepicker();
         $('#date').css("z-index","0");
         $('#date').datepicker( "option", "dateFormat", 'dd-mm-yy' );
-        var table = $("#wedding-table").DataTable({
+
+
+
+
+
+        var table = $("#other_salaries-table").DataTable({
             serverSide: true,
             processing:  true,
             paging: true,
@@ -38,21 +43,14 @@ function wedding(){
                     }
                 },
                 {
-                    title:"Tên",
+                    title:"Nguồn Thu Nhập",
                     data: "name",
                     name: "name",
                     className: "text-center",
                    
                 },
                 {
-                    title:"Địa chỉ",
-                    data: "address",
-                    name: "address",
-                    className: "text-center",
-                   
-                },
-                {
-                    title:"Số tiền",
+                    title:"Tiền Lương",
                     data: "amount",
                     name: "amount",
                     className: "text-center",
@@ -63,7 +61,14 @@ function wedding(){
                    
                 },
                 {
-                    title:"Ngày",
+                  title:"Chi Tiết",
+                  data: "note",
+                  name: "note",
+                  className: "text-center",
+                 
+                },
+                {
+                    title:"Ngày Nhận Lương",
                     data: "date",
                     name: "date",
                     className: "text-center",
@@ -151,9 +156,7 @@ function wedding(){
                   name: {
                     required: true
                   },
-                  address: {
-                    required: true
-                  },
+                 
                   amount: {
                     required: true
                   },
@@ -165,9 +168,7 @@ function wedding(){
                   name: {
                     required:"Vui lòng nhập tên ! ",
                   },
-                  address: {
-                    required: "Vui lòng nhập địa chỉ ! ",
-                  },
+                  
                   amount: {
                     required: "Bạn chưa nhập số tiền !",
                   },
@@ -192,6 +193,10 @@ function wedding(){
                     formData.append('id',$("#onSave").attr('data-id'));
                     formData.set('date',moment(formData.get('date'),"DD-MM-YYYY").format('YYYY-MM-DD'));
                     formData.set('amount',money_format_to_number(formData.get('amount')));
+                    formData.append(
+                      'note',"Lương tháng : "+moment(formData.get('date'),"DD-MM-YYYY").format('MM')+" Năm "+
+                       moment(formData.get('date'),"YYYY").format('YYYY')
+                    );
                     var url = $("#onSave").attr('data-url');
                     buttonloading('#onSave',true);
                     $.ajax({

@@ -5,13 +5,13 @@ namespace App\Http\Controllers\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Models\Wedding;
+use App\Models\Birthday;
 use Auth;
-class WeddingController extends Controller
+class BirthdayController extends Controller
 {
-    public function getWedding(Request $Request)
+    public function getBirthday(Request $Request)
     {
-        return view(template().".pages.wedding.index");
+        return view(template().".pages.birthday.index");
     }
     public function getDatatable(Request $Request)
     {
@@ -32,16 +32,16 @@ class WeddingController extends Controller
         $dateBegin = $Request->input('dateBegin');
         $dateEnd = $Request->input('dateEnd');
         if(!empty($dateBegin)&&!empty($dateEnd)){
-            $totalData =  Wedding::where('idUser','=',$idUser)->whereBetween('date',[$dateBegin,$dateEnd ])->count();
+            $totalData =  Birthday::where('idUser','=',$idUser)->whereBetween('date',[$dateBegin,$dateEnd ])->count();
             $totalFiltered =$totalData;
             if(empty($search)){
-                $Wedding = Wedding::where('idUser','=',$idUser)-> whereBetween('date',[$dateBegin,$dateEnd ])
+                $Birthday = Birthday::where('idUser','=',$idUser)-> whereBetween('date',[$dateBegin,$dateEnd ])
                 ->offset($start)
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
             }else{
-                $Wedding = Wedding::where('idUser','=',$idUser)->whereBetween('date',[$dateBegin,$dateEnd ])
+                $Birthday = Birthday::where('idUser','=',$idUser)->whereBetween('date',[$dateBegin,$dateEnd ])
                 ->Where(function($query)use($search){
                     $query->where('id', 'LIKE', "%{$search}%")
                     ->orWhere('name', 'LIKE',"%{$search}%")
@@ -55,15 +55,15 @@ class WeddingController extends Controller
                 ->get();
             }
         }else{
-            $totalData =  Wedding::where('idUser','=',$idUser)->count();
+            $totalData =  Birthday::where('idUser','=',$idUser)->count();
             $totalFiltered =$totalData;
             if(empty($search)){
-                $Wedding = Wedding::where('idUser','=',$idUser)->offset($start)
+                $Birthday = Birthday::where('idUser','=',$idUser)->offset($start)
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
             }else{
-                $Wedding = Wedding::where('idUser','=',$idUser)
+                $Birthday = Birthday::where('idUser','=',$idUser)
                 ->Where(function($query)use($search){
                     $query->where('id', 'LIKE', "%{$search}%")
                     ->orWhere('name', 'LIKE',"%{$search}%")
@@ -81,7 +81,7 @@ class WeddingController extends Controller
             "draw"            => intval($Request->input('draw')),  
             "recordsTotal"    => intval($totalData),  
             "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $Wedding   
+            "data"            => $Birthday   
         );
         echo json_encode($json_data); 
        
@@ -89,7 +89,7 @@ class WeddingController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result =Wedding::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result =Birthday::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -99,13 +99,13 @@ class WeddingController extends Controller
     public function postInsert(Request $Request)
     {
 
-        $Wedding = new Wedding();
-        $Wedding->idUser = Auth::user()->id;
-        $Wedding->name = $Request->name;
-        $Wedding->address = $Request->address;
-        $Wedding->amount = $Request->amount;
-        $Wedding->date = $Request->date;
-        if($Wedding->save()){
+        $Birthday = new Birthday();
+        $Birthday->idUser = Auth::user()->id;
+        $Birthday->name = $Request->name;
+        $Birthday->address = $Request->address;
+        $Birthday->amount = $Request->amount;
+        $Birthday->date = $Request->date;
+        if($Birthday->save()){
             return JSON2(true,"Thêm thành công");
         }else{
             return JSON2(false,"Thêm thất bại");
@@ -115,13 +115,13 @@ class WeddingController extends Controller
     public function postUpdate(Request $Request)
     {
 
-        $Wedding =  Wedding::find((int)$Request->id);
-        $Wedding->idUser = Auth::user()->id;
-        $Wedding->name = $Request->name;
-        $Wedding->address = $Request->address;
-        $Wedding->amount = $Request->amount;
-        $Wedding->date = $Request->date;
-        if($Wedding->save()){
+        $Birthday =  Birthday::find((int)$Request->id);
+        $Birthday->idUser = Auth::user()->id;
+        $Birthday->name = $Request->name;
+        $Birthday->address = $Request->address;
+        $Birthday->amount = $Request->amount;
+        $Birthday->date = $Request->date;
+        if($Birthday->save()){
             return JSON2(true,"Cập nhật thành công");
         }else{
             return JSON2(false,"Cập nhật thất bại");
@@ -130,11 +130,11 @@ class WeddingController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $Wedding =  Wedding::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
-        if($Wedding){
-            return JSON1($Wedding);
+        $Birthday =  Birthday::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        if($Birthday){
+            return JSON1($Birthday);
         }else{
-            return JSON1($Wedding);
+            return JSON1($Birthday);
         }
 
     }

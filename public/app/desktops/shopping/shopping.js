@@ -1,11 +1,11 @@
-function wedding(){
+function shopping(){
     this.datas = null;
     this.runJS = function(){
         var datas = this.datas;
         $("#date" ).datepicker();
         $('#date').css("z-index","0");
         $('#date').datepicker( "option", "dateFormat", 'dd-mm-yy' );
-        var table = $("#wedding-table").DataTable({
+        var table = $("#shopping-table").DataTable({
             serverSide: true,
             processing:  true,
             paging: true,

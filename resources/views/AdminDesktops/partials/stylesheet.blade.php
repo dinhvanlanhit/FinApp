@@ -1,4 +1,5 @@
 {{-- <script> var langCR = '{{Session::get('langCR')}}'; var urlLangs = '{{route('getLang')}}';</script> --}}
+<link rel="stylesheet" href="{{asset('AdminDesktops/plugins/font-awesome/4.7.0/css/font-awesome.min.css')}}">
 <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/fontawesome-free/css/all.min.css')}}">
 <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/jquery-ui/jquery-ui.min.css')}}">
 <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
