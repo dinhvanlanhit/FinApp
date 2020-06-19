@@ -62,10 +62,10 @@
         </div>
       </form>
       <p class="mb-1">
-        <a href="forgot-password.html">Tôi quên mật khẩu của tôi</a>
+        <a href="{{route('forgot-password')}}">Tôi quên mật khẩu của tôi</a>
       </p>
       <p class="mb-0">
-        <a href="register.html" class="text-center">Đăng ký thành viên mới</a>
+        <a href="{{route('register')}}" class="text-center">Đăng ký thành viên mới</a>
       </p>
     </div>
   </div>
@@ -78,6 +78,6 @@
 <script src="{{asset('AdminDesktops/plugins/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/dist/js/adminlte.min.js')}}"></script>
-<script src="{{asset('app/login/login.min.js')}}"></script>
+<script src="{{asset('app/auth/login.min.js')}}"></script>
 </body>
 </html>

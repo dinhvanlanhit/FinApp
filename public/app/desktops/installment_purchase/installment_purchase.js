@@ -1,11 +1,15 @@
-function other_salaries(){
+function installment_purchase(){
     this.datas = null;
     this.runJS = function(){
         var datas = this.datas;
         $("#date" ).datepicker();
         $('#date').css("z-index","0");
         $('#date').datepicker( "option", "dateFormat", 'dd-mm-yy' );
-        var table = $("#other_salaries-table").DataTable({
+
+        $("#expiration_date" ).datepicker();
+        $('#expiration_date').css("z-index","0");
+        $('#expiration_date').datepicker( "option", "dateFormat", 'dd-mm-yy' );
+        var table = $("#installment_purchase-table").DataTable({
             serverSide: true,
             processing:  true,
             paging: true,
@@ -38,34 +42,50 @@ function other_salaries(){
                     }
                 },
                 {
-                    title:"Nguồn Thu Nhập",
+                    title:"Thông Tin",
                     data: "name",
                     name: "name",
-                    className: "text-center",
+                    className: "text-left",
+                    render: function (data, type, row, meta) {
+                      var html =  '<b class="">Sản phẩm : '+row.name+'</b><br>';
+                      html +=  '<b class="">Giá Tiền : '+money_format(row.amount)+' VNĐ</b><br>';
+                      html +=  '<b class="">Trả góp : '+row.number_months+' Tháng</b><br>';
+                      html +=  '<b class="">Trả hàng tháng : '+money_format(row.monthly_amount_to_pay)+' Tháng</b><br>';
+                      html +=  '<b class="">Đã trả : '+row.remaining_month+' Tháng</b><br>';
+                      html +=  '<b class="">Còn lại : '+(row.number_months-row.remaining_month)+' Tháng</b><br>';
+                      return html;
+                    }
                    
                 },
                 {
-                    title:"Tiền Lương",
-                    data: "amount",
-                    name: "amount",
-                    className: "text-center",
-                    render: function (data, type, row, meta) {
-                       return money_format(data);
-                   }  
-                },
-                {
-                  title:"Ghi chú",
-                  data: "note",
-                  name: "note",
+                  title:"Trả trước",
+                  data: "prepay",
+                  name: "prepay",
                   className: "text-center",
+                  render: function (data, type, row, meta) {
+                    return '<b class="text-primary">'+money_format(data)+' VNĐ</b> ';
+                }  
                  
                 },
                 {
-                    title:"Ngày Nhận Lương",
-                    data: "date",
-                    name: "date",
-                    className: "text-center",
-                   
+                  title:"Đã Trả",
+                  data: "paid",
+                  name: "paid",
+                  className: "text-center",
+                  render: function (data, type, row, meta) {
+                    return '<b class="text-success">'+money_format(data)+' VNĐ</b> ';
+                  }  
+                 
+                },
+                {
+                  title:"Còn Nợ",
+                  data: "debt",
+                  name: "debt",
+                  className: "text-center",
+                  render: function (data, type, row, meta) {
+                    return '<b class="text-danger">'+money_format(data)+' VNĐ</b> ';
+                  }  
+                 
                 },
                 {
                     title:"Tác vụ",
@@ -103,14 +123,20 @@ function other_salaries(){
               type:'GET',
               dataType:'JSON',
               success:function(data){
-                  console.log(data);
                   $("#onSave").attr('data-url',datas.routes.update);
                   $("#onSave").attr('data-id',data.data.id);
                   $("#onSave").attr('data-action','update');
-                  $('#date').val(moment(data.data.date," YYYY-MM-DD").format('DD-MM-YYYY') );
-                  $('#note').val(data.data.note);
-                  $('#amount').val(money_format(data.data.amount));
                   $('#name').val(data.data.name);
+                  $('#amount').val(money_format(data.data.amount));
+                  $('#number_months').val(data.data.number_months);
+                  $('#remaining_month').val(data.data.remaining_month);
+                  $('#monthly_amount_to_pay').val(money_format(data.data.monthly_amount_to_pay));
+                  $('#prepay').val(money_format(data.data.prepay));
+                  $('#paid').val(money_format(data.data.paid));
+                  $('#debt').val(money_format(data.data.debt));
+                  $('#date').val(moment(data.data.date," YYYY-MM-DD").format('DD-MM-YYYY') );
+                  $('#expiration_date').val(moment(data.data.expiration_date," YYYY-MM-DD").format('DD-MM-YYYY') );
+                  $('#address').val(data.data.address);
                   $("#modal-action").modal('show');
                   buttonloading(elementbtn,false);
                
@@ -125,9 +151,16 @@ function other_salaries(){
             $("#onSave").attr('data-url',datas.routes.insert);
             $("#onSave").attr('data-action','insert');
             $('#date').datepicker('setDate', new Date());
-            $('#address').val('');
-            $('#amount').val('');
             $('#name').val('');
+            $('#amount').val(money_format(''));
+            $('#number_months').val('');
+            $('#remaining_month').val('');
+            $('#monthly_amount_to_pay').val('');
+            $('#prepay').val('');
+            $('#paid').val('');
+            $('#debt').val('');
+            $('#date').datepicker('setDate', new Date());
+            $('#expiration_date').datepicker('setDate', new Date());
             $("#modal-action").modal('show');
         });
         $("#onDelete").on("click",function(e){
@@ -149,7 +182,9 @@ function other_salaries(){
                   name: {
                     required: true
                   },
-                 
+                  address: {
+                    required: true
+                  },
                   amount: {
                     required: true
                   },
@@ -161,7 +196,9 @@ function other_salaries(){
                   name: {
                     required:"Vui lòng nhập tên ! ",
                   },
-                  
+                  address: {
+                    required: "Vui lòng nhập địa chỉ ! ",
+                  },
                   amount: {
                     required: "Bạn chưa nhập số tiền !",
                   },

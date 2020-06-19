@@ -3,6 +3,14 @@ Route::group(['namespace' => 'App',], function () {
     Route::get('/login','LoginController@getLogin')->name('login');
     Route::post('/login','LoginController@postLogin')->name('login');
     Route::get('/logout','LoginController@getLogout')->name('logout');
+
+    Route::get('/register','RegisterController@getRegister')->name('register');
+    Route::post('/register','RegisterController@postRegister')->name('register');
+
+    Route::get('/forgot-password','RegisterController@getForgot_password')->name('forgot-password');
+    Route::post('/forgot-password','RegisterController@postForgot_password')->name('forgot-password');
+
+    
 });
 Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     Route::get('/','DashboardController@Dashboard')->name('dashboard');
@@ -35,6 +43,14 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::post('/update','ShoppingController@postUpdate')->name('shopping_update');
         Route::get('/update','ShoppingController@getUpdate')->name('shopping_update');
         Route::post('/delete','ShoppingController@postDelete')->name('shopping_delete');
+    });
+    Route::group(['prefix' => 'installment_purchase'], function () {
+        Route::get('/datatable','Installment_purchaseController@getDatatable')->name('installment_purchase_table');
+        Route::get('/','Installment_purchaseController@getInstallment_purchase')->name('installment_purchase');
+        Route::post('/insert','Installment_purchaseController@postInsert')->name('installment_purchase_insert');
+        Route::post('/update','Installment_purchaseController@postUpdate')->name('installment_purchase_update');
+        Route::get('/update','Installment_purchaseController@getUpdate')->name('installment_purchase_update');
+        Route::post('/delete','Installment_purchaseController@postDelete')->name('installment_purchase_delete');
     });
     Route::group(['prefix' => 'salary'], function () {
         Route::get('/datatable','SalaryController@getDatatable')->name('salary_table');

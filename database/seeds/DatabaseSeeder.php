@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             WeddingTableSeeder::class,
             BirthdayTableSeeder::class,
             ShoppingTableSeeder::class,
+            Installment_purchaseTableSeeder::class,
             SalaryTableSeeder::class,
             Other_salariesTableSeeder::class
         ]);
