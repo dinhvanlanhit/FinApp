@@ -16,7 +16,7 @@ class CreateOtherSalariesTable extends Migration
         Schema::create('other_salaries', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('idUser')->unsigned()->nullable();
-            $table->foreign('idUser')->references('id')->on('users');
+            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');;
             $table->string('name')->nullable();
             $table->double('amount')->default(0)->nullable();
             $table->string('address')->nullable();

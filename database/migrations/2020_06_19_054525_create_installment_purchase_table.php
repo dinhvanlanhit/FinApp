@@ -16,7 +16,7 @@ class CreateInstallmentPurchaseTable extends Migration
         Schema::create('installment_purchase', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('idUser')->unsigned()->nullable();
-            $table->foreign('idUser')->references('id')->on('users');
+            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');;
             $table->string('name')->nullable();
             $table->double('amount')->default(0)->nullable();
             $table->integer('number_months')->nullable();
