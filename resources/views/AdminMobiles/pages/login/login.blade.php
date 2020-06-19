@@ -51,7 +51,7 @@
                                 <label class="label" for="email">Email 
                                     <span class="email text-danger"></span>
                                 </label>
-                                <input type="text" class="form-control" name="email" value="admin@gmail.com" id="email" placeholder="Email">
+                                <input type="text" class="form-control" name="email" value="dinhvanlanh.it@gmail.com" id="email" placeholder="Email">
                                 
                             </div>
                         </div>
@@ -76,10 +76,16 @@
                 </div>
             </form>
         </div>
-
+        <div class="appFooter">
+            <div class="footer-title">
+                Bản quyền © Finapp 2020<br><br>
+                <a href="24hcode.net">DINH VAN LE</a>
+            </div>
+          
     </div>
-    <!-- * App Capsule -->
-        @yield('mobiles')
+    </div>
+
+   
         <script> routes = {
             login:"{{route('login')}}",
             dashboard:"{{route('dashboard')}}"
