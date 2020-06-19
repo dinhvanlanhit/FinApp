@@ -51,7 +51,7 @@ function installment_purchase(){
                       html +=  '<b class="">Giá Tiền : '+money_format(row.amount)+' VNĐ</b><br>';
                       html +=  '<b class="">Trả góp : '+row.number_months+' Tháng</b><br>';
                       html +=  '<b class="">Trả hàng tháng : '+money_format(row.monthly_amount_to_pay)+' Tháng</b><br>';
-                      html +=  '<b class="">Đã trả : '+row.remaining_month+' Tháng</b><br>';
+                      html +=  '<b class="">Đã trả : '+null_to_number(row.remaining_month)+' Tháng</b><br>';
                       html +=  '<b class="">Còn lại : '+(row.number_months-row.remaining_month)+' Tháng</b><br>';
                       return html;
                     }
@@ -94,7 +94,8 @@ function installment_purchase(){
                     className: "text-center",
                     render: function (data, type, row, meta) {
                        var html = '<button class="btn btn-danger btn-delete btn-xs" value="'+row.id+'">Xóa</button>&nbsp;&nbsp;';
-                          html += '<button class="btn btn-success btn-update btn-xs" value="'+row.id+'">Sửa</button>';
+                          html += '<button class="btn btn-success btn-update btn-xs" value="'+row.id+'">Sửa</button>&nbsp;&nbsp;';
+                          html += '<button class="btn btn-info btn-update btn-xs" value="'+row.id+'">Trả Tháng</button>';
                        return '<div class="form-group">'+html+'</div>';
                     }
                    
@@ -113,6 +114,7 @@ function installment_purchase(){
             $("#modal-delete").modal('show');
         });
         $(document).delegate(".btn-update", "click", function () {
+          $("#formAction").data('validator').resetForm();
             var id = $(this).val();
             var elementbtn = $(this);
             buttonloading(elementbtn,true);
@@ -146,22 +148,15 @@ function installment_purchase(){
               }
             });
         });
-        $("#btn-insert").on("click",function (){
-            $('#modal-action-title').text("Thêm mới");
-            $("#onSave").attr('data-url',datas.routes.insert);
-            $("#onSave").attr('data-action','insert');
-            $('#date').datepicker('setDate', new Date());
-            $('#name').val('');
-            $('#amount').val(money_format(''));
-            $('#number_months').val('');
-            $('#remaining_month').val('');
-            $('#monthly_amount_to_pay').val('');
-            $('#prepay').val('');
-            $('#paid').val('');
-            $('#debt').val('');
-            $('#date').datepicker('setDate', new Date());
-            $('#expiration_date').datepicker('setDate', new Date());
-            $("#modal-action").modal('show');
+        function sum(){
+          var  amount = parseInt(money_format_to_number($('#amount').val()));
+          var  prepay = parseInt(money_format_to_number($('#prepay').val()));
+          var  number_months = parseInt($('#number_months').val());
+          var rs = (amount-prepay)/number_months;
+          $('#monthly_amount_to_pay').val(money_format(rs));
+        }
+        $("#number_months,#amount,#prepay").on('keyup',function(){
+          sum(); 
         });
         $("#onDelete").on("click",function(e){
             var id = $(this).val();
@@ -174,37 +169,54 @@ function installment_purchase(){
                 buttonloading('#onDelete',false);
             }
         });
-        $("#amount").on("input", function () {
-          input_money_format(this);
-        });
-        $('#formAction').validate({
+  
+      var f=  $('#formAction').validate({
                 rules: {
                   name: {
                     required: true
                   },
-                  address: {
-                    required: true
-                  },
                   amount: {
                     required: true
                   },
+                  number_months: {
+                    required: true
+                  },
+                  monthly_amount_to_pay: {
+                    required: true
+                  },
+                  prepay: {
+                    required: true
+                  },
+                  
                   date: {
                     required: true
                   }
+                  ,expiration_date: {
+                    required: true
+                  } 
                 },
                 messages: {
                   name: {
-                    required:"Vui lòng nhập tên ! ",
-                  },
-                  address: {
-                    required: "Vui lòng nhập địa chỉ ! ",
+                    required:"Chưa nhập sản phẩm ",
                   },
                   amount: {
-                    required: "Bạn chưa nhập số tiền !",
+                    required: "Chưa nhập giá tiền ! ",
+                  },
+                  number_months: {
+                    required: "Chưa nhập số tháng  !",
+                  },
+                  prepay: {
+                    required: "Chưa nhập số tiền trả trước !",
+                  },
+                  monthly_amount_to_pay: {
+                    required: "Chưa nhập số tiền trả hàng tháng  !",
                   },
                   date: {
-                    required: "Bạn chửa chọn ngày !",
-                  },
+                    required: "Chưa nhập ngày mua",
+                  }
+                  ,expiration_date: {
+                    required: "Chưa nhập ngày hết hạn",
+                  } 
                   
                 },
                 errorElement: 'span',
@@ -219,12 +231,15 @@ function installment_purchase(){
                   $(element).removeClass('is-invalid');
                 },
                 submitHandler: function (e) {
+                    buttonloading('#onSave',true);
+                    var url = $("#onSave").attr('data-url');
                     var formData = new FormData($("#formAction")[0]);
                     formData.append('id',$("#onSave").attr('data-id'));
-                    formData.set('date',moment(formData.get('date'),"DD-MM-YYYY").format('YYYY-MM-DD'));
                     formData.set('amount',money_format_to_number(formData.get('amount')));
-                    var url = $("#onSave").attr('data-url');
-                    buttonloading('#onSave',true);
+                    formData.set('monthly_amount_to_pay',money_format_to_number(formData.get('monthly_amount_to_pay')));
+                    formData.set('prepay',money_format_to_number(formData.get('prepay')));
+                    formData.set('date',moment(formData.get('date'),"DD-MM-YYYY").format('YYYY-MM-DD'));
+                    formData.set('expiration_date',moment(formData.get('expiration_date'),"DD-MM-YYYY").format('YYYY-MM-DD'));
                     $.ajax({
                         url:url,
                         type:'POST',
@@ -255,6 +270,34 @@ function installment_purchase(){
         $("#formAction").on('submit',function(e){
             e.preventDefault();
         });
+        $("#amount").on("input", function () {
+          input_money_format(this);
+        });
+        $("#monthly_amount_to_pay").on("input", function () {
+          input_money_format(this);
+        });
+        $("#prepay").on("input", function () {
+          input_money_format(this);
+        });
+        $("#btn-insert").on("click",function (){
+          $('#modal-action-title').text("Thêm mới");
+          $("#onSave").attr('data-url',datas.routes.insert);
+          $("#onSave").attr('data-action','insert');
+          $('#date').datepicker('setDate', new Date());
+          $('#name').val('');
+          $('#amount').val();
+          $('#number_months').val('');
+          $('#remaining_month').val('');
+          $('#monthly_amount_to_pay').val('');
+          $('#prepay').val('');
+          $('#paid').val('');
+          $('#debt').val('');
+          $('#date').datepicker('setDate', new Date());
+          $('#expiration_date').datepicker('setDate', new Date());
+          // $("#formAction").clearValidation();
+     
+          $("#modal-action").modal('show');
+      });
        
     }
 }

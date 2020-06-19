@@ -12,7 +12,7 @@
         <a href="#" class="nav-link active">
           <i class="nav-icon fas fa-copy"></i>
           <p>
-            Tiệc Tùng
+            Hoạt Động
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>

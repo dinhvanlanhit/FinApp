@@ -114,9 +114,15 @@ class Installment_purchaseController extends Controller
         $Installment_purchase = new Installment_purchase();
         $Installment_purchase->idUser = Auth::user()->id;
         $Installment_purchase->name = $Request->name;
-        $Installment_purchase->address = $Request->address;
         $Installment_purchase->amount = $Request->amount;
+        $Installment_purchase->number_months = $Request->number_months;
+        $Installment_purchase->remaining_month = $Request->remaining_month;
+        $Installment_purchase->monthly_amount_to_pay = $Request->monthly_amount_to_pay;
+        $Installment_purchase->prepay = $Request->prepay;
+        // $Installment_purchase->paid = $Request->paid;
+        // $Installment_purchase->debt = $Request->debt;
         $Installment_purchase->date = $Request->date;
+        $Installment_purchase->expiration_date = $Request->expiration_date;
         if($Installment_purchase->save()){
             return JSON2(true,"Thêm thành công");
         }else{
@@ -126,13 +132,20 @@ class Installment_purchaseController extends Controller
     }
     public function postUpdate(Request $Request)
     {
-
+        // dd($Request->all());
         $Installment_purchase =  Installment_purchase::find((int)$Request->id);
         $Installment_purchase->idUser = Auth::user()->id;
         $Installment_purchase->name = $Request->name;
-        $Installment_purchase->address = $Request->address;
         $Installment_purchase->amount = $Request->amount;
+        $Installment_purchase->number_months = $Request->number_months;
+        $Installment_purchase->remaining_month = $Request->remaining_month;
+        $Installment_purchase->monthly_amount_to_pay = $Request->monthly_amount_to_pay;
+        $Installment_purchase->prepay = $Request->prepay;
+        // $Installment_purchase->paid = $Request->paid;
+        // $Installment_purchase->debt = $Request->debt;
         $Installment_purchase->date = $Request->date;
+        $Installment_purchase->expiration_date = $Request->expiration_date;
+
         if($Installment_purchase->save()){
             return JSON2(true,"Cập nhật thành công");
         }else{
