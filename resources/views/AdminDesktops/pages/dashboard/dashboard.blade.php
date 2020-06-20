@@ -78,7 +78,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h5 class="card-title">Biểu Đồ Sự Kiện</h5>
+        <h5 class="card-title">Biểu Đồ</h5>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -92,13 +92,29 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-3 col-6">
-              @include('AdminDesktops.fromControl.dateRange')
+              @include('AdminDesktops.fromControl.dateRange',
+               [
+                'daterange'=>'Chart_daterange',
+                'dateBegin'=>'Chart_dateBegin',
+                'dateEnd'=>'Chart_dateEnd',
+              ]
+              )
           </div>
-      </div>
+          <div class="col-md-3 col-6">
+            <div class="form-group">
+              <select id="TypeDashboard" class="form-control">
+                <option value="event"> Sự Kiện</option>
+                <option value="shopping"> Mua Sắm</option>
+                <option value="cost"> Chi Tiêu</option>
+                <option value="salary"> Thu Nhập</option>
+              </select>
+           </div>
+          </div>
+        </div>
         <div class="row">
           
           <div class="col-md-12">
-            <div id="event-chart" style="height:400px"></div>
+            <div id="dashboard-chart" style="height:350px"></div>
             <!-- /.chart-responsive -->
           </div>
       
@@ -124,6 +140,7 @@
     dashboard.datas={
         routes:{
           dashboard:"{{route('dashboard')}}",
+          getCharEvent:"{{route('getCharEvent')}}",
         }
     }   
     dashboard.runJS();

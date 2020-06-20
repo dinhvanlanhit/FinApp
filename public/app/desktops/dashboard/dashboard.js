@@ -1,6 +1,7 @@
 function dashboard() {
 	this.datas = null;
 	this.runJS = function () {
+		
         var me =  this;
         var datas = this.datas;
         daterange('#dashboard_daterange','#dashboard_dateBegin','#dashboard_dateEnd');
@@ -26,14 +27,33 @@ function dashboard() {
 			});
         });
         me.Event();
-	}
+	},
 	this.Event = function () {
-        daterange('#Event_daterange','#Event_dateBegin','#Event_dateEnd');
+		var me =  this;
+		var datas = this.datas;
+		daterange('#Chart_daterange','#Chart_dateBegin','#Chart_dateEnd');
+		me._Ajax(
+			datas.routes.getCharEvent,
+			$('#Chart_dateBegin').val(),
+			$('#Chart_dateEnd').val(),
+			'dashboard-chart'
+		);
+		$("#Chart_daterange").on('change', function (e) {
+			
+			me._Ajax(
+				datas.routes.getCharEvent,
+				$('#Chart_dateBegin').val(),
+				$('#Chart_dateEnd').val(),
+				'dashboard-chart'
+			);
+        });
+	
+	},
+	this.runChar=function(data,id){
 		$(window).resize(function () {
 			EventDoughnut.resize();
 		});
-		// Chart User Sex
-		var EventDoughnut = echarts.init(document.getElementById('event-chart'));
+		var EventDoughnut = echarts.init(document.getElementById(id));
 		var option = {
 			textStyle: {
 				fontFamily: "Tahoma,Arial"
@@ -41,17 +61,17 @@ function dashboard() {
 			// Add title
 			title: {
 				text: 'Biểu đồ tỷ lệ',
-				subtext: "Tổng : " + (parseInt(50) + parseInt(50)),
+				subtext: "Tổng : "+money_format(data.sumTotal),
 				x: 'center',
 			},
 			// Add legend
 			legend: {
 				orient: 'vertical',
 				x: 'left',
-				data: ['Đám Ma', 'Đám Cưới','Đám hỏi']
+				data: data.lable
 			},
 			// Add custom colors
-			color: ['#00008B', '#DC143A'],
+			color: data.color,
 			// Display toolbox
 			toolbox: {
 				show: true,
@@ -105,22 +125,33 @@ function dashboard() {
 						}
 					}
 				},
-				data: [
-                    {
-					    value: 50,
-					    name: 'Đám Ma'
-                    },
-                    {
-					    value: 50,
-					    name: 'Đám Cưới'
-                    }, 
-                    {
-                        value: 50,
-                        name: 'Đám hỏi'
-                    }, 
-                ]
+				data:data.data,
+				
 			}]
 		};
 		EventDoughnut.setOption(option);
 	}
+	this._Ajax=function(url,begin,end,id){
+		var me = this;
+		var idChart = id;
+		$.ajax({
+			url: url,
+			type: 'GET',
+			data: {
+				dateBegin: begin,
+				dateEnd: end,
+			},
+			dataType: 'JSON',
+			success: function (data) {
+				console.log(data)
+				me.runChar(data.data,idChart);
+				
+			},
+			error: function (error) {
+				console.log(error)
+			}
+		});
+		
+	}
+
 }

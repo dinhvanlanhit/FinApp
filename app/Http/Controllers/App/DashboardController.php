@@ -9,6 +9,10 @@ use App\Models\Event;
 use App\Models\Shopping;
 use App\Models\Salary;
 use App\Models\Cost;
+
+use App\Models\TypeCost;
+use App\Models\TypeEvent;
+use App\Models\TypeSalary;
 use Auth;
 class DashboardController extends Controller
 {
@@ -55,6 +59,51 @@ class DashboardController extends Controller
     {
         $idUser = Auth::user()->id;
         return Salary::where('idUser','=',$idUser)->whereBetween('date',$Between)->sum('amount');
+    }
+    public function getCharEvent(Request $Request)
+    {
+        $idUser = Auth::user()->id;
+        $Between =  [$Request->dateBegin, $Request->dateEnd];
+        $TypeEvent = TypeEvent::get();
+        $data = array();
+        $color = array();
+        $lable = array();
+        if(!empty($Request->dateBegin)||!empty($Request->dateEnd)){
+            $sumTotal = Event::where('idUser','=',$idUser)
+            ->whereBetween('date',$Between)->sum('amount');
+            foreach($TypeEvent as $item){
+                $addRow['value'] = Event::where('idUser','=',$idUser)
+                ->where('idTypeEvent','=',$item->id)
+                ->whereBetween('date',$Between)->sum('amount');
+                $addRow['name']= $item->type_name;
+    
+                $data[] = $addRow;
+                $color[]=$item->color;
+                $lable[]=$item->type_name;
+            }
+        }
+        else{
+            $sumTotal = Event::where('idUser','=',$idUser)->sum('amount');
+            foreach($TypeEvent as $item){
+                $addRow['value'] = Event::where('idUser','=',$idUser)
+                ->where('idTypeEvent','=',$item->id)->sum('amount');
+                $addRow['name']= $item->type_name;
+    
+                $data[] = $addRow;
+                $color[]=$item->color;
+                $lable[]=$item->type_name;
+            }
+        }
+        
+
+
+        return JSON1(array(
+            'sumTotal'=>$sumTotal,
+            'lable'=>$lable,
+            'color'=>$color,
+            'data'=> $data
+        ));
+        // dd($data);
     }
     
 
