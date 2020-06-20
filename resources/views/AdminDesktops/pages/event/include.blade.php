@@ -12,7 +12,19 @@
             <div class="modal-body">
                 
                 <div class="row">
-            
+                    <div class="col-md-12">
+
+                            <div class="form-group" >
+                               
+                                <select class="form-control select2bs4" id="idTypeEventInput" name="idTypeEventInput">
+                                <option value="">-- Chọn Sự Kiện -- </option>    
+                                @foreach ($typeevent as $item)
+                                    <option value="{{$item->id}}">{{$item->type_name}}</option>                      
+                                @endforeach
+                                </select>
+                            
+                        </div>
+                    </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Tên</label>

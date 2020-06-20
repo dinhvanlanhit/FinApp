@@ -1,11 +1,11 @@
-function wedding() {
+function event() {
 	this.datas = null;
 	this.runJS = function () {
 		var datas = this.datas;
 		$("#date").datepicker();
 		$('#date').css("z-index", "0");
 		$('#date').datepicker("option", "dateFormat", 'dd-mm-yy');
-		var table = $("#wedding-table").DataTable({
+		var table = $("#event-table").DataTable({
 			serverSide: true,
 			processing: true,
 			paging: true,
@@ -20,6 +20,7 @@ function wedding() {
 				type: "GET",
 				data: function (d) {
 					return $.extend({}, d, {
+						idTypeEvent: $("#idTypeEvent").val(),
 						dateBegin: $("#dateBegin").val(),
 						dateEnd: $("#dateEnd").val(),
 						search: $("#search").val(),
@@ -35,7 +36,15 @@ function wedding() {
 				render: function (data, type, row, meta) {
 					return meta.row + meta.settings._iDisplayStart + 1;
 				}
-			}, {
+			}, 
+			
+			{
+				title: "Sự Kiện",
+				data: "type_name",
+				name: "type_name",
+				className: "text-center",
+			},
+			{
 				title: "Tên",
 				data: "name",
 				name: "name",
@@ -103,7 +112,10 @@ function wedding() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					console.log(data);
+					// $('#idTypeEventInput').val(data.data.idTypeEvent);
+		
+					$('#idTypeEventInput').val(data.data.idTypeEvent); // Select the option with a value of '1'
+					$('#idTypeEventInput').trigger('change'); // Notify any JS components that the value changed
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
@@ -119,6 +131,8 @@ function wedding() {
 		});
 		$("#btn-insert").on("click", function () {
 			$('#modal-action-title').text("Thêm mới");
+			$('#idTypeEventInput').val(""); // Select the option with a value of '1'
+			$('#idTypeEventInput').trigger('change'); // Notify any JS components that the value changed
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
@@ -126,6 +140,10 @@ function wedding() {
 			$('#amount').val('');
 			$('#name').val('');
 			$("#modal-action").modal('show');
+		});
+		
+		$("#idTypeEvent").on("change", function (e) {
+			table.ajax.reload();
 		});
 		$("#onDelete").on("click", function (e) {
 			var id = $(this).val();
@@ -188,6 +206,7 @@ function wedding() {
 				formData.append('id', $("#onSave").attr('data-id'));
 				formData.set('date', moment(formData.get('date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('amount', money_format_to_number(formData.get('amount')));
+				formData.set('idTypeEvent',formData.get('idTypeEventInput'));
 				var url = $("#onSave").attr('data-url');
 				buttonloading('#onSave', true);
 				$.ajax({

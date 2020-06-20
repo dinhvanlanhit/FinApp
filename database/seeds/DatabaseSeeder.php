@@ -13,11 +13,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UsersTableSeeder::class,
-            WeddingTableSeeder::class,
-            BirthdayTableSeeder::class,
+            TypeEventTableSeeder::class,
+            EventTableSeeder::class,
             ShoppingTableSeeder::class,
-            Installment_purchaseTableSeeder::class,
-            Installment_purchase_details_TableSeeder::class,
             SalaryTableSeeder::class,
             Other_salariesTableSeeder::class
         ]);

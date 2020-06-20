@@ -9,104 +9,41 @@
         </a>
       </li>
       <li class="nav-item has-treeview ">
-        <a href="#" class="nav-link active">
+        <a href="{{route('event')}}" class="nav-link active">
           <i class="nav-icon fas fa-copy"></i>
           <p>
-            Tiệc Tùng
-            <i class="fas fa-angle-left right"></i>
+            Sự Kiện
+           
           </p>
         </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{route('wedding')}}" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Đám Cưới</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('birthday')}}" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Sinh Nhật</p>
-            </a>
-          </li>
-        </ul>
+      
       </li>
-      <li class="nav-item has-treeview ">
-        <a href="#" class="nav-link active">
+      <li class="nav-item ">
+        <a href="{{route('shopping')}}" class="nav-link active">
           <i class="nav-icon fa fa-shopping-bag"></i>
           <p>
             Mua Sắm
-            <i class="fas fa-angle-left right"></i>
+            
           </p>
         </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{route('shopping')}}" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Mua Sắm</p>
-            </a>
-          </li>
-          {{-- <li class="nav-item">
-            <a href="{{route('installment_purchase')}}" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Mua Sắm Trả Góp</p>
-            </a>
-          </li> --}}
-        </ul>
+        
+        
       </li>
       <li class="nav-item has-treeview ">
-        <a href="#" class="nav-link active">
+        <a href="#" class="nav-link active ">
           <i class="nav-icon fas fa-copy"></i>
           <p>
-            Chi Tiêu Gia Đình
-            <i class="fas fa-angle-left right"></i>
+            Chi Tiêu
+           
           </p>
         </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Học Phí Cho Con</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Tiền Nhà</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Tiền Điện</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Tiền Nước</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Tiền Ăn</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Đau Ốm</p>
-            </a>
-          </li>
-          
-        </ul>
+      
       </li>
       <li class="nav-item has-treeview ">
         <a href="#" class="nav-link active">
           <i class="nav-icon fas fa-money"></i>
           <p>
-            Quản Lý Lương
+            Thu Nhập
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>

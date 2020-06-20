@@ -20,22 +20,15 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     Route::group(['prefix' => 'news'], function () {
         Route::get('/','NewsController@getNews')->name('news');
     });
-    Route::group(['prefix' => 'wedding'], function () {
-        Route::get('/datatable','WeddingController@getDatatable')->name('wedding_table');
-        Route::get('/','WeddingController@getWedding')->name('wedding');
-        Route::post('/insert','WeddingController@postInsert')->name('wedding_insert');
-        Route::post('/update','WeddingController@postUpdate')->name('wedding_update');
-        Route::get('/update','WeddingController@getUpdate')->name('wedding_update');
-        Route::post('/delete','WeddingController@postDelete')->name('wedding_delete');
+    Route::group(['prefix' => 'event'], function () {
+        Route::get('/datatable','EventController@getDatatable')->name('event_table');
+        Route::get('/','EventController@getEvent')->name('event');
+        Route::post('/insert','EventController@postInsert')->name('event_insert');
+        Route::post('/update','EventController@postUpdate')->name('event_update');
+        Route::get('/update','EventController@getUpdate')->name('event_update');
+        Route::post('/delete','EventController@postDelete')->name('event_delete');
     });
-    Route::group(['prefix' => 'birthday'], function () {
-        Route::get('/datatable','BirthdayController@getDatatable')->name('birthday_table');
-        Route::get('/','BirthdayController@getBirthday')->name('birthday');
-        Route::post('/insert','BirthdayController@postInsert')->name('birthday_insert');
-        Route::post('/update','BirthdayController@postUpdate')->name('birthday_update');
-        Route::get('/update','BirthdayController@getUpdate')->name('birthday_update');
-        Route::post('/delete','BirthdayController@postDelete')->name('birthday_delete');
-    });
+
     Route::group(['prefix' => 'shopping'], function () {
         Route::get('/datatable','ShoppingController@getDatatable')->name('shopping_table');
         Route::get('/','ShoppingController@getShopping')->name('shopping');
@@ -44,19 +37,7 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/update','ShoppingController@getUpdate')->name('shopping_update');
         Route::post('/delete','ShoppingController@postDelete')->name('shopping_delete');
     });
-    Route::group(['prefix' => 'installment-purchase'], function () {
-        Route::get('/datatable','InstallmentPurchaseController@getDatatable')->name('installment_purchase_table');
-        Route::get('/','InstallmentPurchaseController@getInstallment_purchase')->name('installment_purchase');
-        Route::post('/insert','InstallmentPurchaseController@postInsert')->name('installment_purchase_insert');
-        Route::post('/update','InstallmentPurchaseController@postUpdate')->name('installment_purchase_update');
-        Route::get('/update','InstallmentPurchaseController@getUpdate')->name('installment_purchase_update');
-        Route::post('/delete','InstallmentPurchaseController@postDelete')->name('installment_purchase_delete');
-        Route::get('/payment','InstallmentPurchaseController@getPayment')->name('installment_purchase_payment');
-        Route::post('/payment-id','InstallmentPurchaseController@postPaymentByID')->name('installment_purchase_payment_ByID');
-        Route::post('/payment-insert','InstallmentPurchaseController@postPaymentInsert')->name('installment_purchase_payment_insert');
-        Route::post('/payment-update','InstallmentPurchaseController@postPaymentUpdate')->name('installment_purchase_payment_update');
-        Route::post('/payment-delete','InstallmentPurchaseController@postPaymentDelete')->name('installment_purchase_payment_delete');
-    });
+
     Route::group(['prefix' => 'salary'], function () {
         Route::get('/datatable','SalaryController@getDatatable')->name('salary_table');
         Route::get('/','SalaryController@getSalary')->name('salary');
