@@ -15,15 +15,16 @@ class TypeSalaryTableSeeder extends Seeder
             [
                 [
                   'type_name' => 'Tiền Lương',
+                  'color'=>'#08AEEA',
                  
                 ],
                 [
                     'type_name' => 'Bán Hàng Online',
-                   
+                   'color'=>'#B721FF',
                 ],
                 [
                     'type_name' => 'Mục Khác',
-                   
+                   'color'=>'#16A085',
                 ],
               ]
             );

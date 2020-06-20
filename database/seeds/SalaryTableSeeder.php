@@ -20,7 +20,7 @@ class SalaryTableSeeder extends Seeder
                 'amount' => 10000000,
                 'name'=>'Đinh Văn Lệ',
               
-                'date' => '2020-01-06'
+                'date' => '2020-01-05'
                 
               ],
               [

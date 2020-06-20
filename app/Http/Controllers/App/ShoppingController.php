@@ -18,7 +18,7 @@ class ShoppingController extends Controller
         $columns = array( 
             0 => 'id',
             1 => 'name',
-            2 => 'address',
+            2 => 'note',
             3 => 'amount',
             4 => 'date', 
             5 => 'created_at'
@@ -45,7 +45,7 @@ class ShoppingController extends Controller
                 ->Where(function($query)use($search){
                     $query->where('id', 'LIKE', "%{$search}%")
                     ->orWhere('name', 'LIKE',"%{$search}%")
-                    ->orWhere('address', 'LIKE',"%{$search}%")
+                    ->orWhere('note', 'LIKE',"%{$search}%")
                     ->orWhere('amount','LIKE',"%{$search}%")
                     ->orWhere('date','LIKE',"%{$search}%");
                 })
@@ -67,7 +67,7 @@ class ShoppingController extends Controller
                 ->Where(function($query)use($search){
                     $query->where('id', 'LIKE', "%{$search}%")
                     ->orWhere('name', 'LIKE',"%{$search}%")
-                    ->orWhere('address', 'LIKE',"%{$search}%")
+                    ->orWhere('note', 'LIKE',"%{$search}%")
                     ->orWhere('amount','LIKE',"%{$search}%")
                     ->orWhere('date','LIKE',"%{$search}%");
                 })
@@ -102,7 +102,7 @@ class ShoppingController extends Controller
         $Shopping = new Shopping();
         $Shopping->idUser = Auth::user()->id;
         $Shopping->name = $Request->name;
-        $Shopping->address = $Request->address;
+        $Shopping->note = $Request->note;
         $Shopping->amount = $Request->amount;
         $Shopping->date = $Request->date;
         if($Shopping->save()){
@@ -118,7 +118,7 @@ class ShoppingController extends Controller
         $Shopping =  Shopping::find((int)$Request->id);
         $Shopping->idUser = Auth::user()->id;
         $Shopping->name = $Request->name;
-        $Shopping->address = $Request->address;
+        $Shopping->note = $Request->note;
         $Shopping->amount = $Request->amount;
         $Shopping->date = $Request->date;
         if($Shopping->save()){

@@ -1,9 +1,6 @@
 @extends('AdminDesktops.layouts.layout')
 @section('desktops')
-<div class="card">
 
-    <!-- /.card-header -->
-    <div class="card-body">
         <form id="formProfile">
             <div class="row">
                 <div class="col-md-3">
@@ -112,6 +109,7 @@
                             </div>
                             <div class="form-group ">
                               <div class="">
+                                  <a  href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
                                 <button type="submit" id="onSave" class="btn btn-danger">Lưu</button>
                               </div>
                             </div>
@@ -146,6 +144,7 @@
                               </div>
                               <div class="form-group row">
                                 <div class="offset-sm-2 col-sm-10">
+                                  <a  href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
                                   <button type="submit" class="btn btn-danger">Lưu</button>
                                 </div>
                               </div>
@@ -155,6 +154,8 @@
                       </div>
                       <!-- /.tab-content -->
                     </div><!-- /.card-body -->
+                        <!-- /.card-body -->
+                       
                   </div>
                   <!-- /.nav-tabs-custom -->
                 </div>
@@ -164,12 +165,9 @@
 
         
         
-    </div>
-    <!-- /.card-body -->
-    <div class="card-footer clearfix">
-      <a  href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
-    </div>
-  </div>
+ 
+
+
 @endsection
 @section('javascript')
 

@@ -15,28 +15,29 @@ class TypeEventTableSeeder extends Seeder
             [
                 [
                   'type_name' => 'Đám cưới',
-                  'des' => 250000,
+                  'color'=>'#32CCBC'
                 ],
                 [
                     'type_name' => 'Đám Hỏi',
-                    'des' => 250000,
+                    'color'=>'#28C76F'
+
                 ],
                 [
                   'type_name' => 'Sinh Nhật',
-                  'des' => 'Sinh Nhật Bạn Bè',
+                  'color'=>'#9F44D3'
                 ],
                 [
                   'type_name' => 'Đám Dỗ',
-                  'des' => '',
+                  'color'=>'#002661'
                 ],
                 [
                   'type_name' => 'Đám Ma',
-                  'des' => '',
+                  'color'=>'#0396FF'
                 ]
                 ,
                 [
                   'type_name' => 'Mục Khác',
-                  'des' => '',
+                  'color'=>'#CA26FF'
                 ]
               ]
             );

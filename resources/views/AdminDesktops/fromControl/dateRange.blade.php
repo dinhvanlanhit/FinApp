@@ -1,6 +1,12 @@
 <div class="form-group">
     <div class="input-group">
-        <input type="text"  id="daterange" class="form-control text-center">
+        <input type="text"  
+        @if (isset($daterange))
+           id="{{$daterange}}"
+        @else
+           id="daterange"
+        @endif
+        class="form-control text-center daterange">
         <div class="input-group-prepend" >
             <span class="input-group-text">
               <i class="far fa-calendar-alt"></i>
@@ -8,5 +14,20 @@
           </div>
       </div>
 </div>
-<input class="form-control input-sm text-center d-none" type="text" name="dateBegin" id="dateBegin">
-<input class="form-control input-sm text-center d-none" type="text" name="dateEnd" id="dateEnd">
+<input class="form-control input-sm text-center d-none" type="text"
+@if (isset($dateBegin))
+id="{{$dateBegin}}"
+name="{{$dateBegin}}"
+@else
+id="dateBegin"
+name="dateBegin"
+@endif>
+
+<input class="form-control input-sm text-center d-none" type="text"
+@if (isset($dateEnd))
+id="{{$dateEnd}}"
+name="{{$dateEnd}}"
+@else
+id="dateEnd"
+name="dateEnd"
+@endif>

@@ -17,6 +17,7 @@ class CreateTypeCostTable extends Migration
             $table->bigIncrements('id');
             $table->string('type_name')->nullable();
             $table->string('des')->nullable();
+            $table->string('color')->nullable();
             $table->timestamps();
         });
     }
