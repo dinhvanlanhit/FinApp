@@ -19,7 +19,10 @@ class CreateInstallmentPurchaseDetailsTable extends Migration
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');;
             $table->bigInteger('idInstallment_purchase')->unsigned()->nullable()->onDelete('cascade')->onUpdate('cascade');;
             $table->foreign('idInstallment_purchase')->references('id')->on('installment_purchase')->onDelete('cascade')->onUpdate('cascade');;
+            
+            $table->integer('moth')->nullable();
             $table->double('payment')->default(0)->nullable();
+          
             $table->date('date_payment')->nullable();
             $table->timestamps();
         });

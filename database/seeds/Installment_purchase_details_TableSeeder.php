@@ -16,6 +16,7 @@ class Installment_purchase_details_TableSeeder extends Seeder
               [
                 'idUser'=>1,
                 'idInstallment_purchase'=>1,
+                'moth'=>1,
                 'payment'=>2500000,
                 'date_payment'=>"2020-01-01",
               ]

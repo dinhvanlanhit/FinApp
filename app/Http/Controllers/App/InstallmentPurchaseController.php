@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Installment_purchase;
 use App\Models\Installment_purchase_details;
 use Auth;
-class Installment_purchaseController extends Controller
+class InstallmentPurchaseController extends Controller
 {
     public function getInstallment_purchase(Request $Request)
     {
@@ -33,22 +33,22 @@ class Installment_purchaseController extends Controller
         $dateBegin = $Request->input('dateBegin');
         $dateEnd = $Request->input('dateEnd');
         if(!empty($dateBegin)&&!empty($dateEnd)){
-            $totalData =  Installment_purchase::where('idUser','=',$idUser)->whereBetween('date',[$dateBegin,$dateEnd ])->count();
+            $totalData =  Installment_purchase::where('idUser','=',$idUser)->count();
             $totalFiltered =$totalData;
             if(empty($search)){
-                $Installment_purchase = Installment_purchase::where('idUser','=',$idUser)-> whereBetween('date',[$dateBegin,$dateEnd ])
+                $Installment_purchase = Installment_purchase::where('idUser','=',$idUser)
                 ->offset($start)
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
             }else{
-                $Installment_purchase = Installment_purchase::where('idUser','=',$idUser)->whereBetween('date',[$dateBegin,$dateEnd ])
+                $Installment_purchase = Installment_purchase::where('idUser','=',$idUser)
                 ->Where(function($query)use($search){
                     $query->where('id', 'LIKE', "%{$search}%")
                     ->orWhere('name', 'LIKE',"%{$search}%")
                     ->orWhere('amount', 'LIKE',"%{$search}%")
                     ->orWhere('number_months','LIKE',"%{$search}%")
-                    ->orWhere('remaining_month','LIKE',"%{$search}%")
+                    ->orWhere('month_paid','LIKE',"%{$search}%")
                     ->orWhere('monthly_amount_to_pay','LIKE',"%{$search}%")
                     ->orWhere('prepay','LIKE',"%{$search}%")
                     ->orWhere('paid','LIKE',"%{$search}%")
@@ -76,7 +76,7 @@ class Installment_purchaseController extends Controller
                     ->orWhere('name', 'LIKE',"%{$search}%")
                     ->orWhere('amount', 'LIKE',"%{$search}%")
                     ->orWhere('number_months','LIKE',"%{$search}%")
-                    ->orWhere('remaining_month','LIKE',"%{$search}%")
+                    ->orWhere('month_paid','LIKE',"%{$search}%")
                     ->orWhere('monthly_amount_to_pay','LIKE',"%{$search}%")
                     ->orWhere('prepay','LIKE',"%{$search}%")
                     ->orWhere('paid','LIKE',"%{$search}%")
@@ -117,11 +117,8 @@ class Installment_purchaseController extends Controller
         $Installment_purchase->name = $Request->name;
         $Installment_purchase->amount = $Request->amount;
         $Installment_purchase->number_months = $Request->number_months;
-        $Installment_purchase->remaining_month = $Request->remaining_month;
         $Installment_purchase->monthly_amount_to_pay = $Request->monthly_amount_to_pay;
         $Installment_purchase->prepay = $Request->prepay;
-        // $Installment_purchase->paid = $Request->paid;
-        // $Installment_purchase->debt = $Request->debt;
         $Installment_purchase->date = $Request->date;
         $Installment_purchase->expiration_date = $Request->expiration_date;
         if($Installment_purchase->save()){
@@ -139,11 +136,9 @@ class Installment_purchaseController extends Controller
         $Installment_purchase->name = $Request->name;
         $Installment_purchase->amount = $Request->amount;
         $Installment_purchase->number_months = $Request->number_months;
-        $Installment_purchase->remaining_month = $Request->remaining_month;
+        // $Installment_purchase->month_paid = $Request->month_paid;
         $Installment_purchase->monthly_amount_to_pay = $Request->monthly_amount_to_pay;
         $Installment_purchase->prepay = $Request->prepay;
-        // $Installment_purchase->paid = $Request->paid;
-        // $Installment_purchase->debt = $Request->debt;
         $Installment_purchase->date = $Request->date;
         $Installment_purchase->expiration_date = $Request->expiration_date;
 
@@ -178,12 +173,22 @@ class Installment_purchaseController extends Controller
     }
     public function postPaymentUpdate(Request $Request)
     {
+        $idInstallment_purchase = (int)$Request->idInstallment_purchase;
         $Data = Installment_purchase_details::find((int)$Request->id);
         $Data->idUser = Auth::user()->id;
-        $Data->idInstallment_purchase = $Request->idInstallment_purchase;
+        $Data->idInstallment_purchase =$idInstallment_purchase;
+        $Data->moth = $Request->moth;
         $Data->payment = $Request->payment;
         $Data->date_payment = $Request->date_payment;
         if($Data->save()){
+            $dataUpdate = Installment_purchase::find($idInstallment_purchase);
+            $sumPayment = Installment_purchase_details::where('idInstallment_purchase','=',$idInstallment_purchase)->sum('payment');
+            $sumMoth = Installment_purchase_details::where('idInstallment_purchase','=',$idInstallment_purchase)->sum('moth');
+            $dataUpdate->month_paid = $sumMoth;
+            $dataUpdate->paid = $sumPayment;
+            $dataUpdate->paid = $sumPayment;
+            $dataUpdate->save();
+            // dd($sumPayment);
             return JSON2(true,"Cập Nhật thành công");
         }else{
             return JSON2(false,"Cập Nhật không thành công");
@@ -194,6 +199,7 @@ class Installment_purchaseController extends Controller
         $Data = new  Installment_purchase_details();
         $Data->idUser = Auth::user()->id;
         $Data->idInstallment_purchase = $Request->idInstallment_purchase;
+        $Data->moth = $Request->moth;
         $Data->payment = $Request->payment;
         $Data->date_payment = $Request->date_payment;
         if($Data->save()){

@@ -44,18 +44,18 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/update','ShoppingController@getUpdate')->name('shopping_update');
         Route::post('/delete','ShoppingController@postDelete')->name('shopping_delete');
     });
-    Route::group(['prefix' => 'installment_purchase'], function () {
-        Route::get('/datatable','Installment_purchaseController@getDatatable')->name('installment_purchase_table');
-        Route::get('/','Installment_purchaseController@getInstallment_purchase')->name('installment_purchase');
-        Route::post('/insert','Installment_purchaseController@postInsert')->name('installment_purchase_insert');
-        Route::post('/update','Installment_purchaseController@postUpdate')->name('installment_purchase_update');
-        Route::get('/update','Installment_purchaseController@getUpdate')->name('installment_purchase_update');
-        Route::post('/delete','Installment_purchaseController@postDelete')->name('installment_purchase_delete');
-        Route::get('/payment','Installment_purchaseController@getPayment')->name('installment_purchase_payment');
-        Route::post('/payment-id','Installment_purchaseController@postPaymentByID')->name('installment_purchase_payment_ByID');
-        Route::post('/payment-insert','Installment_purchaseController@postPaymentInsert')->name('installment_purchase_payment_insert');
-        Route::post('/payment-update','Installment_purchaseController@postPaymentUpdate')->name('installment_purchase_payment_update');
-        Route::post('/payment-delete','Installment_purchaseController@postPaymentDelete')->name('installment_purchase_payment_delete');
+    Route::group(['prefix' => 'installment-purchase'], function () {
+        Route::get('/datatable','InstallmentPurchaseController@getDatatable')->name('installment_purchase_table');
+        Route::get('/','InstallmentPurchaseController@getInstallment_purchase')->name('installment_purchase');
+        Route::post('/insert','InstallmentPurchaseController@postInsert')->name('installment_purchase_insert');
+        Route::post('/update','InstallmentPurchaseController@postUpdate')->name('installment_purchase_update');
+        Route::get('/update','InstallmentPurchaseController@getUpdate')->name('installment_purchase_update');
+        Route::post('/delete','InstallmentPurchaseController@postDelete')->name('installment_purchase_delete');
+        Route::get('/payment','InstallmentPurchaseController@getPayment')->name('installment_purchase_payment');
+        Route::post('/payment-id','InstallmentPurchaseController@postPaymentByID')->name('installment_purchase_payment_ByID');
+        Route::post('/payment-insert','InstallmentPurchaseController@postPaymentInsert')->name('installment_purchase_payment_insert');
+        Route::post('/payment-update','InstallmentPurchaseController@postPaymentUpdate')->name('installment_purchase_payment_update');
+        Route::post('/payment-delete','InstallmentPurchaseController@postPaymentDelete')->name('installment_purchase_payment_delete');
     });
     Route::group(['prefix' => 'salary'], function () {
         Route::get('/datatable','SalaryController@getDatatable')->name('salary_table');

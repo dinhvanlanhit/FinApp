@@ -46,12 +46,12 @@
               <p>Mua Sắm</p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{route('installment_purchase')}}" class="nav-link ">
               <i class="far fa-circle text-info nav-icon"></i>
               <p>Mua Sắm Trả Góp</p>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </li>
       <li class="nav-item has-treeview ">

@@ -88,7 +88,22 @@
 											<i class="far fa-calendar-alt"></i>
 											</span>
 									</div>
-							
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Tháng</label>
+								<div class="input-group">
+									<input type="number" id="moth" value="1" name="moth" class="form-control text-center">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Thổng tiền</label>
+								<div class="input-group">
+									<input type="text" readonly id="sum_payment" name="sum_payment" class="form-control text-center">
 									<div class="input-group-prepend">
 										<button class="btn btn-info full-right" id="btn-save-payment" 
 										data-idUpdate=""

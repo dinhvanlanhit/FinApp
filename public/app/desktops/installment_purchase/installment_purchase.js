@@ -48,8 +48,8 @@ function installment_purchase() {
 					html += '<b class="">Giá Tiền : ' + money_format(row.amount) + ' VNĐ</b><br>';
 					html += '<b class="">Trả góp : ' + row.number_months + ' Tháng</b><br>';
 					html += '<b class="">Trả hàng tháng : ' + money_format(row.monthly_amount_to_pay) + ' Tháng</b><br>';
-					html += '<b class="">Đã trả : ' + null_to_number(row.remaining_month) + ' Tháng</b><br>';
-					html += '<b class="">Còn lại : ' + (row.number_months - row.remaining_month) + ' Tháng</b><br>';
+					html += '<b class="">Đã trả : ' + null_to_number(row.month_paid) + ' Tháng</b><br>';
+					html += '<b class="">Còn lại : ' + (row.number_months - row.month_paid) + ' Tháng</b><br>';
 					return html;
 				}
 			}, {
@@ -148,7 +148,6 @@ function installment_purchase() {
 				error: function (error) {}
 			});
 		});
-
 		function sum() {
 			var amount = parseInt(money_format_to_number($('#amount').val()));
 			var prepay = parseInt(money_format_to_number($('#prepay').val()));
@@ -326,20 +325,32 @@ function installment_purchase() {
 				render: function (data, type, row, meta) {
 					return meta.row + meta.settings._iDisplayStart + 1;
 				}
-			}, {
+
+
+			  },
+			  {
+				title: "Tháng",
+				data: "moth",
+				name: "moth",
+				className: "text-center",
+				render: function (data, type, row, meta) {
+					return  data +' Tháng';
+				}
+				},
+				{
 				title: "Tiền Trả",
 				data: "payment",
 				name: "payment",
 				className: "text-center",
 				render: function (data, type, row, meta) {
-					return money_format(data);
+					return  money_format(data);
 				}
-			}, {
-				title: "Ngày trả",
-				data: "date_payment",
-				name: "date_payment",
-				className: "text-center",
-			}, {
+				}, {
+					title: "Ngày trả",
+					data: "date_payment",
+					name: "date_payment",
+					className: "text-center",
+				}, {
 				title: "<button type='button' id='btnAddpayment' class='btn btn-info btn-sm btn-block'>Thêm mới</button>",
 				data: "id",
 				name: "id",
@@ -353,6 +364,19 @@ function installment_purchase() {
 			initComplete: function (settings, json) {
 				// buttonloading(elementbtn,false);
 			}
+		});
+		$("#moth").on('blur',function(){
+			if($(this).val()==0||$(this).val()<0){
+				$(this).val(1);
+			}
+		});
+		function sumPayment(){
+			var moth = parseInt($("#moth").val());
+			var payment = parseInt(money_format_to_number($("#payment").val()));
+			$("#sum_payment").val(money_format(payment*moth));
+		}
+		$("#payment,#moth").on('keyup',function(){
+			sumPayment();
 		});
 		$("#payment").on("input", function () {
 			input_money_format(this);
@@ -379,10 +403,13 @@ function installment_purchase() {
 				},
 				dataType: 'JSON',
 				success: function (data) {
+					
 					$("#idUpdate").val(data.data.id);
-					$('#payment').val(money_format(data.data.payment));
+					$('#payment').val(money_format(data.data.payment/data.data.moth));
+					$("#sum_payment").val(money_format(data.data.payment));
 					$('#date_payment').val(moment(data.data.date_payment, " YYYY-MM-DD").format('DD-MM-YYYY'));
 					$("#hideshow").removeClass('d-none');
+					
 				},
 				error: function (error) {
 					console.log(error)
@@ -407,7 +434,8 @@ function installment_purchase() {
 					data: {
 						id: $("#idUpdate").val(),
 						idInstallment_purchase: $("#idInstallment_purchase").val(),
-						payment: money_format_to_number($("#payment").val()),
+						moth: $("#moth").val(),
+						payment: money_format_to_number($("#sum_payment").val()),
 						date_payment: moment($("#date_payment").val(), "DD-MM-YYYY").format('YYYY-MM-DD')
 					},
 					dataType: 'JSON',
@@ -419,6 +447,7 @@ function installment_purchase() {
 								icon: data.icon,
 								title: data.messages
 							});
+							table.ajax.reload();
 							$("#hideshow").addClass('d-none');
 						} else {
 							buttonloading('#btn-save-payment', false);

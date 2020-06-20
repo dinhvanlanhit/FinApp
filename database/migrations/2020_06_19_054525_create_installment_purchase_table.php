@@ -20,7 +20,7 @@ class CreateInstallmentPurchaseTable extends Migration
             $table->string('name')->nullable();
             $table->double('amount')->default(0)->nullable();
             $table->integer('number_months')->nullable();
-            $table->integer('remaining_month')->nullable();
+            $table->integer('month_paid')->nullable();
             $table->double('monthly_amount_to_pay')->default(0)->nullable();
             $table->double('prepay')->default(0)->nullable();
             $table->double('paid')->default(0)->nullable();
