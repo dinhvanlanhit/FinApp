@@ -12,10 +12,22 @@
             <div class="modal-body">
                 
                 <div class="row">
-            
+                    <div class="col-md-12">
+
+                        <div class="form-group" >
+                            <label>Nhóm Thu Nhập </label>
+                            <select class="form-control select2bs4" id="idTypeSalaryInput" name="idTypeSalaryInput">
+                            <option value="">-- Chọn nhóm -- </option>    
+                            @foreach ($typesalary as $item)
+                                <option value="{{$item->id}}">{{$item->type_name}}</option>                      
+                            @endforeach
+                            </select>
+                        
+                    </div>
+                </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Nguồn Thu Nhập  <small>(Chồng ,Vợ , Con ...)</small></label>
+                            <label>Nguồn Thu Nhập  <small>(Chồng ,Vợ , Con ... nếu có !)</small></label>
                             <input class="form-control" id="name" name="name"/>
                         </div>
                     </div>

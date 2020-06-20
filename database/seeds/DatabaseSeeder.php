@@ -18,8 +18,9 @@ class DatabaseSeeder extends Seeder
             TypeCostTableSeeder::class,
             CostTableSeeder::class,
             ShoppingTableSeeder::class,
+            TypeSalaryTableSeeder::class,
             SalaryTableSeeder::class,
-            Other_salariesTableSeeder::class
+           
         ]);
     }
 }

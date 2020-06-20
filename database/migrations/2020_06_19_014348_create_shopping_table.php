@@ -19,7 +19,7 @@ class CreateShoppingTable extends Migration
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');;
             $table->string('name')->nullable();
             $table->double('amount')->default(0)->nullable();
-            $table->string('address')->nullable();
+            $table->string('note')->nullable();
             $table->date('date')->nullable();
             $table->timestamps();
         });

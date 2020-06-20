@@ -22,8 +22,8 @@
                     
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Địa chỉ</label>
-                            <input class="form-control" id="address" name="address"/>
+                            <label>Ghi Chú</label>
+                            <input class="form-control" id="note" name="note"/>
                         </div>
                     </div>
                     <div class="col-md-12">

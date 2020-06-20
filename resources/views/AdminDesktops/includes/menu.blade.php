@@ -40,28 +40,14 @@
       
       </li>
       <li class="nav-item has-treeview ">
-        <a href="#" class="nav-link active">
+        <a href="{{route('salary')}}" class="nav-link active">
           <i class="nav-icon fas fa-money"></i>
           <p>
             Thu Nhập
-            <i class="fas fa-angle-left right"></i>
+           
           </p>
         </a>
-        <ul class="nav nav-treeview ">
-          <li class="nav-item">
-            <a href="{{route('salary')}}" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Tiền Lương</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('other_salaries')}}" class="nav-link ">
-              <i class="far fa-circle text-info nav-icon"></i>
-              <p>Thu Nhập Khác</p>
-            </a>
-          </li>
-  
-        </ul>
+        
       </li>
       <li class="nav-item has-treeview ">
         <a href="#" class="nav-link active">

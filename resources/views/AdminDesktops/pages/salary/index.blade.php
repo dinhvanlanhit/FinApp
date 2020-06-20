@@ -9,28 +9,39 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form id="formSearch">
-            <div class="row">
-                <div class="col-md-5">
-                  <div class="form-group">
-                        <input class="form-control" id="search" name="search"/>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                        @include('AdminDesktops.fromControl.dateRange')
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-info btn-block">Tìm kiếm</button>
-                                </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <button type="button"  class="btn btn-success btn-block" id="btn-insert">Thêm mới</button>
-                   </div>
-                </div>
+      <form id="formSearch">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="form-group" >
+                  <select class="form-control select2bs4" style="width: 100%;" id="idTypeSalary" name="idTypeSalary">
+                    <option value="">Tất Cả</option>    
+                    @foreach ($typesalary as $item)
+                        <option value="{{$item->id}}">{{$item->type_name}}</option>                      
+                    @endforeach
+                  </select>
+                 
             </div>
-        </form>
+          </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                    <input class="form-control" id="search" name="search" placeholder="Từ khóa tìm kiếm ..."/>
+              </div>
+            </div>
+            <div class="col-md-3">
+                    @include('AdminDesktops.fromControl.dateRange')
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <button type="submit" class="btn btn-info btn-block">Tìm kiếm</button>
+                            </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <button type="button"  class="btn btn-success btn-block" id="btn-insert">Thêm mới</button>
+               </div>
+            </div>
+        </div>
+    </form>
         <div class="row">
           <div class="col-md-12">
               <table class="table table-bordered row-border hover" id="salary-table"></table>

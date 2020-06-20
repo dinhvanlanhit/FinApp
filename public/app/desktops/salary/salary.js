@@ -20,30 +20,48 @@ function salary() {
 				type: "GET",
 				data: function (d) {
 					return $.extend({}, d, {
+						idTypeSalary: $("#idTypeSalary").val(),
 						dateBegin: $("#dateBegin").val(),
 						dateEnd: $("#dateEnd").val(),
 						search: $("#search").val(),
 					});
 				}
 			},
-			order: [5, "desc"],
+			order: [0, "desc"],
 			columns: [{
 				title: "#",
-				data: "id",
-				name: "id",
+				data: "created_at",
+				name: "created_at",
 				className: "text-center",
 				render: function (data, type, row, meta) {
 					return meta.row + meta.settings._iDisplayStart + 1;
 				}
-			}, {
+			 }, {
 				title: "Nguồn Thu Nhập",
+				data: "type_name",
+				name: "type_name",
+				render: function (data, type, row, meta) {
+					return  '<b class="text-danger"><i class="fa fa-money"></i> : '+data + '</b><br>';
+				}
+			},
+			{
+				title: "Chi Tiết",
 				data: "company",
 				name: "company",
-				className: "text-center",
+				className: "text-left",
 				render: function (data, type, row, meta) {
-					return '<b class=""> Nơi Làm Việc : ' + data + '</b><br>'+'<b class="text-info"> Nguồn Thu Nhập :' + row.name + '</b>';
-				}
-			}, {
+					var html ='';
+						if(data!=null){
+							html += '<b class="text-danger"><i class="fa fa-building"></i> : '+data + '</b><br>';
+						}
+						html +='<b class="text-info"> <i class="fa fa-user"></i> : ' + row.name + '</b><br>';
+						html +='<b class="text-success"> <i class="fa fa-calendar"></i> : ' + row.date + '</b>';
+				
+					 return html;
+				
+					}
+			}
+			, {
 				title: "Tiền Lương",
 				data: "amount",
 				name: "amount",
@@ -51,17 +69,9 @@ function salary() {
 				render: function (data, type, row, meta) {
 					return '<b class="">' + money_format(data) + ' VNĐ</b>';
 				}
-			}, {
-				title: "Chi Tiết",
-				data: "info",
-				name: "info",
-				className: "text-center",
-			}, {
-				title: "Ngày Nhận Lương",
-				data: "date",
-				name: "date",
-				className: "text-center",
-			}, {
+			},
+			
+			 {
 				title: "Tác vụ",
 				data: "created_at",
 				name: "created_at",
@@ -106,7 +116,8 @@ function salary() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					console.log(data);
+					$('#idTypeSalaryInput').val(data.data.idTypeSalary); // Select the option with a value of '1'
+					$('#idTypeSalaryInput').trigger('change'); // Notify any JS components that the value changed
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
@@ -148,12 +159,13 @@ function salary() {
 		});
 		$('#formAction').validate({
 			rules: {
+				idTypeSalaryInput:{
+					required: true
+				},
 				company: {
 					required: true
 				},
-				name: {
-					required: true
-				},
+				
 				amount: {
 					required: true
 				},
@@ -162,8 +174,8 @@ function salary() {
 				}
 			},
 			messages: {
-				name: {
-					required: "Vui lòng nhập nguồn thu nhập ! ",
+				idTypeSalaryInput: {
+					required: "Vui lòng chọn nhóm thu nhập !",
 				},
 				company: {
 					required: "Vui lòng nhập nơi làm việc !",
@@ -191,7 +203,7 @@ function salary() {
 				formData.append('id', $("#onSave").attr('data-id'));
 				formData.set('date', moment(formData.get('date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('amount', money_format_to_number(formData.get('amount')));
-				formData.append('info', "Lương tháng : " + moment(formData.get('date'), "DD-MM-YYYY").format('MM') + " Năm " + moment(formData.get('date'), "YYYY").format('YYYY'));
+				formData.set('idTypeSalary', formData.get('idTypeSalaryInput'));
 				var url = $("#onSave").attr('data-url');
 				buttonloading('#onSave', true);
 				$.ajax({

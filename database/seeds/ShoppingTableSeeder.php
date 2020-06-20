@@ -15,34 +15,27 @@ class ShoppingTableSeeder extends Seeder
             [
               [
                 'idUser'=>1,
-                'name' => 'Mua Dày',
-                'amount' => 250000,
-                'date' => '2020-06-02',
-                'address'=>'Huyện sơn ba'
+                'name' => 'Mua Giày',
+                'amount' => 800000,
+                'date' => '2020-06-01',
+                'note'=>'Mua Trên Shoppe'
               ],
               [
                 'idUser'=>1,
-                'name' => 'Mua Dếp',
-                'amount' => 350000,
-                'date' => '2020-06-02',
-                'address'=>'Huyện Sơn Hạ'
+                'name' => 'Mua Hệ Thống Hosting',
+                'amount' => 900000,
+                'date' => '2020-06-03',
+                'note'=>'Mua Của Hostinger'
               ]
               ,
               [
                 'idUser'=>1,
-                'name' => 'Mua xe máy',
-                'amount' => 350000,
-                'date' => '2020-06-02',
-                'address'=>'Huyện Sơn Hạ'
+                'name' => 'Mua Quần Lửng',
+                'amount' => 250000,
+                'date' => '2020-06-06',
+                'note'=>'Mua Của Shop Ở Đà Lạt'
               ]
-              ,
-              [
-                'idUser'=>1,
-                'name' => 'Mua ô tô',
-                'amount' => 350000,
-                'date' => '2020-06-02',
-                'address'=>'Huyện Sơn Hạ'
-              ]
+              
             ]
         );
     }

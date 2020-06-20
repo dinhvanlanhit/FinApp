@@ -16,10 +16,12 @@ class CreateSalaryTable extends Migration
         Schema::create('salary', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('idUser')->unsigned()->nullable();
-            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('idTypeSalary')->unsigned()->nullable();
+            $table->foreign('idTypeSalary')->references('id')->on('type_salary')->onDelete('cascade')->onUpdate('cascade');
             $table->string('company')->nullable();
             $table->string('name')->nullable();
-            $table->string('info')->nullable();
+           
             $table->double('amount')->default(0)->nullable();
             $table->date('date')->nullable();
             $table->timestamps();

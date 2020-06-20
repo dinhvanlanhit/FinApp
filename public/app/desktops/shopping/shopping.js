@@ -42,8 +42,8 @@ function shopping() {
 				className: "text-center",
 			}, {
 				title: "Địa chỉ",
-				data: "address",
-				name: "address",
+				data: "note",
+				name: "note",
 				className: "text-center",
 			}, {
 				title: "Số tiền",
@@ -108,7 +108,7 @@ function shopping() {
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
 					$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#address').val(data.data.address);
+					$('#note').val(data.data.note);
 					$('#amount').val(money_format(data.data.amount));
 					$('#name').val(data.data.name);
 					$("#modal-action").modal('show');
@@ -122,7 +122,7 @@ function shopping() {
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
-			$('#address').val('');
+			$('#note').val('');
 			$('#amount').val('');
 			$('#name').val('');
 			$("#modal-action").modal('show');
@@ -148,9 +148,7 @@ function shopping() {
 				name: {
 					required: true
 				},
-				address: {
-					required: true
-				},
+				
 				amount: {
 					required: true
 				},
@@ -162,9 +160,7 @@ function shopping() {
 				name: {
 					required: "Vui lòng nhập tên ! ",
 				},
-				address: {
-					required: "Vui lòng nhập địa chỉ ! ",
-				},
+				
 				amount: {
 					required: "Bạn chưa nhập số tiền !",
 				},

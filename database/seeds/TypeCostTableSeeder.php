@@ -33,6 +33,10 @@ DB::table('type_cost')->insert(
         [
           'type_name' => 'Tiền Xăng',
          
+        ],
+        [
+          'type_name' => 'Đóng Tiền Lãi',
+         
         ]
         ,
         [

@@ -179,7 +179,6 @@ class CostController extends Controller
 
         $Cost = new Cost();
         $Cost->idUser = Auth::user()->id;
-        
         $Cost->idTypeCost = $Request->idTypeCost;
         $Cost->note= $Request->note;
         $Cost->amount = $Request->amount;
