@@ -37,11 +37,11 @@ function salary() {
 				}
 			}, {
 				title: "Nguồn Thu Nhập",
-				data: "name",
-				name: "name",
+				data: "company",
+				name: "company",
 				className: "text-center",
 				render: function (data, type, row, meta) {
-					return '<b class="">' + data + '</b>';
+					return '<b class=""> Nơi Làm Việc : ' + data + '</b><br>'+'<b class="text-info"> Nguồn Thu Nhập :' + row.name + '</b>';
 				}
 			}, {
 				title: "Tiền Lương",
@@ -53,8 +53,8 @@ function salary() {
 				}
 			}, {
 				title: "Chi Tiết",
-				data: "note",
-				name: "note",
+				data: "info",
+				name: "info",
 				className: "text-center",
 			}, {
 				title: "Ngày Nhận Lương",
@@ -111,7 +111,7 @@ function salary() {
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
 					$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#address').val(data.data.address);
+					$('#company').val(data.data.company);
 					$('#amount').val(money_format(data.data.amount));
 					$('#name').val(data.data.name);
 					$("#modal-action").modal('show');
@@ -125,7 +125,7 @@ function salary() {
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
-			$('#address').val('');
+			$('#company').val('');
 			$('#amount').val('');
 			$('#name').val('');
 			$("#modal-action").modal('show');
@@ -148,6 +148,9 @@ function salary() {
 		});
 		$('#formAction').validate({
 			rules: {
+				company: {
+					required: true
+				},
 				name: {
 					required: true
 				},
@@ -160,7 +163,10 @@ function salary() {
 			},
 			messages: {
 				name: {
-					required: "Vui lòng nhập tên ! ",
+					required: "Vui lòng nhập nguồn thu nhập ! ",
+				},
+				company: {
+					required: "Vui lòng nhập nơi làm việc !",
 				},
 				amount: {
 					required: "Bạn chưa nhập số tiền !",
@@ -185,7 +191,7 @@ function salary() {
 				formData.append('id', $("#onSave").attr('data-id'));
 				formData.set('date', moment(formData.get('date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('amount', money_format_to_number(formData.get('amount')));
-				formData.append('note', "Lương tháng : " + moment(formData.get('date'), "DD-MM-YYYY").format('MM') + " Năm " + moment(formData.get('date'), "YYYY").format('YYYY'));
+				formData.append('info', "Lương tháng : " + moment(formData.get('date'), "DD-MM-YYYY").format('MM') + " Năm " + moment(formData.get('date'), "YYYY").format('YYYY'));
 				var url = $("#onSave").attr('data-url');
 				buttonloading('#onSave', true);
 				$.ajax({

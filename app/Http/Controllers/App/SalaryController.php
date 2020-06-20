@@ -17,9 +17,9 @@ class SalaryController extends Controller
     {
         $columns = array( 
             0 => 'id',
-            1 => 'name',
+            1 => 'company',
             2 => 'amount',
-            3 => 'note',
+            3 => 'info',
             4 => 'date', 
             5 => 'created_at'
         );
@@ -44,10 +44,10 @@ class SalaryController extends Controller
                 $Salary = Salary::where('idUser','=',$idUser)->whereBetween('date',[$dateBegin,$dateEnd ])
                 ->Where(function($query)use($search){
                     $query->where('id', 'LIKE', "%{$search}%")
-                    ->orWhere('name', 'LIKE',"%{$search}%")
-                    ->orWhere('address', 'LIKE',"%{$search}%")
+                    ->orWhere('company', 'LIKE',"%{$search}%")
+                    ->orWhere('name','LIKE',"%{$search}%")
                     ->orWhere('amount','LIKE',"%{$search}%")
-                    ->orWhere('note','LIKE',"%{$search}%")
+                    ->orWhere('info','LIKE',"%{$search}%")
                     ->orWhere('date','LIKE',"%{$search}%");
                 })
                 ->offset($start)
@@ -67,10 +67,10 @@ class SalaryController extends Controller
                 $Salary = Salary::where('idUser','=',$idUser)
                 ->Where(function($query)use($search){
                     $query->where('id', 'LIKE', "%{$search}%")
-                    ->orWhere('name', 'LIKE',"%{$search}%")
-                    ->orWhere('address', 'LIKE',"%{$search}%")
+                    ->orWhere('company', 'LIKE',"%{$search}%")
+                    ->orWhere('name','LIKE',"%{$search}%")
                     ->orWhere('amount','LIKE',"%{$search}%")
-                    ->orWhere('note','LIKE',"%{$search}%")
+                    ->orWhere('info','LIKE',"%{$search}%")
                     ->orWhere('date','LIKE',"%{$search}%");
                 })
                 ->offset($start)
@@ -104,10 +104,10 @@ class SalaryController extends Controller
         $Salary = new Salary();
         $Salary->idUser = Auth::user()->id;
         $Salary->name = $Request->name;
-        $Salary->address = $Request->address;
+        $Salary->company = $Request->company;
         $Salary->amount = $Request->amount;
         $Salary->date = $Request->date;
-        $Salary->note = $Request->note;
+        $Salary->info = $Request->info;
         if($Salary->save()){
             return JSON2(true,"Thêm thành công");
         }else{
@@ -121,10 +121,10 @@ class SalaryController extends Controller
         $Salary =  Salary::find((int)$Request->id);
         $Salary->idUser = Auth::user()->id;
         $Salary->name = $Request->name;
-        $Salary->address = $Request->address;
+        $Salary->company = $Request->company;
         $Salary->amount = $Request->amount;
         $Salary->date = $Request->date;
-        $Salary->note = $Request->note;
+        $Salary->info = $Request->info;
         if($Salary->save()){
             return JSON2(true,"Cập nhật thành công");
         }else{

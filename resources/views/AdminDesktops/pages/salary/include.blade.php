@@ -15,11 +15,16 @@
             
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Nguồn Thu Nhập</label>
+                            <label>Nguồn Thu Nhập  <small>(Chồng ,Vợ , Con ...)</small></label>
                             <input class="form-control" id="name" name="name"/>
                         </div>
                     </div>
-                    
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Nơi Làm Việc <small>(Công ty ,Cơ Quan ...)</small></label>
+                            <input class="form-control" id="company" name="company"/>
+                        </div>
+                    </div>
       
                     <div class="col-md-12">
                         <div class="form-group">
