@@ -92,11 +92,12 @@ function template()
 {
     $agent = new \Jenssegers\Agent\Agent;
     $result = $agent->isDesktop();
+    return "AdminDesktops";
     // $result  = false;
-    if ($result){
-        return "AdminDesktops";
-    } 
-    else{
-        return "AdminMobiles";
-    }
+    // if ($result){
+    //     return "AdminDesktops";
+    // } 
+    // else{
+    //     return "AdminMobiles";
+    // }
 }
