@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             TypeEventTableSeeder::class,
             EventTableSeeder::class,
+            TypeCostTableSeeder::class,
+            CostTableSeeder::class,
             ShoppingTableSeeder::class,
             SalaryTableSeeder::class,
             Other_salariesTableSeeder::class

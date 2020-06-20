@@ -28,6 +28,14 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/update','EventController@getUpdate')->name('event_update');
         Route::post('/delete','EventController@postDelete')->name('event_delete');
     });
+    Route::group(['prefix' => 'cost'], function () {
+        Route::get('/datatable','CostController@getDatatable')->name('cost_table');
+        Route::get('/','CostController@getCost')->name('cost');
+        Route::post('/insert','CostController@postInsert')->name('cost_insert');
+        Route::post('/update','CostController@postUpdate')->name('cost_update');
+        Route::get('/update','CostController@getUpdate')->name('cost_update');
+        Route::post('/delete','CostController@postDelete')->name('cost_delete');
+    });
 
     Route::group(['prefix' => 'shopping'], function () {
         Route::get('/datatable','ShoppingController@getDatatable')->name('shopping_table');

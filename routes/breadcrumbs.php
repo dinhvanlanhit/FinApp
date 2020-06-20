@@ -11,6 +11,10 @@ Breadcrumbs::for('event', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Sự kiện', route('event'));
 });
+Breadcrumbs::for('cost', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Sự kiện', route('cost'));
+});
 Breadcrumbs::for('shopping', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Mua Sắm', route('shopping'));

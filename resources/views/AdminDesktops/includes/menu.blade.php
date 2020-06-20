@@ -30,7 +30,7 @@
         
       </li>
       <li class="nav-item has-treeview ">
-        <a href="#" class="nav-link active ">
+        <a href="{{route('cost')}}" class="nav-link active ">
           <i class="nav-icon fas fa-copy"></i>
           <p>
             Chi Tiêu

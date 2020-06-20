@@ -1,11 +1,11 @@
-function event() {
+function cost() {
 	this.datas = null;
 	this.runJS = function () {
 		var datas = this.datas;
 		$("#date").datepicker();
 		$('#date').css("z-index", "0");
 		$('#date').datepicker("option", "dateFormat", 'dd-mm-yy');
-		var table = $("#event-table").DataTable({
+		var table = $("#cost-table").DataTable({
 			serverSide: true,
 			processing: true,
 			paging: true,
@@ -20,7 +20,7 @@ function event() {
 				type: "GET",
 				data: function (d) {
 					return $.extend({}, d, {
-						idTypeEvent: $("#idTypeEvent").val(),
+						idTypeCost: $("#idTypeCost").val(),
 						dateBegin: $("#dateBegin").val(),
 						dateEnd: $("#dateEnd").val(),
 						search: $("#search").val(),
@@ -39,22 +39,17 @@ function event() {
 			}, 
 			
 			{
-				title: "Sự Kiện",
+				title: "Nhóm Chi Phí",
 				data: "type_name",
 				name: "type_name",
 				className: "text-center",
 			},
 			{
-				title: "Tên",
-				data: "name",
-				name: "name",
+				title: "Ghi Chú",
+				data: "note",
+				name: "note",
 				className: "text-center",
-			}, {
-				title: "Địa chỉ",
-				data: "address",
-				name: "address",
-				className: "text-center",
-			}, {
+			},{
 				title: "Số tiền",
 				data: "amount",
 				name: "amount",
@@ -91,6 +86,7 @@ function event() {
 		});
 		$("#formSearch").on('submit', function (e) {
 			e.preventDefault();
+	
 			table.ajax.reload();
 		})
 		$(document).delegate(".btn-delete", "click", function () {
@@ -112,17 +108,17 @@ function event() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					// $('#idTypeEventInput').val(data.data.idTypeEvent);
+					// $('#idTypeCostInput').val(data.data.idTypeCost);
 		
-					$('#idTypeEventInput').val(data.data.idTypeEvent); // Select the option with a value of '1'
-					$('#idTypeEventInput').trigger('change'); // Notify any JS components that the value changed
+					$('#idTypeCostInput').val(data.data.idTypeCost); // Select the option with a value of '1'
+					$('#idTypeCostInput').trigger('change'); // Notify any JS components that the value changed
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
 					$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#address').val(data.data.address);
+					
 					$('#amount').val(money_format(data.data.amount));
-					$('#name').val(data.data.name);
+					$('#note').val(data.data.note);
 					$("#modal-action").modal('show');
 					buttonloading(elementbtn, false);
 				},
@@ -131,18 +127,18 @@ function event() {
 		});
 		$("#btn-insert").on("click", function () {
 			$('#modal-action-title').text("Thêm mới");
-			$('#idTypeEventInput').val(""); // Select the option with a value of '1'
-			$('#idTypeEventInput').trigger('change'); // Notify any JS components that the value changed
+			$('#idTypeCostInput').val(""); // Select the option with a value of '1'
+			$('#idTypeCostInput').trigger('change'); // Notify any JS components that the value changed
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
-			$('#address').val('');
+			
 			$('#amount').val('');
-			$('#name').val('');
+			$('#note').val('');
 			$("#modal-action").modal('show');
 		});
 		
-		$("#idTypeEvent").on("change", function (e) {
+		$("#idTypeCost").on("change", function (e) {
 			table.ajax.reload();
 		});
 		$("#onDelete").on("click", function (e) {
@@ -163,13 +159,7 @@ function event() {
 		});
 		$('#formAction').validate({
 			rules: {
-				idTypeEventInput: {
-					required: true
-				},
-				name: {
-					required: true
-				},
-				address: {
+				idTypeCostInput: {
 					required: true
 				},
 				amount: {
@@ -180,14 +170,8 @@ function event() {
 				}
 			},
 			messages: {
-				idTypeEventInput:{
-					required: "Vui lòng chọn nhóm sự kiện ! ",
-				},
-				name: {
-					required: "Vui lòng nhập tên ! ",
-				},
-				address: {
-					required: "Vui lòng nhập địa chỉ ! ",
+				idTypeCostInput:{
+					required: "Vui lòng chọn nhóm chi phí ! ",
 				},
 				amount: {
 					required: "Bạn chưa nhập số tiền !",
@@ -212,7 +196,7 @@ function event() {
 				formData.append('id', $("#onSave").attr('data-id'));
 				formData.set('date', moment(formData.get('date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('amount', money_format_to_number(formData.get('amount')));
-				formData.set('idTypeEvent',formData.get('idTypeEventInput'));
+				formData.set('idTypeCost',formData.get('idTypeCostInput'));
 				var url = $("#onSave").attr('data-url');
 				buttonloading('#onSave', true);
 				$.ajax({
