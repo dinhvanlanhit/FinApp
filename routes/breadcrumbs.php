@@ -4,6 +4,10 @@ Breadcrumbs::for('dashboard', function ($trail) {
     $trail->push('Trang chủ', route('dashboard'));
 });
 
+Breadcrumbs::for('profile', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Hô Sơ Cá Nhân', route('profile'));
+});
 Breadcrumbs::for('wedding', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Đám cưới', route('wedding'));

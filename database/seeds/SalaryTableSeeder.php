@@ -17,7 +17,7 @@ class SalaryTableSeeder extends Seeder
                 'idUser'=>1,
                 'name' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
-                "note"=>"Lương tháng : 01 Năm 2020",
+                "info"=>"Lương tháng : 01 Năm 2020",
                 'date' => '2020-01-06',
                 'address'=>'Huyện sơn ba'
               ],
@@ -25,7 +25,7 @@ class SalaryTableSeeder extends Seeder
                 'idUser'=>1,
                 'name' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
-                "note"=>"Lương tháng : 02 Năm 2020",
+                "info"=>"Lương tháng : 02 Năm 2020",
                 'date' => '2020-02-05',
                 'address'=>'Huyện sơn ba'
               ]
@@ -34,7 +34,7 @@ class SalaryTableSeeder extends Seeder
                 'idUser'=>1,
                 'name' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
-                "note"=>"Lương tháng : 03 Năm 2020",
+                "info"=>"Lương tháng : 03 Năm 2020",
                 'date' => '2020-03-05',
                 'address'=>'Huyện sơn ba'
               ]
@@ -43,7 +43,7 @@ class SalaryTableSeeder extends Seeder
                 'idUser'=>1,
                 'name' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
-                "note"=>"Lương tháng : 04 Năm 2020",
+                "info"=>"Lương tháng : 04 Năm 2020",
                 'date' => '2020-04-05',
                 'address'=>'Huyện sơn ba'
               ],
@@ -52,7 +52,7 @@ class SalaryTableSeeder extends Seeder
                 'idUser'=>1,
                 'name' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
-                "note"=>"Lương tháng : 05 Năm 2020",
+                "info"=>"Lương tháng : 05 Năm 2020",
                 'date' => '2020-05-06',
                 'address'=>'Huyện sơn ba'
               ],
@@ -60,7 +60,7 @@ class SalaryTableSeeder extends Seeder
                 'idUser'=>1,
                 'name' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
-                "note"=>"Lương tháng : 05 Năm 2020",
+                "info"=>"Lương tháng : 05 Năm 2020",
                 'date' => '2020-06-05',
                 'address'=>'Huyện sơn ba'
               ]

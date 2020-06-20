@@ -73,13 +73,10 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/update','Other_salariesController@getUpdate')->name('other_salaries_update');
         Route::post('/delete','Other_salariesController@postDelete')->name('other_salaries_delete');
     });
-    
-
-
-
-
     Route::group(['prefix' => 'profile'], function () {
-        Route::get('/','ProfileController@getNews')->name('profile');
+        Route::get('/','ProfileController@getProfile')->name('profile');
+        Route::post('/','ProfileController@postProfile')->name('profile');
+        Route::post('/uploadFile','ProfileController@uploadFile')->name('uploadFile');
     });
     Route::group(['prefix' => 'menu'], function () {
         Route::get('/','MenuController@getMenu')->name('menu');
