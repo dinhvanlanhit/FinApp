@@ -18,14 +18,16 @@ class ShoppingTableSeeder extends Seeder
                 'name' => 'Mua Giày',
                 'amount' => 800000,
                 'date' => '2020-06-01',
-                'note'=>'Mua Trên Shoppe'
+                'note'=>'Mua Trên Shoppe',
+                'idTypeShopping'=>1,
               ],
               [
                 'idUser'=>1,
                 'name' => 'Mua Hệ Thống Hosting',
                 'amount' => 900000,
                 'date' => '2020-06-03',
-                'note'=>'Mua Của Hostinger'
+                'note'=>'Mua Của Hostinger',
+                'idTypeShopping'=>5,
               ]
               ,
               [
@@ -33,7 +35,8 @@ class ShoppingTableSeeder extends Seeder
                 'name' => 'Mua Quần Lửng',
                 'amount' => 250000,
                 'date' => '2020-06-06',
-                'note'=>'Mua Của Shop Ở Đà Lạt'
+                'note'=>'Mua Của Shop Ở Đà Lạt',
+                'idTypeShopping'=>2,
               ]
               
             ]

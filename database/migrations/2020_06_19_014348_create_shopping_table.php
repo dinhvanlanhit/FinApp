@@ -16,7 +16,9 @@ class CreateShoppingTable extends Migration
         Schema::create('shopping', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('idUser')->unsigned()->nullable();
-            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('idTypeShopping')->unsigned()->nullable();
+            $table->foreign('idTypeShopping')->references('id')->on('type_shopping')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name')->nullable();
             $table->double('amount')->default(0)->nullable();
             $table->string('note')->nullable();

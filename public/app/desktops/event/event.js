@@ -60,7 +60,7 @@ function event() {
 				name: "amount",
 				className: "text-center",
 				render: function (data, type, row, meta) {
-					return money_format(data);
+					return '<b class="">' + money_format(data) + ' VNĐ</b>';
 				}
 			}, {
 				title: "Ngày",

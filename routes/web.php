@@ -14,9 +14,8 @@ Route::group(['namespace' => 'App',], function () {
 });
 Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     Route::get('/','DashboardController@Dashboard')->name('dashboard');
-    Route::post('/','DashboardController@postDashboard')->name('dashboard');
-    Route::get('/char-event','DashboardController@getCharEvent')->name('getCharEvent');
-    
+    Route::get('/chart','DashboardController@getDashboard')->name('getDashboard');
+    Route::get('/char-dashboard','DashboardController@getCharDashboard')->name('getCharDashboard');
     Route::group(['prefix' => 'setting'], function () {
         Route::get('/setting','SettingController@getSetting')->name('setting');
     });

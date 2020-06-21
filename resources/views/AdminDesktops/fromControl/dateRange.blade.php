@@ -1,12 +1,12 @@
 <div class="form-group">
-    <div class="input-group">
+    <div class="input-group ">
         <input type="text"  
         @if (isset($daterange))
            id="{{$daterange}}"
         @else
            id="daterange"
         @endif
-        class="form-control text-center daterange">
+        class="form-control text-center daterange input-sm">
         <div class="input-group-prepend" >
             <span class="input-group-text">
               <i class="far fa-calendar-alt"></i>

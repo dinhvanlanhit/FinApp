@@ -13,7 +13,7 @@ Breadcrumbs::for('event', function ($trail) {
 });
 Breadcrumbs::for('cost', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('Sự kiện', route('cost'));
+    $trail->push('Chi Tiêu', route('cost'));
 });
 Breadcrumbs::for('shopping', function ($trail) {
     $trail->parent('dashboard');

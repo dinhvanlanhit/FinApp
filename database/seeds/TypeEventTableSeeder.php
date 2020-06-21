@@ -24,7 +24,7 @@ class TypeEventTableSeeder extends Seeder
                 ],
                 [
                   'type_name' => 'Sinh Nhật',
-                  'color'=>'#9F44D3'
+                  'color'=>'#ffc107'
                 ],
                 [
                   'type_name' => 'Đám Dỗ',

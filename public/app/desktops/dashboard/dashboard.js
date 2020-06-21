@@ -1,18 +1,22 @@
 function dashboard() {
 	this.datas = null;
 	this.runJS = function () {
-		
         var me =  this;
         var datas = this.datas;
         daterange('#dashboard_daterange','#dashboard_dateBegin','#dashboard_dateEnd');
 		$("#dashboard_daterange").on('change', function (e) {
+			runDashboard();
+		});
+		runDashboard();
+		function runDashboard(){
 			$.ajax({
 				url: datas.routes.dashboard,
-				type: 'POST',
+				type: 'GET',
 				data: {
 					dateBegin: $("#dashboard_dateBegin").val(),
 					dateEnd: $("#dashboard_dateEnd").val(),
 				},
+				async:false,
 				dataType: 'JSON',
 				success: function (data) {
 					$('#sumEvent').text(money_format(data.data.sumEvent));
@@ -20,32 +24,32 @@ function dashboard() {
 					$('#sumCost').text(money_format(data.data.sumCost));
 					$('#sumSalary').text(money_format(data.data.sumSalary));
 					console.log(data)
+					me.runChar(data.data,'dashboard-chart-top')
 				},
 				error: function (error) {
 					console.log(error)
 				}
 			});
-        });
-        me.Event();
+		}
+		
+        me.chartDashboard();
 	},
-	this.Event = function () {
+	this.chartDashboard = function () {
 		var me =  this;
 		var datas = this.datas;
 		daterange('#Chart_daterange','#Chart_dateBegin','#Chart_dateEnd');
-		me._Ajax(
-			datas.routes.getCharEvent,
-			$('#Chart_dateBegin').val(),
-			$('#Chart_dateEnd').val(),
-			'dashboard-chart'
-		);
-		$("#Chart_daterange").on('change', function (e) {
-			
+		function loadChar(){
 			me._Ajax(
-				datas.routes.getCharEvent,
+				datas.routes.getCharDashboard,
 				$('#Chart_dateBegin').val(),
 				$('#Chart_dateEnd').val(),
+				$('#TypeDashboard').val(),
 				'dashboard-chart'
 			);
+		}
+		loadChar();
+		$("#Chart_daterange,#TypeDashboard").on('change', function (e) {
+			loadChar();
         });
 	
 	},
@@ -54,6 +58,10 @@ function dashboard() {
 			EventDoughnut.resize();
 		});
 		var EventDoughnut = echarts.init(document.getElementById(id));
+		var sumTotal = '';
+		if(data.sumTotal!=null){
+			sumTotal = "Tổng : "+money_format(data.sumTotal);
+		}
 		var option = {
 			textStyle: {
 				fontFamily: "Tahoma,Arial"
@@ -61,7 +69,7 @@ function dashboard() {
 			// Add title
 			title: {
 				text: 'Biểu đồ tỷ lệ',
-				subtext: "Tổng : "+money_format(data.sumTotal),
+				subtext: sumTotal,
 				x: 'center',
 			},
 			// Add legend
@@ -131,7 +139,7 @@ function dashboard() {
 		};
 		EventDoughnut.setOption(option);
 	}
-	this._Ajax=function(url,begin,end,id){
+	this._Ajax=function(url,begin,end,type,id){
 		var me = this;
 		var idChart = id;
 		$.ajax({
@@ -140,8 +148,10 @@ function dashboard() {
 			data: {
 				dateBegin: begin,
 				dateEnd: end,
+				type:type,
 			},
 			dataType: 'JSON',
+			async:false,
 			success: function (data) {
 				console.log(data)
 				me.runChar(data.data,idChart);

@@ -47,7 +47,7 @@ DB::table('type_cost')->insert(
         ,
         [
           'type_name' => 'Học Phí Cho Con',
-          'color'=>'#0E197D',
+          'color'=>'#ffc107',
         ],
         [
           'type_name' => 'Đau Ốm',
@@ -56,7 +56,7 @@ DB::table('type_cost')->insert(
         ,
         [
           'type_name' => 'Phát Sinh Khác',
-          'color'=>'#CA26FF',
+          'color'=>'#dc3545',
         ]
       ]
     );
