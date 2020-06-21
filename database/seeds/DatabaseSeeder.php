@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             ShoppingTableSeeder::class,
             TypeSalaryTableSeeder::class,
             SalaryTableSeeder::class,
+            TypeDebtTableSeeder::class,
+            DebtTableSeeder::class
            
         ]);
     }

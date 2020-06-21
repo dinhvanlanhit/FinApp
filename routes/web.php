@@ -56,13 +56,13 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/update','SalaryController@getUpdate')->name('salary_update');
         Route::post('/delete','SalaryController@postDelete')->name('salary_delete');
     });
-    Route::group(['prefix' => 'other_salaries'], function () {
-        Route::get('/datatable','Other_salariesController@getDatatable')->name('other_salaries_table');
-        Route::get('/','Other_salariesController@getOther_salaries')->name('other_salaries');
-        Route::post('/insert','Other_salariesController@postInsert')->name('other_salaries_insert');
-        Route::post('/update','Other_salariesController@postUpdate')->name('other_salaries_update');
-        Route::get('/update','Other_salariesController@getUpdate')->name('other_salaries_update');
-        Route::post('/delete','Other_salariesController@postDelete')->name('other_salaries_delete');
+    Route::group(['prefix' => 'debt'], function () {
+        Route::get('/datatable','DebtController@getDatatable')->name('debt_table');
+        Route::get('/','DebtController@getDebt')->name('debt');
+        Route::post('/insert','DebtController@postInsert')->name('debt_insert');
+        Route::post('/update','DebtController@postUpdate')->name('debt_update');
+        Route::get('/update','DebtController@getUpdate')->name('debt_update');
+        Route::post('/delete','DebtController@postDelete')->name('debt_delete');
     });
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/','ProfileController@getProfile')->name('profile');

@@ -23,7 +23,7 @@ Breadcrumbs::for('salary', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Thu Nhập Từ Tiền Lương', route('salary'));
 });
-Breadcrumbs::for('other_salaries', function ($trail) {
+Breadcrumbs::for('debt', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('Thu Nhập Khác', route('other_salaries'));
+    $trail->push('Quản Lý Nợ', route('debt'));
 });

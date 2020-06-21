@@ -15,15 +15,29 @@ class DebtTableSeeder extends Seeder
         [
             [
               'idUser'=>1,
-              'bank_name' => 'AGRIBANK',
+              'idTypeDebt'=>1,
+              'name' => 'AGRIBANK',
+              'address'=>'Huyện sơn ba',
               'loan' => 200000000,
               'tenor'=>12,
               'interest_rate'=>2000000,
-              'remaining_month'=>6,
-              'paid'=>100000000, 
-              'debt'=>100000000,     
-              'date' => '2020-06-02',
-              'address'=>'Huyện sơn ba'
+              'date'=>'2020-06-02',
+              'expiration_date'=>'2021-6-10',
+              'note'=>'Hệ Thống Đang Test'
+             
+            ],
+            [
+                'idUser'=>1,
+                'idTypeDebt'=>1,
+                'name' => 'AGRIBANK',
+                'address'=>'Huyện sơn ba',
+                'loan' => 200000000,
+                'tenor'=>12,
+                'interest_rate'=>2000000,
+                'date'=>'2020-06-02',
+                'expiration_date'=>'2021-6-10',
+                'note'=>'Hệ Thống Đang Test'
+               
             ],
             
         ]);

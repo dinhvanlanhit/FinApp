@@ -17,13 +17,16 @@ class CreateDebtTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('idUser')->unsigned()->nullable();
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('idTypeSalary')->unsigned()->nullable();
-            $table->foreign('idTypeSalary')->references('id')->on('type_salary')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('company')->nullable();
+            $table->bigInteger('idTypeDebt')->unsigned()->nullable();
+            $table->foreign('idTypeDebt')->references('id')->on('type_debt')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name')->nullable();
-           
-            $table->double('amount')->default(0)->nullable();
+            $table->double('loan')->default(0)->nullable();
+            $table->Integer('tenor')->nullable();
+            $table->double('interest_rate')->default(0)->nullable();
+            $table->string('address')->nullable();
+            $table->string('note')->nullable();
             $table->date('date')->nullable();
+            $table->date('expiration_date')->nullable();
             $table->timestamps();
         });
     }

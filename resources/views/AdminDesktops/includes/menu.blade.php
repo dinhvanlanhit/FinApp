@@ -50,8 +50,8 @@
         
       </li>
       <li class="nav-item menu-open">
-        <a href="#" class="nav-link ">
-          <i class="nav-icon fas fa-money"></i>
+        <a href="{{route('debt')}}" class="nav-link ">
+          <i class="nav-icon fas fa-university"></i>
           <p>
             Quản Lý Nợ
            
@@ -60,7 +60,7 @@
       </li>
       <li class="nav-item menu-open ">
         <a href="#" class="nav-link ">
-          <i class="nav-icon fas fa-money"></i>
+          <i class="nav-icon fas fa-area-chart"></i>
           <p>
             Cho Vay
             
@@ -71,7 +71,7 @@
       
       <li class="nav-item menu-open">
         <a href="#" class="nav-link ">
-          <i class="nav-icon fas fa-money"></i>
+          <i class="nav-icon fas fa-building"></i>
           <p>
             Đầu Tư
           
@@ -81,7 +81,7 @@
       </li>
       <li class="nav-item menu-open">
         <a href="#" class="nav-link ">
-          <i class="nav-icon fas fa-money"></i>
+          <i class="nav-icon fas fa-futbol-o"></i>
           <p>
             Mục Tiêu & Ước Mơ
           
@@ -94,6 +94,16 @@
           <i class="nav-icon fas fa-money"></i>
           <p>
             Ví Tiền
+          
+          </p>
+        </a>
+        
+      </li>
+      <li class="nav-item menu-open">
+        <a href="#" class="nav-link ">
+          <i class="nav-icon fas fa-hdd-o"></i>
+          <p>
+            Tài Sản
           
           </p>
         </a>
