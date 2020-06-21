@@ -21,7 +21,7 @@
 </head>
 
 <body class="hold-transition register-page">
-	<div class="register-box" style="width: 380px;">
+	<div class="register-box" >
 		<div class="card">
 			<div class="card-body register-card-body">
 				<div class="register-logo">
