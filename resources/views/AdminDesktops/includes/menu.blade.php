@@ -80,17 +80,17 @@
         
       </li>
       <li class="nav-item menu-open">
-        <a href="#" class="nav-link ">
+        <a href="{{route('goals_dreams')}}" class="nav-link ">
           <i class="nav-icon fas fa-futbol-o"></i>
           <p>
-            Mục Tiêu & Ước Mơ
+            Mục Tiêu 
           
           </p>
         </a>
         
       </li>
       <li class="nav-item menu-open">
-        <a href="#" class="nav-link ">
+        <a href="{{route('wallet')}}" class="nav-link ">
           <i class="nav-icon fas fa-money"></i>
           <p>
             Ví Tiền

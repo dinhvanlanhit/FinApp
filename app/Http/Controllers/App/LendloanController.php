@@ -133,6 +133,7 @@ class LendloanController extends Controller
         $Lendloan->note = $Request->note;
         $Lendloan->mortgage = $Request->mortgage;
         $Lendloan->address = $Request->address;
+        $Lendloan->status = $Request->status;
         if($Lendloan->save()){
             return JSON2(true,"Thêm thành công");
         }else{
@@ -155,6 +156,7 @@ class LendloanController extends Controller
         $Lendloan->note = $Request->note;
         $Lendloan->mortgage = $Request->mortgage;
         $Lendloan->address = $Request->address;
+        $Lendloan->status = $Request->status;
         if($Lendloan->save()){
             return JSON2(true,"Cập nhật thành công");
         }else{

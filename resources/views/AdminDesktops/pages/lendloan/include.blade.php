@@ -48,7 +48,7 @@
                             <input class="form-control" id="address" name="address"/>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <label>Khoản vay</label>
                             <input class="form-control" id="loan" name="loan"/>
@@ -58,6 +58,15 @@
                         <div class="form-group">
                             <label>Kỳ Hạn</label>
                             <input class="form-control" type="number" id="tenor" name="tenor"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" >
+                            <label>Trạng Thái</label>
+                            <select class="form-control select2bs4" id="status" name="status">
+                                <option value="Đang Nợ">-- Đang Nợ -- </option>   
+                                <option value="Hết Nợ">-- Hết Nợ -- </option>    
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-12">

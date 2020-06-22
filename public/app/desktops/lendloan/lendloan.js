@@ -146,6 +146,8 @@ function lendloan() {
 				success: function (data) {
 					$('#sex').val(data.data.sex); 
 					$('#sex').trigger('change'); 
+					$('#status').val(data.data.status); 
+					$('#status').trigger('change'); 
 					$('#birthday').val(moment(data.data.birthday, " YYYY-MM-DD").format('DD-MM-YYYY'));
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);

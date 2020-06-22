@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGoalsDreamsTable extends Migration
+class CreateWalletTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateGoalsDreamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('goals_dreams', function (Blueprint $table) {
+        Schema::create('wallet', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('idUser')->unsigned()->nullable();
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('type')->nullable();
             $table->string('name')->nullable();
-            $table->string('note')->nullable();
-            $table->date('dateBegin')->nullable();
-            $table->date('dateEnd')->nullable();
+            $table->double('amount')->default(0)->nullable();// Số tiền đầu tư
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ class CreateGoalsDreamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('goals_dreams');
+        Schema::dropIfExists('wallet');
     }
 }

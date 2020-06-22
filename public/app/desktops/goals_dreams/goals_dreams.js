@@ -1,17 +1,11 @@
-function debt() {
+function goals_dreams() {
 	this.datas = null;
 	this.runJS = function () {
 		var datas = this.datas;
 		$("#date").datepicker();
 		$('#date').css("z-index", "0");
 		$('#date').datepicker("option", "dateFormat", 'dd-mm-yy');
-		$("#expiration_date").datepicker();
-		$('#expiration_date').css("z-index", "0");
-		$('#expiration_date').datepicker("option", "dateFormat", 'dd-mm-yy');
-		
-
-
-		var table = $("#debt-table").DataTable({
+		var table = $("#goals_dreams-table").DataTable({
 			serverSide: true,
 			processing: true,
 			paging: true,
@@ -26,88 +20,68 @@ function debt() {
 				type: "GET",
 				data: function (d) {
 					return $.extend({}, d, {
-						idTypeDebt: $("#idTypeDebt").val(),
-						dateBegin: $("#dateBegin").val(),
-						dateEnd: $("#dateEnd").val(),
+						type: $("#type").val(),
 						search: $("#search").val(),
 					});
 				}
 			},
 			order: [0, "desc"],
-			columns: [{
+			columns: [
+				{
 				title: "#",
 				data: "created_at",
 				name: "created_at",
 				className: "text-center",
-				render: function (data, type, row, meta) {
-					return meta.row + meta.settings._iDisplayStart + 1;
+					render: function (data, type, row, meta) {
+						return meta.row + meta.settings._iDisplayStart + 1;
+					}
+				}, 
+				{
+					title: "Mục Tiêu",
+					data: "name",
+					name: "name",
+					className: "text-center",
+					render: function (data, type, row, meta) {
+						return  '<b >  </b> <b class="text-info">'+data +'</b><br><b class="text-danger">'+row.type+'</n>';
+					}
 				}
-			}, 
-			
-			{
-				title: "Nhóm Nợ",
-				data: "type_name",
-				name: "type_name",
-				className: "text-center",
-				render: function (data, type, row, meta) {
-					var html ='';
-						html += '<b class="text-success"> '+row.type_name + '</b>';
-					 return html;
-				
+				,{
+					title: "Thời Gian",
+					data: "dateBegin",
+					name: "dateBegin",
+					className: "text-center",
+					render: function (data, type, row, meta) {
+						return  '<b > Bắt Đầu : </b> <b class="text-info">'+row.dateBegin +'</b><b class="text-danger"> Đến '+row.dateEnd+'</n>';
+					}
+				},
+				{
+					title: "Ghi Chú",
+					data: "note",
+					name: "note",
+					className: "text-center",
+				},
+				{
+					title: "Tác vụ",
+					data: "created_at",
+					name: "created_at",
+					className: "text-center",
+					render: function (data, type, row, meta) {
+						return rederAction([{
+							class: 'btn-delete',
+							value: row.id,
+							title: 'Xóa',
+							icon: '',
+							text: 'Xóa'
+						}, {
+							class: 'btn-update',
+							value: row.id,
+							title: 'Sửa',
+							icon: '',
+							text: 'Sửa'
+						}]);
+					}
 				}
-			},
-			{
-				title: "Chi Tiết",
-				data: "loan",
-				name: "loan",
-				className: "text-left",
-				render: function (data, type, row, meta) {
-					var html ='';
-						html += '<b class=""><i class="fa fa-building"></i> : '+row.name + '</b><br>';
-						html +='<b class="">  <i class="fa fa-calendar"></i> Kỳ Hạn : ' + row.tenor + '</b><br>';
-						html +='<b class="">  <i class="fa fa-money"></i> Lãi Xuất : ' + money_format(row.interest_rate) + '</b><br>';
-						html +='<b class="">  <i class="fa fa-money"></i> Trạng Thái : ' + row.status + '</b>';
-						
-					 return html;
-				
-				}
-			},{
-				title: "Số tiền",
-				data: "loan",
-				name: "loan",
-				className: "text-center",
-				render: function (data, type, row, meta) {
-					html = '<b class="">' + money_format(data) + ' VNĐ</b><br>';
-					html +='<b class="text-danger">  ' + row.date + ' => '+row.expiration_date+'</b>';
-					return html;
-				}
-			}, {
-				title: "Ghi Chú",
-				data: "note",
-				name: "note",
-				className: "text-center",
-				
-			}, {
-				title: "Tác vụ",
-				data: "created_at",
-				name: "created_at",
-				className: "text-center",
-				render: function (data, type, row, meta) {
-					return rederAction([{
-						class: 'btn-delete',
-						value: row.id,
-						title: 'Xóa',
-						icon: '',
-						text: 'Xóa'
-					}, {
-						class: 'btn-update',
-						value: row.id,
-						title: 'Sửa',
-						icon: '',
-						text: 'Sửa'
-					}]);
-				}
-			}, ],
+			],
 			drawCallback: function (settings) {
                 buttonloading(".formSearch", false);
             }
@@ -117,6 +91,9 @@ function debt() {
 			buttonloading(".formSearch", true);
 			table.ajax.reload();
 		})
+		$("#amount").on("input", function () {
+			input_money_format(this);
+		});
 		$(document).delegate(".btn-delete", "click", function () {
 			var id = $(this).val();
 			$('#modal-text-delete').text("Bạn có muốn xóa không ?");
@@ -136,22 +113,15 @@ function debt() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					$('#idTypeDebtInput').val(data.data.idTypeDebt); 
-					$('#idTypeDebtInput').trigger('change'); 
-					$('#status').val(data.data.status); 
-					$('#status').trigger('change'); 
-
-					
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
-					$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#expiration_date').val(moment(data.data.expiration_date, " YYYY-MM-DD").format('DD-MM-YYYY'));
+					$('#typeInput').val(data.data.type); 
+					$('#typeInput').trigger('change'); 
+					$('#dateBegin').val(moment(data.data.dateBegin, " YYYY-MM-DD").format('DD-MM-YYYY'));
+					$('#dateEnd').val(moment(data.data.dateEnd, " YYYY-MM-DD").format('DD-MM-YYYY'));
 					$('#name').val(data.data.name);
-					$('#loan').val(money_format(data.data.loan));
-					$('#interest_rate').val(money_format(data.data.interest_rate));
 					$('#note').val(data.data.note);
-					$('#tenor').val(data.data.tenor);
 					$("#modal-action").modal('show');
 					buttonloading(elementbtn, false);
 				},
@@ -160,21 +130,17 @@ function debt() {
 		});
 		$("#btn-insert").on("click", function () {
 			$('#modal-action-title').text("Thêm mới");
-			$('#idTypeDebtInput').val("");
-			$('#idTypeDebtInput').trigger('change');
+			$('#typeInput').val(''); 
+			$('#typeInput').trigger('change'); 
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
-			$('#date').datepicker('setDate', new Date());
-			$('#expiration_date').datepicker('setDate', new Date());
-			$('#loan').val('');
+			$('#dateBegin').datepicker('setDate', new Date());
+			$('#dateEnd').datepicker('setDate', new Date());
 			$('#name').val('');
-			$('#interest_rate').val('');
 			$('#note').val('');
-			$('#tenor').val('');
 			$("#modal-action").modal('show');
 		});
-		
-		$("#idTypeDebt").on("change", function (e) {
+		$("#idTypeGoals_dreams").on("change", function (e) {
 			table.ajax.reload();
 		});
 		$("#onDelete").on("click", function (e) {
@@ -198,50 +164,33 @@ function debt() {
 		});
 		$('#formAction').validate({
 			rules: {
-				idTypeDebtInput: {
-					required: true
-				},
 				name: {
 					required: true
 				},
-				loan: {
+				typeInput: {
 					required: true
 				},
-				tenor: {
+				dateBegin: {
 					required: true
 				},
-				interest_rate: {
+				dateEnd: {
 					required: true
 				},
-				date: {
-					required: true
-				},
-				expiration_date: {
-					required: true
-				}
 			},
 			messages: {
-				idTypeDebtInput:{
-					required: "Vui lòng chọn nhóm nợ ! ",
-				},
 				name: {
-					required: "Vui lòng nhập đơn vị vay !",
+					required: "Vui lòng nhập mục tiêu !",
 				},
-				loan: {
-					required: "Vui lòng nhập khoản vay !",
+				typeInput: {
+					required: "Vui lòng chọn trạng thái !",
 				},
-				tenor: {
-					required: "Vui lòng nhập kỳ hạn !",
+				dateBegin: {
+					required: "Vui lòng nhập ngày bắt đầu!",
 				},
-				interest_rate: {
-					required: "Vui lòng nhập lãi suất !",
+				dateEnd: {
+					required: "Vui lòng nhập ngày kết thúc !",
 				},
-				date: {
-					required: "Vui lòng nhập ngày vay !",
-				},
-				expiration_date: {
-					required: "Vui lòng nhập ngày hết hạn !",
-				}
+				
 			},
 			errorElement: 'span',
 			errorPlacement: function (error, element) {
@@ -257,11 +206,9 @@ function debt() {
 			submitHandler: function (e) {
 				var formData = new FormData($("#formAction")[0]);
 				formData.append('id', $("#onSave").attr('data-id'));
-				formData.set('date', moment(formData.get('date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
-				formData.set('expiration_date', moment(formData.get('expiration_date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
-				formData.set('loan', money_format_to_number(formData.get('loan')));
-				formData.set('interest_rate', money_format_to_number(formData.get('interest_rate')));
-				formData.set('idTypeDebt',formData.get('idTypeDebtInput'));
+				formData.set('dateBegin', moment(formData.get('dateBegin'), "DD-MM-YYYY").format('YYYY-MM-DD'));
+				formData.set('dateEnd', moment(formData.get('dateEnd'), "DD-MM-YYYY").format('YYYY-MM-DD'));
+				formData.set('type',formData.get('typeInput'));
 				var url = $("#onSave").attr('data-url');
 				buttonloading('#onSave', true);
 				$.ajax({

@@ -80,6 +80,24 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/update','InvestController@getUpdate')->name('invest_update');
         Route::post('/delete','InvestController@postDelete')->name('invest_delete');
     });
+    Route::group(['prefix' => 'goals_dreams'], function () {
+        Route::get('/datatable','Goals_dreamsController@getDatatable')->name('goals_dreams_table');
+        Route::get('/','Goals_dreamsController@getGoals_dreams')->name('goals_dreams');
+        Route::post('/insert','Goals_dreamsController@postInsert')->name('goals_dreams_insert');
+        Route::post('/update','Goals_dreamsController@postUpdate')->name('goals_dreams_update');
+        Route::get('/update','Goals_dreamsController@getUpdate')->name('goals_dreams_update');
+        Route::post('/delete','Goals_dreamsController@postDelete')->name('goals_dreams_delete');
+    });
+    Route::group(['prefix' => 'wallet'], function () {
+        Route::get('/datatable','WalletController@getDatatable')->name('wallet_table');
+        Route::get('/','WalletController@getWallet')->name('wallet');
+        Route::post('/insert','WalletController@postInsert')->name('wallet_insert');
+        Route::post('/update','WalletController@postUpdate')->name('wallet_update');
+        Route::get('/update','WalletController@getUpdate')->name('wallet_update');
+        Route::post('/delete','WalletController@postDelete')->name('wallet_delete');
+    });
+    
+    
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/','ProfileController@getProfile')->name('profile');
         Route::post('/','ProfileController@postProfile')->name('profile');

@@ -35,3 +35,11 @@ Breadcrumbs::for('invest', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Đâu Tư', route('invest'));
 });
+Breadcrumbs::for('goals_dreams', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Mục Tiêu Của Tôi', route('goals_dreams'));
+});
+Breadcrumbs::for('wallet', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Mục Tiêu Của Tôi', route('wallet'));
+});
