@@ -20,7 +20,11 @@ class TypeSalaryTableSeeder extends Seeder
                 ],
                 [
                     'type_name' => 'Bán Hàng Online',
-                   'color'=>'#B721FF',
+                   'color'=>'#EA5455',
+                ],
+                [
+                  'type_name' => 'Từ Tiền Lãi',
+                  'color'=>'#9F44D3',
                 ],
                 [
                     'type_name' => 'Mục Khác',

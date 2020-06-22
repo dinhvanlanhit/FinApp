@@ -32,12 +32,12 @@
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <button type="submit" class="btn btn-info btn-block">Tìm kiếm</button>
+                <button type="submit" class="btn btn-info btn-block formSearch">Tìm kiếm</button>
                             </div>
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <button type="submit" class="btn btn-info btn-block formSearch">Tìm kiếm</button>
+                <button type="button"  class="btn btn-success btn-block" id="btn-insert">Thêm mới</button>
                </div>
             </div>
         </div>

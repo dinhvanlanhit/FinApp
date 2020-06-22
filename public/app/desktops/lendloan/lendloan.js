@@ -8,9 +8,14 @@ function lendloan() {
 		$("#expiration_date").datepicker();
 		$('#expiration_date').css("z-index", "0");
 		$('#expiration_date').datepicker("option", "dateFormat", 'dd-mm-yy');
+		$("#birthday").datepicker();
+		$('#birthday').css("z-index", "0");
+		$('#birthday').datepicker("option", "dateFormat", 'dd-mm-yy');
+
 		
-
-
+		function sex(e){
+			return e==0?'Nam':'Nữ';
+		}
 		var table = $("#lendloan-table").DataTable({
 			serverSide: true,
 			processing: true,
@@ -48,10 +53,13 @@ function lendloan() {
 				title: "Người Vay",
 				data: "name",
 				name: "name",
-				className: "text-center",
+				className: "text-left",
 				render: function (data, type, row, meta) {
 					var html ='';
-						html += '<b class="text-success"> '+row.type_name + '</b>';
+						html += '<b class="text-success"><i class="fa fa-users"></i> Họ Tên : '+row.name + '</b><br>';
+						html += '<b class="text-success"><i class="fa fa-calendar"></i> Ngày sinh : '+row.birthday + '</b><br>';
+						html += '<b class="text-success"><i class="fa fa-user" aria-hidden="true"></i> Giới Tính : '+sex(row.sex)+ '</b><br>';
+						html += '<b class="text-danger"><i class="fa fa-building"></i> : '+row.address + '</b><br>';
 					 return html;
 				
 				}
@@ -63,10 +71,10 @@ function lendloan() {
 				className: "text-left",
 				render: function (data, type, row, meta) {
 					var html ='';
-						html += '<b class="text-danger"><i class="fa fa-building"></i> : '+row.name + '</b><br>';
+					
 						html +='<b class="text-success">  <i class="fa fa-calendar"></i> Kỳ Hạn : ' + row.tenor + '</b><br>';
-						html +='<b class="text-warning">  <i class="fa fa-money"></i> Lãi Xuất : ' + money_format(row.interest_rate) + '</b>';
-				
+						html +='<b class="">  <i class="fa fa-money"></i> Lãi Xuất : ' + money_format(row.interest_rate) + ' VNĐ (<small> Tháng / Năm )</small></b><br>';
+						html +='<b class="text-info">  <i class="fa fa-hdd-o"></i> Thế Chấp : ' + row.tenor + '</b><br>';
 					 return html;
 				
 				}
@@ -77,7 +85,7 @@ function lendloan() {
 				className: "text-center",
 				render: function (data, type, row, meta) {
 					html = '<b class="">' + money_format(data) + ' VNĐ</b><br>';
-					html +='<b class="text-danger">  ' + row.date + ' => '+row.expiration_date+'</b>';
+					html +='<b class="">  ' + row.date + ' => '+row.expiration_date+'</b>';
 					return html;
 				}
 			}, {
@@ -135,8 +143,9 @@ function lendloan() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					$('#idTypeLendloanInput').val(data.data.idTypeLendloan); 
-					$('#idTypeLendloanInput').trigger('change'); 
+					$('#sex').val(data.data.sex); 
+					$('#sex').trigger('change'); 
+					$('#birthday').val(moment(data.data.birthday, " YYYY-MM-DD").format('DD-MM-YYYY'));
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
@@ -147,6 +156,8 @@ function lendloan() {
 					$('#interest_rate').val(money_format(data.data.interest_rate));
 					$('#note').val(data.data.note);
 					$('#tenor').val(data.data.tenor);
+					$('#mortgage').val(data.data.mortgage);
+					$('#address').val(data.data.address);
 					$("#modal-action").modal('show');
 					buttonloading(elementbtn, false);
 				},
@@ -161,11 +172,14 @@ function lendloan() {
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
 			$('#expiration_date').datepicker('setDate', new Date());
+			$('#birthday').datepicker('setDate', new Date());
 			$('#loan').val('');
 			$('#name').val('');
 			$('#interest_rate').val('');
 			$('#note').val('');
 			$('#tenor').val('');
+			$('#mortgage').val('');
+			$('#address').val('');
 			$("#modal-action").modal('show');
 		});
 		
@@ -193,7 +207,10 @@ function lendloan() {
 		});
 		$('#formAction').validate({
 			rules: {
-				idTypeLendloanInput: {
+				address: {
+					required: true
+				},
+				birthday: {
 					required: true
 				},
 				name: {
@@ -216,8 +233,11 @@ function lendloan() {
 				}
 			},
 			messages: {
-				idTypeLendloanInput:{
-					required: "Vui lòng chọn nhóm nợ ! ",
+				address:{
+					required: "Vui lòng nhập địa chỉ nười vay ! ",
+				},
+				birthday:{
+					required: "Vui lòng nhập ngày tháng năm sinh ! ",
 				},
 				name: {
 					required: "Vui lòng nhập đơn vị vay !",
@@ -252,6 +272,7 @@ function lendloan() {
 			submitHandler: function (e) {
 				var formData = new FormData($("#formAction")[0]);
 				formData.append('id', $("#onSave").attr('data-id'));
+				formData.set('birthday', moment(formData.get('birthday'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('date', moment(formData.get('date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('expiration_date', moment(formData.get('expiration_date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('loan', money_format_to_number(formData.get('loan')));

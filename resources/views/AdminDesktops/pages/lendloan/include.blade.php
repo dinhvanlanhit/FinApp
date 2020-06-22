@@ -19,20 +19,55 @@
                             <input class="form-control" id="name" name="name"/>
                         </div>
                     </div>
-                    
-          
+                    <div class="col-md-6">
+                        <div class="form-group"> 
+                            <label>Ngày Sinh</label>
+                            <div class="input-group">
+                                <input type="text"  id="birthday" name="birthday" class="form-control text-center">
+                                <div class="input-group-prepend" >
+                                    <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Giới Tính</label>
+                            <select  class="form-control select2bs4" style="width: 100%;" id="sex" name="sex">
+                                <option value="0">Nam</option>
+                                <option value="1">Nữ</option>
+                            <select>
+                          
+                        </div>
+                    </div>
                     <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Địa Chỉ</label>
+                            <input class="form-control" id="address" name="address"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Khoản vay</label>
                             <input class="form-control" id="loan" name="loan"/>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Kỳ Hạn</label>
                             <input class="form-control" type="number" id="tenor" name="tenor"/>
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Thuế Chấp (Nếu có)</label>
+                            <input class="form-control" id="mortgage" name="mortgage"/>
+                        </div>
+                    </div>
+                    
+               
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Lãi Suất / Tháng / Năm</label>

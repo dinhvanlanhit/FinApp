@@ -30,7 +30,6 @@ class LendloanController extends Controller
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
         $dir = $Request->input('order.0.dir');
-       
         $search = $Request->input('search');
         $dateBegin = $Request->input('dateBegin');
         $dateEnd = $Request->input('dateEnd');
@@ -49,8 +48,16 @@ class LendloanController extends Controller
                     -> whereBetween('date',[$dateBegin,$dateEnd ])
                     ->Where(function($query)use($search){
                         $query->where('id', 'LIKE', "%{$search}%")
+                        ->orWhere('sex', 'LIKE',"%{$search}%")
+                        ->orWhere('birthday', 'LIKE',"%{$search}%")
+                        ->orWhere('name', 'LIKE',"%{$search}%")
+                        ->orWhere('tenor', 'LIKE',"%{$search}%")
+                        ->orWhere('mortgage', 'LIKE',"%{$search}%")
+                        ->orWhere('address', 'LIKE',"%{$search}%")
                         ->orWhere('note', 'LIKE',"%{$search}%")
-                        ->orWhere('amount','LIKE',"%{$search}%")
+                        ->orWhere('interest_rate', 'LIKE',"%{$search}%")
+                        ->orWhere('tenor', 'LIKE',"%{$search}%")
+                        ->orWhere('expiration_date', 'LIKE',"%{$search}%")
                         ->orWhere('date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -71,10 +78,17 @@ class LendloanController extends Controller
                 $Lendloan = Lendloan::where('idUser','=',$idUser)
                 ->Where(function($query)use($search){
                     $query->where('id', 'LIKE', "%{$search}%")
-                    ->orWhere('note', 'LIKE',"%{$search}%")
-                    ->orWhere('amount','LIKE',"%{$search}%")
-                    ->orWhere('amount','LIKE',"%{$search}%")
-                    ->orWhere('date','LIKE',"%{$search}%");
+                        ->orWhere('sex', 'LIKE',"%{$search}%")
+                        ->orWhere('birthday', 'LIKE',"%{$search}%")
+                        ->orWhere('name', 'LIKE',"%{$search}%")
+                        ->orWhere('tenor', 'LIKE',"%{$search}%")
+                        ->orWhere('mortgage', 'LIKE',"%{$search}%")
+                        ->orWhere('address', 'LIKE',"%{$search}%")
+                        ->orWhere('note', 'LIKE',"%{$search}%")
+                        ->orWhere('interest_rate', 'LIKE',"%{$search}%")
+                        ->orWhere('tenor', 'LIKE',"%{$search}%")
+                        ->orWhere('expiration_date', 'LIKE',"%{$search}%")
+                        ->orWhere('date','LIKE',"%{$search}%");
                 })
                 ->offset($start)
                 ->limit($limit)
@@ -106,15 +120,17 @@ class LendloanController extends Controller
 
         $Lendloan = new Lendloan();
         $Lendloan->idUser = Auth::user()->id;
-       
         $Lendloan->name= $Request->name;
+        $Lendloan->birthday = $Request->birthday;
+        $Lendloan->sex = $Request->sex;
         $Lendloan->loan= $Request->loan;
         $Lendloan->tenor= $Request->tenor;
         $Lendloan->interest_rate = $Request->interest_rate;
         $Lendloan->date = $Request->date;
         $Lendloan->expiration_date = $Request->expiration_date;
         $Lendloan->note = $Request->note;
-
+        $Lendloan->mortgage = $Request->mortgage;
+        $Lendloan->address = $Request->address;
         if($Lendloan->save()){
             return JSON2(true,"Thêm thành công");
         }else{
@@ -124,23 +140,24 @@ class LendloanController extends Controller
     }
     public function postUpdate(Request $Request)
     {
-
         $Lendloan =  Lendloan::find((int)$Request->id);
         $Lendloan->idUser = Auth::user()->id;
-       
         $Lendloan->name= $Request->name;
+        $Lendloan->birthday = $Request->birthday;
+        $Lendloan->sex = $Request->sex;
         $Lendloan->loan= $Request->loan;
         $Lendloan->tenor= $Request->tenor;
         $Lendloan->interest_rate = $Request->interest_rate;
         $Lendloan->date = $Request->date;
         $Lendloan->expiration_date = $Request->expiration_date;
         $Lendloan->note = $Request->note;
+        $Lendloan->mortgage = $Request->mortgage;
+        $Lendloan->address = $Request->address;
         if($Lendloan->save()){
             return JSON2(true,"Cập nhật thành công");
         }else{
             return JSON2(false,"Cập nhật thất bại");
         }
-        # code...
     }
     public function getUpdate (Request $Request)
     {
