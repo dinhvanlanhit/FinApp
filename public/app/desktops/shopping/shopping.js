@@ -20,22 +20,30 @@ function shopping() {
 				type: "GET",
 				data: function (d) {
 					return $.extend({}, d, {
+						idTypeShopping: $("#idTypeShopping").val(),
 						dateBegin: $("#dateBegin").val(),
 						dateEnd: $("#dateEnd").val(),
 						search: $("#search").val(),
 					});
 				}
 			},
-			order: [5, "desc"],
+			order: [0, "desc"],
 			columns: [{
 				title: "#",
-				data: "id",
-				name: "id",
+				data: "created_at",
+				name: "created_at",
 				className: "text-center",
 				render: function (data, type, row, meta) {
 					return meta.row + meta.settings._iDisplayStart + 1;
 				}
-			}, {
+			}, 
+			{
+				title: "Nhóm Mua Sắm",
+				data: "type_name",
+				name: "type_name",
+				className: "text-center",
+			},
+			{
 				title: "Tên",
 				data: "name",
 				name: "name",
@@ -84,7 +92,7 @@ function shopping() {
             }
 		});
 		$("#formSearch").on('submit', function (e) {
-			e.preventDefault();
+			e.prshoppingDefault();
 			buttonloading(".formSearch", true);
 			table.ajax.reload();
 		})
@@ -107,7 +115,8 @@ function shopping() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					console.log(data);
+					$('#idTypeShoppingInput').val(data.data.idTypeShopping); // Select the option with a value of '1'
+					$('#idTypeShoppingInput').trigger('change'); // Notify any JS components that the value changed
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
@@ -129,11 +138,13 @@ function shopping() {
 			$('#note').val('');
 			$('#amount').val('');
 			$('#name').val('');
+			$('#idTypeShoppingInput').val(''); // Select the option with a value of '1'
+			$('#idTypeShoppingInput').trigger('change');
 			$("#modal-action").modal('show');
 		});
 		$("#onDelete").on("click", function (e) {
 			var id = $(this).val();
-			e.preventDefault(e);
+			e.prshoppingDefault(e);
 			buttonloading('#onDelete', true);
 			var result = _AjaxDelete({
 				id: id
@@ -149,6 +160,9 @@ function shopping() {
 		});
 		$('#formAction').validate({
 			rules: {
+				idTypeShoppingInput:{
+					required: true
+				},
 				name: {
 					required: true
 				},
@@ -161,6 +175,9 @@ function shopping() {
 				}
 			},
 			messages: {
+				idTypeShoppingInput:{
+					required: "Vui lòng chọn nhóm ! ",
+				},
 				name: {
 					required: "Vui lòng nhập tên ! ",
 				},
@@ -185,6 +202,7 @@ function shopping() {
 			},
 			submitHandler: function (e) {
 				var formData = new FormData($("#formAction")[0]);
+				formData.set('idTypeShopping',formData.get('idTypeShoppingInput'));
 				formData.append('id', $("#onSave").attr('data-id'));
 				formData.set('date', moment(formData.get('date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('amount', money_format_to_number(formData.get('amount')));
@@ -218,7 +236,7 @@ function shopping() {
 			}
 		});
 		$("#formAction").on('submit', function (e) {
-			e.preventDefault();
+			e.prshoppingDefault();
 		});
 	}
 }

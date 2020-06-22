@@ -70,7 +70,7 @@
       </li>
       
       <li class="nav-item menu-open">
-        <a href="#" class="nav-link ">
+        <a href="{{route('invest')}}" class="nav-link ">
           <i class="nav-icon fas fa-building"></i>
           <p>
             Đầu Tư

@@ -21,8 +21,17 @@ DB::table('type_cost')->insert(
         ],
         [
             'type_name' => 'Tiền Ăn',
-            'color'=>'#EA5455',
+            'color'=>'#BA5666',
            
+        ],
+        [
+          'type_name' => 'Bạn Gái',
+          'color'=>'#AA5777',
+         
+        ],
+        [
+          'type_name' => 'Nhậu Nhặt',
+          'color'=>'#EA5455',
         ],
         [
           'type_name' => 'Tiền Điện',

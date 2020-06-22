@@ -1,4 +1,4 @@
-function lendloan() {
+function invest() {
 	this.datas = null;
 	this.runJS = function () {
 		var datas = this.datas;
@@ -16,7 +16,7 @@ function lendloan() {
 		function sex(e){
 			return e==0?'Nam':'Nữ';
 		}
-		var table = $("#lendloan-table").DataTable({
+		var table = $("#invest-table").DataTable({
 			serverSide: true,
 			processing: true,
 			paging: true,
@@ -31,7 +31,7 @@ function lendloan() {
 				type: "GET",
 				data: function (d) {
 					return $.extend({}, d, {
-						idTypeLendloan: $("#idTypeLendloan").val(),
+						idTypeInvest: $("#idTypeInvest").val(),
 						dateBegin: $("#dateBegin").val(),
 						dateEnd: $("#dateEnd").val(),
 						search: $("#search").val(),
@@ -166,8 +166,8 @@ function lendloan() {
 		});
 		$("#btn-insert").on("click", function () {
 			$('#modal-action-title').text("Thêm mới");
-			$('#idTypeLendloanInput').val("");
-			$('#idTypeLendloanInput').trigger('change');
+			$('#idTypeInvestInput').val("");
+			$('#idTypeInvestInput').trigger('change');
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
@@ -183,7 +183,7 @@ function lendloan() {
 			$("#modal-action").modal('show');
 		});
 		
-		$("#idTypeLendloan").on("change", function (e) {
+		$("#idTypeInvest").on("change", function (e) {
 			table.ajax.reload();
 		});
 		$("#onDelete").on("click", function (e) {
@@ -277,7 +277,7 @@ function lendloan() {
 				formData.set('expiration_date', moment(formData.get('expiration_date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('loan', money_format_to_number(formData.get('loan')));
 				formData.set('interest_rate', money_format_to_number(formData.get('interest_rate')));
-				formData.set('idTypeLendloan',formData.get('idTypeLendloanInput'));
+				formData.set('idTypeInvest',formData.get('idTypeInvestInput'));
 				var url = $("#onSave").attr('data-url');
 				buttonloading('#onSave', true);
 				$.ajax({

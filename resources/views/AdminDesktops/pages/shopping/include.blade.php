@@ -12,7 +12,17 @@
             <div class="modal-body card-body-dashboard">
                 
                 <div class="row">
-            
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Nhóm Mua Sắm</label>
+                            <select class="form-control select2bs4" id="idTypeShoppingInput" style="width: 100%;" name="idTypeShoppingInput">
+                                <option value="">-- Chọn nhóm -- </option>    
+                                @foreach ($typeshopping as $item)
+                                    <option value="{{$item->id}}">{{$item->type_name}}</option>                      
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Tên</label>
@@ -34,7 +44,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group"> 
-                            <label>Ngày đi </label>
+                            <label>Ngày Mua Sắm </label>
                             <div class="input-group">
                                 <input type="text"  id="date" name="date" class="form-control text-center">
                                 <div class="input-group-prepend" >

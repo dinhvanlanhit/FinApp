@@ -142,7 +142,7 @@
               </div>
               </div>
               <div class="col-md-12">
-                <div id="dashboard-chart" style="height:400px"></div>
+                <div id="dashboard-chart" style="height:500px"></div>
                 <!-- /.chart-responsive -->
               </div>
             </div>
