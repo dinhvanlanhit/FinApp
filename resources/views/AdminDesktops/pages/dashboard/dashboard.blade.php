@@ -78,95 +78,77 @@
         <!-- ./col -->
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="card">
       <div class="card-header">
         <h5 class="card-title">Biểu Tổng Quan</h5>
-
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse">
             <i class="fas fa-minus"></i>
           </button>
-         
         </div>
       </div>
       <!-- /.card-header -->
       <div class="card-body-dashboard">
-
         <div class="row">
-          
           <div class="col-md-12">
-            <div id="dashboard-chart-top" style="height:404px"></div>
+            <div id="dashboard-chart-top" style="height:400px"></div>
             <!-- /.chart-responsive -->
           </div>
       
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
       </div>
-      <!-- ./card-body -->
-   
-      <!-- /.card-footer -->
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h5 class="card-title">Biểu Đồ Chi Tiết</h5>
-
+        <h5 class="card-title">Biểu Đồ Chi Riết</h5>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse">
             <i class="fas fa-minus"></i>
           </button>
-         
         </div>
       </div>
       <!-- /.card-header -->
       <div class="card-body-dashboard">
         <div class="row">
-         <div class="col-sm-12 col-lg-6 col-md-3 ">
-              @include('AdminDesktops.fromControl.dateRange',
-               [
-                'daterange'=>'Chart_daterange',
-                'dateBegin'=>'Chart_dateBegin',
-                'dateEnd'=>'Chart_dateEnd',
-              ]
-              )
-          </div>
-          <div class="col-sm-12 col-lg-6 col-md-3 ">
-            <div class="form-group">
-              <select id="TypeDashboard" class="form-control select2bs4" style="width: 100%;">
-                <option value="event"> Sự Kiện</option>
-                <option value="shopping"> Mua Sắm</option>
-                <option value="cost"> Chi Tiêu</option>
-                <option value="salary"> Thu Nhập</option>
-              </select>
-           </div>
-          </div>
-        </div>
-        <div class="row">
-          
+  
           <div class="col-md-12">
-            <div id="dashboard-chart" style="height:350px"></div>
-            <!-- /.chart-responsive -->
+            <div class="row">
+              <div class="col-sm-12 col-lg-6 col-md-3 ">
+                @include('AdminDesktops.fromControl.dateRange',
+                [
+                  'daterange'=>'Chart_daterange',
+                  'dateBegin'=>'Chart_dateBegin',
+                  'dateEnd'=>'Chart_dateEnd',
+                ]
+                )
+              </div>
+              <div class="col-sm-12 col-lg-6 col-md-3 ">
+                <div class="form-group">
+                  <select id="TypeDashboard" class="form-control select2bs4" style="width: 100%;">
+                    <option value="event"> Sự Kiện</option>
+                    <option value="shopping"> Mua Sắm</option>
+                    <option value="cost"> Chi Tiêu</option>
+                    <option value="salary"> Thu Nhập</option>
+                  </select>
+              </div>
+              </div>
+              <div class="col-md-12">
+                <div id="dashboard-chart" style="height:400px"></div>
+                <!-- /.chart-responsive -->
+              </div>
+            </div>
+            
           </div>
-      
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
       </div>
-      <!-- ./card-body -->
-   
-      <!-- /.card-footer -->
     </div>
-    <!-- /.card -->
   </div>
 </div>
 
-<div class="row">
- 
-  <!-- /.col -->
-</div>
+
 
 @endsection
 @section('javascript')

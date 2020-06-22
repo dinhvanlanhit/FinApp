@@ -21,8 +21,8 @@
                 </div>
                 <div class="col-md-2">
                   <div class="form-group">
-                    <button type="submit" class="btn btn-info btn-block">Tìm kiếm</button>
-                                </div>
+                    <button type="submit" class="btn btn-info btn-block formSearch">Tìm kiếm</button>
+                      </div>
                 </div>
                 <div class="col-md-2">
                   <div class="form-group">

@@ -66,76 +66,46 @@ function dashboard() {
 			textStyle: {
 				fontFamily: "Tahoma,Arial"
 			},
-			// Add title
 			title: {
 				text: 'Biểu đồ tỷ lệ',
 				subtext: sumTotal,
-				x: 'center',
 			},
-			// Add legend
+			tooltip: {
+				trigger: 'item',
+				formatter: '{a} <br/>{b}: {c} ({d}%)'
+			},
 			legend: {
-				orient: 'vertical',
-				x: 'left',
+				bottom: 10,
+				left: 'center',
 				data: data.lable
 			},
-			// Add custom colors
+			calculable: true,
 			color: data.color,
-			// Display toolbox
-			toolbox: {
-				show: true,
-				orient: 'horizontal',
-				feature: {
-					dataView: {
-						show: true,
-						readOnly: false,
-						title: 'Xem dữ liệu',
-						lang: [
-                            'Xem dữ liệu biểu đồ', 
-                            'Đóng', 
-                            'Cập Nhật'
-                        ]
-					},
-					restore: {
-						show: true,
-						title: "Làm Mới"
-					},
-					saveAsImage: {
-						show: true,
-						title: 'Lưu',
-						lang: ['Save']
-					}
-				}
-			},
-			series: [{
-				name: "Trình Duyệt",
-                type: 'pie',
-				avoidLabelOverlap: true,
-				// radius: ['50%', '70%'],
-				center: ['50%', '56%'],
-				itemStyle: {
-					normal: {
-						label: {
-							show: true,
-						},
-						labelLine: {
-							show: true
-						}
+			series: [
+				{
+					name: "Thống Kê",
+					type: 'pie',
+					radius: ['50%', '70%'],
+					avoidLabelOverlap: false,
+					label: {
+						show: false,
+						position: 'center'
 					},
 					emphasis: {
 						label: {
 							show: true,
-							formatter: '{b}' + " : " + '{c} ({d}%)',
-							position: 'center',
-							textStyle: {
-								fontSize: '15',
-								fontWeight: '500',
-							}
+							fontSize: '20',
+							fontWeight: 'bold'
 						}
-					}
+					},
+					labelLine: {
+						show: false
+					},
+					data:data.data
 				},
-				data:data.data,
 				
-			}]
+			]
+		
 		};
 		EventDoughnut.setOption(option);
 	}

@@ -82,7 +82,10 @@ function cost() {
 						text: 'Sửa'
 					}]);
 				}
-			}, ]
+			},],
+			drawCallback: function (settings) {
+                buttonloading(elementbtn, false);
+            }
 		});
 		$("#formSearch").on('submit', function (e) {
 			e.preventDefault();
