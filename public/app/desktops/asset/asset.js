@@ -2,6 +2,12 @@ function asset() {
 	this.datas = null;
 	this.runJS = function () {
 		var datas = this.datas;
+		function echo(e){
+			if(e==''||e==null){
+				return '';
+			}
+			return e;
+		}
 		var table = $("#asset-table").DataTable({
 			serverSide: true,
 			processing: true,
@@ -47,7 +53,7 @@ function asset() {
 				render: function (data, type, row, meta) {
 					var html ='';
 						html +='<b class="">Trị giá : ' + money_format(data) + ' VNĐ</b><br>';
-						html +='<b class="">Địa chỉ : ' + row.address + '</b>';
+						html +='<b class="">Địa chỉ : ' + echo(row.address) + '</b>';
 					 return html;
 				}
 				},

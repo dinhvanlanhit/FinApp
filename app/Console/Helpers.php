@@ -1,5 +1,9 @@
 <?php
+function surplus()
+{
 
+    return \App\Models\Wallet::where('idUser','=',\Auth::user()->id)->sum('amount');
+}
 function deleteFile($file)
 {
 	if (file_exists(base_path("{$file}"))) {

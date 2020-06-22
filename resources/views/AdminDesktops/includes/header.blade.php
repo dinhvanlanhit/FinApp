@@ -1,27 +1,21 @@
 <nav class="main-header navbar navbar-expand navbar-dark navbar-danger">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <ul class="navbar-nav ">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Tổng Quan</a>
+      <li class="nav-item  ">
+        <a href="{{route('wallet')}}" class="nav-link active"> <b class="surplus" id="surplus"> <i class="fa fa-money"></i>  : {{number_format(surplus())}} VNĐ </b></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Liên Hệ</a>
+        <a href="{{route('profile')}}" class="nav-link active"><b> <i class="fa fa-user"></i> {{Auth::user()->full_name}}</b></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link"><b>Liên Hệ</b></a>
       </li>
     </ul>
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       {{-- <li class="nav-item">
