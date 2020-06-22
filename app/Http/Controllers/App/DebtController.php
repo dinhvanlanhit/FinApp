@@ -39,12 +39,12 @@ class DebtController extends Controller
         if(!empty($idTypeDebt))
         {
             if(!empty($dateBegin)&&!empty($dateEnd)){
-                $totalData =  Debt::where('idUser','=',$idUser)->where('idTypeDebt','=',$idTypeDebt)->whereBetween('date',[$dateBegin,$dateEnd ])->count();
+                $totalData =  Debt::where('idUser','=',$idUser)->where('idTypeDebt','=',$idTypeDebt)->whereBetween('debt.date',[$dateBegin,$dateEnd ])->count();
                 $totalFiltered =$totalData;
                 if(empty($search)){
                     $Debt = Debt::
                     join('type_debt','type_debt.id','=','debt.idTypeDebt')
-                    ->where('idUser','=',$idUser)->where('idTypeDebt','=',$idTypeDebt)-> whereBetween('date',[$dateBegin,$dateEnd ])
+                    ->where('idUser','=',$idUser)->where('idTypeDebt','=',$idTypeDebt)-> whereBetween('debt.date',[$dateBegin,$dateEnd ])
                     ->select('debt.*','type_debt.type_name')
                     ->offset($start)
                     ->limit($limit)
@@ -53,13 +53,14 @@ class DebtController extends Controller
                 }else{
                     $Debt = Debt::
                     join('type_debt','type_debt.id','=','debt.idTypeDebt')
-                    ->where('idUser','=',$idUser)->where('idTypeDebt','=',$idTypeDebt)-> whereBetween('date',[$dateBegin,$dateEnd ])
+                    ->where('idUser','=',$idUser)->where('idTypeDebt','=',$idTypeDebt)-> whereBetween('debt.date',[$dateBegin,$dateEnd ])
                     ->select('debt.*','type_debt.type_name')
                     ->Where(function($query)use($search){
                         $query->where('debt.id', 'LIKE', "%{$search}%")
                         ->orWhere('debt.note', 'LIKE',"%{$search}%")
-                        
-                        ->orWhere('debt.amount','LIKE',"%{$search}%")
+                        ->orWhere('debt.name', 'LIKE',"%{$search}%")
+                        ->orWhere('debt.loan','LIKE',"%{$search}%")
+                        ->orWhere('debt.status', 'LIKE',"%{$search}%")
                         ->orWhere('debt.date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -85,8 +86,9 @@ class DebtController extends Controller
                     ->Where(function($query)use($search){
                         $query->where('debt.id', 'LIKE', "%{$search}%")
                         ->orWhere('debt.note', 'LIKE',"%{$search}%")
-                        
-                        ->orWhere('debt.amount','LIKE',"%{$search}%")
+                        ->orWhere('debt.name', 'LIKE',"%{$search}%")
+                        ->orWhere('debt.loan','LIKE',"%{$search}%")
+                        ->orWhere('debt.status', 'LIKE',"%{$search}%")
                         ->orWhere('debt.date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -97,12 +99,12 @@ class DebtController extends Controller
             }
         }else{
             if(!empty($dateBegin)&&!empty($dateEnd)){
-                $totalData =  Debt::where('idUser','=',$idUser)->whereBetween('date',[$dateBegin,$dateEnd ])->count();
+                $totalData =  Debt::where('idUser','=',$idUser)->whereBetween('debt.date',[$dateBegin,$dateEnd ])->count();
                 $totalFiltered =$totalData;
                 if(empty($search)){
                     $Debt = Debt::
                     join('type_debt','type_debt.id','=','debt.idTypeDebt')
-                    ->where('idUser','=',$idUser)-> whereBetween('date',[$dateBegin,$dateEnd ])
+                    ->where('idUser','=',$idUser)-> whereBetween('debt.date',[$dateBegin,$dateEnd ])
                     ->select('debt.*','type_debt.type_name')
                     ->offset($start)
                     ->limit($limit)
@@ -111,13 +113,14 @@ class DebtController extends Controller
                 }else{
                     $Debt = Debt::
                     join('type_debt','type_debt.id','=','debt.idTypeDebt')
-                    ->where('idUser','=',$idUser)-> whereBetween('date',[$dateBegin,$dateEnd ])
+                    ->where('debt.idUser','=',$idUser)-> whereBetween('debt.date',[$dateBegin,$dateEnd ])
                     ->select('debt.*','type_debt.type_name')
                     ->Where(function($query)use($search){
                         $query->where('debt.id', 'LIKE', "%{$search}%")
                         ->orWhere('debt.note', 'LIKE',"%{$search}%")
-                        
-                        ->orWhere('debt.amount','LIKE',"%{$search}%")
+                        ->orWhere('debt.status', 'LIKE',"%{$search}%")
+                        ->orWhere('debt.name', 'LIKE',"%{$search}%")
+                        ->orWhere('debt.loan','LIKE',"%{$search}%")
                         ->orWhere('debt.date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -130,7 +133,7 @@ class DebtController extends Controller
                 $totalFiltered =$totalData;
                 if(empty($search)){
                     $Debt = Debt::join('type_debt','type_debt.id','=','debt.idTypeDebt')
-                    ->where('idUser','=',$idUser)
+                    ->where('debt.idUser','=',$idUser)
                     ->select('debt.*','type_debt.type_name')
                     ->offset($start)
                     ->limit($limit)
@@ -138,13 +141,14 @@ class DebtController extends Controller
                     ->get();
                 }else{
                     $Debt = Debt::join('type_debt','type_debt.id','=','debt.idTypeDebt')
-                    ->where('idUser','=',$idUser)
+                    ->where('debt.idUser','=',$idUser)
                     ->select('debt.*','type_debt.type_name')
                     ->Where(function($query)use($search){
                         $query->where('debt.id', 'LIKE', "%{$search}%")
+                        ->orWhere('debt.name', 'LIKE',"%{$search}%")
+                        ->orWhere('debt.status', 'LIKE',"%{$search}%")
                         ->orWhere('debt.note', 'LIKE',"%{$search}%")
-                        
-                        ->orWhere('debt.amount','LIKE',"%{$search}%")
+                        ->orWhere('debt.loan','LIKE',"%{$search}%")
                         ->orWhere('debt.date','LIKE',"%{$search}%");
                     })
                     ->offset($start)

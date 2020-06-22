@@ -20,10 +20,11 @@ class InvestController extends Controller
         $columns = array( 
             0 => 'created_at',
             1 => 'name',
-            2 => 'loan',
-            3 => 'loan', 
-            3 => 'date', 
-            4 => 'created_at'
+            2 => 'amount',
+            3 => 'note', 
+            4 => 'address',
+            5 => 'date',
+            6 => 'created_at'
         );
         $idUser = Auth::user()->id;
         $limit = $Request->input('length');
@@ -45,19 +46,12 @@ class InvestController extends Controller
                     ->get();
                 }else{
                     $Invest = Invest::where('idUser','=',$idUser)
-                    -> whereBetween('date',[$dateBegin,$dateEnd ])
+                    ->whereBetween('date',[$dateBegin,$dateEnd ])
                     ->Where(function($query)use($search){
                         $query->where('id', 'LIKE', "%{$search}%")
-                        ->orWhere('sex', 'LIKE',"%{$search}%")
-                        ->orWhere('birthday', 'LIKE',"%{$search}%")
                         ->orWhere('name', 'LIKE',"%{$search}%")
-                        ->orWhere('tenor', 'LIKE',"%{$search}%")
-                        ->orWhere('mortgage', 'LIKE',"%{$search}%")
                         ->orWhere('address', 'LIKE',"%{$search}%")
                         ->orWhere('note', 'LIKE',"%{$search}%")
-                        ->orWhere('interest_rate', 'LIKE',"%{$search}%")
-                        ->orWhere('tenor', 'LIKE',"%{$search}%")
-                        ->orWhere('expiration_date', 'LIKE',"%{$search}%")
                         ->orWhere('date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -78,17 +72,11 @@ class InvestController extends Controller
                 $Invest = Invest::where('idUser','=',$idUser)
                 ->Where(function($query)use($search){
                     $query->where('id', 'LIKE', "%{$search}%")
-                        ->orWhere('sex', 'LIKE',"%{$search}%")
-                        ->orWhere('birthday', 'LIKE',"%{$search}%")
-                        ->orWhere('name', 'LIKE',"%{$search}%")
-                        ->orWhere('tenor', 'LIKE',"%{$search}%")
-                        ->orWhere('mortgage', 'LIKE',"%{$search}%")
-                        ->orWhere('address', 'LIKE',"%{$search}%")
-                        ->orWhere('note', 'LIKE',"%{$search}%")
-                        ->orWhere('interest_rate', 'LIKE',"%{$search}%")
-                        ->orWhere('tenor', 'LIKE',"%{$search}%")
-                        ->orWhere('expiration_date', 'LIKE',"%{$search}%")
-                        ->orWhere('date','LIKE',"%{$search}%");
+               
+                    ->orWhere('name', 'LIKE',"%{$search}%")
+                    ->orWhere('address', 'LIKE',"%{$search}%")
+                    ->orWhere('note', 'LIKE',"%{$search}%")
+                    ->orWhere('date','LIKE',"%{$search}%");
                 })
                 ->offset($start)
                 ->limit($limit)
@@ -121,15 +109,9 @@ class InvestController extends Controller
         $Invest = new Invest();
         $Invest->idUser = Auth::user()->id;
         $Invest->name= $Request->name;
-        $Invest->birthday = $Request->birthday;
-        $Invest->sex = $Request->sex;
-        $Invest->loan= $Request->loan;
-        $Invest->tenor= $Request->tenor;
-        $Invest->interest_rate = $Request->interest_rate;
+        $Invest->amount= $Request->amount;
         $Invest->date = $Request->date;
-        $Invest->expiration_date = $Request->expiration_date;
         $Invest->note = $Request->note;
-        $Invest->mortgage = $Request->mortgage;
         $Invest->address = $Request->address;
         if($Invest->save()){
             return JSON2(true,"Thêm thành công");
@@ -143,15 +125,9 @@ class InvestController extends Controller
         $Invest =  Invest::find((int)$Request->id);
         $Invest->idUser = Auth::user()->id;
         $Invest->name= $Request->name;
-        $Invest->birthday = $Request->birthday;
-        $Invest->sex = $Request->sex;
-        $Invest->loan= $Request->loan;
-        $Invest->tenor= $Request->tenor;
-        $Invest->interest_rate = $Request->interest_rate;
+        $Invest->amount= $Request->amount;
         $Invest->date = $Request->date;
-        $Invest->expiration_date = $Request->expiration_date;
         $Invest->note = $Request->note;
-        $Invest->mortgage = $Request->mortgage;
         $Invest->address = $Request->address;
         if($Invest->save()){
             return JSON2(true,"Cập nhật thành công");

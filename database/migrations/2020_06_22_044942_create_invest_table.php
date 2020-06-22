@@ -20,8 +20,8 @@ class CreateInvestTable extends Migration
             $table->string('name')->nullable();
             $table->double('amount')->default(0)->nullable();// Số tiền đầu tư
             $table->text('address')->nullable();
-            $table->date('date')->nullable();
             $table->text('note')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

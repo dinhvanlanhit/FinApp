@@ -75,6 +75,7 @@ function lendloan() {
 						html +='<b class="text-success">  <i class="fa fa-calendar"></i> Kỳ Hạn : ' + row.tenor + '</b><br>';
 						html +='<b class="">  <i class="fa fa-money"></i> Lãi Xuất : ' + money_format(row.interest_rate) + ' VNĐ (<small> Tháng / Năm )</small></b><br>';
 						html +='<b class="text-info">  <i class="fa fa-hdd-o"></i> Thế Chấp : ' + row.mortgage + '</b><br>';
+						html +='<b class="">  <i class="fa fa-money"></i> Trạng Thái : ' + row.status + '</b>';
 					 return html;
 				
 				}
@@ -245,7 +246,7 @@ function lendloan() {
 				loan: {
 					required: "Vui lòng nhập khoản vay !",
 				},
-				loan: {
+				tenor: {
 					required: "Vui lòng nhập kỳ hạn !",
 				},
 				interest_rate: {

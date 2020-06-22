@@ -25,7 +25,8 @@ class LendloanTableSeeder extends Seeder
                   'mortgage'=>'Sổ Đỏ',
                   'date'=>'2020-06-02',
                   'expiration_date'=>'2021-6-10',
-                  'note'=>'Hệ Thống Đang Test'
+                  'note'=>'Hệ Thống Đang Test',
+                  'status'=>'Đang Nợ'
                 ],
                 [
                     'idUser'=>1,
@@ -39,7 +40,8 @@ class LendloanTableSeeder extends Seeder
                     'mortgage'=>'Sổ Đỏ',
                     'date'=>'2020-06-02',
                     'expiration_date'=>'2021-6-10',
-                    'note'=>'Hệ Thống Đang Test'
+                    'note'=>'Hệ Thống Đang Test',
+                    'status'=>'Đang Nợ'
                   ]
             ]);
     }

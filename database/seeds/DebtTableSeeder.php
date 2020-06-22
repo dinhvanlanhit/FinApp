@@ -23,7 +23,8 @@ class DebtTableSeeder extends Seeder
               'interest_rate'=>2000000,
               'date'=>'2020-06-02',
               'expiration_date'=>'2021-6-10',
-              'note'=>'Hệ Thống Đang Test'
+              'note'=>'Hệ Thống Đang Test',
+              'status'=>'Đang Nợ'
              
             ],
             [
@@ -36,7 +37,8 @@ class DebtTableSeeder extends Seeder
                 'interest_rate'=>2000000,
                 'date'=>'2020-06-02',
                 'expiration_date'=>'2021-6-10',
-                'note'=>'Hệ Thống Đang Test'
+                'note'=>'Hệ Thống Đang Test',
+                'status'=>'Hết Nợ'
                
             ],
             

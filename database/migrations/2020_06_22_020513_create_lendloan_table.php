@@ -28,6 +28,7 @@ class CreateLendloanTable extends Migration
             $table->text('address')->nullable();
             $table->text('mortgage')->nullable();
             $table->text('note')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

@@ -57,6 +57,7 @@ class LendloanController extends Controller
                         ->orWhere('note', 'LIKE',"%{$search}%")
                         ->orWhere('interest_rate', 'LIKE',"%{$search}%")
                         ->orWhere('tenor', 'LIKE',"%{$search}%")
+                        ->orWhere('status', 'LIKE',"%{$search}%")
                         ->orWhere('expiration_date', 'LIKE',"%{$search}%")
                         ->orWhere('date','LIKE',"%{$search}%");
                     })
@@ -87,6 +88,7 @@ class LendloanController extends Controller
                         ->orWhere('note', 'LIKE',"%{$search}%")
                         ->orWhere('interest_rate', 'LIKE',"%{$search}%")
                         ->orWhere('tenor', 'LIKE',"%{$search}%")
+                        ->orWhere('status', 'LIKE',"%{$search}%")
                         ->orWhere('expiration_date', 'LIKE',"%{$search}%")
                         ->orWhere('date','LIKE',"%{$search}%");
                 })

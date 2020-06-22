@@ -63,10 +63,11 @@ function debt() {
 				className: "text-left",
 				render: function (data, type, row, meta) {
 					var html ='';
-						html += '<b class="text-danger"><i class="fa fa-building"></i> : '+row.name + '</b><br>';
-						html +='<b class="text-success">  <i class="fa fa-calendar"></i> Kỳ Hạn : ' + row.tenor + '</b><br>';
-						html +='<b class="text-warning">  <i class="fa fa-money"></i> Lãi Xuất : ' + money_format(row.interest_rate) + '</b>';
-				
+						html += '<b class=""><i class="fa fa-building"></i> : '+row.name + '</b><br>';
+						html +='<b class="">  <i class="fa fa-calendar"></i> Kỳ Hạn : ' + row.tenor + '</b><br>';
+						html +='<b class="">  <i class="fa fa-money"></i> Lãi Xuất : ' + money_format(row.interest_rate) + '</b><br>';
+						html +='<b class="">  <i class="fa fa-money"></i> Trạng Thái : ' + money_format(row.status) + '</b>';
+						
 					 return html;
 				
 				}
@@ -225,7 +226,7 @@ function debt() {
 				loan: {
 					required: "Vui lòng nhập khoản vay !",
 				},
-				loan: {
+				tenor: {
 					required: "Vui lòng nhập kỳ hạn !",
 				},
 				interest_rate: {

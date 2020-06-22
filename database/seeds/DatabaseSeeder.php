@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             TypeDebtTableSeeder::class,
             DebtTableSeeder::class,
             LendloanTableSeeder::class,
-            // InvestTableSeeder::class
+            InvestTableSeeder::class
            
         ]);
     }

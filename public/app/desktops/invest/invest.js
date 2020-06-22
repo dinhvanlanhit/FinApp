@@ -5,17 +5,6 @@ function invest() {
 		$("#date").datepicker();
 		$('#date').css("z-index", "0");
 		$('#date').datepicker("option", "dateFormat", 'dd-mm-yy');
-		$("#expiration_date").datepicker();
-		$('#expiration_date').css("z-index", "0");
-		$('#expiration_date').datepicker("option", "dateFormat", 'dd-mm-yy');
-		$("#birthday").datepicker();
-		$('#birthday').css("z-index", "0");
-		$('#birthday').datepicker("option", "dateFormat", 'dd-mm-yy');
-
-		
-		function sex(e){
-			return e==0?'Nam':'Nữ';
-		}
 		var table = $("#invest-table").DataTable({
 			serverSide: true,
 			processing: true,
@@ -31,7 +20,6 @@ function invest() {
 				type: "GET",
 				data: function (d) {
 					return $.extend({}, d, {
-						idTypeInvest: $("#idTypeInvest").val(),
 						dateBegin: $("#dateBegin").val(),
 						dateEnd: $("#dateEnd").val(),
 						search: $("#search").val(),
@@ -39,82 +27,69 @@ function invest() {
 				}
 			},
 			order: [0, "desc"],
-			columns: [{
+			columns: [
+				{
 				title: "#",
 				data: "created_at",
 				name: "created_at",
 				className: "text-center",
-				render: function (data, type, row, meta) {
-					return meta.row + meta.settings._iDisplayStart + 1;
+					render: function (data, type, row, meta) {
+						return meta.row + meta.settings._iDisplayStart + 1;
+					}
+				}, 
+				{
+					title: "Tên",
+					data: "name",
+					name: "name",
+					className: "text-center",
 				}
-			}, 
-			
-			{
-				title: "Người Vay",
-				data: "name",
-				name: "name",
-				className: "text-left",
-				render: function (data, type, row, meta) {
-					var html ='';
-						html += '<b class="text-success"><i class="fa fa-users"></i> Họ Tên : '+row.name + '</b><br>';
-						html += '<b class="text-success"><i class="fa fa-calendar"></i> Ngày sinh : '+row.birthday + '</b><br>';
-						html += '<b class="text-success"><i class="fa fa-user" aria-hidden="true"></i> Giới Tính : '+sex(row.sex)+ '</b><br>';
-						html += '<b class="text-danger"><i class="fa fa-building"></i> : '+row.address + '</b><br>';
-					 return html;
-				
+				,{
+					title: "Số tiền",
+					data: "amount",
+					name: "amount",
+					className: "text-center",
+					render: function (data, type, row, meta) {
+						return '<b class="">' + money_format(data) + ' VNĐ</b>';
+					}
+				},
+				{
+					title: "Địa chỉ",
+					data: "address",
+					name: "address",
+					className: "text-center",
+				}, 
+				{
+					title: "Ghi Chú",
+					data: "note",
+					name: "note",
+					className: "text-center",
+				},{
+					title: "Ngày",
+					data: "date",
+					name: "date",
+					className: "text-center",
+				},{
+					title: "Tác vụ",
+					data: "created_at",
+					name: "created_at",
+					className: "text-center",
+					render: function (data, type, row, meta) {
+						return rederAction([{
+							class: 'btn-delete',
+							value: row.id,
+							title: 'Xóa',
+							icon: '',
+							text: 'Xóa'
+						}, {
+							class: 'btn-update',
+							value: row.id,
+							title: 'Sửa',
+							icon: '',
+							text: 'Sửa'
+						}]);
+					}
 				}
-			},
-			{
-				title: "Chi Tiết",
-				data: "loan",
-				name: "loan",
-				className: "text-left",
-				render: function (data, type, row, meta) {
-					var html ='';
-					
-						html +='<b class="text-success">  <i class="fa fa-calendar"></i> Kỳ Hạn : ' + row.tenor + '</b><br>';
-						html +='<b class="">  <i class="fa fa-money"></i> Lãi Xuất : ' + money_format(row.interest_rate) + ' VNĐ (<small> Tháng / Năm )</small></b><br>';
-						html +='<b class="text-info">  <i class="fa fa-hdd-o"></i> Thế Chấp : ' + row.mortgage + '</b><br>';
-					 return html;
-				
-				}
-			},{
-				title: "Số tiền",
-				data: "loan",
-				name: "loan",
-				className: "text-center",
-				render: function (data, type, row, meta) {
-					html = '<b class="">' + money_format(data) + ' VNĐ</b><br>';
-					html +='<b class="">  ' + row.date + ' => '+row.expiration_date+'</b>';
-					return html;
-				}
-			}, {
-				title: "Ghi Chú",
-				data: "note",
-				name: "note",
-				className: "text-center",
-				
-			}, {
-				title: "Tác vụ",
-				data: "created_at",
-				name: "created_at",
-				className: "text-center",
-				render: function (data, type, row, meta) {
-					return rederAction([{
-						class: 'btn-delete',
-						value: row.id,
-						title: 'Xóa',
-						icon: '',
-						text: 'Xóa'
-					}, {
-						class: 'btn-update',
-						value: row.id,
-						title: 'Sửa',
-						icon: '',
-						text: 'Sửa'
-					}]);
-				}
-			}, ],
+			],
 			drawCallback: function (settings) {
                 buttonloading(".formSearch", false);
             }
@@ -124,6 +99,9 @@ function invest() {
 			buttonloading(".formSearch", true);
 			table.ajax.reload();
 		})
+		$("#amount").on("input", function () {
+			input_money_format(this);
+		});
 		$(document).delegate(".btn-delete", "click", function () {
 			var id = $(this).val();
 			$('#modal-text-delete').text("Bạn có muốn xóa không ?");
@@ -143,20 +121,13 @@ function invest() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					$('#sex').val(data.data.sex); 
-					$('#sex').trigger('change'); 
-					$('#birthday').val(moment(data.data.birthday, " YYYY-MM-DD").format('DD-MM-YYYY'));
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
 					$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#expiration_date').val(moment(data.data.expiration_date, " YYYY-MM-DD").format('DD-MM-YYYY'));
 					$('#name').val(data.data.name);
-					$('#loan').val(money_format(data.data.loan));
-					$('#interest_rate').val(money_format(data.data.interest_rate));
+					$('#amount').val(money_format(data.data.amount));
 					$('#note').val(data.data.note);
-					$('#tenor').val(data.data.tenor);
-					$('#mortgage').val(data.data.mortgage);
 					$('#address').val(data.data.address);
 					$("#modal-action").modal('show');
 					buttonloading(elementbtn, false);
@@ -166,23 +137,15 @@ function invest() {
 		});
 		$("#btn-insert").on("click", function () {
 			$('#modal-action-title').text("Thêm mới");
-			$('#idTypeInvestInput').val("");
-			$('#idTypeInvestInput').trigger('change');
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
-			$('#expiration_date').datepicker('setDate', new Date());
-			$('#birthday').datepicker('setDate', new Date());
-			$('#loan').val('');
 			$('#name').val('');
-			$('#interest_rate').val('');
+			$('#amount').val('');
 			$('#note').val('');
-			$('#tenor').val('');
-			$('#mortgage').val('');
 			$('#address').val('');
 			$("#modal-action").modal('show');
 		});
-		
 		$("#idTypeInvest").on("change", function (e) {
 			table.ajax.reload();
 		});
@@ -207,56 +170,27 @@ function invest() {
 		});
 		$('#formAction').validate({
 			rules: {
-				address: {
-					required: true
-				},
-				birthday: {
-					required: true
-				},
 				name: {
 					required: true
 				},
-				loan: {
-					required: true
-				},
-				tenor: {
-					required: true
-				},
-				interest_rate: {
+				amount: {
 					required: true
 				},
 				date: {
 					required: true
 				},
-				expiration_date: {
-					required: true
-				}
 			},
 			messages: {
-				address:{
-					required: "Vui lòng nhập địa chỉ nười vay ! ",
-				},
-				birthday:{
-					required: "Vui lòng nhập ngày tháng năm sinh ! ",
-				},
 				name: {
-					required: "Vui lòng nhập đơn vị vay !",
+					required: "Vui lòng nhập lĩnh vực đâu tư !",
 				},
-				loan: {
-					required: "Vui lòng nhập khoản vay !",
-				},
-				loan: {
-					required: "Vui lòng nhập kỳ hạn !",
-				},
-				interest_rate: {
-					required: "Vui lòng nhập lãi suất !",
+				amount: {
+					required: "Vui lòng nhập lĩnh vực đâu tư !",
 				},
 				date: {
-					required: "Vui lòng nhập ngày vay !",
+					required: "Vui lòng nhập ngày đâu tư !",
 				},
-				expiration_date: {
-					required: "Vui lòng nhập ngày hết hạn !",
-				}
+				
 			},
 			errorElement: 'span',
 			errorPlacement: function (error, element) {
@@ -272,12 +206,8 @@ function invest() {
 			submitHandler: function (e) {
 				var formData = new FormData($("#formAction")[0]);
 				formData.append('id', $("#onSave").attr('data-id'));
-				formData.set('birthday', moment(formData.get('birthday'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('date', moment(formData.get('date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
-				formData.set('expiration_date', moment(formData.get('expiration_date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
-				formData.set('loan', money_format_to_number(formData.get('loan')));
-				formData.set('interest_rate', money_format_to_number(formData.get('interest_rate')));
-				formData.set('idTypeInvest',formData.get('idTypeInvestInput'));
+				formData.set('amount', money_format_to_number(formData.get('amount')));
 				var url = $("#onSave").attr('data-url');
 				buttonloading('#onSave', true);
 				$.ajax({

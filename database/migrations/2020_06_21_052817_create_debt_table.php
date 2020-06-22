@@ -27,6 +27,7 @@ class CreateDebtTable extends Migration
             $table->string('note')->nullable();
             $table->date('date')->nullable();
             $table->date('expiration_date')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
