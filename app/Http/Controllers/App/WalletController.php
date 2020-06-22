@@ -13,6 +13,11 @@ class WalletController extends Controller
     {
         return view(template().".pages.wallet.index");
     }
+    public function getTotal()
+    {
+       $wallet =  Wallet::where('idUser','=',\Auth::user()->id)->sum('amount');
+       return JSON1($wallet);
+    }
     public function getDatatable(Request $Request)
     {
         $columns = array( 

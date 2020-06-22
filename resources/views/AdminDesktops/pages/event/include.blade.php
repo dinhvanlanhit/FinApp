@@ -10,8 +10,12 @@
             </button>
             </div>
             <div class="modal-body card-body-dashboard">
-                
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            @include('AdminDesktops.fromControl.selectWallet')
+                        </div>
+                    </div>
                     <div class="col-md-12">
 
                             <div class="form-group" >

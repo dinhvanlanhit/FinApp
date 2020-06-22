@@ -168,8 +168,10 @@ class EventController extends Controller
     }
     public function postDelete(Request $Request)
     {
+        $Event =Event::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->first();
         $result =Event::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
         if($result){
+            deleteWallet($Event->idWallet,$Event->amount);
             return JSON2(true,"");
         }else{
             return JSON2(false,"");
@@ -180,14 +182,16 @@ class EventController extends Controller
 
         $Event = new Event();
         $Event->idUser = Auth::user()->id;
-        
+        $Event->idWallet = $Request->idWallet;
         $Event->idTypeEvent = $Request->idTypeEvent;
         $Event->name = $Request->name;
         $Event->address = $Request->address;
         $Event->amount = $Request->amount;
         $Event->date = $Request->date;
-        if($Event->save()){
-            return JSON2(true,"Thêm thành công");
+        $Event->save();
+        if($Event){
+            $sumWallet= insertWallet($Event->idWallet,$Event->amount);
+            return JSON3($sumWallet,true,"Thêm thành công");
         }else{
             return JSON2(false,"Thêm thất bại");
         }
@@ -197,14 +201,30 @@ class EventController extends Controller
     {
 
         $Event =  Event::find((int)$Request->id);
+
+        $old_amount = $Event->amount;//Củ
+        $new_amount = $Request->amount;//Mới
+        $old_idWallet = $Event->idWallet;//Củ
+        $new_idWallet = $Request->idWallet;//Mới
+
+
         $Event->idUser = Auth::user()->id;
         $Event->idTypeEvent = $Request->idTypeEvent;
+        $Event->idWallet = $Request->idWallet;
         $Event->name = $Request->name;
         $Event->address = $Request->address;
         $Event->amount = $Request->amount;
         $Event->date = $Request->date;
-        if($Event->save()){
-            return JSON2(true,"Cập nhật thành công");
+        $Event->save();
+        if($Event){
+
+            updateWallet(
+                $old_idWallet,
+                $new_idWallet,
+                $old_amount,
+                $new_amount
+            );
+            return JSON2(true,"Thêm thành công");
         }else{
             return JSON2(false,"Cập nhật thất bại");
         }
@@ -214,6 +234,7 @@ class EventController extends Controller
     {
         $Event =  Event::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
         if($Event){
+           
             return JSON1($Event);
         }else{
             return JSON1($Event);

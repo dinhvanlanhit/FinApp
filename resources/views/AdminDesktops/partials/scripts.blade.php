@@ -16,4 +16,5 @@
 <script src="{{asset('AdminDesktops/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/toastr/toastr.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/dist/js/adminlte.js')}}"></script>
+<script> var wallet_total = "{{route('wallet_total')}}"; </script>
 <script src="{{asset('app/desktops/main.min.js')}}"></script>

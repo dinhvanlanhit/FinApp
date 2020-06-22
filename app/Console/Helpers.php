@@ -4,6 +4,81 @@ function surplus()
 
     return \App\Models\Wallet::where('idUser','=',\Auth::user()->id)->sum('amount');
 }
+function getWallet()
+{
+    return \App\Models\Wallet::where('idUser','=',\Auth::user()->id)->get();
+}
+function insertWallet($id,$new_amount)
+{
+    $data =  \App\Models\Wallet::find((int)$id);
+    
+    $data->amount = ($data->amount - $new_amount);
+    if($data->save()){
+        return \App\Models\Wallet::where('idUser','=',\Auth::user()->id)->sum('amount');
+    }else{
+        return 0;
+    }
+  
+}
+function updateWallet(
+    $old_idWallet,
+    $new_idWallet,
+    $old_amount,
+    $new_amount)
+{
+
+   
+ 
+    // 1 100,000,000
+    // 
+    // 2 : 49,000,000
+    // 2 : 1,000,000
+   
+    if($old_idWallet!=$new_idWallet){
+        
+     
+        if($new_amount!=$old_amount)
+        {
+            $DataOLD = \App\Models\Wallet::find((int)$old_idWallet);
+            $DataOLD->amount =  $DataOLD->amount + $old_amount;
+            $DataOLD->save();
+
+            $dataAMOUNT =  \App\Models\Wallet::where('id','=',(int)$old_idWallet)->pluck('amount')->first();
+      
+
+            $data =  \App\Models\Wallet::find((int)$new_idWallet);
+
+            
+
+            $data->amount  = ($dataAMOUNT - $new_amount)+$old_amount;
+            $data->save();
+
+        }else{
+            $DataOLD = \App\Models\Wallet::find((int)$old_idWallet);
+            $DataOLD->amount =  $DataOLD->amount + $old_amount;
+            $DataOLD->save();
+
+            $data =  \App\Models\Wallet::find((int)$new_idWallet);
+            $data->amount =  $data->amount - $old_amount;
+            $data->save();
+        }
+    }else{
+        $dataAMOUNT =  \App\Models\Wallet::where('id','=',(int)$old_idWallet)->pluck('amount')->first();
+        $data =  \App\Models\Wallet::find((int)$old_idWallet);
+        if($new_amount!=$old_amount)
+        {
+            $data->amount  = ($dataAMOUNT - $new_amount)+$old_amount;
+        }
+        $data->save();
+    }
+    
+}
+function deleteWallet($idWallet,$amount)
+{
+    $data =  \App\Models\Wallet::find((int)$idWallet);
+    $data->amount = ($data->amount+$amount);
+    $data->save();
+}
 function deleteFile($file)
 {
 	if (file_exists(base_path("{$file}"))) {

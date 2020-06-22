@@ -5,7 +5,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item  ">
-        <a href="{{route('wallet')}}" class="nav-link active"> <b class="surplus" id="surplus"> <i class="fa fa-money"></i>  : {{number_format(surplus())}} VNĐ </b></a>
+        <a href="{{route('wallet')}}" class="nav-link active"> <b> <i class="fa fa-money"></i> : </b><b class="surplus" id="surplus"> {{number_format(surplus())}}</b><b> VNĐ </b></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('profile')}}" class="nav-link active"><b> <i class="fa fa-user"></i> {{Auth::user()->full_name}}</b></a>

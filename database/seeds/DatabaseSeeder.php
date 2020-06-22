@@ -13,22 +13,22 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UsersTableSeeder::class,
-            TypeEventTableSeeder::class,
-            EventTableSeeder::class,
-            TypeCostTableSeeder::class,
-            CostTableSeeder::class,
-            TypeShoppingTableSeeder::class,
-            ShoppingTableSeeder::class,
-            TypeSalaryTableSeeder::class,
-            SalaryTableSeeder::class,
-            TypeDebtTableSeeder::class,
-            DebtTableSeeder::class,
-            LendloanTableSeeder::class,
-            InvestTableSeeder::class,
-            Goals_dreamsTableSeeder::class,
             WalletTableSeeder::class,
-            AssetTypeTableSeeder::class,
-            AssetTableSeeder::class
+            TypeEventTableSeeder::class,
+            // EventTableSeeder::class,
+            // TypeCostTableSeeder::class,
+            // CostTableSeeder::class,
+            // TypeShoppingTableSeeder::class,
+            // ShoppingTableSeeder::class,
+            // TypeSalaryTableSeeder::class,
+            // SalaryTableSeeder::class,
+            // TypeDebtTableSeeder::class,
+            // DebtTableSeeder::class,
+            // LendloanTableSeeder::class,
+            // InvestTableSeeder::class,
+            // Goals_dreamsTableSeeder::class,
+            // AssetTypeTableSeeder::class,
+            // AssetTableSeeder::class
         ]);
     }
 }

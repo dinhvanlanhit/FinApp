@@ -16,6 +16,7 @@ class EventTableSeeder extends Seeder
             [
               'idUser'=>1,
               'idTypeEvent'=>1,
+              'idWallet'=>2,
               'name' => 'Đám cưới Bé Heo',
               'amount' => 250000,
               'date' => '2020-06-02',
@@ -24,6 +25,7 @@ class EventTableSeeder extends Seeder
             [
               'idUser'=>1,
               'idTypeEvent'=>1,
+              'idWallet'=>2,
               'name' => 'Đám cưới Bé Chó',
               'amount' => 350000,
               'date' => '2020-06-02',
@@ -32,6 +34,7 @@ class EventTableSeeder extends Seeder
             [
               'idUser'=>1,
               'idTypeEvent'=>1,
+              'idWallet'=>2,
               'name' => 'Đám cưới Bé Mèo',
               'amount' => 350000,
               'date' => '2020-06-02',
@@ -41,6 +44,7 @@ class EventTableSeeder extends Seeder
             [
               'idUser'=>1,
               'idTypeEvent'=>1,
+              'idWallet'=>2,
               'name' => 'Đám cưới Bé Trâu',
               'amount' => 350000,
               'date' => '2020-06-02',
@@ -50,6 +54,7 @@ class EventTableSeeder extends Seeder
             [
               'idUser'=>1,
               'idTypeEvent'=>1,
+              'idWallet'=>2,
               'name' => 'Đám cưới Bé Gà',
               'amount' => 350000,
               'date' => '2020-06-02',
@@ -57,5 +62,17 @@ class EventTableSeeder extends Seeder
             ]
           ]
         );
+        $data = DB::table('event')->get();
+        foreach($data as $item){
+          $amount = DB::table('wallet')->where('id','=',$item->idWallet)->first();
+          // echo $amount->amount;
+          $data = DB::table('wallet')
+          ->where('id','=',$item->idWallet)
+          ->update(
+            [
+              'amount'=>$amount->amount-$item->amount
+            ]
+          );
+        }
     }
 }
