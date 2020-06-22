@@ -92,7 +92,7 @@ function shopping() {
             }
 		});
 		$("#formSearch").on('submit', function (e) {
-			e.prshoppingDefault();
+			e.preventDefault();
 			buttonloading(".formSearch", true);
 			table.ajax.reload();
 		})
