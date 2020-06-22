@@ -96,7 +96,14 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/update','WalletController@getUpdate')->name('wallet_update');
         Route::post('/delete','WalletController@postDelete')->name('wallet_delete');
     });
-    
+    Route::group(['prefix' => 'asset'], function () {
+        Route::get('/datatable','AssetController@getDatatable')->name('asset_table');
+        Route::get('/','AssetController@getAsset')->name('asset');
+        Route::post('/insert','AssetController@postInsert')->name('asset_insert');
+        Route::post('/update','AssetController@postUpdate')->name('asset_update');
+        Route::get('/update','AssetController@getUpdate')->name('asset_update');
+        Route::post('/delete','AssetController@postDelete')->name('asset_delete');
+    });
     
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/','ProfileController@getProfile')->name('profile');

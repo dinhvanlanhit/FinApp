@@ -43,3 +43,7 @@ Breadcrumbs::for('wallet', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Mục Tiêu Của Tôi', route('wallet'));
 });
+Breadcrumbs::for('asset', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Tài Sản', route('asset'));
+});

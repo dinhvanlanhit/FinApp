@@ -26,8 +26,9 @@ class DatabaseSeeder extends Seeder
             LendloanTableSeeder::class,
             InvestTableSeeder::class,
             Goals_dreamsTableSeeder::class,
-            WalletTableSeeder::class
-           
+            WalletTableSeeder::class,
+            AssetTypeTableSeeder::class,
+            AssetTableSeeder::class
         ]);
     }
 }

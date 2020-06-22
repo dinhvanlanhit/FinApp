@@ -100,7 +100,7 @@
         
       </li>
       <li class="nav-item menu-open">
-        <a href="#" class="nav-link ">
+        <a href="{{route('asset')}}" class="nav-link ">
           <i class="nav-icon fas fa-hdd-o"></i>
           <p>
             Tài Sản
