@@ -22,7 +22,7 @@ class AssetController extends Controller
             1 => 'type_name',
             2 => 'name',
             3 => 'amount',
-            4 => 'date', 
+            4 => 'note', 
             5 => 'created_at'
         );
         $idUser = Auth::user()->id;
@@ -34,7 +34,6 @@ class AssetController extends Controller
         $search = $Request->input('search');
         $dateBegin = $Request->input('dateBegin');
         $dateEnd = $Request->input('dateEnd');
-
         if(!empty($idTypeAsset))
         {
             if(!empty($dateBegin)&&!empty($dateEnd)){
@@ -57,7 +56,7 @@ class AssetController extends Controller
                     ->Where(function($query)use($search){
                         $query->where('asset.id', 'LIKE', "%{$search}%")
                         ->orWhere('asset.note', 'LIKE',"%{$search}%")
-                        
+                        ->orWhere('asset.address','LIKE',"%{$search}%")
                         ->orWhere('asset.amount','LIKE',"%{$search}%")
                         ->orWhere('asset.date','LIKE',"%{$search}%");
                     })
@@ -84,7 +83,7 @@ class AssetController extends Controller
                     ->Where(function($query)use($search){
                         $query->where('asset.id', 'LIKE', "%{$search}%")
                         ->orWhere('asset.note', 'LIKE',"%{$search}%")
-                        
+                        ->orWhere('asset.address','LIKE',"%{$search}%")
                         ->orWhere('asset.amount','LIKE',"%{$search}%")
                         ->orWhere('asset.date','LIKE',"%{$search}%");
                     })
@@ -115,7 +114,7 @@ class AssetController extends Controller
                     ->Where(function($query)use($search){
                         $query->where('asset.id', 'LIKE', "%{$search}%")
                         ->orWhere('asset.note', 'LIKE',"%{$search}%")
-                        
+                        ->orWhere('asset.address','LIKE',"%{$search}%")
                         ->orWhere('asset.amount','LIKE',"%{$search}%")
                         ->orWhere('asset.date','LIKE',"%{$search}%");
                     })
@@ -142,7 +141,7 @@ class AssetController extends Controller
                     ->Where(function($query)use($search){
                         $query->where('asset.id', 'LIKE', "%{$search}%")
                         ->orWhere('asset.note', 'LIKE',"%{$search}%")
-                        
+                        ->orWhere('asset.address','LIKE',"%{$search}%")
                         ->orWhere('asset.amount','LIKE',"%{$search}%")
                         ->orWhere('asset.date','LIKE',"%{$search}%");
                     })
@@ -175,18 +174,13 @@ class AssetController extends Controller
     }
     public function postInsert(Request $Request)
     {
-
         $Asset = new Asset();
         $Asset->idUser = Auth::user()->id;
         $Asset->idTypeAsset = $Request->idTypeAsset;
+        $Asset->name=$Request->name;
         $Asset->amount = $Request->amount;
-        $Asset->date = $Request->date;
-        $Asset->company = $Request->company;
-        if( $Request->name==''||$Request->name==null){
-            $Asset->name =Auth::user()->full_name;
-        }else{
-            $Asset->name=$Request->name;
-        }
+        $Asset->note = $Request->note;
+        $Asset->address = $Request->address;
         if($Asset->save()){
             return JSON2(true,"Thêm thành công");
         }else{
@@ -199,15 +193,11 @@ class AssetController extends Controller
 
         $Asset =  Asset::find((int)$Request->id);
         $Asset->idUser = Auth::user()->id;
-        $Asset->company = $Request->company;
         $Asset->idTypeAsset = $Request->idTypeAsset;
+        $Asset->name=$Request->name;
         $Asset->amount = $Request->amount;
-        $Asset->date = $Request->date;
-        if( $Request->name==''||$Request->name==null){
-            $Asset->name =Auth::user()->full_name;
-        }else{
-            $Asset->name=$Request->name;
-        }
+        $Asset->note = $Request->note;
+        $Asset->address = $Request->address;
         if($Asset->save()){
             return JSON2(true,"Cập nhật thành công");
         }else{

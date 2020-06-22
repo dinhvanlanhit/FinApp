@@ -4,7 +4,7 @@
         <a href="{{route('dashboard')}}/" class="nav-link ">
           <i class="nav-icon fas fa-tachometer-alt"></i>
           <p>
-             Tông Quan
+             Tổng Quan
           </p>
         </a>
       </li>

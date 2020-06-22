@@ -14,7 +14,7 @@
                     <div class="col-md-2">
                         <label>Loại tài sản </label>
                         <div class="form-group" >
-                              <select class="form-control select2bs4" style="width: 100%;" id="idTypeAsset" name="idTypeAsset">
+                              <select class="form-control select2bs4" style="width: 100%;" id="idTypeAssetInput" name="idTypeAssetInput">
                                 <option value="">--Chọn tài sản--</option>    
                                 @foreach ($typeasset as $item)
                                     <option value="{{$item->id}}">{{$item->type_name}}</option>                      

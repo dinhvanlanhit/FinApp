@@ -36,42 +36,30 @@ function asset() {
 				render: function (data, type, row, meta) {
 					return meta.row + meta.settings._iDisplayStart + 1;
 				}
-			 }, {
-				title: "Nguồn Thu Nhập",
-				data: "type_name",
-				name: "type_name",
-				render: function (data, type, row, meta) {
-					return  '<b class="text-danger"><i class="fa fa-money"></i> : '+data + '</b><br>';
+				}, {
+					title: "Tên Tài Sản",
+					data: "type_name",
+					name: "type_name",
+					
 				}
-			},
-			{
-				title: "Chi Tiết",
-				data: "company",
-				name: "company",
-				className: "text-left",
-				render: function (data, type, row, meta) {
-					var html ='';
-						if(data!=null){
-							html += '<b class="text-danger"><i class="fa fa-building"></i> : '+data + '</b><br>';
-						}
-						html +='<b class="text-info"> <i class="fa fa-user"></i> : ' + row.name + '</b><br>';
-						html +='<b class="text-success"> <i class="fa fa-calendar"></i> : ' + row.date + '</b>';
-				
-					 return html;
-				
-					}
-			}
-			, {
-				title: "Tiền Lương",
+				,{
+				title: "Trị Giá",
 				data: "amount",
 				name: "amount",
 				className: "text-center",
 				render: function (data, type, row, meta) {
-					return '<b class="">' + money_format(data) + ' VNĐ</b>';
+					var html ='';
+						html +='<b class="">Trị giá : ' + money_format(data) + ' VNĐ</b><br>';
+						html +='<b class="">Địa chỉ : ' + row.address + '</b>';
+					 return html;
 				}
-			},
-			
-			 {
+				},
+				{
+					title: "Ghi chú",
+					data: "note",
+					name: "note",
+				},
+			  {
 				title: "Tác vụ",
 				data: "created_at",
 				name: "created_at",
