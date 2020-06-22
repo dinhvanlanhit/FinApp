@@ -191,7 +191,7 @@ class DebtController extends Controller
         $Debt->date = $Request->date;
         $Debt->expiration_date = $Request->expiration_date;
         $Debt->note = $Request->note;
-        $Lendloan->status = $Request->status;
+        $Debt->status = $Request->status;
         if($Debt->save()){
             return JSON2(true,"Thêm thành công");
         }else{
@@ -212,7 +212,7 @@ class DebtController extends Controller
         $Debt->date = $Request->date;
         $Debt->expiration_date = $Request->expiration_date;
         $Debt->note = $Request->note;
-        $Lendloan->status = $Request->status;
+        $Debt->status = $Request->status;
         if($Debt->save()){
             return JSON2(true,"Cập nhật thành công");
         }else{
