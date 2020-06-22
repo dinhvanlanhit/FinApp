@@ -12,41 +12,36 @@
             <div class="modal-body card-body-dashboard">
                 
                 <div class="row">
-                    <div class="col-md-12">
-
-                        <div class="form-group" >
-                            <label>Nhóm Thu Nhập </label>
-                            <select class="form-control select2bs4" id="idTypeSalaryInput" name="idTypeSalaryInput">
-                            <option value="">-- Chọn nhóm -- </option>    
-                            @foreach ($typesalary as $item)
-                                <option value="{{$item->id}}">{{$item->type_name}}</option>                      
-                            @endforeach
-                            </select>
-                        
-                    </div>
-                </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Nguồn Thu Nhập  <small>(Chồng ,Vợ , Con ... nếu có !)</small></label>
-                            <input class="form-control" id="name" name="name"/>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Nơi Làm Việc <small>(Công ty ,Cơ Quan ...)</small></label>
-                            <input class="form-control" id="company" name="company"/>
-                        </div>
-                    </div>
       
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Tiền Lương </label>
-                            <input class="form-control" id="amount" name="amount"/>
+                            <label>Đơn Vị Vay</label>
+                            <input class="form-control" id="name" name="name"/>
+                        </div>
+                    </div>
+                    
+          
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Khoản vay</label>
+                            <input class="form-control" id="loan" name="loan"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Kỳ Hạn</label>
+                            <input class="form-control" type="number" id="tenor" name="tenor"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Lãi Suất / Tháng / Năm</label>
+                            <input class="form-control" id="interest_rate" name="interest_rate"/>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group"> 
-                            <label>Ngày Tháng Nhận Lương </label>
+                            <label>Ngày Vay & Ngày Hết Hạn </label>
                             <div class="input-group">
                                 <input type="text"  id="date" name="date" class="form-control text-center">
                                 <div class="input-group-prepend" >
@@ -54,10 +49,18 @@
                                     <i class="far fa-calendar-alt"></i>
                                     </span>
                                 </div>
+                                <input type="text"  id="expiration_date" name="expiration_date" class="form-control text-center">
                             </div>
                     
                         </div>
-                </div>
+                        
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Ghi Chú     </label>
+                            <input class="form-control" id="note" name="note"/>
+                        </div>
+                    </div>
                  
             </div>
             <div class="modal-footer">

@@ -8,7 +8,7 @@
       </h3>
     </div>
     <!-- /.card-header -->
-    <div class="card-body">
+    <div class="card-body card-body-dashboard">
       <form id="formSearch">
         <div class="row">
           <div class="col-md-2">

@@ -1,4 +1,4 @@
-function debt() {
+function lendloan() {
 	this.datas = null;
 	this.runJS = function () {
 		var datas = this.datas;
@@ -11,7 +11,7 @@ function debt() {
 		
 
 
-		var table = $("#debt-table").DataTable({
+		var table = $("#lendloan-table").DataTable({
 			serverSide: true,
 			processing: true,
 			paging: true,
@@ -26,7 +26,7 @@ function debt() {
 				type: "GET",
 				data: function (d) {
 					return $.extend({}, d, {
-						idTypeDebt: $("#idTypeDebt").val(),
+						idTypeLendloan: $("#idTypeLendloan").val(),
 						dateBegin: $("#dateBegin").val(),
 						dateEnd: $("#dateEnd").val(),
 						search: $("#search").val(),
@@ -45,9 +45,9 @@ function debt() {
 			}, 
 			
 			{
-				title: "Nhóm Nợ",
-				data: "type_name",
-				name: "type_name",
+				title: "Người Vay",
+				data: "name",
+				name: "name",
 				className: "text-center",
 				render: function (data, type, row, meta) {
 					var html ='';
@@ -135,8 +135,8 @@ function debt() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					$('#idTypeDebtInput').val(data.data.idTypeDebt); 
-					$('#idTypeDebtInput').trigger('change'); 
+					$('#idTypeLendloanInput').val(data.data.idTypeLendloan); 
+					$('#idTypeLendloanInput').trigger('change'); 
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
@@ -155,8 +155,8 @@ function debt() {
 		});
 		$("#btn-insert").on("click", function () {
 			$('#modal-action-title').text("Thêm mới");
-			$('#idTypeDebtInput').val("");
-			$('#idTypeDebtInput').trigger('change');
+			$('#idTypeLendloanInput').val("");
+			$('#idTypeLendloanInput').trigger('change');
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
@@ -169,7 +169,7 @@ function debt() {
 			$("#modal-action").modal('show');
 		});
 		
-		$("#idTypeDebt").on("change", function (e) {
+		$("#idTypeLendloan").on("change", function (e) {
 			table.ajax.reload();
 		});
 		$("#onDelete").on("click", function (e) {
@@ -193,7 +193,7 @@ function debt() {
 		});
 		$('#formAction').validate({
 			rules: {
-				idTypeDebtInput: {
+				idTypeLendloanInput: {
 					required: true
 				},
 				name: {
@@ -216,7 +216,7 @@ function debt() {
 				}
 			},
 			messages: {
-				idTypeDebtInput:{
+				idTypeLendloanInput:{
 					required: "Vui lòng chọn nhóm nợ ! ",
 				},
 				name: {
@@ -256,7 +256,7 @@ function debt() {
 				formData.set('expiration_date', moment(formData.get('expiration_date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('loan', money_format_to_number(formData.get('loan')));
 				formData.set('interest_rate', money_format_to_number(formData.get('interest_rate')));
-				formData.set('idTypeDebt',formData.get('idTypeDebtInput'));
+				formData.set('idTypeLendloan',formData.get('idTypeLendloanInput'));
 				var url = $("#onSave").attr('data-url');
 				buttonloading('#onSave', true);
 				$.ajax({

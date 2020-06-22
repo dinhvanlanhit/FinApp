@@ -27,3 +27,7 @@ Breadcrumbs::for('debt', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Quản Lý Nợ', route('debt'));
 });
+Breadcrumbs::for('lendloan', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Cho vay', route('lendloan'));
+});

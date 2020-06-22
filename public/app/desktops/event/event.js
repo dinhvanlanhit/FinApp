@@ -87,10 +87,14 @@ function event() {
 						text: 'Sửa'
 					}]);
 				}
-			}, ]
+			},]
+			,drawCallback: function (settings) {
+                buttonloading(".formSearch", false);
+            }
 		});
 		$("#formSearch").on('submit', function (e) {
 			e.preventDefault();
+			buttonloading(".formSearch", true);
 			table.ajax.reload();
 		})
 		$(document).delegate(".btn-delete", "click", function () {

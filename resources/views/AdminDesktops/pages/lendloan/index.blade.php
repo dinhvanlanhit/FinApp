@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-md-5">
                   <div class="form-group">
-                        <input class="form-control" id="search" name="search"/>
+                        <input class="form-control" id="search" name="search" placeholder="Từ khóa tìm kiếm ..."/>
                   </div>
                 </div>
                 <div class="col-md-3">
@@ -22,7 +22,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <button type="submit" class="btn btn-info btn-block formSearch">Tìm kiếm</button>
-                      </div>
+                                </div>
                 </div>
                 <div class="col-md-2">
                   <div class="form-group">
@@ -33,7 +33,7 @@
         </form>
         <div class="row">
           <div class="col-md-12">
-              <table class="table table-bordered row-border hover" id="shopping-table"></table>
+              <table class="table table-bordered row-border hover text-small" id="lendloan-table"></table>
           </div>
         </div>
         
@@ -44,21 +44,21 @@
       <a  href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
     </div>
   </div>
-@include('AdminDesktops.pages.shopping.include')
+@include('AdminDesktops.pages.lendloan.include')
 @endsection
 @section('javascript')
 
-<script src="{{asset('app/desktops/shopping/shopping.js')}}"></script>
+<script src="{{asset('app/desktops/lendloan/lendloan.js')}}"></script>
 <script> 
-    var shopping = new shopping(); 
-    shopping.datas={
+    var lendloan = new lendloan(); 
+    lendloan.datas={
         routes:{
-          datatable:"{{route('shopping_table')}}",
-          insert:"{{route('shopping_insert')}}",
-          update:"{{route('shopping_update')}}",
-          delete:"{{route('shopping_delete')}}",
+          datatable:"{{route('lendloan_table')}}",
+          insert:"{{route('lendloan_insert')}}",
+          update:"{{route('lendloan_update')}}",
+          delete:"{{route('lendloan_delete')}}",
         }
     }   
-    shopping.runJS();
+    lendloan.runJS();
 </script>
 @endsection

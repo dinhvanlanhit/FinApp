@@ -59,7 +59,7 @@
         </a>
       </li>
       <li class="nav-item menu-open ">
-        <a href="#" class="nav-link ">
+        <a href="{{route('lendloan')}}" class="nav-link ">
           <i class="nav-icon fas fa-area-chart"></i>
           <p>
             Cho Vay

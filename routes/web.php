@@ -64,6 +64,14 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/update','DebtController@getUpdate')->name('debt_update');
         Route::post('/delete','DebtController@postDelete')->name('debt_delete');
     });
+    Route::group(['prefix' => 'lendloan'], function () {
+        Route::get('/datatable','LendloanController@getDatatable')->name('lendloan_table');
+        Route::get('/','LendloanController@getLendloan')->name('lendloan');
+        Route::post('/insert','LendloanController@postInsert')->name('lendloan_insert');
+        Route::post('/update','LendloanController@postUpdate')->name('lendloan_update');
+        Route::get('/update','LendloanController@getUpdate')->name('lendloan_update');
+        Route::post('/delete','LendloanController@postDelete')->name('lendloan_delete');
+    });
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/','ProfileController@getProfile')->name('profile');
         Route::post('/','ProfileController@postProfile')->name('profile');
