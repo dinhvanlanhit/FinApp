@@ -11,8 +11,8 @@
             </div>
             <div class="modal-body card-body-dashboard">
                 <div class="row">
-                    <div class="col-md-2">
-                        <label>Loại tài sản </label>
+                    <div class="col-md-12">
+                        <label>Loại Tài Sản </label>
                         <div class="form-group" >
                               <select class="form-control select2bs4" style="width: 100%;" id="idTypeAssetInput" name="idTypeAssetInput">
                                 <option value="">--Chọn tài sản--</option>    
@@ -24,14 +24,20 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Tên Ví </label>
+                            <label>Tên Tài Sản </label>
                             <input class="form-control" id="name" name="name"/>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Số Tiền </label>
+                            <label>Trị Giá </label>
                             <input class="form-control" id="amount" name="amount"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Địa Chỉ (Nếu có) </label>
+                            <input class="form-control" id="address" name="address"/>
                         </div>
                     </div>
                     <div class="col-md-12">

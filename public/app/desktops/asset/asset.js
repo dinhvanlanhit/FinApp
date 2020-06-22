@@ -2,9 +2,6 @@ function asset() {
 	this.datas = null;
 	this.runJS = function () {
 		var datas = this.datas;
-		$("#date").datepicker();
-		$('#date').css("z-index", "0");
-		$('#date').datepicker("option", "dateFormat", 'dd-mm-yy');
 		var table = $("#asset-table").DataTable({
 			serverSide: true,
 			processing: true,
@@ -112,10 +109,10 @@ function asset() {
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
-					$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#company').val(data.data.company);
-					$('#amount').val(money_format(data.data.amount));
 					$('#name').val(data.data.name);
+					$('#amount').val(money_format(data.data.amount));
+					$('#note').val(data.data.note);
+					$('#address').val(data.data.address);
 					$("#modal-action").modal('show');
 					buttonloading(elementbtn, false);
 				},
@@ -126,10 +123,12 @@ function asset() {
 			$('#modal-action-title').text("Thêm mới");
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
-			$('#date').datepicker('setDate', new Date());
-			$('#company').val('');
-			$('#amount').val('');
+			$('#idTypeAssetInput').val(''); 
+			$('#idTypeAssetInput').trigger('change');
 			$('#name').val('');
+			$('#amount').val('');
+			$('#note').val('');
+			$('#address').val('');
 			$("#modal-action").modal('show');
 		});
 		$("#onDelete").on("click", function (e) {
@@ -153,29 +152,23 @@ function asset() {
 				idTypeAssetInput:{
 					required: true
 				},
-				company: {
+				name: {
+					required: true
+				},
+				amount: {
 					required: true
 				},
 				
-				amount: {
-					required: true
-				},
-				date: {
-					required: true
-				}
 			},
 			messages: {
 				idTypeAssetInput: {
-					required: "Vui lòng chọn nhóm thu nhập !",
+					required: "Vui lòng chọn nhóm tài sản !",
 				},
-				company: {
-					required: "Vui lòng nhập nơi làm việc !",
+				amount: {
+					required: "Bạn chưa nhập tên tài sản !",
 				},
 				amount: {
 					required: "Bạn chưa nhập số tiền !",
-				},
-				date: {
-					required: "Bạn chửa chọn ngày !",
 				},
 			},
 			errorElement: 'span',
@@ -192,7 +185,6 @@ function asset() {
 			submitHandler: function (e) {
 				var formData = new FormData($("#formAction")[0]);
 				formData.append('id', $("#onSave").attr('data-id'));
-				formData.set('date', moment(formData.get('date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('amount', money_format_to_number(formData.get('amount')));
 				formData.set('idTypeAsset', formData.get('idTypeAssetInput'));
 				var url = $("#onSave").attr('data-url');
