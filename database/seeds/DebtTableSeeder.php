@@ -16,6 +16,7 @@ class DebtTableSeeder extends Seeder
             [
               'idUser'=>1,
               'idTypeDebt'=>1,
+              'idWallet'=>1,
               'name' => 'AGRIBANK',
               'address'=>'Huyện sơn ba',
               'amount' => 200000000,
@@ -30,6 +31,7 @@ class DebtTableSeeder extends Seeder
             [
                 'idUser'=>1,
                 'idTypeDebt'=>1,
+                'idWallet'=>1,
                 'name' => 'AGRIBANK',
                 'address'=>'Huyện sơn ba',
                 'amount' => 200000000,

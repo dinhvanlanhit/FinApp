@@ -15,6 +15,7 @@ class LendloanTableSeeder extends Seeder
             [
                 [
                   'idUser'=>1,
+                  'idWallet'=>1,
                   'name' => 'Đinh Thị A',
                   'birthday'=>'1989-02-02',
                   'sex'=>1,
@@ -30,6 +31,7 @@ class LendloanTableSeeder extends Seeder
                 ],
                 [
                     'idUser'=>1,
+                    'idWallet'=>1,
                     'name' => 'Đinh Văn A',
                     'birthday'=>'1989-02-02',
                     'sex'=>0,

@@ -140,8 +140,8 @@ function debt() {
 					$('#idTypeDebtInput').trigger('change'); 
 					$('#status').val(data.data.status); 
 					$('#status').trigger('change'); 
-
-					
+					$('#idWallet').val(data.data.idWallet); 
+					$('#idWallet').trigger('change'); 
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
@@ -162,6 +162,9 @@ function debt() {
 			$('#modal-action-title').text("Thêm mới");
 			$('#idTypeDebtInput').val("");
 			$('#idTypeDebtInput').trigger('change');
+			$('#idWallet').val(""); // Select the option with a value of '1'
+			$('#idWallet').trigger('change'); // Notify any JS components that the value changed
+
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
@@ -186,6 +189,7 @@ function debt() {
 			}, datas.routes.delete);
 			if (result) {
 				table.ajax.reload();
+				surplus();
 				$("#modal-delete").modal('hide');
 				buttonloading('#onDelete', false);
 			}
@@ -207,12 +211,7 @@ function debt() {
 				amount: {
 					required: true
 				},
-				tenor: {
-					required: true
-				},
-				interest_rate: {
-					required: true
-				},
+				
 				date: {
 					required: true
 				},
@@ -230,12 +229,7 @@ function debt() {
 				amount: {
 					required: "Vui lòng nhập khoản vay !",
 				},
-				tenor: {
-					required: "Vui lòng nhập kỳ hạn !",
-				},
-				interest_rate: {
-					required: "Vui lòng nhập lãi suất !",
-				},
+				
 				date: {
 					required: "Vui lòng nhập ngày vay !",
 				},
@@ -276,6 +270,7 @@ function debt() {
 							buttonloading('#onSave', false);
 							table.ajax.reload();
 							$("#modal-action").modal('hide');
+							surplus();
 							Toast.fire({
 								icon: data.icon,
 								title: data.messages

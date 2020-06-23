@@ -19,6 +19,9 @@ class CreateDebtTable extends Migration
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('idTypeDebt')->unsigned()->nullable();
             $table->foreign('idTypeDebt')->references('id')->on('type_debt')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('idWallet')->unsigned()->nullable();
+            $table->foreign('idWallet')->references('id')->on('wallet')->onDelete('cascade')->onUpdate('cascade');
+
             $table->string('name')->nullable();
             $table->double('amount')->default(0)->nullable();
             $table->Integer('tenor')->nullable();

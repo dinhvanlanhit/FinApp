@@ -24,7 +24,7 @@ class WalletTableSeeder extends Seeder
                     'idUser'=>1,
                     'idTypeWallet'=>1,
                     'name' => 'TIỀN MẶT',
-                    'amount'=>100000000,
+                    'amount'=>400000000,
                     
                     'note'=>''
                 ],

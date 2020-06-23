@@ -184,10 +184,11 @@ class DebtController extends Controller
         $Debt = new Debt();
         $Debt->idUser = Auth::user()->id;
         $Debt->idTypeDebt = $Request->idTypeDebt;
+        $Debt->idWallet = $Request->idWallet;
         $Debt->name= $Request->name;
         $Debt->amount= $Request->amount;
         $Debt->tenor= $Request->tenor;
-        $Debt->interest_rate = $Request->interest_rate;
+        $Debt->interest_rate = ($Request->interest_rate == 'NaN'?0:$Request->interest_rate);
         $Debt->date = $Request->date;
         $Debt->expiration_date = $Request->expiration_date;
         $Debt->note = $Request->note;
@@ -204,11 +205,12 @@ class DebtController extends Controller
 
         $Debt =  Debt::find((int)$Request->id);
         $Debt->idUser = Auth::user()->id;
+        $Debt->idWallet = $Request->idWallet;
         $Debt->idTypeDebt = $Request->idTypeDebt;
         $Debt->name= $Request->name;
         $Debt->amount= $Request->amount;
         $Debt->tenor= $Request->tenor;
-        $Debt->interest_rate = $Request->interest_rate;
+        $Debt->interest_rate = ($Request->interest_rate == 'NaN'?0:$Request->interest_rate);
         $Debt->date = $Request->date;
         $Debt->expiration_date = $Request->expiration_date;
         $Debt->note = $Request->note;

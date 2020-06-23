@@ -11,34 +11,65 @@ function surplus()
     $sumCost  = \App\Models\Cost::where('idUser','=',\Auth::user()->id)->sum('amount');
     $sumSalary  = \App\Models\Salary::where('idUser','=',\Auth::user()->id)->sum('amount');
     $sumLendloan  = \App\Models\Lendloan::where('idUser','=',\Auth::user()->id)->sum('amount');
+    $sumInvest  = \App\Models\Invest::where('idUser','=',\Auth::user()->id)->sum('amount');
+
     $sumWallet=$sumWallet-$sumEvent;
     $sumWallet=$sumWallet-$sumShopping;
     $sumWallet=$sumWallet-$sumCost;
     $sumWallet=$sumWallet+$sumSalary;
-    $sumWallet=$sumWallet+$sumLendloan;
+    $sumWallet=$sumWallet-$sumLendloan;
+    $sumWallet=$sumWallet-$sumInvest;
     return $sumWallet;
 
 
-//    $result = \DB::table('users')->select('select * from users')->get();
-// dd($result);
-
-
-//     SELECT *,amount - child.sumUSED AS surplus   FROM wallet AS wallet_PARENT,
-// (
-// 	SELECT SUM(sumUSED) AS sumUSED, idWallet  FROM (
-	
-// 		SELECT SUM(amount) AS sumUSED, idWallet 
-// 		FROM event 
-// 		UNION ALL
-// 		SELECT SUM(amount) AS sumUSED, idWallet 
-// 		FROM shopping 
-// 		UNION ALL
-// 		SELECT SUM(amount) AS sumUSED, idWallet 
-// 		FROM cost 
-		
-// 		GROUP BY idWallet
-// 	) AS TBN GROUP BY TBN.idWallet
-// ) AS child WHERE child.idWallet = wallet_PARENT.id
+    // CREATE DEFINER=`root`@`localhost` PROCEDURE `datatable_wallet`(
+    //     IN `$search` VARCHAR(255),
+    //     IN `$limit` VARCHAR(50),
+    //     IN `$start` VARCHAR(50),
+    //     IN `$order` VARCHAR(50),
+    //     IN `$dir` VARCHAR(50)
+    // )
+    // LANGUAGE SQL
+    // NOT DETERMINISTIC
+    // CONTAINS SQL
+    // SQL SECURITY DEFINER
+    // COMMENT ''
+    // BEGIN
+    //     DECLARE xSQL  VARCHAR(2000);
+    //     SET xSQL = "SELECT * FROM wallet AS wallet_PARENT,
+    //     (
+    //         SELECT SUM(sumCOST) AS sumCOST, idWallet  FROM (
+    //             SELECT SUM(amount) AS sumCOST, idWallet 
+    //             FROM event 
+    //             UNION ALL
+    //             SELECT SUM(amount) AS sumCOST, idWallet 
+    //             FROM shopping 
+    //             UNION ALL
+    //             SELECT SUM(amount) AS sumCOST, idWallet 
+    //             FROM cost 
+    //             GROUP BY idWallet
+                
+    //         ) AS TBN GROUP BY TBN.idWallet
+    //     ) AS child WHERE 
+    //     child.idWallet = wallet_PARENT.id ";
+    //     IF ($search != '' ) THEN
+    //         SET xSQL = CONCAT(xSQL," AND 
+    //                 wallet_PARENT.name LIKE N'%",$search,"%'
+    //                 OR wallet_PARENT.amount LIKE N'%",$search,"%'
+    //                 OR wallet_PARENT.note LIKE N'%",$search,"%'
+    //                 OR wallet_PARENT.created_at LIKE N'%",$search,"%'
+    //         ");
+    //     END IF;
+    //     SET xSQL = CONCAT(xSQL," ORDER BY ",$dir," ",$order," ");
+    //     SET @V_SQL = xSQL;
+    //     PREPARE STM FROM @V_SQL;
+    //     EXECUTE STM;
+    //     DEALLOCATE PREPARE STM;
+        
+    
+        
+        
+    // END
 }
 function getWallet()
 {

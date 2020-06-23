@@ -15,16 +15,18 @@ class InvestTableSeeder extends Seeder
             [
                 [
                   'idUser'=>1,
+                  'idWallet'=>1,
                   'name' => 'Bán Hàng Online Mý Phẩm',
-                  'amount' => 200000000,
+                  'amount' => 10000000,
                   'note'=>'Đâu Tư Mỹ Phẩm',
                   'address'=>'Sơn Hạ - Sơn Hà - TP Quảng Ngãi',
                   'date'=>'2020-06-22'
                 ],
                 [
                   'idUser'=>1,
+                  'idWallet'=>1,
                   'name' => 'Bán Hàng Online Lấy Sĩ Áo',
-                  'amount' => 200000000,
+                  'amount' => 20000000,
                   'note'=>'Quần Áo',
                   'address'=>'Sơn Hạ - Sơn Hà - TP Quảng Ngãi',
                   'date'=>'2020-06-22'

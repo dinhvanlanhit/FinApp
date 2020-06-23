@@ -23,15 +23,13 @@ class DatabaseSeeder extends Seeder
             ShoppingTableSeeder::class,
             TypeSalaryTableSeeder::class,
             SalaryTableSeeder::class,
-       
-            
-            // TypeDebtTableSeeder::class,
-            // DebtTableSeeder::class,
-            // LendloanTableSeeder::class,
-            // InvestTableSeeder::class,
-            // Goals_dreamsTableSeeder::class,
-            // AssetTypeTableSeeder::class,
-            // AssetTableSeeder::class
+            TypeDebtTableSeeder::class,
+            DebtTableSeeder::class,
+            LendloanTableSeeder::class,
+            InvestTableSeeder::class,
+            Goals_dreamsTableSeeder::class,
+            AssetTypeTableSeeder::class,
+            AssetTableSeeder::class
         ]);
     }
 }
