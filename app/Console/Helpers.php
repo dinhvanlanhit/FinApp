@@ -39,22 +39,33 @@ function surplus()
     // COMMENT ''
     // BEGIN
     //     DECLARE xSQL  VARCHAR(2000);
-    //     SET xSQL = "SELECT * FROM wallet AS wallet_PARENT,
-    //     (
-    //         SELECT SUM(sumCOST) AS sumCOST, idWallet  FROM (
-    //             SELECT SUM(amount) AS sumCOST, idWallet 
-    //             FROM event 
-    //             UNION ALL
-    //             SELECT SUM(amount) AS sumCOST, idWallet 
-    //             FROM shopping 
-    //             UNION ALL
-    //             SELECT SUM(amount) AS sumCOST, idWallet 
-    //             FROM cost 
-    //             GROUP BY idWallet
-                
-    //         ) AS TBN GROUP BY TBN.idWallet
-    //     ) AS child WHERE 
-    //     child.idWallet = wallet_PARENT.id ";
+    //     SET xSQL = "SELECT * FROM (SELECT * FROM wallet AS wallet_PARENT,
+            // (
+            //     SELECT SUM(sumCOST) AS sumCOST, idWallet  FROM (
+            //     SELECT SUM(amount) AS sumCOST , idWallet 
+            //     FROM event
+            //     UNION ALL
+            //     SELECT SUM(amount) AS sumCOST, idWallet 
+            //     FROM shopping 
+            //     UNION ALL
+            //     SELECT SUM(amount) AS sumCOST, idWallet 
+            //     FROM cost 
+            //     UNION ALL
+            //     SELECT SUM(amount) AS sumCOST, idWallet 
+            //     FROM lendloan 
+            //     UNION ALL
+            //     SELECT SUM(amount) AS sumCOST, idWallet 
+            //     FROM invest 
+            //     GROUP BY idWallet      
+            // ) AS TBN GROUP BY TBN.idWallet
+            // ) AS child WHERE 
+            // child.idWallet = wallet_PARENT.id) AS TEST
+            // LEFT JOIN (SELECT SUM(TOTAL_S) AS TOTAL_S, idWallet FROM (
+            //     SELECT SUM(amount) AS TOTAL_S, idWallet  FROM salary GROUP BY idWallet
+            //     UNION ALL
+            //     SELECT SUM(amount) AS TOTAL_S, idWallet  FROM debt GROUP BY idWallet) AS TBCHILD
+            // ) AS TBS 
+            // ON TBS.idWallet = TEST.id
     //     IF ($search != '' ) THEN
     //         SET xSQL = CONCAT(xSQL," AND 
     //                 wallet_PARENT.name LIKE N'%",$search,"%'
