@@ -115,6 +115,8 @@ function shopping() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
+					$('#idWallet').val(data.data.idWallet); // Select the option with a value of '1'
+					$('#idWallet').trigger('change'); // Notify any JS components that the value changed
 					$('#idTypeShoppingInput').val(data.data.idTypeShopping); // Select the option with a value of '1'
 					$('#idTypeShoppingInput').trigger('change'); // Notify any JS components that the value changed
 					$("#onSave").attr('data-url', datas.routes.update);
@@ -140,6 +142,8 @@ function shopping() {
 			$('#name').val('');
 			$('#idTypeShoppingInput').val(''); // Select the option with a value of '1'
 			$('#idTypeShoppingInput').trigger('change');
+			$('#idWallet').val(''); // Select the option with a value of '1'
+					$('#idWallet').trigger('change'); // Notify any JS components that the value changed
 			$("#modal-action").modal('show');
 		});
 		$("#onDelete").on("click", function (e) {
@@ -151,6 +155,7 @@ function shopping() {
 			}, datas.routes.delete);
 			if (result) {
 				table.ajax.reload();
+				surplus();
 				$("#modal-delete").modal('hide');
 				buttonloading('#onDelete', false);
 			}
@@ -160,6 +165,9 @@ function shopping() {
 		});
 		$('#formAction').validate({
 			rules: {
+				idWallet:{
+					required: true
+				},
 				idTypeShoppingInput:{
 					required: true
 				},
@@ -175,6 +183,9 @@ function shopping() {
 				}
 			},
 			messages: {
+				idWallet:{
+					required: "Vui lòng chọn ví tiền để giao dịch ! ",
+				},
 				idTypeShoppingInput:{
 					required: "Vui lòng chọn nhóm ! ",
 				},
@@ -220,6 +231,7 @@ function shopping() {
 							buttonloading('#onSave', false);
 							table.ajax.reload();
 							$("#modal-action").modal('hide');
+							surplus();
 							Toast.fire({
 								icon: data.icon,
 								title: data.messages

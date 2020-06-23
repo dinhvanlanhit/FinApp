@@ -114,7 +114,8 @@ function cost() {
 				dataType: 'JSON',
 				success: function (data) {
 					// $('#idTypeCostInput').val(data.data.idTypeCost);
-		
+					$('#idWallet').val(data.data.idWallet); 
+					$('#idWallet').trigger('change'); 
 					$('#idTypeCostInput').val(data.data.idTypeCost); // Select the option with a value of '1'
 					$('#idTypeCostInput').trigger('change'); // Notify any JS components that the value changed
 					$("#onSave").attr('data-url', datas.routes.update);
@@ -137,7 +138,8 @@ function cost() {
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
-			
+			$('#idWallet').val(''); // Select the option with a value of '1'
+					$('#idWallet').trigger('change'); // Notify any JS components that the value changed
 			$('#amount').val('');
 			$('#note').val('');
 			$("#modal-action").modal('show');
@@ -165,6 +167,9 @@ function cost() {
 		});
 		$('#formAction').validate({
 			rules: {
+				idWallet:{
+					required: true
+				},
 				idTypeCostInput: {
 					required: true
 				},
@@ -176,6 +181,9 @@ function cost() {
 				}
 			},
 			messages: {
+				idWallet:{
+					required: "Vui lòng chọn ví tiền để giao dịch ! ",
+				},
 				idTypeCostInput:{
 					required: "Vui lòng chọn nhóm chi phí ! ",
 				},

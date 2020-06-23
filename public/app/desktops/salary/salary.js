@@ -121,6 +121,8 @@ function salary() {
 				success: function (data) {
 					$('#idTypeSalaryInput').val(data.data.idTypeSalary); // Select the option with a value of '1'
 					$('#idTypeSalaryInput').trigger('change'); // Notify any JS components that the value changed
+					$('#idWallet').val(data.data.idWallet); 
+					$('#idWallet').trigger('change'); 
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
@@ -135,6 +137,8 @@ function salary() {
 			});
 		});
 		$("#btn-insert").on("click", function () {
+			$('#idWallet').val(''); 
+			$('#idWallet').trigger('change'); 
 			$('#modal-action-title').text("Thêm mới");
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
@@ -163,6 +167,9 @@ function salary() {
 		});
 		$('#formAction').validate({
 			rules: {
+				idWallet:{
+					required:true,
+				},
 				idTypeSalaryInput:{
 					required: true
 				},
@@ -178,6 +185,9 @@ function salary() {
 				}
 			},
 			messages: {
+				idWallet:{
+					required: "Vui lòng chọn ví tiền để giao dịch ! ",
+				},
 				idTypeSalaryInput: {
 					required: "Vui lòng chọn nhóm thu nhập !",
 				},

@@ -181,6 +181,7 @@ class ShoppingController extends Controller
 
         $Shopping = new Shopping();
         $Shopping->idUser = Auth::user()->id;
+        $Shopping->idWallet= $Request->idWallet;
         $Shopping->idTypeShopping = $Request->idTypeShopping;
         $Shopping->name = $Request->name;
         $Shopping->note = $Request->note;
@@ -197,6 +198,7 @@ class ShoppingController extends Controller
     {
 
         $Shopping =  Shopping::find((int)$Request->id);
+        $Shopping->idWallet= $Request->idWallet;
         $Shopping->idTypeShopping = $Request->idTypeShopping;
         $Shopping->idUser = Auth::user()->id;
         $Shopping->name = $Request->name;

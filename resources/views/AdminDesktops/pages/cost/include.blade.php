@@ -13,7 +13,11 @@
                 
                 <div class="row">
                     <div class="col-md-12">
-
+                        
+                            <div class="form-group" >
+                                @include('AdminDesktops.fromControl.selectWallet')
+                            </div>
+                    
                             <div class="form-group" >
                                
                                 <select class="form-control select2bs4" id="idTypeCostInput" name="idTypeCostInput">

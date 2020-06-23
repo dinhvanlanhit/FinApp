@@ -13,8 +13,12 @@
                 
                 <div class="row">
                     <div class="col-md-12">
+                       
+                        <div class="form-group" >
+                            @include('AdminDesktops.fromControl.selectWallet')
+                        </div>
                         <div class="form-group">
-                            <label>Nhóm Mua Sắm</label>
+                        
                             <select class="form-control select2bs4" id="idTypeShoppingInput" style="width: 100%;" name="idTypeShoppingInput">
                                 <option value="">-- Chọn nhóm -- </option>    
                                 @foreach ($typeshopping as $item)

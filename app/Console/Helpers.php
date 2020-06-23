@@ -2,10 +2,19 @@
 function surplus()
 {
     $idUser = \Auth::user()->id;
-    $sumEvent = \App\Models\Event::where('idUser','=',$idUser)->sum('amount');
+    $sumWallet  = \App\Models\Wallet::where('idUser','=',$idUser)->sum('amount');
 
-    $sumWallet = \App\Models\Wallet::where('idUser','=',\Auth::user()->id)->sum('amount');
-    return $sumWallet - $sumEvent;
+
+    ///////////////////////////////////////
+    $sumEvent = \App\Models\Event::where('idUser','=',$idUser)->sum('amount');
+    $sumShopping  = \App\Models\Shopping::where('idUser','=',\Auth::user()->id)->sum('amount');
+    $sumCost  = \App\Models\Cost::where('idUser','=',\Auth::user()->id)->sum('amount');
+    $sumSalary  = \App\Models\Salary::where('idUser','=',\Auth::user()->id)->sum('amount');
+    $sumWallet=$sumWallet-$sumEvent;
+    $sumWallet=$sumWallet-$sumShopping;
+    $sumWallet=$sumWallet-$sumCost;
+    $sumWallet=$sumWallet+$sumSalary;
+    return $sumWallet;
 
 
 //    $result = \DB::table('users')->select('select * from users')->get();

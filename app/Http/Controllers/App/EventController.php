@@ -189,7 +189,7 @@ class EventController extends Controller
         $Event->save();
         if($Event){
            
-            return JSON3($sumWallet,true,"Thêm thành công");
+            return JSON2(true,"Thêm thành công");
         }else{
             return JSON2(false,"Thêm thất bại");
         }
