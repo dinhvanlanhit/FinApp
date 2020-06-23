@@ -13,12 +13,15 @@ function surplus()
     $sumLendloan  = \App\Models\Lendloan::where('idUser','=',\Auth::user()->id)->sum('amount');
     $sumInvest  = \App\Models\Invest::where('idUser','=',\Auth::user()->id)->sum('amount');
 
+    $sumDebt  = \App\Models\Debt::where('idUser','=',\Auth::user()->id)->where('idWallet','!=','null')->sum('amount');
+
     $sumWallet=$sumWallet-$sumEvent;
     $sumWallet=$sumWallet-$sumShopping;
     $sumWallet=$sumWallet-$sumCost;
     $sumWallet=$sumWallet+$sumSalary;
     $sumWallet=$sumWallet-$sumLendloan;
     $sumWallet=$sumWallet-$sumInvest;
+    $sumWallet=$sumWallet+$sumDebt;
     return $sumWallet;
 
 

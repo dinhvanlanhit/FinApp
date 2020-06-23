@@ -19,11 +19,14 @@ function dashboard() {
 				async:false,
 				dataType: 'JSON',
 				success: function (data) {
-					$('#sumEvent').text(money_format(data.data.sumEvent));
-					$('#sumShopping').text(money_format(data.data.sumShopping));
-					$('#sumCost').text(money_format(data.data.sumCost));
-					$('#sumSalary').text(money_format(data.data.sumSalary));
-					console.log(data)
+					$('#sumEvent').text(money_format(data.data.sumEvent)+' VNĐ');
+					$('#sumShopping').text(money_format(data.data.sumShopping)+' VNĐ');
+					$('#sumCost').text(money_format(data.data.sumCost)+' VNĐ');
+					$('#sumSalary').text(money_format(data.data.sumSalary)+' VNĐ');
+					$('#sumInvest').text(money_format(data.data.sumInvest)+' VNĐ');
+					$('#sumLendloan').text(money_format(data.data.sumLendloan)+' VNĐ');
+					$('#sumDebt').text(money_format(data.data.sumDebt)+' VNĐ');
+					$('#sumAsset').text(money_format(data.data.sumAsset)+' VNĐ');
 					me.runChar(data.data,'dashboard-chart-top')
 				},
 				error: function (error) {

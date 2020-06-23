@@ -12,7 +12,7 @@
         <a href="{{route('event')}}" class="nav-link ">
           <i class="nav-icon fas fa-umbrella"></i>
           <p>
-            Sự Kiện
+            Tiệc Tùng
            
           </p>
         </a>
@@ -53,7 +53,7 @@
         <a href="{{route('debt')}}" class="nav-link ">
           <i class="nav-icon fas fa-university"></i>
           <p>
-            Đi Vay
+            Khoản Nợ
            
           </p>
         </a>
@@ -67,14 +67,14 @@
           </p>
         </a>
       </li>
-      <li class="nav-item menu-open ">
+      {{-- <li class="nav-item menu-open ">
         <a href="" class="nav-link ">
           <i class="nav-icon fas fa-money"></i>
           <p>
             Chuyển Khoản
           </p>
         </a>
-      </li>
+      </li> --}}
       <li class="nav-item menu-open">
         <a href="{{route('invest')}}" class="nav-link ">
           <i class="nav-icon fas fa-building"></i>

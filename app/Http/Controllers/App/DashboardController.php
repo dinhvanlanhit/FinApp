@@ -9,6 +9,10 @@ use App\Models\Event;
 use App\Models\Shopping;
 use App\Models\Salary;
 use App\Models\Cost;
+use App\Models\Invest;
+use App\Models\Lendloan;
+use App\Models\Debt;
+use App\Models\Asset;
 
 use App\Models\TypeCost;
 use App\Models\TypeEvent;
@@ -51,14 +55,30 @@ class DashboardController extends Controller
                 'name'=>'Thu Nhập',
                 'value'=>$this->sumSalary($Between),
             ],
+            [
+                'name'=>'Đầu Tư',
+                'value'=>$this->sumInvest($Between),
+            ],
+            [
+                'name'=>'Cho Vay',
+                'value'=>$this->sumLendloan($Between),
+            ],
+            [
+                'name'=>'Nợ',
+                'value'=>$this->sumDebt($Between),
+            ],
         );
-        $lable = ['Sự Kiện','Mua Sắm','Chi Tiêu','Thu Nhập'];
-        $color = ['#007bff','#28a745','#ffc107','#dc3545'];
+        $lable = ['Sự Kiện','Mua Sắm','Chi Tiêu','Thu Nhập','Đầu Tư','Cho Vay','Nợ'];
+        $color = ['#007bff','#28a745','#ffc107','#dc3545','#32CCBC','#AA5777','#7367F0'];
         $data=array(
             'sumEvent'=>$this->sumEvent($Between),
             'sumShopping'=>$this->sumShopping($Between),
             'sumCost'=>$this->sumCost($Between),
             'sumSalary'=>$this->sumSalary($Between),
+            'sumInvest'=>$this->sumInvest($Between),
+            'sumLendloan'=>$this->sumLendloan($Between),
+            'sumDebt'=>$this->sumDebt($Between),
+            'sumAsset'=>$this->sumAsset($Between),
             'sumTotal'=>null,
             'data'=>$dataChart,
             'lable'=>$lable,
@@ -106,6 +126,36 @@ class DashboardController extends Controller
             return Salary::where('idUser','=',$idUser)->sum('amount');
         }
     }
+    public function sumInvest($Between){
+        $idUser = Auth::user()->id;
+        if(!empty($Between[0])||!empty($Between[1])){
+            return Invest::where('idUser','=',$idUser)->whereBetween('date',$Between)->sum('amount');
+        }else{
+            return Invest::where('idUser','=',$idUser)->sum('amount');
+        }
+    }
+    public function sumLendloan($Between){
+        $idUser = Auth::user()->id;
+        if(!empty($Between[0])||!empty($Between[1])){
+            return Lendloan::where('idUser','=',$idUser)->whereBetween('date',$Between)->sum('amount');
+        }else{
+            return Lendloan::where('idUser','=',$idUser)->sum('amount');
+        }
+    }
+    public function sumDebt($Between){
+        $idUser = Auth::user()->id;
+        if(!empty($Between[0])||!empty($Between[1])){
+            return Debt::where('idUser','=',$idUser)->whereBetween('date',$Between)->sum('amount');
+        }else{
+            return Debt::where('idUser','=',$idUser)->sum('amount');
+        }
+    }
+    public function sumAsset($Between){
+        $idUser = Auth::user()->id;
+        return Asset::where('idUser','=',$idUser)->sum('amount');
+        
+    }
+
     public function getCharDashboard(Request $Request)
     {
         $idUser = Auth::user()->id;

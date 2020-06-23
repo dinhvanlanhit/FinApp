@@ -31,7 +31,7 @@
       <form id="form-login"  method="post">
         <span class="email text-danger"></span>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" value="dinhvanlanh.it@gmail.com" name="email" placeholder="Email or Username">
+          <input type="email" class="form-control" value="" name="email" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -40,7 +40,7 @@
         </div>
         <span class="password text-danger"></span>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" value="12345" name="password"  placeholder="Password">
+          <input type="password" class="form-control" value="" name="password"  placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -57,16 +57,20 @@
             </div>
           </div>
           <div class="col-6">
-            <button type="submit" id="button-login" class="btn btn-primary btn-block"> Đăng nhập </button>
+            <button type="submit" id="button-login" class="btn btn-danger btn-block"> Đăng nhập </button>
           </div>
         </div>
       </form>
-      <p class="mb-1">
+      <p class="mb-0">
         <a href="{{route('forgot-password')}}">Tôi quên mật khẩu của tôi</a>
       </p>
-      <p class="mb-0">
+      <p class="mb-1">
         <a href="{{route('register')}}" class="text-center">Đăng ký thành viên mới</a>
       </p>
+      <div class="callout callout-info mb-1">
+        <h5>Tài khoản sử dụng thử</h5>
+        <p>Email : dinhvanlanh.it@gmail.com <br> Mật khẩu : 12345</p>
+      </div>
     </div>
   </div>
 </div>

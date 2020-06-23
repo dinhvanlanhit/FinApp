@@ -83,6 +83,60 @@
         </div>
         <!-- ./col -->
     </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-info"><i class="far fa-building"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text"><b> Đâu Tư </b></span>
+            <span class="info-box-number" id="sumInvest"></span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-success"><i class="fas fa-area-chart"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text"><b> Cho Vay </b></span>
+            <span class="info-box-number" id="sumLendloan"></span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-warning"><i class="fa fa-university"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text"><b> Khoản Nợ </b></span>
+            <span class="info-box-number" id="sumDebt" ></span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-danger"><i class="far  fa-hdd-o"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text"><b> Tài Sản </b></span>
+            <span class="info-box-number" id="sumAsset"></span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+    </div>
   </div>
   <div class="col-md-12">
     <div class="card">

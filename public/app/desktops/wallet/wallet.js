@@ -109,7 +109,8 @@ function wallet() {
 		});
 		$(document).delegate(".btn-delete", "click", function () {
 			var id = $(this).val();
-			$('#modal-text-delete').text("Bạn có muốn xóa không ?");
+			var html = '<b class="text-danger">Lưu ý tất cả dịch vụ mà sủ dụng ví tiến nầy sẽ bị xóa vĩnh viễn ? Bạn có chắc chắn muốn xóa không ? </b>'
+			$('#modal-text-delete').html(html);
 			$("#onDelete").attr('value', id);
 			$("#modal-delete").modal('show');
 		});
