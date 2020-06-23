@@ -122,6 +122,7 @@ class LendloanController extends Controller
 
         $Lendloan = new Lendloan();
         $Lendloan->idUser = Auth::user()->id;
+        $Lendloan->idWallet = $Request->idWallet;
         $Lendloan->name= $Request->name;
         $Lendloan->birthday = $Request->birthday;
         $Lendloan->sex = $Request->sex;
@@ -145,12 +146,13 @@ class LendloanController extends Controller
     {
         $Lendloan =  Lendloan::find((int)$Request->id);
         $Lendloan->idUser = Auth::user()->id;
+        $Lendloan->idWallet = $Request->idWallet;
         $Lendloan->name= $Request->name;
         $Lendloan->birthday = $Request->birthday;
         $Lendloan->sex = $Request->sex;
         $Lendloan->loan= $Request->loan;
         $Lendloan->tenor= $Request->tenor;
-        $Lendloan->interest_rate = $Request->interest_rate;
+        $Lendloan->interest_rate = ($Request->interest_rate == 'NaN'?0:$Request->interest_rate);
         $Lendloan->date = $Request->date;
         $Lendloan->expiration_date = $Request->expiration_date;
         $Lendloan->note = $Request->note;

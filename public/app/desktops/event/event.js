@@ -118,10 +118,10 @@ function event() {
 				success: function (data) {
 					// $('#idTypeEventInput').val(data.data.idTypeEvent);
 		
-					$('#idTypeEventInput').val(data.data.idTypeEvent); // Select the option with a value of '1'
-					$('#idTypeEventInput').trigger('change'); // Notify any JS components that the value changed
-					$('#idWallet').val(data.data.idWallet); // Select the option with a value of '1'
-					$('#idWallet').trigger('change'); // Notify any JS components that the value changed
+					$('#idTypeEventInput').val(data.data.idTypeEvent);
+					$('#idTypeEventInput').trigger('change');
+					$('#idWallet').val(data.data.idWallet); 
+					$('#idWallet').trigger('change'); 
 
 					
 					$("#onSave").attr('data-url', datas.routes.update);

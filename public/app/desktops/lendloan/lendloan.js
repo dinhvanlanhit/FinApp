@@ -12,7 +12,9 @@ function lendloan() {
 		$('#birthday').css("z-index", "0");
 		$('#birthday').datepicker("option", "dateFormat", 'dd-mm-yy');
 
-		
+		function echo(e){
+			return	e==null?'':e;
+		}
 		function sex(e){
 			return e==0?'Nam':'Nữ';
 		}
@@ -56,10 +58,10 @@ function lendloan() {
 				className: "text-left",
 				render: function (data, type, row, meta) {
 					var html ='';
-						html += '<b class="text-success"><i class="fa fa-users"></i> Họ Tên : '+row.name + '</b><br>';
-						html += '<b class="text-success"><i class="fa fa-calendar"></i> Ngày sinh : '+row.birthday + '</b><br>';
+						html += '<b class="text-success"><i class="fa fa-users"></i> Họ Tên : '+echo(row.name) + '</b><br>';
+						html += '<b class="text-success"><i class="fa fa-calendar"></i> Ngày sinh : '+ echo(row.birthday) + '</b><br>';
 						html += '<b class="text-success"><i class="fa fa-user" aria-hidden="true"></i> Giới Tính : '+sex(row.sex)+ '</b><br>';
-						html += '<b class="text-danger"><i class="fa fa-building"></i> : '+row.address + '</b><br>';
+						html += '<b class="text-danger"><i class="fa fa-building"></i> : '+echo(row.address )   + '</b><br>';
 					 return html;
 				
 				}
@@ -72,10 +74,10 @@ function lendloan() {
 				render: function (data, type, row, meta) {
 					var html ='';
 					
-						html +='<b class="text-success">  <i class="fa fa-calendar"></i> Kỳ Hạn : ' + row.tenor + '</b><br>';
+						html +='<b class="text-success">  <i class="fa fa-calendar"></i> Kỳ Hạn : ' + echo(row.tenor) + '</b><br>';
 						html +='<b class="">  <i class="fa fa-money"></i> Lãi Xuất : ' + money_format(row.interest_rate) + ' VNĐ (<small> Tháng / Năm )</small></b><br>';
-						html +='<b class="text-info">  <i class="fa fa-hdd-o"></i> Thế Chấp : ' + row.mortgage + '</b><br>';
-						html +='<b class="">  <i class="fa fa-money"></i> Trạng Thái : ' + row.status + '</b>';
+						html +='<b class="text-info">  <i class="fa fa-hdd-o"></i> Thế Chấp : ' + echo(row.mortgage) + '</b><br>';
+						html +='<b class="">  <i class="fa fa-money"></i> Trạng Thái : ' + echo(row.status) + '</b>';
 					 return html;
 				
 				}
@@ -144,6 +146,8 @@ function lendloan() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
+					$('#idWallet').val(data.data.idWallet); 
+					$('#idWallet').trigger('change'); 
 					$('#sex').val(data.data.sex); 
 					$('#sex').trigger('change'); 
 					$('#status').val(data.data.status); 
@@ -168,6 +172,8 @@ function lendloan() {
 			});
 		});
 		$("#btn-insert").on("click", function () {
+			$('#idWallet').val(''); 
+			$('#idWallet').trigger('change'); 
 			$('#modal-action-title').text("Thêm mới");
 			$('#idTypeLendloanInput').val("");
 			$('#idTypeLendloanInput').trigger('change');
@@ -200,6 +206,7 @@ function lendloan() {
 				table.ajax.reload();
 				$("#modal-delete").modal('hide');
 				buttonloading('#onDelete', false);
+				surplus();
 			}
 		});
 		$("#loan").on("input", function () {
@@ -210,6 +217,11 @@ function lendloan() {
 		});
 		$('#formAction').validate({
 			rules: {
+
+				
+				idWallet: {
+					required: true
+				},
 				address: {
 					required: true
 				},
@@ -222,12 +234,12 @@ function lendloan() {
 				loan: {
 					required: true
 				},
-				tenor: {
-					required: true
-				},
-				interest_rate: {
-					required: true
-				},
+				// tenor: {
+				// 	required: true
+				// },
+				// interest_rate: {
+				// 	required: true
+				// },
 				date: {
 					required: true
 				},
@@ -236,6 +248,9 @@ function lendloan() {
 				}
 			},
 			messages: {
+				idWallet:{
+					required: "Vui lòng chọn ví tiền để giao dịch ! ",
+				},
 				address:{
 					required: "Vui lòng nhập địa chỉ nười vay ! ",
 				},
@@ -248,12 +263,12 @@ function lendloan() {
 				loan: {
 					required: "Vui lòng nhập khoản vay !",
 				},
-				tenor: {
-					required: "Vui lòng nhập kỳ hạn !",
-				},
-				interest_rate: {
-					required: "Vui lòng nhập lãi suất !",
-				},
+				// tenor: {
+				// 	required: "Vui lòng nhập kỳ hạn !",
+				// },
+				// interest_rate: {
+				// 	required: "Vui lòng nhập lãi suất !",
+				// },
 				date: {
 					required: "Vui lòng nhập ngày vay !",
 				},
@@ -295,6 +310,7 @@ function lendloan() {
 							buttonloading('#onSave', false);
 							table.ajax.reload();
 							$("#modal-action").modal('hide');
+							surplus();
 							Toast.fire({
 								icon: data.icon,
 								title: data.messages

@@ -17,6 +17,10 @@ class CreateLendloanTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('idUser')->unsigned()->nullable();
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('idWallet')->unsigned()->nullable();
+            $table->foreign('idWallet')->references('id')->on('wallet')->onDelete('cascade')->onUpdate('cascade');
+
+            
             $table->string('name')->nullable();
             $table->date('birthday')->nullable();
             $table->Integer('sex')->nullable();

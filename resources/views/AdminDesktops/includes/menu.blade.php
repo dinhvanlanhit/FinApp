@@ -68,7 +68,7 @@
         </a>
       </li>
       <li class="nav-item menu-open ">
-        <a href="{{route('lendloan')}}" class="nav-link ">
+        <a href="" class="nav-link ">
           <i class="nav-icon fas fa-money"></i>
           <p>
             Chuyển Khoản

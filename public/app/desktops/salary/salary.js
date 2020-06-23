@@ -5,6 +5,9 @@ function salary() {
 		$("#date").datepicker();
 		$('#date').css("z-index", "0");
 		$('#date').datepicker("option", "dateFormat", 'dd-mm-yy');
+		function echo(e){
+			return	e==null?'':e;
+		}
 		var table = $("#salary-table").DataTable({
 			serverSide: true,
 			processing: true,
@@ -52,9 +55,9 @@ function salary() {
 				render: function (data, type, row, meta) {
 					var html ='';
 						if(data!=null){
-							html += '<b class="text-danger"><i class="fa fa-building"></i> : '+data + '</b><br>';
+							html += '<b class="text-danger"><i class="fa fa-building"></i> : '+echo(data) + '</b><br>';
 						}
-						html +='<b class="text-info"> <i class="fa fa-user"></i> : ' + row.name + '</b><br>';
+						html +='<b class="text-info"> <i class="fa fa-user"></i> : ' + echo(row.name) + '</b><br>';
 						html +='<b class="text-success"> <i class="fa fa-calendar"></i> : ' + row.date + '</b>';
 				
 					 return html;
