@@ -129,6 +129,9 @@ function wallet() {
 				success: function (data) {
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
+					$('#idTypeWallet').val(data.data.idTypeWallet); // Select the option with a value of '1'
+					$('#idTypeWallet').trigger('change'); // Notify any JS components that the value changed
+					
 					$("#onSave").attr('data-action', 'update');
 					$('#name').val(data.data.name);
 					$('#note').val(data.data.note);
@@ -140,6 +143,8 @@ function wallet() {
 			});
 		});
 		$("#btn-insert").on("click", function () {
+			$('#idTypeWallet').val(''); // Select the option with a value of '1'
+			$('#idTypeWallet').trigger('change'); // Notify any JS components that the value changed
 			$('#modal-action-title').text("Thêm mới");
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
@@ -147,9 +152,6 @@ function wallet() {
 			$('#amount').val('');
 			$('#note').val('');
 			$("#modal-action").modal('show');
-		});
-		$("#idTypeWallet").on("change", function (e) {
-			table.ajax.reload();
 		});
 		$("#onDelete").on("click", function (e) {
 			var id = $(this).val();
@@ -160,6 +162,7 @@ function wallet() {
 			}, datas.routes.delete);
 			if (result) {
 				table.ajax.reload();
+				surplus();
 				$("#modal-delete").modal('hide');
 				buttonloading('#onDelete', false);
 			}
@@ -172,6 +175,9 @@ function wallet() {
 		});
 		$('#formAction').validate({
 			rules: {
+				idTypeWallet: {
+					required: true
+				},
 				name: {
 					required: true
 				},
@@ -180,6 +186,9 @@ function wallet() {
 				},
 			},
 			messages: {
+				idTypeWallet: {
+					required: "Vui lòng chọn loại ví !",
+				},
 				name: {
 					required: "Vui lòng nhập tên ví !",
 				},
@@ -216,6 +225,7 @@ function wallet() {
 							buttonloading('#onSave', false);
 							table.ajax.reload();
 							$("#modal-action").modal('hide');
+							surplus();
 							Toast.fire({
 								icon: data.icon,
 								title: data.messages

@@ -12,6 +12,12 @@
             <div class="modal-body card-body-dashboard">
                 <div class="row">
                     <div class="col-md-12">
+                        <select class="form-control select2bs4" id="idTypeWallet" name="idTypeWallet">
+                            <option value="">-- Chọn Loại -- </option>   
+                            @foreach ($typewallet as $item)
+                                <option value="{{$item->id}}">{{$item->type_name}}</option>
+                            @endforeach
+                        </select>
                         <div class="form-group">
                             <label>Tên Ví </label>
                             <input class="form-control" id="name" name="name"/>

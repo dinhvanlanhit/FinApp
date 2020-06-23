@@ -37,5 +37,9 @@ class RegisterController extends Controller
            }
        }
     }
+    public function getForgotPassword(Request $Request)
+    {
+        return view(template().'.pages.forgot.forgot');
+    }
 
 }

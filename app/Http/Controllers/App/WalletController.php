@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Wallet;
+use App\Models\TypeWallet;
 use Auth;
 class WalletController extends Controller
 {
     public function getWallet(Request $Request)
     {
-        return view(template().".pages.wallet.index");
+        return view(template().".pages.wallet.index",['typewallet'=>TypeWallet::get()]);
     }
     public function getTotal()
     {
@@ -85,6 +86,7 @@ class WalletController extends Controller
         $Wallet = new Wallet();
         $Wallet->idUser = Auth::user()->id;
         $Wallet->name= $Request->name;
+        $Wallet->idTypeWallet = $Request->idTypeWallet;
         $Wallet->note = $Request->note;
         $Wallet->amount = $Request->amount;
         if($Wallet->save()){
@@ -99,6 +101,7 @@ class WalletController extends Controller
         $Wallet =  Wallet::find((int)$Request->id);
         $Wallet->idUser = Auth::user()->id;
         $Wallet->name= $Request->name;
+        $Wallet->idTypeWallet = $Request->idTypeWallet;
         $Wallet->note = $Request->note;
         $Wallet->amount = $Request->amount;
         $Wallet->updated_at = date("Y-m-d H:i:s");

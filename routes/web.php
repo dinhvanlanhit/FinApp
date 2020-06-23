@@ -7,8 +7,8 @@ Route::group(['namespace' => 'App',], function () {
     Route::get('/register','RegisterController@getRegister')->name('register');
     Route::post('/register','RegisterController@postRegister')->name('register');
 
-    Route::get('/forgot-password','RegisterController@getForgot_password')->name('forgot-password');
-    Route::post('/forgot-password','RegisterController@postForgot_password')->name('forgot-password');
+    Route::get('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
+    Route::post('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
 
     
 });

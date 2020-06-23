@@ -152,7 +152,7 @@ class DashboardController extends Controller
     }
     public function sumAsset($Between){
         $idUser = Auth::user()->id;
-        return Asset::where('idUser','=',$idUser)->sum('amount');
+        return Asset::where('idUser','=',$idUser)->sum('amount')+surplus();
         
     }
 
