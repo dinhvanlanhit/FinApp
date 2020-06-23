@@ -16,14 +16,16 @@ class CostTableSeeder extends Seeder
                 [
                   'idUser'=>1,
                   'idTypeCost'=>1,
+                  'idWallet'=>1,
                   'note' => 'Đóng Tiền Nhà Trọ',
-                  'amount' => 25000000,
+                  'amount' => 2000000,
                   'date' => '2020-06-10',
                   
                 ],
                 [
                     'idUser'=>1,
                     'idTypeCost'=>2,
+                    'idWallet'=>1,
                     'note' => 'Tiền Ăn Hàng Tháng',
                     'amount' => 2000000,
                     'date' => '2020-06-10',

@@ -21,6 +21,9 @@ class CreateCostTable extends Migration
                 $table->bigInteger('idTypeCost')->unsigned()->nullable();
                 $table->foreign('idTypeCost')->references('id')->on('type_cost')->onDelete('cascade')->onUpdate('cascade');
 
+                $table->bigInteger('idWallet')->unsigned()->nullable();
+                $table->foreign('idWallet')->references('id')->on('wallet')->onDelete('cascade')->onUpdate('cascade');
+
                 $table->string('note')->nullable();
                 $table->double('amount')->default(0)->nullable();
                 $table->string('address')->nullable();

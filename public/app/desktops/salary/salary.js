@@ -153,6 +153,7 @@ function salary() {
 			}, datas.routes.delete);
 			if (result) {
 				table.ajax.reload();
+				surplus();
 				$("#modal-delete").modal('hide');
 				buttonloading('#onDelete', false);
 			}
@@ -221,6 +222,7 @@ function salary() {
 							buttonloading('#onSave', false);
 							table.ajax.reload();
 							$("#modal-action").modal('hide');
+							surplus();
 							Toast.fire({
 								icon: data.icon,
 								title: data.messages

@@ -15,18 +15,19 @@ class WalletController extends Controller
     }
     public function getTotal()
     {
-       $wallet =  Wallet::where('idUser','=',\Auth::user()->id)->sum('amount');
-       return JSON1($wallet);
+      
+       return JSON1(surplus());
     }
     public function getDatatable(Request $Request)
     {
         $columns = array( 
             0 => 'created_at',
-            1 => 'name',
-            2 => 'amount',
-            3 => 'note',
-            4 => 'updated_at',
-            5 => 'updated_at'
+            1 => 'type_name',
+            2 => 'name',
+            3 => 'amount',
+            4 => 'note',
+            5 => 'updated_at',
+            6 => 'updated_at'
         );
         $idUser = Auth::user()->id;
         $limit = $Request->input('length');
@@ -37,20 +38,25 @@ class WalletController extends Controller
         $totalData =  Wallet::where('idUser','=',$idUser)->count();
         $totalFiltered =$totalData;
         if(empty($search)){
-                $Wallet = Wallet::where('idUser','=',$idUser)
+                $Wallet = Wallet::join('type_wallet','type_wallet.id','=','wallet.idTypeWallet')
+                ->where('wallet.idUser','=',$idUser)
+                ->select('wallet.*','type_wallet.type_name')
                 ->offset($start)
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
         }else{
-                $Wallet = Wallet::where('idUser','=',$idUser)
+                $Wallet = Wallet::join('type_wallet','type_wallet.id','=','wallet.idTypeWallet')
+                ->where('wallet.idUser','=',$idUser)
                 ->Where(function($query)use($search){
-                    $query->where('id', 'LIKE', "%{$search}%")
-                    ->orWhere('name', 'LIKE',"%{$search}%")
-                    ->orWhere('note', 'LIKE',"%{$search}%")
-                    ->orWhere('amount', 'LIKE',"%{$search}%")
-                    ->orWhere('created_at','LIKE',"%{$search}%");
+                    $query->where('wallet.id', 'LIKE', "%{$search}%")
+                    ->orWhere('wallet.name', 'LIKE',"%{$search}%")
+                    ->orWhere('wallet.note', 'LIKE',"%{$search}%")
+                    ->orWhere('wallet.amount', 'LIKE',"%{$search}%")
+                    ->orWhere('type_wallet.type_name', 'LIKE',"%{$search}%")    
+                    ->orWhere('wallet.created_at','LIKE',"%{$search}%");
                 })
+                ->select('wallet.*','type_wallet.type_name')
                 ->offset($start)
                 ->limit($limit)
                 ->orderBy($order,$dir)

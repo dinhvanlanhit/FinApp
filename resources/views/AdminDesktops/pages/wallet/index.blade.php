@@ -9,6 +9,10 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body card-body-dashboard">
+      <div class="callout callout-warning">
+        <h5>Lưu ý !</h5>
+        <p>Quá trình Khi thiết lập ví tiền hạn chế sửa đổi số tiền tránh trường hợp bị sai số dư </p>
+      </div>
         <form id="formSearch">
             <div class="row">
                 <div class="col-md-8">

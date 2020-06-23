@@ -13,15 +13,18 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UsersTableSeeder::class,
+            TypeWalletTableSeeder::class,
             WalletTableSeeder::class,
             TypeEventTableSeeder::class,
-            // EventTableSeeder::class,
-            // TypeCostTableSeeder::class,
-            // CostTableSeeder::class,
-            // TypeShoppingTableSeeder::class,
-            // ShoppingTableSeeder::class,
-            // TypeSalaryTableSeeder::class,
-            // SalaryTableSeeder::class,
+            EventTableSeeder::class,
+            TypeCostTableSeeder::class,
+            CostTableSeeder::class,
+            TypeShoppingTableSeeder::class,
+            ShoppingTableSeeder::class,
+            TypeSalaryTableSeeder::class,
+            SalaryTableSeeder::class,
+       
+            
             // TypeDebtTableSeeder::class,
             // DebtTableSeeder::class,
             // LendloanTableSeeder::class,

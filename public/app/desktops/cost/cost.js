@@ -89,9 +89,11 @@ function cost() {
 		});
 		$("#formSearch").on('submit', function (e) {
 			e.preventDefault();
+			
 			buttonloading(".formSearch", true);
 			table.ajax.reload();
 		})
+		
 		$(document).delegate(".btn-delete", "click", function () {
 			var id = $(this).val();
 			$('#modal-text-delete').text("Bạn có muốn xóa không ?");
@@ -153,6 +155,7 @@ function cost() {
 			}, datas.routes.delete);
 			if (result) {
 				table.ajax.reload();
+				surplus();
 				$("#modal-delete").modal('hide');
 				buttonloading('#onDelete', false);
 			}
@@ -214,6 +217,7 @@ function cost() {
 							buttonloading('#onSave', false);
 							table.ajax.reload();
 							$("#modal-action").modal('hide');
+							surplus();
 							Toast.fire({
 								icon: data.icon,
 								title: data.messages

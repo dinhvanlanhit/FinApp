@@ -16,6 +16,7 @@ class SalaryTableSeeder extends Seeder
               [
                 'idUser'=>1,
                 'idTypeSalary'=>1,
+                'idWallet'=>1,
                 'company' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
                 'name'=>'Đinh Văn Lệ',
@@ -26,6 +27,7 @@ class SalaryTableSeeder extends Seeder
               [
                 'idUser'=>1,
                 'idTypeSalary'=>1,
+                'idWallet'=>1,
                 'company' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
                 'name'=>'Đinh Văn Lệ',
@@ -37,6 +39,7 @@ class SalaryTableSeeder extends Seeder
               [
                 'idUser'=>1,
                 'idTypeSalary'=>1,
+                'idWallet'=>1,
                 'company' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
                 'name'=>'Đinh Văn Lệ',
@@ -48,10 +51,10 @@ class SalaryTableSeeder extends Seeder
               [
                 'idUser'=>1,
                 'idTypeSalary'=>1,
+                'idWallet'=>1,
                 'company' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
                 'name'=>'Đinh Văn Lệ',
-               
                 'date' => '2020-04-05',
                
               ],
@@ -59,16 +62,17 @@ class SalaryTableSeeder extends Seeder
               [
                 'idUser'=>1,
                 'idTypeSalary'=>1,
+                'idWallet'=>1,
                 'company' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
                 'name'=>'Đinh Văn Lệ',
-               
                 'date' => '2020-05-06',
               
               ],
               [
                 'idUser'=>1,
                 'idTypeSalary'=>1,
+                'idWallet'=>1,
                 'company' => 'CÔNG TY AMNOTE',
                 'amount' => 10000000,
                 'name'=>'Đinh Văn Lệ',

@@ -15,15 +15,18 @@ class WalletTableSeeder extends Seeder
             [
                 [
                   'idUser'=>1,
+                  'idTypeWallet'=>2,
                   'name' => 'TÀI KHOẢN AGRIBANK',
-                  'amount'=>100000000,
-                  'note'=>'Tập Xạo Lờ'
+                  'amount'=>300000000,
+                  'note'=>''
                 ],
                 [
                     'idUser'=>1,
+                    'idTypeWallet'=>1,
                     'name' => 'TIỀN MẶT',
-                    'amount'=>50000000,
-                    'note'=>'Tập Xạo Lờ'
+                    'amount'=>100000000,
+                    
+                    'note'=>''
                 ],
             ]
         );

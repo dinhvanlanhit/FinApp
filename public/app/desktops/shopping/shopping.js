@@ -144,7 +144,7 @@ function shopping() {
 		});
 		$("#onDelete").on("click", function (e) {
 			var id = $(this).val();
-			e.prshoppingDefault(e);
+			e.preventDefault(e);
 			buttonloading('#onDelete', true);
 			var result = _AjaxDelete({
 				id: id

@@ -62,17 +62,6 @@ class EventTableSeeder extends Seeder
             ]
           ]
         );
-        $data = DB::table('event')->get();
-        foreach($data as $item){
-          $amount = DB::table('wallet')->where('id','=',$item->idWallet)->first();
-          // echo $amount->amount;
-          $data = DB::table('wallet')
-          ->where('id','=',$item->idWallet)
-          ->update(
-            [
-              'amount'=>$amount->amount-$item->amount
-            ]
-          );
-        }
+        
     }
 }

@@ -19,6 +19,11 @@ class CreateSalaryTable extends Migration
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('idTypeSalary')->unsigned()->nullable();
             $table->foreign('idTypeSalary')->references('id')->on('type_salary')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->bigInteger('idWallet')->unsigned()->nullable();
+            $table->foreign('idWallet')->references('id')->on('wallet')->onDelete('cascade')->onUpdate('cascade');
+
+
             $table->string('company')->nullable();
             $table->string('name')->nullable();
            

@@ -17,6 +17,8 @@ class CreateWalletTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('idUser')->unsigned()->nullable();
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('idTypeWallet')->unsigned()->nullable();
+            $table->foreign('idTypeWallet')->references('id')->on('type_wallet')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name')->nullable();
             $table->double('amount')->default(0)->nullable();// Số tiền đầu tư
             $table->text('note')->nullable();

@@ -21,7 +21,7 @@ class CreateEventTable extends Migration
                 $table->bigInteger('idTypeEvent')->unsigned()->nullable();
                 $table->foreign('idTypeEvent')->references('id')->on('type_event')->onDelete('cascade')->onUpdate('cascade');
                 $table->bigInteger('idWallet')->unsigned()->nullable();
-                $table->foreign('idWallet')->references('id')->on('wallet')->onUpdate('cascade');
+                $table->foreign('idWallet')->references('id')->on('wallet')->onDelete('cascade')->onUpdate('cascade');
 
 
                 $table->string('name')->nullable();

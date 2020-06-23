@@ -33,13 +33,23 @@ function wallet() {
 						return meta.row + meta.settings._iDisplayStart + 1;
 					}
 				}, 
+				
+				{
+					title: "Loại",
+					data: "type_name",
+					name: "type_name",
+					className: "text-left",
+					render: function (data, type, row, meta) {
+						return '<b class="text-success">'+data +' </b>';
+					}
+				},
 				{
 					title: "Ví Tiền",
 					data: "name",
 					name: "name",
-					className: "text-center",
+					className: "text-left",
 					render: function (data, type, row, meta) {
-						return  '<b class="text-info">'+data +'</b>';
+						return '<b class="text-info">'+data +' </b>';
 					}
 				},
 				{
