@@ -45,7 +45,7 @@
 					<div class="form-group">
 						<label class="full_name">Họ Và Tên</label>
 						<div class="input-group">
-							<input type="text" class="form-control" value="Đinh Thị Năm" name="full_name" placeholder="...">
+							<input type="text" class="form-control" value="" name="full_name" placeholder="...">
 							<div class="input-group-append">
 								<div class="input-group-text"> <span class="fas fa-user"></span>
 								</div>
@@ -55,7 +55,7 @@
 					<div class="form-group">
 						<label class="email">Email</label>
 						<div class="input-group">
-							<input type="email" class="form-control" value="dinhthinamsha@gmail.com" name="email" placeholder="Email">
+							<input type="email" class="form-control" value="" name="email" placeholder="Email">
 							<div class="input-group-append">
 								<div class="input-group-text"> <span class="fas fa-user"></span>
 								</div>
@@ -65,7 +65,7 @@
 					<div class="form-group">
 						<label class="password">Mật Khẩu</label>
 						<div class="input-group">
-							<input type="password" class="form-control" value="12345" name="password" placeholder="">
+							<input type="password" class="form-control" value="" name="password" placeholder="">
 							<div class="input-group-append">
 								<div class="input-group-text"> <span class="fas fa-key"></span>
 								</div>
@@ -75,7 +75,7 @@
 					<div class="form-group">
 						<label class="confirm_password">Nhập Lại Mật Khẩu</label>
 						<div class="input-group">
-							<input type="password" class="form-control" value="12345" name="confirm_password" placeholder="">
+							<input type="password" class="form-control" value="" name="confirm_password" placeholder="">
 							<div class="input-group-append">
 								<div class="input-group-text"> <span class="fas fa-key"></span>
 								</div>
