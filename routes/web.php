@@ -1,4 +1,5 @@
 <?php
+
 Route::group(['namespace' => 'App',], function () {
     Route::get('/login','LoginController@getLogin')->name('login');
     Route::post('/login','LoginController@postLogin')->name('login');
@@ -96,6 +97,7 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/update','WalletController@getUpdate')->name('wallet_update');
         Route::post('/delete','WalletController@postDelete')->name('wallet_delete');
         Route::get('/total','WalletController@getTotal')->name('wallet_total');
+        Route::get('/test','WalletController@datatable')->name('test');
     });
     Route::group(['prefix' => 'asset'], function () {
         Route::get('/datatable','AssetController@getDatatable')->name('asset_table');
@@ -120,3 +122,8 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
 Route::get('/mobile',function(){
     return view('welcome');
 });
+
+Route::get('/test',function(){
+
+});
+
