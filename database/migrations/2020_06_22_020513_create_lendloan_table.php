@@ -24,7 +24,7 @@ class CreateLendloanTable extends Migration
             $table->string('name')->nullable();
             $table->date('birthday')->nullable();
             $table->Integer('sex')->nullable();
-            $table->double('loan')->default(0)->nullable();
+            $table->double('amount')->default(0)->nullable();
             $table->Integer('tenor')->nullable();
             $table->double('interest_rate')->default(0)->nullable();
             $table->date('date')->nullable();

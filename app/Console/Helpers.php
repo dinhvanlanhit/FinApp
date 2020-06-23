@@ -10,10 +10,12 @@ function surplus()
     $sumShopping  = \App\Models\Shopping::where('idUser','=',\Auth::user()->id)->sum('amount');
     $sumCost  = \App\Models\Cost::where('idUser','=',\Auth::user()->id)->sum('amount');
     $sumSalary  = \App\Models\Salary::where('idUser','=',\Auth::user()->id)->sum('amount');
+    $sumLendloan  = \App\Models\Lendloan::where('idUser','=',\Auth::user()->id)->sum('amount');
     $sumWallet=$sumWallet-$sumEvent;
     $sumWallet=$sumWallet-$sumShopping;
     $sumWallet=$sumWallet-$sumCost;
     $sumWallet=$sumWallet+$sumSalary;
+    $sumWallet=$sumWallet+$sumLendloan;
     return $sumWallet;
 
 

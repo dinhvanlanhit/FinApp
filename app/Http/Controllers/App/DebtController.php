@@ -20,8 +20,8 @@ class DebtController extends Controller
         $columns = array( 
             0 => 'created_at',
             1 => 'type_name',
-            2 => 'loan',
-            3 => 'loan', 
+            2 => 'amount',
+            3 => 'amount', 
             3 => 'date', 
             4 => 'created_at'
         );
@@ -59,7 +59,7 @@ class DebtController extends Controller
                         $query->where('debt.id', 'LIKE', "%{$search}%")
                         ->orWhere('debt.note', 'LIKE',"%{$search}%")
                         ->orWhere('debt.name', 'LIKE',"%{$search}%")
-                        ->orWhere('debt.loan','LIKE',"%{$search}%")
+                        ->orWhere('debt.amount','LIKE',"%{$search}%")
                         ->orWhere('debt.status', 'LIKE',"%{$search}%")
                         ->orWhere('debt.date','LIKE',"%{$search}%");
                     })
@@ -87,7 +87,7 @@ class DebtController extends Controller
                         $query->where('debt.id', 'LIKE', "%{$search}%")
                         ->orWhere('debt.note', 'LIKE',"%{$search}%")
                         ->orWhere('debt.name', 'LIKE',"%{$search}%")
-                        ->orWhere('debt.loan','LIKE',"%{$search}%")
+                        ->orWhere('debt.amount','LIKE',"%{$search}%")
                         ->orWhere('debt.status', 'LIKE',"%{$search}%")
                         ->orWhere('debt.date','LIKE',"%{$search}%");
                     })
@@ -120,7 +120,7 @@ class DebtController extends Controller
                         ->orWhere('debt.note', 'LIKE',"%{$search}%")
                         ->orWhere('debt.status', 'LIKE',"%{$search}%")
                         ->orWhere('debt.name', 'LIKE',"%{$search}%")
-                        ->orWhere('debt.loan','LIKE',"%{$search}%")
+                        ->orWhere('debt.amount','LIKE',"%{$search}%")
                         ->orWhere('debt.date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -148,7 +148,7 @@ class DebtController extends Controller
                         ->orWhere('debt.name', 'LIKE',"%{$search}%")
                         ->orWhere('debt.status', 'LIKE',"%{$search}%")
                         ->orWhere('debt.note', 'LIKE',"%{$search}%")
-                        ->orWhere('debt.loan','LIKE',"%{$search}%")
+                        ->orWhere('debt.amount','LIKE',"%{$search}%")
                         ->orWhere('debt.date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -185,7 +185,7 @@ class DebtController extends Controller
         $Debt->idUser = Auth::user()->id;
         $Debt->idTypeDebt = $Request->idTypeDebt;
         $Debt->name= $Request->name;
-        $Debt->loan= $Request->loan;
+        $Debt->amount= $Request->amount;
         $Debt->tenor= $Request->tenor;
         $Debt->interest_rate = $Request->interest_rate;
         $Debt->date = $Request->date;
@@ -206,7 +206,7 @@ class DebtController extends Controller
         $Debt->idUser = Auth::user()->id;
         $Debt->idTypeDebt = $Request->idTypeDebt;
         $Debt->name= $Request->name;
-        $Debt->loan= $Request->loan;
+        $Debt->amount= $Request->amount;
         $Debt->tenor= $Request->tenor;
         $Debt->interest_rate = $Request->interest_rate;
         $Debt->date = $Request->date;

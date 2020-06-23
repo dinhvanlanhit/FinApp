@@ -20,8 +20,8 @@ class LendloanController extends Controller
         $columns = array( 
             0 => 'created_at',
             1 => 'name',
-            2 => 'loan',
-            3 => 'loan', 
+            2 => 'amount',
+            3 => 'amount', 
             3 => 'date', 
             4 => 'created_at'
         );
@@ -51,7 +51,7 @@ class LendloanController extends Controller
                         ->orWhere('sex', 'LIKE',"%{$search}%")
                         ->orWhere('birthday', 'LIKE',"%{$search}%")
                         ->orWhere('name', 'LIKE',"%{$search}%")
-                        ->orWhere('tenor', 'LIKE',"%{$search}%")
+                        ->orWhere('amount', 'LIKE',"%{$search}%")
                         ->orWhere('mortgage', 'LIKE',"%{$search}%")
                         ->orWhere('address', 'LIKE',"%{$search}%")
                         ->orWhere('note', 'LIKE',"%{$search}%")
@@ -82,7 +82,7 @@ class LendloanController extends Controller
                         ->orWhere('sex', 'LIKE',"%{$search}%")
                         ->orWhere('birthday', 'LIKE',"%{$search}%")
                         ->orWhere('name', 'LIKE',"%{$search}%")
-                        ->orWhere('tenor', 'LIKE',"%{$search}%")
+                        ->orWhere('amount', 'LIKE',"%{$search}%")
                         ->orWhere('mortgage', 'LIKE',"%{$search}%")
                         ->orWhere('address', 'LIKE',"%{$search}%")
                         ->orWhere('note', 'LIKE',"%{$search}%")
@@ -126,9 +126,9 @@ class LendloanController extends Controller
         $Lendloan->name= $Request->name;
         $Lendloan->birthday = $Request->birthday;
         $Lendloan->sex = $Request->sex;
-        $Lendloan->loan= $Request->loan;
+        $Lendloan->amount= $Request->amount;
         $Lendloan->tenor= $Request->tenor;
-        $Lendloan->interest_rate = $Request->interest_rate;
+        $Lendloan->interest_rate = ($Request->interest_rate == 'NaN'?0:$Request->interest_rate);
         $Lendloan->date = $Request->date;
         $Lendloan->expiration_date = $Request->expiration_date;
         $Lendloan->note = $Request->note;
@@ -150,7 +150,7 @@ class LendloanController extends Controller
         $Lendloan->name= $Request->name;
         $Lendloan->birthday = $Request->birthday;
         $Lendloan->sex = $Request->sex;
-        $Lendloan->loan= $Request->loan;
+        $Lendloan->amount= $Request->amount;
         $Lendloan->tenor= $Request->tenor;
         $Lendloan->interest_rate = ($Request->interest_rate == 'NaN'?0:$Request->interest_rate);
         $Lendloan->date = $Request->date;

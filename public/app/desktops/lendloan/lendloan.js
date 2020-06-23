@@ -68,8 +68,8 @@ function lendloan() {
 			},
 			{
 				title: "Chi Tiết",
-				data: "loan",
-				name: "loan",
+				data: "amount",
+				name: "amount",
 				className: "text-left",
 				render: function (data, type, row, meta) {
 					var html ='';
@@ -83,8 +83,8 @@ function lendloan() {
 				}
 			},{
 				title: "Số tiền",
-				data: "loan",
-				name: "loan",
+				data: "amount",
+				name: "amount",
 				className: "text-center",
 				render: function (data, type, row, meta) {
 					html = '<b class="">' + money_format(data) + ' VNĐ</b><br>';
@@ -159,7 +159,7 @@ function lendloan() {
 					$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
 					$('#expiration_date').val(moment(data.data.expiration_date, " YYYY-MM-DD").format('DD-MM-YYYY'));
 					$('#name').val(data.data.name);
-					$('#loan').val(money_format(data.data.loan));
+					$('#amount').val(money_format(data.data.amount));
 					$('#interest_rate').val(money_format(data.data.interest_rate));
 					$('#note').val(data.data.note);
 					$('#tenor').val(data.data.tenor);
@@ -182,7 +182,7 @@ function lendloan() {
 			$('#date').datepicker('setDate', new Date());
 			$('#expiration_date').datepicker('setDate', new Date());
 			$('#birthday').datepicker('setDate', new Date());
-			$('#loan').val('');
+			$('#amount').val('');
 			$('#name').val('');
 			$('#interest_rate').val('');
 			$('#note').val('');
@@ -209,7 +209,7 @@ function lendloan() {
 				surplus();
 			}
 		});
-		$("#loan").on("input", function () {
+		$("#amount").on("input", function () {
 			input_money_format(this);
 		});
 		$("#interest_rate").on("input", function () {
@@ -231,7 +231,7 @@ function lendloan() {
 				name: {
 					required: true
 				},
-				loan: {
+				amount: {
 					required: true
 				},
 				// tenor: {
@@ -260,7 +260,7 @@ function lendloan() {
 				name: {
 					required: "Vui lòng nhập đơn vị vay !",
 				},
-				loan: {
+				amount: {
 					required: "Vui lòng nhập khoản vay !",
 				},
 				// tenor: {
@@ -293,7 +293,7 @@ function lendloan() {
 				formData.set('birthday', moment(formData.get('birthday'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('date', moment(formData.get('date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
 				formData.set('expiration_date', moment(formData.get('expiration_date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
-				formData.set('loan', money_format_to_number(formData.get('loan')));
+				formData.set('amount', money_format_to_number(formData.get('amount')));
 				formData.set('interest_rate', money_format_to_number(formData.get('interest_rate')));
 				formData.set('idTypeLendloan',formData.get('idTypeLendloanInput'));
 				var url = $("#onSave").attr('data-url');

@@ -54,7 +54,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Khoản vay</label>
-                            <input class="form-control" id="loan" name="loan"/>
+                            <input class="form-control" id="amount" name="amount"/>
                         </div>
                     </div>
                     <div class="col-md-6">
