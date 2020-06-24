@@ -37,6 +37,7 @@ class CreateUsersTable extends Migration
             $table->string('fax')->nullable();
             $table->string('cmnn_passport')->nullable();
             $table->string('postal_code')->nullable();
+            $table->string('type')->default('member')->nullable();
             $table->boolean('status')->nullable()->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

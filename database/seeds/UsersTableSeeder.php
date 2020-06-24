@@ -31,7 +31,8 @@ class UsersTableSeeder extends Seeder
             'internal_number'=>'0966334404',
             'fax'=>'0966334404',
             'cmnn_passport'=>'0966334404',
-            'postal_code'=>'0966334404'
+            'postal_code'=>'0966334404',
+            'type'=>'admin'
         ]);
     }
 }

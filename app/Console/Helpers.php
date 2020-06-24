@@ -192,3 +192,7 @@ function template()
     //     return "AdminMobiles";
     // }
 }
+function templateAdminApp()
+{
+    return "AdminApp";
+}

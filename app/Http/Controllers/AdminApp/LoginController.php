@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\App;
+namespace App\Http\Controllers\AdminApp;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class LoginController extends Controller
 {
     public function getLogin(Request $Request)
     {
-       return view(templateAdmin().'.pages.login.login');
+       return view(template().'.pages.login.login');
     }
     public function postLogin(Request $Request)
     {
@@ -32,9 +32,9 @@ class LoginController extends Controller
     public function getLogout(Request $Request)
     {
         if(Auth::logout()){
-            return redirect()->route('login');
+            return redirect()->route('admin_login');
         }else {
-            return redirect()->route('login');
+            return redirect()->route('admin_login');
         }
     }
 

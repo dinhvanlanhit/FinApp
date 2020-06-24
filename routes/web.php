@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'App',], function () {
+Route::group(['namespace' => 'App'], function () {
     Route::get('/login','LoginController@getLogin')->name('login');
     Route::post('/login','LoginController@postLogin')->name('login');
     Route::get('/logout','LoginController@getLogout')->name('logout');
