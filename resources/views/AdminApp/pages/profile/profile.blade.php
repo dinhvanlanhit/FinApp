@@ -165,7 +165,7 @@
 
 @endsection
 @section('javascript')
-<script src="{{asset('app/desktops/profile/profile.js')}}"></script>
+<script src="{{asset('app/admin/profile/profile.js')}}"></script>
 <script> 
     var profile = new profile(); 
     profile.datas={

@@ -213,7 +213,7 @@
 @endsection
 @section('javascript')
 <script src="{{asset(templateAdminApp().'/plugins/echarts/echarts-en.min.js')}}"></script>
-<script src="{{asset('app/desktops/dashboard/dashboard.js')}}"></script>
+<script src="{{asset('app/admin/dashboard/dashboard.js')}}"></script>
 <script> 
     var dashboard = new dashboard(); 
     dashboard.datas={

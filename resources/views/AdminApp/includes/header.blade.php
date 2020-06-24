@@ -4,7 +4,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{route('profile')}}" class="nav-link active"><b> <i class="fa fa-user"></i> {{Auth::user()->full_name}}</b></a>
+        <a href="{{route('profile')}}" class="nav-link active"><b> <i class="fa fa-user"></i> <span class="full_name_show">{{Auth::user()->full_name}}</span></b></a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
