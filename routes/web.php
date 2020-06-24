@@ -124,6 +124,6 @@ Route::get('/mobile',function(){
 });
 
 Route::get('/test',function(){
-
+    getWallet();
 });
 

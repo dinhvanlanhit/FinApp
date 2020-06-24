@@ -87,7 +87,10 @@ function surplus()
 }
 function getWallet()
 {
-    return \App\Models\Wallet::where('idUser','=',\Auth::user()->id)->get();
+    $rs = \App\Models\Wallet::where('idUser','=',\Auth::user()->id)->get();
+  
+    return $rs;
+
 }
 
 function deleteFile($file)
