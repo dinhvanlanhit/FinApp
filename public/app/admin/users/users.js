@@ -20,8 +20,9 @@ function users() {
 				type: "GET",
 				data: function (d) {
 					return $.extend({}, d, {
-						dateBegin: $("#dateBegin").val(),
-						dateEnd: $("#dateEnd").val(),
+						// dateBegin: $("#dateBegin").val(),
+						// dateEnd: $("#dateEnd").val(),
+						status : $("#status").val(),
 						search: $("#search").val(),
 					});
 				}
@@ -38,37 +39,51 @@ function users() {
 					}
 				}, 
 				{
-					title: "Tên",
-					data: "name",
-					name: "name",
+					title: "Họ Và Tên",
+					data: "full_name",
+					name: "full_name",
 					className: "text-center",
-				}
-				,{
-					title: "Số tiền",
-					data: "amount",
-					name: "amount",
-					className: "text-center",
-					render: function (data, type, row, meta) {
-						return '<b class="">' + money_format(data) + ' VNĐ</b>';
-					}
 				},
 				{
 					title: "Địa chỉ",
-					data: "address",
-					name: "address",
+					data: "address_1",
+					name: "address_1",
 					className: "text-center",
 				}, 
 				{
-					title: "Ghi Chú",
-					data: "note",
-					name: "note",
+					title: "Trạng Thái",
+					data: "status_name",
+					name: "status_name",
 					className: "text-center",
-				},{
-					title: "Ngày",
-					data: "date",
-					name: "date",
+					// render: function (data, type, row, meta) {
+
+
+					// <div class="form-group clearfix">
+					// 	<div class="icheck-danger d-inline">
+					// 		<input type="radio" name="r2" checked="" id="radioDanger1">
+					// 		<label for="radioDanger1">
+					// 			Mở
+					// 		</label>
+					// 	</div>
+					// 	<div class="icheck-danger d-inline">
+					// 		<input type="radio" name="r2" id="radioDanger2">
+					// 		<label for="radioDanger2">
+					// 			Đóng
+					// 		</label>
+					// 	</div>
+               
+                    // </div>
+					// 	return '<input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success"></input>';
+					// }
+					
+				},
+			    {
+					title: "Ngày Đăng Ký",
+					data: "created_at",
+					name: "created_at",
 					className: "text-center",
-				},{
+				},
+				{
 					title: "Tác vụ",
 					data: "created_at",
 					name: "created_at",

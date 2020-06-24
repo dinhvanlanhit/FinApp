@@ -13,7 +13,7 @@
           <div class="row">
               <div class="col-md-2">
                 <div class="form-group" >
-                      <select class="form-control select2bs4" style="width: 100%;" id="type" name="type">
+                      <select class="form-control select2bs4" style="width: 100%;" id="status" name="status">
                         <option value="">-- Tất Cả --</option>
                         <option value="1">-- Khóa --</option>
                         <option value="0">-- Mở --</option>
