@@ -1,5 +1,5 @@
-@extends('AdminDesktops.layouts.layout')
-@section('desktops')
+@extends('AdminApp.layouts.layout')
+@section('AdminApp')
 
         <form id="formProfile">
             <div class="row">
@@ -163,22 +163,16 @@
               </div>
         </form>
 
-        
-        
- 
-
-
 @endsection
 @section('javascript')
-
 <script src="{{asset('app/desktops/profile/profile.js')}}"></script>
 <script> 
     var profile = new profile(); 
     profile.datas={
         birthday:"{{$users->birthday}}",
         routes:{
-          profile:"{{route('profile')}}",
-          uploadFile:"{{route('uploadFile')}}",
+          profile:"{{route('admin_profile')}}",
+          uploadFile:"{{route('admin_uploadFile')}}",
         }
     }   
     profile.runJS();

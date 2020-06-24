@@ -53,3 +53,7 @@ Breadcrumbs::for('admin_dashboard', function ($trail) {
     // $trail->parent('admin_dashboard');
     $trail->push('Xem Tổng Quan', route('admin_dashboard'));
 });
+Breadcrumbs::for('admin_profile', function ($trail) {
+    // $trail->parent('admin_dashboard');
+    $trail->push('Hô Sơ Cá Nhân', route('admin_profile'));
+});
