@@ -89,7 +89,7 @@
           <span class="info-box-icon bg-info"><i class="far fa-building"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text"><b> Đâu Tư </b></span>
+            <span class="info-box-text"><b> Đầu Tư </b></span>
             <span class="info-box-number" id="sumInvest"></span>
           </div>
           <!-- /.info-box-content -->
@@ -163,7 +163,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h5 class="card-title">Biểu Đồ Chi Riết</h5>
+        <h5 class="card-title">Biểu Đồ Chi Tiết</h5>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse">
             <i class="fas fa-minus"></i>
