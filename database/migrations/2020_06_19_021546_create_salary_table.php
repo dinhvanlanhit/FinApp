@@ -26,7 +26,7 @@ class CreateSalaryTable extends Migration
 
             $table->string('company')->nullable();
             $table->string('name')->nullable();
-           
+            $table->text('note')->nullable();
             $table->double('amount')->default(0)->nullable();
             $table->date('date')->nullable();
             $table->timestamps();

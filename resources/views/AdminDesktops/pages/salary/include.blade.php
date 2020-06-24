@@ -60,7 +60,12 @@
                     
                         </div>
                 </div>
-                 
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Ghi chú (nếu có) </label>
+                        <input class="form-control" id="note" name="note"/>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>

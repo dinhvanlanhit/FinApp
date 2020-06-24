@@ -22,8 +22,9 @@ class SalaryController extends Controller
             1 => 'type_name',
             2 => 'name',
             3 => 'amount',
-            4 => 'date', 
-            5 => 'created_at'
+            4 => 'note',
+            5 => 'date', 
+            6 => 'created_at'
         );
         $idUser = Auth::user()->id;
         $limit = $Request->input('length');
@@ -182,6 +183,7 @@ class SalaryController extends Controller
         $Salary->idTypeSalary = $Request->idTypeSalary;
         $Salary->amount = $Request->amount;
         $Salary->date = $Request->date;
+        $Salary->note = $Request->note;
         $Salary->company = $Request->company;
         if( $Request->name==''||$Request->name==null){
             $Salary->name =Auth::user()->full_name;
@@ -205,6 +207,7 @@ class SalaryController extends Controller
         $Salary->idTypeSalary = $Request->idTypeSalary;
         $Salary->amount = $Request->amount;
         $Salary->date = $Request->date;
+        $Salary->note = $Request->note;
         if( $Request->name==''||$Request->name==null){
             $Salary->name =Auth::user()->full_name;
         }else{

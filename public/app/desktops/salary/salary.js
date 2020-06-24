@@ -73,7 +73,12 @@ function salary() {
 					return '<b class="">' + money_format(data) + ' VNĐ</b>';
 				}
 			},
-			
+			 {
+				title: "Ghi Chú",
+				data: "note",
+				name: "note",
+				
+			},
 			 {
 				title: "Tác vụ",
 				data: "created_at",
@@ -133,6 +138,7 @@ function salary() {
 					$('#company').val(data.data.company);
 					$('#amount').val(money_format(data.data.amount));
 					$('#name').val(data.data.name);
+					$('#note').val(data.data.note);
 					$("#modal-action").modal('show');
 					buttonloading(elementbtn, false);
 				},
@@ -148,6 +154,7 @@ function salary() {
 			$('#date').datepicker('setDate', new Date());
 			$('#company').val('');
 			$('#amount').val('');
+			$('#note').val('');
 			$('#name').val('');
 			$("#modal-action").modal('show');
 		});
