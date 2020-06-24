@@ -15,8 +15,8 @@
                 <div class="form-group" >
                       <select class="form-control select2bs4" style="width: 100%;" id="type" name="type">
                         <option value="">-- Tất Cả --</option>
-                        <option value="1">Khóa</option>
-                        <option value="0">Mở</option>
+                        <option value="1">-- Khóa --</option>
+                        <option value="0">-- Mở --</option>
                       </select>
                 </div>
               </div>
@@ -40,7 +40,7 @@
       </form>
       <div class="row">
         <div class="col-md-12">
-            <table class="table table-bordered row-border hover text-small" id="asset-table"></table>
+            <table class="table table-bordered row-border hover text-small" id="users-table"></table>
         </div>
       </div>
       
