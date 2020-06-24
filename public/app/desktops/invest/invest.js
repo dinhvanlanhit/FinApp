@@ -121,6 +121,8 @@ function invest() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
+					$('#idWallet').val(data.data.idWallet); 
+					$('#idWallet').trigger('change'); 
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
@@ -137,6 +139,8 @@ function invest() {
 		});
 		$("#btn-insert").on("click", function () {
 			$('#modal-action-title').text("Thêm mới");
+			$('#idWallet').val(''); 
+			$('#idWallet').trigger('change'); 
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
@@ -158,6 +162,7 @@ function invest() {
 			}, datas.routes.delete);
 			if (result) {
 				table.ajax.reload();
+				surplus();
 				$("#modal-delete").modal('hide');
 				buttonloading('#onDelete', false);
 			}
@@ -170,6 +175,9 @@ function invest() {
 		});
 		$('#formAction').validate({
 			rules: {
+				idWallet:{
+					required: true
+				},
 				name: {
 					required: true
 				},
@@ -181,6 +189,9 @@ function invest() {
 				},
 			},
 			messages: {
+				idWallet: {
+					required: "Vui lòng chọn ví tiền để giao dịch !",
+				},
 				name: {
 					required: "Vui lòng nhập lĩnh vực đâu tư !",
 				},
@@ -222,6 +233,7 @@ function invest() {
 							buttonloading('#onSave', false);
 							table.ajax.reload();
 							$("#modal-action").modal('hide');
+							surplus();
 							Toast.fire({
 								icon: data.icon,
 								title: data.messages
