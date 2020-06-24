@@ -105,7 +105,8 @@ class WalletController extends Controller
                     ." SELECT SUM(amount) AS cumINCOME, idWallet  FROM debt GROUP BY idWallet) AS TBCHILD"
                 .") AS TBS "
                 ." ON TBS.idWallet = TEST.id "
-                ." AND idUser = ".$idUser."";
+                ." WHERE idUser = ".$idUser."";
+   
         return $data=  DB::select(DB::raw($SQL)); 
     }
 }

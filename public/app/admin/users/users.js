@@ -55,26 +55,6 @@ function users() {
 					data: "status_name",
 					name: "status_name",
 					className: "text-center",
-					// render: function (data, type, row, meta) {
-
-
-					// <div class="form-group clearfix">
-					// 	<div class="icheck-danger d-inline">
-					// 		<input type="radio" name="r2" checked="" id="radioDanger1">
-					// 		<label for="radioDanger1">
-					// 			Mở
-					// 		</label>
-					// 	</div>
-					// 	<div class="icheck-danger d-inline">
-					// 		<input type="radio" name="r2" id="radioDanger2">
-					// 		<label for="radioDanger2">
-					// 			Đóng
-					// 		</label>
-					// 	</div>
-               
-                    // </div>
-					// 	return '<input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success"></input>';
-					// }
 					
 				},
 			    {
@@ -95,13 +75,22 @@ function users() {
 							title: 'Xóa',
 							icon: '',
 							text: 'Xóa'
-						}, {
+						}, 
+						{
 							class: 'btn-update',
 							value: row.id,
 							title: 'Sửa',
 							icon: '',
 							text: 'Sửa'
-						}]);
+						},
+						{
+							class: 'btn-update',
+							value: row.id,
+							title: 'Thanh Toán',
+							icon: '',
+							text: 'Thanh Toán'
+						}
+					]);
 					}
 				}
 			],
@@ -125,31 +114,12 @@ function users() {
 		});
 		$(document).delegate(".btn-update", "click", function () {
 			var id = $(this).val();
-			var elementbtn = $(this);
-			buttonloading(elementbtn, true);
-			$('#modal-action-title').text("Chỉnh sửa");
-			$.ajax({
-				url: datas.routes.update,
-				data: {
-					id: id
-				},
-				type: 'GET',
-				dataType: 'JSON',
-				success: function (data) {
-					$("#onSave").attr('data-url', datas.routes.update);
-					$("#onSave").attr('data-id', data.data.id);
-					$("#onSave").attr('data-action', 'update');
-					$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#name').val(data.data.name);
-					$('#amount').val(money_format(data.data.amount));
-					$('#note').val(data.data.note);
-					$('#address').val(data.data.address);
-					$("#modal-action").modal('show');
-					buttonloading(elementbtn, false);
-				},
-				error: function (error) {}
-			});
+			return window.location.href=datas.routes.update+'/'+id;
+		
 		});
+		
+
+
 		$("#btn-insert").on("click", function () {
 			$('#modal-action-title').text("Thêm mới");
 			$("#onSave").attr('data-url', datas.routes.insert);

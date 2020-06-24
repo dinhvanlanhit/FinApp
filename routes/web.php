@@ -118,12 +118,8 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     });
     
 });
-
 Route::get('/mobile',function(){
     return view('welcome');
 });
 
-Route::get('/test',function(){
-    getWallet();
-});
 

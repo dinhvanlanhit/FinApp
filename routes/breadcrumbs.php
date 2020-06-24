@@ -50,14 +50,25 @@ Breadcrumbs::for('asset', function ($trail) {
 
 ///// ADMIN
 Breadcrumbs::for('admin_dashboard', function ($trail) {
-    // $trail->parent('admin_dashboard');
+
     $trail->push('Xem Tổng Quan', route('admin_dashboard'));
 });
 Breadcrumbs::for('admin_profile', function ($trail) {
-    // $trail->parent('admin_dashboard');
+    $trail->parent('admin_dashboard');
     $trail->push('Hô Sơ Cá Nhân', route('admin_profile'));
 });
 Breadcrumbs::for('admin_users', function ($trail) {
-    // $trail->parent('admin_dashboard');
-    $trail->push('Quản Lý Người Dùng', route('admin_users'));
+    $trail->parent('admin_dashboard');
+    $trail->push('Người Dùng'); 
+    $trail->push('Danh Sách Người Dùng', route('admin_users'));
+});
+Breadcrumbs::for('admin_users_update', function ($trail) {
+    $trail->parent('admin_dashboard');
+    $trail->push('Người Dùng'); 
+    $trail->push('Cập Nhật Người Dùng', route('admin_users_update'));
+});
+Breadcrumbs::for('admin_users_insert', function ($trail) {
+    $trail->parent('admin_dashboard');
+    $trail->push('Người Dùng'); 
+    $trail->push('Thêm Người Dùng', route('admin_users_insert'));
 });

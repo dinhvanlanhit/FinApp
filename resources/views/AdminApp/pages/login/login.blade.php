@@ -26,7 +26,7 @@
 
     <div class="card-body login-card-body">
       <div class="login-logo">
-            <img class="btn-block" src="{{asset('SytemFinApp/logo/logofinapp.jpg')}}"/>
+            <img class="btn-block" src="{{asset('SytemFinApp/logo/logofinapp.png')}}"/>
       </div>
       <div id="alert"></div>
       <form id="form-login"  method="post">

@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-md-2">
             <div class="form-group">
-              <button type="button"  class="btn btn-info btn-block" id="btn-insert">Thêm mới</button>
+              <button type="button"  class="btn btn-info btn-block" id="btn-insert">Thêm ví mới</button>
              </div>
           </div>
           <div class="col-md-12">

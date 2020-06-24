@@ -23,10 +23,17 @@ Route::group(['namespace' => 'AdminApp','prefix' => 'app','middleware' => ['Chec
         Route::group(['prefix' => 'users'], function () {
             Route::get('admin-users','UsersController@getIndex')->name('admin_users');
             Route::get('admin-users-datatable','UsersController@getDatatable')->name('admin_users_datatable');
+
+            Route::get('admin-users-update/{id?}','UsersController@getUpdate')->name('admin_users_update');
             Route::post('admin-users-update','UsersController@postUpdate')->name('admin_users_update');
-            Route::post('admin-users-insert','UsersController@postUpdate')->name('admin_users_insert');
-            Route::post('admin-users-delete','UsersController@postUpdate')->name('admin_users_delete');
+
+            Route::get('admin-users-insert','UsersController@getInsert')->name('admin_users_insert');
+            Route::post('admin-users-insert','UsersController@postInsert')->name('admin_users_insert');
+            
+            Route::post('admin-users-delete','UsersController@postDelete')->name('admin_users_delete');
             Route::post('admin-users-status','UsersController@postUpdate')->name('admin_users_status');
+
+           
            
         });
    

@@ -62,7 +62,7 @@
         routes:{
           datatable:"{{route('admin_users_datatable')}}",
           status:"{{route('admin_users_status')}}",
-          delete:"{{route('admin_users_update')}}",
+          update:"{{route('admin_users_update')}}",
           delete:"{{route('admin_users_delete')}}",
         }
     }   
