@@ -20,7 +20,7 @@ class LoginController extends Controller
     {
         $credentials = $Request->only('name','email', 'password');
         if (Auth::attempt($credentials)) {
-            if(Auth::user()->status==0){
+            if(Auth::user()->status==0&&Auth::user()->type!='member'){
                 return JSON2(true,"");
             }else{
                 return JSON2(false,"Tài khoản của bạn đã bị khóa");
