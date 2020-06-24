@@ -10,6 +10,11 @@
     <!-- /.card-header -->
     <div class="card-body card-body-dashboard">
         <div class="row">
+          <div class="col-md-2">
+            <div class="form-group">
+              <button type="button"  class="btn btn-info btn-block" id="btn-insert">Thêm mới</button>
+             </div>
+          </div>
           <div class="col-md-12">
               <table class="table table-bordered row-border hover text-small" id="wallet-table"></table>
           </div>

@@ -9,6 +9,11 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
+        <a href="{{route('dashboard')}}"  title="Fin-App" class="nav-link">
+          <i class="fas fa-desktop"></i>
+        </a>
+      </li>
+      <li class="nav-item">
         <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-logout" class="nav-link" role="button">
           <i class="fas fa-sign-out-alt"></i>
         </a>

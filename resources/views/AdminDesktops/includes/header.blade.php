@@ -23,7 +23,14 @@
           <i class="fas fa-mobile-alt"></i>
         </a>
       </li> --}}
-     
+      @if (Auth::user()->type=='admin')
+        <li class="nav-item">
+          <a href="{{route('admin_dashboard')}}"  title="Quản Lý Hệ Thống" class="nav-link">
+            <i class="fas fa-desktop"></i>
+          </a>
+        </li>
+      @endif
+      
       <li class="nav-item">
         <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-logout" class="nav-link" role="button">
           <i class="fas fa-sign-out-alt"></i>
