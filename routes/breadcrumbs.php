@@ -57,3 +57,7 @@ Breadcrumbs::for('admin_profile', function ($trail) {
     // $trail->parent('admin_dashboard');
     $trail->push('Hô Sơ Cá Nhân', route('admin_profile'));
 });
+Breadcrumbs::for('admin_users', function ($trail) {
+    // $trail->parent('admin_dashboard');
+    $trail->push('Quản Lý Người Dùng', route('admin_users'));
+});

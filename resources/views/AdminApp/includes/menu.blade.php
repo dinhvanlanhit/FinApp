@@ -9,14 +9,12 @@
         </a>
       </li>
       <li class="nav-item menu-open">
-        <a href="{{route('event')}}" class="nav-link ">
+        <a href="{{route('admin_users')}}" class="nav-link ">
           <i class="nav-icon fas fa-users"></i>
           <p>
-            Thành Viên
-           
+             Người Dùng 
           </p>
         </a>
-      
       </li>
       <li class="nav-item menu-open">
         <a href="{{route('admin_profile')}}" class="nav-link ">
