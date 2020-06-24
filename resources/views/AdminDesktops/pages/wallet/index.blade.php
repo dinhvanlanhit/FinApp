@@ -9,27 +9,6 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body card-body-dashboard">
-
-        <form id="formSearch">
-            <div class="row">
-                <div class="col-md-8">
-                  <div class="form-group">
-                        <input class="form-control" id="search" name="search" placeholder="Từ khóa tìm kiếm ..."/>
-                  </div>
-                </div>
-   
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-info btn-block formSearch">Tìm kiếm</button>
-                                </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <button type="button"  class="btn btn-success btn-block" id="btn-insert">Thêm mới</button>
-                   </div>
-                </div>
-            </div>
-        </form>
         <div class="row">
           <div class="col-md-12">
               <table class="table table-bordered row-border hover text-small" id="wallet-table"></table>

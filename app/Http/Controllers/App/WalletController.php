@@ -22,53 +22,9 @@ class WalletController extends Controller
     }
     public function getDatatable(Request $Request)
     {
-        $columns = array( 
-            0 => 'created_at',
-            1 => 'type_name',
-            2 => 'name',
-            3 => 'amount',
-            4 => 'note',
-            5 => 'updated_at',
-            6 => 'updated_at'
-        );
-        $idUser = Auth::user()->id;
-        $limit = $Request->input('length');
-        $start = $Request->input('start');
-        $order = $columns[$Request->input('order.0.column')];
-        $dir = $Request->input('order.0.dir');
-        $search = $Request->input('search');
-        $totalData =  Wallet::where('idUser','=',$idUser)->count();
-        $totalFiltered =$totalData;
-        if(empty($search)){
-                $Wallet = Wallet::join('type_wallet','type_wallet.id','=','wallet.idTypeWallet')
-                ->where('wallet.idUser','=',$idUser)
-                ->select('wallet.*','type_wallet.type_name')
-                ->offset($start)
-                ->limit($limit)
-                ->orderBy($order,$dir)
-                ->get();
-        }else{
-                $Wallet = Wallet::join('type_wallet','type_wallet.id','=','wallet.idTypeWallet')
-                ->where('wallet.idUser','=',$idUser)
-                ->Where(function($query)use($search){
-                    $query->where('wallet.id', 'LIKE', "%{$search}%")
-                    ->orWhere('wallet.name', 'LIKE',"%{$search}%")
-                    ->orWhere('wallet.note', 'LIKE',"%{$search}%")
-                    ->orWhere('wallet.amount', 'LIKE',"%{$search}%")
-                    ->orWhere('type_wallet.type_name', 'LIKE',"%{$search}%")    
-                    ->orWhere('wallet.created_at','LIKE',"%{$search}%");
-                })
-                ->select('wallet.*','type_wallet.type_name')
-                ->offset($start)
-                ->limit($limit)
-                ->orderBy($order,$dir)
-                ->get();
-        }
+        $Wallet = $this->datatable();
         $json_data = array(
-            "draw"            => intval($Request->input('draw')),  
-            "recordsTotal"    => intval($totalData),  
-            "recordsFiltered" => intval($totalFiltered), 
-            "data"            => $Wallet   
+            "data"  => $Wallet   
         );
         echo json_encode($json_data); 
     }
@@ -83,7 +39,6 @@ class WalletController extends Controller
     }
     public function postInsert(Request $Request)
     {
-
         $Wallet = new Wallet();
         $Wallet->idUser = Auth::user()->id;
         $Wallet->name= $Request->name;
@@ -95,7 +50,6 @@ class WalletController extends Controller
         }else{
             return JSON2(false,"Thêm thất bại");
         }
-        # code...
     }
     public function postUpdate(Request $Request)
     {
@@ -122,12 +76,10 @@ class WalletController extends Controller
         }
 
     }
-    public function datatable($limit,$start,$order,$dir,$search)
+    public function datatable()
     {
-
         $idUser = Auth::user()->id;
-        $data=  DB::select(DB::raw(
-                "SELECT * FROM (SELECT * FROM wallet AS wallet_PARENT,"
+        $SQL="SELECT * FROM (SELECT * FROM wallet AS wallet_PARENT LEFT JOIN"
                 ."(SELECT SUM(sumCOST) AS sumCOST, idWallet  FROM ("
                     ." SELECT SUM(amount) AS sumCOST , idWallet "
                     ." FROM event"
@@ -145,21 +97,15 @@ class WalletController extends Controller
                     ." FROM invest "
                     ." GROUP BY idWallet      "
                 .") AS TBN GROUP BY TBN.idWallet"
-                .") AS child WHERE "
+                .") AS child ON "
                 ." child.idWallet = wallet_PARENT.id) AS TEST "
-                ." LEFT JOIN (SELECT SUM(TOTAL_S) AS TOTAL_S, idWallet FROM ("
-                    ." SELECT SUM(amount) AS TOTAL_S, idWallet  FROM salary GROUP BY idWallet"
+                ." LEFT JOIN (SELECT SUM(cumINCOME) AS cumINCOME, idWallet FROM ("
+                    ." SELECT SUM(amount) AS cumINCOME, idWallet  FROM salary GROUP BY idWallet"
                     ." UNION ALL"
-                    ." SELECT SUM(amount) AS TOTAL_S, idWallet  FROM debt GROUP BY idWallet) AS TBCHILD"
+                    ." SELECT SUM(amount) AS cumINCOME, idWallet  FROM debt GROUP BY idWallet) AS TBCHILD"
                 .") AS TBS "
                 ." ON TBS.idWallet = TEST.id "
-                ." wallet_PARENT.name LIKE N'%".$search."%'"
-                ." OR wallet_PARENT.amount LIKE N'%".$search."%'"
-                ." OR wallet_PARENT.note LIKE N'%".$search."%'"
-                ." OR wallet_PARENT.created_at LIKE N'%".$search."%'"
-                ." ORDER BY ".$dir." ".$order." "
-        )); 
-       
+                ." AND idUser = ".$idUser."";
+        return $data=  DB::select(DB::raw($SQL)); 
     }
-
 }

@@ -34,6 +34,16 @@ class TypeShoppingTableSeeder extends Seeder
                     
                 ],
                 [
+                  'type_name' => 'Mua Xe Cộ',
+                  'color'=>'#002661',
+                  
+                ],
+                [
+                  'type_name' => 'Mua Vật Dụng Trong Nhà',
+                  'color'=>'#dc3545',
+                  
+                ],
+                [
                     'type_name' => 'Mục Khác',
                     'color'=>'#28C76F',
                    

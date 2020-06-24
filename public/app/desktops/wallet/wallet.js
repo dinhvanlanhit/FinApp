@@ -3,11 +3,9 @@ function wallet() {
 	this.runJS = function () {
 		var datas = this.datas;
 		var table = $("#wallet-table").DataTable({
-			serverSide: true,
-			processing: true,
 			paging: true,
 			lengthChange: true,
-			searching: false,
+			searching: true,
 			ordering: true,
 			info: true,
 			responsive: true,
@@ -33,16 +31,6 @@ function wallet() {
 						return meta.row + meta.settings._iDisplayStart + 1;
 					}
 				}, 
-				
-				{
-					title: "Loại",
-					data: "type_name",
-					name: "type_name",
-					className: "text-left",
-					render: function (data, type, row, meta) {
-						return '<b class="text-success">'+data +' </b>';
-					}
-				},
 				{
 					title: "Ví Tiền",
 					data: "name",
@@ -58,7 +46,8 @@ function wallet() {
 					name: "amount",
 					className: "text-center",
 					render: function (data, type, row, meta) {
-						return '<b class="">' + money_format(data) + ' VNĐ</b>';
+						var amount = data+row.cumINCOME-row.sumCOST;
+						return '<b class="">' + money_format(amount) + ' VNĐ</b>';
 					}
 				},
 				{

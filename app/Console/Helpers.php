@@ -88,9 +88,7 @@ function surplus()
 function getWallet()
 {
     $rs = \App\Models\Wallet::where('idUser','=',\Auth::user()->id)->get();
-  
     return $rs;
-
 }
 
 function deleteFile($file)
