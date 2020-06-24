@@ -47,3 +47,9 @@ Breadcrumbs::for('asset', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Tài Sản', route('asset'));
 });
+
+///// ADMIN
+Breadcrumbs::for('admin_dashboard', function ($trail) {
+    // $trail->parent('admin_dashboard');
+    $trail->push('Xem Tổng Quan', route('admin_dashboard'));
+});

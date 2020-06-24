@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Đăng Nhập - FinApp </title>
+  <title>Admin - FinApp </title>
   <link rel="icon" type="image/png" href="{{asset('SytemFinApp/icon/icon.jpg')}}" >
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,27 +62,17 @@
           </div>
         </div>
       </form>
-      <p class="mb-0">
-        <a href="{{route('forgot-password')}}">Tôi quên mật khẩu của tôi</a>
-      </p>
-      <p class="mb-1">
-        <a href="{{route('register')}}" class="text-center">Đăng ký thành viên mới</a>
-      </p>
-      <div class="callout callout-info mb-1">
-        <h5>Tài khoản sử dụng thử</h5>
-        <p>Email : dinhvanlanh.it@gmail.com <br> Mật khẩu : 12345</p>
-      </div>
     </div>
   </div>
 </div>
 <script> routes = {
-    login:"{{route('login')}}",
-    dashboard:"{{route('dashboard')}}"
+    login:"{{route('admin_login')}}",
+    dashboard:"{{route('admin_dashboard')}}"
 }
 </script>
 <script src="{{asset('AdminDesktops/plugins/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/dist/js/adminlte.min.js')}}"></script>
-<script src="{{asset('app/auth/login.min.js')}}"></script>
+<script src="{{asset('app/admin/login/login.min.js')}}"></script>
 </body>
 </html>

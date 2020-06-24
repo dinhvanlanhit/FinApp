@@ -6,16 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="icon" type="image/png" href="{{asset('SytemFinApp/icon/icon.jpg')}}" >
-  <title>FinApp</title>
+  <title>Hệ Thống  - FinApp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  @include('AdminDesktops.partials.stylesheet')
+  @include(templateAdminApp().'.partials.stylesheet')
 </head>
 <body class="sidebar-mini layout-fixed  text-sm">
     <div class="wrapper">
         <!-- Navbar -->
-        @include('AdminDesktops.includes.header')
+        @include(templateAdminApp().'.includes.header')
         <!-- /.navbar -->
-        @include('AdminDesktops.includes.sidebar')
+        @include(templateAdminApp().'.includes.sidebar')
         <div class="content-wrapper">
             <div class="container-fluid">
               <div class="breadcrumbs" id="breadcrumbs-finApp">
@@ -24,16 +24,16 @@
             </div>
             <section class="content">
               <div class="container-fluid">
-                  @yield('desktops')
+                  @yield('AdminApp')
               </div><!-- /.container-fluid -->
           </section>
           <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        @include('AdminDesktops.includes.footer')
-        @include('AdminDesktops.includes.main')
+        @include(templateAdminApp().'.includes.footer')
+        @include(templateAdminApp().'.includes.main')
     </div>
-        @include('AdminDesktops.partials.scripts')
+        @include(templateAdminApp().'.partials.scripts')
         @yield('javascript')
 </body>
 </html>

@@ -1,8 +1,8 @@
-@extends('AdminDesktops.layouts.layout')
-@section('desktops')
+@extends(templateAdminApp().'.layouts.layout')
+@section('AdminApp')
 <div class="row">
     <div class="col-sm-12 col-md-3 ">
-        @include('AdminDesktops.fromControl.dateRange',
+        @include(templateAdminApp().'.fromControl.dateRange',
         [
           'daterange'=>'dashboard_daterange',
           'dateBegin'=>'dashboard_dateBegin',
@@ -177,7 +177,7 @@
           <div class="col-md-12">
             <div class="row">
               <div class="col-sm-12 col-lg-6 col-md-3 ">
-                @include('AdminDesktops.fromControl.dateRange',
+                @include(templateAdminApp().'.fromControl.dateRange',
                 [
                   'daterange'=>'Chart_daterange',
                   'dateBegin'=>'Chart_dateBegin',
@@ -212,14 +212,14 @@
 
 @endsection
 @section('javascript')
-<script src="{{asset('AdminDesktops/plugins/echarts/echarts-en.min.js')}}"></script>
+<script src="{{asset(templateAdminApp().'/plugins/echarts/echarts-en.min.js')}}"></script>
 <script src="{{asset('app/desktops/dashboard/dashboard.js')}}"></script>
 <script> 
     var dashboard = new dashboard(); 
     dashboard.datas={
         routes:{
-          dashboard:"{{route('getDashboard')}}",
-          getCharDashboard:"{{route('getCharDashboard')}}",
+          dashboard:"{{route('admin_getDashboard')}}",
+          getCharDashboard:"{{route('admin_getCharDashboard')}}",
         }
     }   
     dashboard.runJS();

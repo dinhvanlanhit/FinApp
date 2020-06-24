@@ -14,7 +14,7 @@ class LoginController extends Controller
 {
     public function getLogin(Request $Request)
     {
-       return view(template().'.pages.login.login');
+       return view(templateAdminApp().'.pages.login.login');
     }
     public function postLogin(Request $Request)
     {

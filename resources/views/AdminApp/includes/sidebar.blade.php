@@ -4,6 +4,6 @@
       <img width="100%" src="{{asset('SytemFinApp/logo/logofinapp.jpg')}}"/>
     </a>
     <div class="sidebar">
-      @include('AdminDesktops.includes.menu')
+      @include('AdminApp.includes.menu')
     </div>
   </aside>
