@@ -27,7 +27,7 @@
 
     <div class="card-body login-card-body">
       <div class="login-logo">
-            <img class="btn-block" src="{{asset('SytemFinApp/logo/logofinapp.jpg')}}"/>
+            <img class="btn-block" src="{{asset('SytemFinApp/logo/logofinapp.png')}}"/>
       </div>
       <div id="alert"></div>
       <form id="form-login" action="#"  method="GET">
@@ -41,13 +41,21 @@
             </div>
           </div>
         </div>
-        <button type="submit" id="button-login" class="btn btn-danger btn-block"> Gửi </button>
-        <p class="mt-3 mb-1">
-            <a href="{{route('login')}}">Đăng Nhập</a>
-          </p>
-          <p class="mb-0">
-            <a href="{{route('register')}}" class="text-center">Đăng ký thành viên mới</a>
-          </p>
+       
+
+          <div class="form-group">
+            <button type="submit" id="button-login" class="btn btn-danger btn-block"> Gửi </button>
+          </div>
+          <div class="form-group">
+            <a href="{{route('login')}}" id="button-register" class="btn btn-success btn-block">Đăng nhập</a>
+            </div>
+            <div class="form-group">
+              <a href="{{route('register')}}" id="button-register" class="btn btn-info btn-block">Đăng Ký</a>
+              </div>
+        </div>
+       
+          
+        
     </div>
   </div>
 </div>

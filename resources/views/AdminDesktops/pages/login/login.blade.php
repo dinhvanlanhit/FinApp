@@ -50,7 +50,7 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <div class="icheck-primary">
+            <div class="icheck-success">
               <input type="checkbox" id="remember">
               <label for="remember">
                 Nhớ đăng nhập
@@ -58,18 +58,18 @@
             </div>
           </div>
           <div class="col-6">
-            <button type="submit" id="button-login" class="btn btn-danger btn-block"> Đăng nhập </button>
+            <button type="submit" id="button-login" class="btn btn-success btn-block"> Đăng nhập </button>
           </div>
         </div>
       </form>
       <p class="mb-0">
-        <a href="{{route('forgot-password')}}">Tôi quên mật khẩu của tôi</a>
+        <a href="{{route('forgot-password')}}" class="text-center text-success">Tôi quên mật khẩu của tôi</a>
       </p>
       <p class="mb-1">
-        <a href="{{route('register')}}" class="text-center">Đăng ký thành viên mới</a>
+        <a href="{{route('register')}}" class="text-center text-success">Đăng ký thành viên mới</a>
       </p>
-      <div class="callout callout-info mb-1">
-        <h5>Tài khoản sử dụng thử</h5>
+      <div class="callout callout-success mb-1">
+        <h5><b>Tài khoản sử dụng thử</b></h5>
         <p>Email : dinhvanlanh.it@gmail.com <br> Mật khẩu : 12345</p>
       </div>
     </div>
