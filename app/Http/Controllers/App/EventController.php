@@ -23,8 +23,9 @@ class EventController extends Controller
             2 => 'name',
             3 => 'address',
             4 => 'amount',
-            5 => 'date', 
-            6 => 'created_at'
+            5 => 'note',
+            6 => 'date', 
+            7 => 'created_at'
         );
         $idUser = Auth::user()->id;
         $limit = $Request->input('length');
@@ -61,6 +62,7 @@ class EventController extends Controller
                         ->orWhere('event.name', 'LIKE',"%{$search}%")
                         ->orWhere('event.address', 'LIKE',"%{$search}%")
                         ->orWhere('event.amount','LIKE',"%{$search}%")
+                        ->orWhere('event.note','LIKE',"%{$search}%")
                         ->orWhere('event.date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -88,6 +90,7 @@ class EventController extends Controller
                         ->orWhere('event.name', 'LIKE',"%{$search}%")
                         ->orWhere('event.address', 'LIKE',"%{$search}%")
                         ->orWhere('event.amount','LIKE',"%{$search}%")
+                        ->orWhere('event.note','LIKE',"%{$search}%")
                         ->orWhere('event.date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -119,6 +122,7 @@ class EventController extends Controller
                         ->orWhere('event.name', 'LIKE',"%{$search}%")
                         ->orWhere('event.address', 'LIKE',"%{$search}%")
                         ->orWhere('event.amount','LIKE',"%{$search}%")
+                        ->orWhere('event.note','LIKE',"%{$search}%")
                         ->orWhere('event.date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -146,6 +150,7 @@ class EventController extends Controller
                         ->orWhere('event.name', 'LIKE',"%{$search}%")
                         ->orWhere('event.address', 'LIKE',"%{$search}%")
                         ->orWhere('event.amount','LIKE',"%{$search}%")
+                        ->orWhere('event.note','LIKE',"%{$search}%")
                         ->orWhere('event.date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -186,6 +191,7 @@ class EventController extends Controller
         $Event->address = $Request->address;
         $Event->amount = $Request->amount;
         $Event->date = $Request->date;
+        $Event->note = $Request->note;
         $Event->save();
         if($Event){
            
@@ -208,6 +214,7 @@ class EventController extends Controller
         $Event->address = $Request->address;
         $Event->amount = $Request->amount;
         $Event->date = $Request->date;
+        $Event->note = $Request->note;
         $Event->save();
         if($Event){
             return JSON2(true,"Thêm thành công");

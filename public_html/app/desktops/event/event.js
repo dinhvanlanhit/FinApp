@@ -67,7 +67,14 @@ function event() {
 				data: "date",
 				name: "date",
 				className: "text-center",
-			}, {
+			}, 
+			 {
+				title: "Ghi Chú",
+				data: "note",
+				name: "note",
+				className: "text-center",
+			}, 
+			{
 				title: "Tác vụ",
 				data: "created_at",
 				name: "created_at",
@@ -131,6 +138,7 @@ function event() {
 					$('#address').val(data.data.address);
 					$('#amount').val(money_format(data.data.amount));
 					$('#name').val(data.data.name);
+					$('#note').val(data.data.note);
 					$("#modal-action").modal('show');
 					buttonloading(elementbtn, false);
 				},
@@ -149,6 +157,7 @@ function event() {
 			$('#address').val('');
 			$('#amount').val('');
 			$('#name').val('');
+			$('#note').val('');
 			$("#modal-action").modal('show');
 		});
 		

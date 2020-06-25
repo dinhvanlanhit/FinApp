@@ -139,23 +139,41 @@
     </div>
   </div>
   <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header ">
+        <h3 class="card-title">
+          <i class="far fa-calendar-alt"></i>
+          Lịch
+        </h3>
+        <div class="card-tools">
+          <!-- button with a dropdown -->
+         
+          <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          
+        </div>
+      </div>
+      <div class="card-body pt-2">
+        <div id="calendar"  style="width: 100%;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
     <div class="card">
       <div class="card-header">
         <h5 class="card-title">Biểu Đồ Tổng Quan</h5>
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-        </div>
+        
       </div>
       <!-- /.card-header -->
       <div class="card-body-dashboard">
         <div class="row">
           <div class="col-md-12">
             <div id="dashboard-chart-top" style="height:400px"></div>
-            <!-- /.chart-responsive -->
           </div>
-      
+     
+          
+      <!-- /.chart-responsive -->
         </div>
       </div>
     </div>
@@ -164,11 +182,7 @@
     <div class="card">
       <div class="card-header">
         <h5 class="card-title">Biểu Đồ Chi Tiết</h5>
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-        </div>
+  
       </div>
       <!-- /.card-header -->
       <div class="card-body-dashboard">

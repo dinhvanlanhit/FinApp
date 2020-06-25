@@ -2,7 +2,12 @@ function dashboard() {
 	this.datas = null;
 	this.runJS = function () {
         var me =  this;
-        var datas = this.datas;
+		var datas = this.datas;
+		$('#calendar').datetimepicker({
+			format: 'L',
+			lang: 'vi',
+			inline: true
+		});
         daterange('#dashboard_daterange','#dashboard_dateBegin','#dashboard_dateEnd');
 		$("#dashboard_daterange").on('change', function (e) {
 			runDashboard();

@@ -93,6 +93,9 @@ function cost() {
 			buttonloading(".formSearch", true);
 			table.ajax.reload();
 		})
+		$("#idTypeCost").on("change", function (e) {
+			table.ajax.reload();
+		});
 		
 		$(document).delegate(".btn-delete", "click", function () {
 			var id = $(this).val();

@@ -12,5 +12,6 @@
 <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
 <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/toastr/toastr.min.css')}}">
+<link rel="stylesheet" href="{{asset('AdminDesktops/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
 <link rel="stylesheet" href="{{asset('AdminDesktops/dist/css/adminlte.min.css')}}">
 <link rel="stylesheet" href="{{asset('AdminDesktops/style.css')}}">
