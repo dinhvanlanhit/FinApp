@@ -16,7 +16,8 @@ class CreateUsePaymentTable extends Migration
         Schema::create('use_payment', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
-            $table->bigInteger('numberMoth')->nullable();
+            $table->Integer('numberMonth')->nullable();
+            $table->double('amount')->default(0)->nullable();// Số tiền đầu tư
             $table->text('note')->nullable();
             $table->timestamps();
         });

@@ -33,7 +33,9 @@ class UsersTableSeeder extends Seeder
             'cmnn_passport'=>'0966334404',
             'postal_code'=>'0966334404',
             'type'=>'admin',
-            'date'=>date('Y-m-d')
+            'date'=>date('Y-m-d'),
+            'status_payment'=>0,
+            'status_payment_name'=>'Miễn Phí',
         ]);
         DB::table('users')->insert([
             'email' => 'dinhthinamsha@gmail.com',
@@ -57,7 +59,9 @@ class UsersTableSeeder extends Seeder
             'cmnn_passport'=>'',
             'postal_code'=>'',
             'type'=>'member',
-            'date'=>date('Y-m-d')
+            'date'=>date('Y-m-d'),
+            'status_payment'=>0,
+            'status_payment_name'=>'Miễn Phí',
         ]);
         $ABC = 'A';
         for($i=10;$i<=20;$i++){
@@ -84,7 +88,9 @@ class UsersTableSeeder extends Seeder
                 'cmnn_passport'=>'0966334404',
                 'postal_code'=>'0966334404',
                 'type'=>'member',
-                'date'=>date('Y-m-d')
+                'date'=>date('Y-m-d'),
+                'status_payment'=>1,
+                'status_payment_name'=>'Trả Phí',
             ]);
            
         }

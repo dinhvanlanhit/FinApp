@@ -41,6 +41,8 @@ class CreateUsersTable extends Migration
             $table->string('type')->default('member')->nullable();
             $table->integer('status')->nullable()->default(0);
             $table->string('status_name')->nullable()->default('Mở');
+            $table->integer('status_payment')->nullable()->default(1);
+            $table->string('status_payment_name')->nullable()->default('Trả Phí');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

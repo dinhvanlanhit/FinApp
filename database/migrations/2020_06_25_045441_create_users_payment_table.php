@@ -19,7 +19,8 @@ class CreateUsersPaymentTable extends Migration
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('idUsePayment')->unsigned()->nullable();
             $table->foreign('idUsePayment')->references('id')->on('use_payment')->onDelete('cascade')->onUpdate('cascade');
-            $table->date('date')->nullable();
+            $table->Integer('numberMonth')->nullable();
+            $table->double('amount')->default(0)->nullable();// Số tiền đầu tư
             $table->timestamps();
         });
     }

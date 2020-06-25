@@ -29,6 +29,14 @@
 									<input type="text" class="form-control" id="password" value="" name="password" placeholder="Password">
 								</div>
 								<div class="form-group">
+									<label for="status" class=" col-form-label">Trạng Thái Sửa Dụng</label>
+									<select class="form-control select2bs4" style="width: 100%;" id="status_payment" name="status_payment">
+										<option value="1" {{$users->status_payment_name==1?'selected':''}}>-- Trả Phí --</option>
+										<option value="0" {{$users->status_payment_name==0?'selected':''}}>-- Miễn Phí --</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
 									<label for="status" class=" col-form-label">Trạng Thái</label>
 									<select class="form-control select2bs4" style="width: 100%;" id="status" name="status">
 										<option value="1" {{$users->status==1?'selected':''}}>-- Khóa --</option>
