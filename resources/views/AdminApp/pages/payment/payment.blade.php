@@ -12,10 +12,10 @@
       <form id="formSearch">
           <div class="row">
    
-              <div class="col-sm-12 col-md-2 ">
+              <div class="col-md-3">
                   @include('AdminDesktops.fromControl.dateRange')
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                       <input class="form-control" id="search" name="search" placeholder="Từ khóa tìm kiếm ..."/>
                 </div>
@@ -25,7 +25,7 @@
                   <button type="submit" class="btn btn-primary btn-block formSearch">Tìm kiếm</button>
                 </div>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-3">
                 <div class="form-group">
                   <button type="button"  class="btn btn-info btn-block" id="btn-insert">
                       
@@ -49,16 +49,18 @@
   </div>
 </div>
     
-
+@include('AdminApp.pages.payment.include')
 @endsection
 @section('javascript')
 <script src="{{asset('app/admin/payment/payment.js')}}"></script>
 <script> 
     var payment = new payment(); 
     payment.datas={
+        idUser:"{{$idUser}}",
         routes:{
           datatable:"{{route('admin_payment_datatable')}}",
           status:"{{route('admin_payment_status')}}",
+          insert:"{{route('admin_payment_insert')}}",
           update:"{{route('admin_payment_update')}}",
           delete:"{{route('admin_payment_delete')}}",
         }

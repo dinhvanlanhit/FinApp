@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Auth;
 use App\Models\Users;
 use File;
+use DB;
 class UsersController extends Controller
 {
     public function getIndex(Request $Request)
@@ -16,6 +17,7 @@ class UsersController extends Controller
     }
     public function getDatatable(Request $Request)
     {
+    
         $type = 'member';
         $columns = array( 
             0 => 'created_at',
@@ -26,72 +28,57 @@ class UsersController extends Controller
             5 => 'created_at',
             6 => 'created_at'
         );
-
         $limit = $Request->input('length');
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
         $dir = $Request->input('order.0.dir');
         $search = $Request->input('search');
         $status = $Request->input('status');
-
+        $SQL = "SELECT * FROM users AS users_PARENT LEFT JOIN ";
+        $SQL .="( SELECT SUM(numberMonth) AS sumMonth , idUser  ";
+        $SQL .=" FROM users_payment ";
+        $SQL .=" GROUP BY idUser    ";
+        $SQL .=") AS child ON ";
+        $SQL .= " child.idUser = users_PARENT.id ";
+        $SQL .= " WHERE type = '{$type}' ";
         if(!empty($status)){
-                $totalData =  Users::where('type','=',$type)->count();
-                $totalFiltered =$totalData;
-                if(empty($search)){
-                    $Users = Users::
-                    where('type','=',$type)
-                    ->where('status','=',$status)
-                    ->offset($start)
-                    ->limit($limit)
-                    ->orderBy($order,$dir)
-                    ->get();
-                }else{
-                    $Users = Users::
-                    where('type','=',$type)
-                    ->where('status','=',$status)
-                    ->Where(function($query)use($search){
-                        $query->where('id', 'LIKE', "%{$search}%")
-                        ->orWhere('full_name', 'LIKE',"%{$search}%")
-                        ->orWhere('birthday', 'LIKE',"%{$search}%")
-                        ->orWhere('phone_number', 'LIKE',"%{$search}%")
-                        ->orWhere('address_1', 'LIKE',"%{$search}%")
-                        ->orWhere('status_name', 'LIKE',"%{$search}%")
-                        ->orWhere('status_payment_name', 'LIKE',"%{$search}%")
-                        ->orWhere('created_at','LIKE',"%{$search}%");
-                    })
-                    ->offset($start)
-                    ->limit($limit)
-                    ->orderBy($order,$dir)
-                    ->get();
-                }
-        }else{
-            $totalData =  Users:: where('type','=',$type)->count();
-            $totalFiltered =$totalData;
-            if(empty($search)){
-                $Users = Users::
-                where('type','=',$type)
-                ->offset($start)
-                ->limit($limit)
-                ->orderBy($order,$dir)
-                ->get();
+            $SQL .= " AND status = '{$status}' ";
+            $totalData = count(DB::select(DB::raw($SQL)));
+            $totalFiltered = $totalData;
+            if(!empty($search)){
+                $SQL .= " AND (";
+                $SQL .= " full_name LIKE N'%$search%'";
+                $SQL .= " OR address_1 LIKE N'%$search%'";
+                $SQL .= " OR status_name LIKE N'%$search%'";
+                $SQL .= " OR status_payment_name LIKE N'%$search%'";
+                $SQL .= " OR created_at LIKE N'%$search%' )";
+                $SQL .= " ORDER BY {$order} {$dir}";
+                $SQL .= " LIMIT {$limit} OFFSET {$start}";
+                $Users  =  DB::select(DB::raw($SQL)); 
             }else{
-                $Users = Users::
-                    where('type','=',$type)
-                   ->Where(function($query)use($search){
-                    $query->where('id', 'LIKE', "%{$search}%")
-                    ->orWhere('full_name', 'LIKE',"%{$search}%")
-                    ->orWhere('birthday', 'LIKE',"%{$search}%")
-                    ->orWhere('phone_number', 'LIKE',"%{$search}%")
-                    ->orWhere('address_1', 'LIKE',"%{$search}%")
-                    ->orWhere('status_name', 'LIKE',"%{$search}%")
-                    ->orWhere('status_payment_name', 'LIKE',"%{$search}%")
-                    ->orWhere('created_at','LIKE',"%{$search}%");
-                })
-                ->offset($start)
-                ->limit($limit)
-                ->orderBy($order,$dir)
-                ->get();
+                $SQL .= " ORDER BY {$order} {$dir}";
+                $SQL .= " LIMIT {$limit} OFFSET {$start}";
+                $Users  =  DB::select(DB::raw($SQL)); 
             }
+        }else{
+            $totalData = count(DB::select(DB::raw($SQL)));
+            $totalFiltered = $totalData;
+            if(!empty($search)){
+                $SQL .= " AND (";
+                $SQL .= " full_name LIKE N'%$search%'";
+                $SQL .= " OR address_1 LIKE N'%$search%'";
+                $SQL .= " OR status_name LIKE N'%$search%'";
+                $SQL .= " OR status_payment_name LIKE N'%$search%'";
+                $SQL .= " OR created_at LIKE N'%$search%' )";
+                $SQL .= " ORDER BY {$order} {$dir}";
+                $SQL .= " LIMIT {$limit} OFFSET {$start}";
+                $Users  =  DB::select(DB::raw($SQL)); 
+            }else{
+                $SQL .= " ORDER BY {$order} {$dir}";
+                $SQL .= " LIMIT {$limit} OFFSET {$start}";
+                $Users  =  DB::select(DB::raw($SQL)); 
+            }
+           
         }
         $json_data = array(
             "draw"            => intval($Request->input('draw')),  
@@ -101,6 +88,7 @@ class UsersController extends Controller
         );
         echo json_encode($json_data); 
     }
+
     public function getUpdate(Request $Request,int $id =null)
     {
         $users = Users::where('id','=',$id)->get();
