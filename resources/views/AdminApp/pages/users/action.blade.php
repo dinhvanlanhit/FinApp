@@ -78,13 +78,14 @@
 									</div>
 								</div>
 								<div class="form-group ">
-									<label for="introduce" class=" col-form-label">Giới Thiệu Bản Thân</label>
-									<textarea class="form-control" id="introduce" name="introduce" placeholder="...">{!!$users->introduce!!}</textarea>
-								</div>
-								<div class="form-group ">
 									<label for="address" class=" col-form-label">Địa chỉ</label>
 									<input type="text" class="form-control" id="address" name="address_1" value="{{$users->address_1}}" placeholder="Địa chỉ ... ">
 								</div>
+								<div class="form-group ">
+									<label for="introduce" class=" col-form-label">Giới Thiệu Bản Thân</label>
+									<textarea class="form-control" id="introduce" name="introduce" placeholder="...">{!!$users->introduce!!}</textarea>
+								</div>
+								
 								<div class="form-group ">
 									<label for="phone_number" class=" col-form-label">Số Điện Thoại</label>
 									<input type="text" class="form-control" id="phone_number" name="phone_number" value="{{$users->phone_number}}" placeholder="Địa chỉ ... ">

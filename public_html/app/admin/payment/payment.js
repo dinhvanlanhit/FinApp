@@ -125,7 +125,7 @@ function payment(){
 				dataType: 'JSON',
 				success: function (data) {
 					$('#idUsePayment').val(data.data.idUsePayment); 
-					$('#idUsePayment').trigger('change'); 
+					$('#idUsePayment').trigger('change.select2'); 
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
@@ -139,7 +139,11 @@ function payment(){
 				error: function (error) {}
 			});
 		});
-
+		$("#idUsePayment").on('change',function(){
+			$('#numberMonth').val($("#idUsePayment :selected").attr('data-numbermonth'));
+			$('#amount').val($("#idUsePayment :selected").attr('data-amount'));
+			$('#note').val($("#idUsePayment :selected").attr('data-note'));
+		})
 	
 
 		$("#btn-insert").on("click", function () {
@@ -177,6 +181,9 @@ function payment(){
 				idUsePayment:{
 					required: true
 				},
+				numberMonth:{
+					required: true
+				},
 				amount: {
 					required: true
 				},
@@ -185,6 +192,9 @@ function payment(){
 				},
 			},
 			messages: {
+				numberMonth:{
+					required: "Vui lòng nhập số tháng sử dụng !",
+				},
 				idUsePayment: {
 					required: "Vui lòng chọn gói sử dụng !",
 				},

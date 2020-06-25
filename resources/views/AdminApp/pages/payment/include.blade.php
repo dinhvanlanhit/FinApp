@@ -35,6 +35,13 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
+                        <label>Tháng Sử Dụng</label>
+                        <input class="form-control" id="numberMonth" name="numberMonth"/>
+                    </div>
+                </div>
+                
+                <div class="col-md-12">
+                    <div class="form-group">
                         <label>Ghi Chú (Nếu có)</label>
                         <input class="form-control" id="note" name="note"/>
                     </div>

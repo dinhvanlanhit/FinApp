@@ -41,12 +41,19 @@ function users() {
 					data: "full_name",
 					name: "full_name",
 					className: "text-center",
+					render: function (data, type, row, meta) {
+						return'<b>'+data+'</b>';
+				   }
 				},
 				{
 					title: "Địa chỉ",
 					data: "address_1",
 					name: "address_1",
 					className: "text-center",
+					render: function (data, type, row, meta) {
+						return '<b>'+data+'</b>';
+				   }
+				
 				}, 
 				{
 					title: "Trạng Thái",
@@ -56,26 +63,32 @@ function users() {
 					render: function (data, type, row, meta) {
 						  return data+"<br>"+row.status_payment_name;
 					}
-					
-					
 				},
+				{
+					title: "Ngày Đăng Ký",
+					data: "date",
+					name: "date",
+					className: "text-center",
+					render: function (data, type, row, meta) {
+						return '<b class="text-info">'+data+'</b>';
+					}
+				}, 
 				{
 					title: "Hạn Sử Dụng",
 					data: "status_payment_name",
 					name: "status_payment_name",
 					className: "text-center",
 					render: function (data, type, row, meta) {
-						return moment(row.date,'YYYY-MM-DD').add(row.sumMonth,'month').format('YYYY-MM-DD');
+						var date = new Date();
+						var dateUse = moment(row.date,'YYYY-MM-DD').add(row.sumMonth,'month').format('YYYY-MM-DD');
+						if(moment(date,'YYYY-MM-DD').format('YYYY-MM-DD') === moment(dateUse,'YYYY-MM-DD').format('YYYY-MM-DD')){
+							return '<b class="text-danger">Hết Hạn Sử Dụng</b>';
+						}else{
+							return '<b class="text-success">'+dateUse+'</b>';
+						}
+						
 					}
 				},
-			    {
-					title: "Ngày Đăng Ký",
-					data: "date",
-					name: "date",
-					className: "text-center",
-					
-					
-				}, 
 				{
 					title: "Tác vụ",
 					data: "created_at",
