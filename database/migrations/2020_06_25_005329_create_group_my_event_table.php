@@ -17,7 +17,7 @@ class CreateGroupMyEventTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('idUser')->unsigned()->nullable();
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('name')->nullable();
+            $table->string('group_name')->nullable();
             $table->string('note')->nullable();
             $table->date('date')->nullable();
             $table->timestamps();

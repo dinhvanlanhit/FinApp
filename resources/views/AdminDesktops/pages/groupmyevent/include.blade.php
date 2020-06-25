@@ -10,32 +10,16 @@
             </button>
             </div>
             <div class="modal-body card-body-dashboard">
-                
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group" >
-                            @include('AdminDesktops.fromControl.selectWallet')
-                        </div>
                         <div class="form-group">
-                            <label>Lĩnh Vực </label>
-                            <input class="form-control" id="name" name="name"/>
+                            <label> Tên Sự Kiện </label>
+                            <input class="form-control" id="group_name" name="group_name"/>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Số Tiền Đầu Tư</label>
-                            <input class="form-control" id="amount" name="amount"/>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Địa Chỉ (Nếu có)</label>
-                            <input class="form-control" id="address" name="address"/>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                                <label>Ngày Đầu Tư </label>
+                                <label>Ngày Tổ Chức </label>
                                 <div class="input-group">
                                     <input type="text"  id="date" name="date" class="form-control text-center">
                                     <div class="input-group-prepend" >

@@ -14,30 +14,33 @@ class MyEventTableSeeder extends Seeder
         DB::table('my_event')->insert([
             [
                 'idUser'=>1,
-                'idTypeEvent'=>1,
                 'idWallet'=>2,
                 'idGroupMyEvent' => 1,
+                'name'=>'Đinh Thị C',
                 'amount' => 250000,
                 'date' => date('Y-m-d'),
-                'note'=>''
+                'note'=>'',
+                'address'=>'Sơn Hạ'
             ],
             [
                 'idUser'=>1,
-                'idTypeEvent'=>1,
                 'idWallet'=>2,
                 'idGroupMyEvent' => 1,
+                'name'=>'Đinh Thị B',
                 'amount' => 250000,
                 'date' => date('Y-m-d'),
-                'note'=>''
+                'note'=>'',
+                'address'=>'Sơn Hạ'
             ],
             [
                 'idUser'=>1,
-                'idTypeEvent'=>1,
                 'idWallet'=>2,
                 'idGroupMyEvent' => 1,
+                'name'=>'Đinh Thị A',
                 'amount' => 250000,
                 'date' => date('Y-m-d'),
-                'note'=>''
+                'note'=>'',
+                'address'=>'Thành Phố Quảng Ngãi'
             ],
         ]);
     }

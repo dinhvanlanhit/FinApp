@@ -13,10 +13,8 @@ class MyEventController extends Controller
 {
     public function getMyEvent(Request $Request)
     {
-        $typeevent = TypeEvent::get();
         $groupmyevent = GroupMyEvent::where('idUser','=',Auth::user()->id)->get();
         return view(template().".pages.myevent.index",[
-            'typeevent'=>$typeevent,
             'groupmyevent'=>$groupmyevent
         ]);
     }
@@ -24,10 +22,10 @@ class MyEventController extends Controller
     {
         $columns = array( 
             0 => 'id',
-            1 => 'type_name',
+            1 => 'group_name',
             2 => 'name',
-            3 => 'address',
-            4 => 'amount',
+            3 => 'amount',
+            4 => 'address',
             5 => 'date', 
             6 => 'created_at'
         );
@@ -36,126 +34,73 @@ class MyEventController extends Controller
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
         $dir = $Request->input('order.0.dir');
-        $idTypeEvent = $Request->input('idTypeEvent');
+        $idGroupMyEvent = $Request->input('idGroupMyEvent');
         $search = $Request->input('search');
-        $dateBegin = $Request->input('dateBegin');
-        $dateEnd = $Request->input('dateEnd');
-        if(!empty($idTypeEvent))
+
+        if(!empty($idGroupMyEvent))
         {
-            if(!empty($dateBegin)&&!empty($dateEnd)){
-                $totalData =  MyEvent::where('idUser','=',$idUser)->where('idTypeEvent','=',$idTypeEvent)->whereBetween('date',[$dateBegin,$dateEnd ])->count();
-                $totalFiltered =$totalData;
-                if(empty($search)){
-                    $MyEvent = MyEvent::
-                    join('type_event','type_event.id','=','MyEvent.idTypeEvent')
-                    ->where('idUser','=',$idUser)->where('idTypeEvent','=',$idTypeEvent)-> whereBetween('date',[$dateBegin,$dateEnd ])
-                    ->select('MyEvent.*','type_event.type_name')
+     
+            $totalData =  MyEvent::where('idUser','=',$idUser)->where('idGroupMyEvent','=',$idGroupMyEvent)->count();
+            $totalFiltered =$totalData;
+            if(empty($search)){
+                    $MyEvent = MyEvent::join('group_my_event','group_my_event.id','=','my_event.idGroupMyEvent')
+                    ->where('my_event.idUser','=',$idUser)->where('my_event.idGroupMyEvent','=',$idGroupMyEvent)
+                    ->select('my_event.*','group_my_event.group_name')
                     ->offset($start)
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
-                }else{
-                    $MyEvent = MyEvent::
-                    join('type_event','type_event.id','=','MyEvent.idTypeEvent')
-                    ->where('idUser','=',$idUser)->where('idTypeEvent','=',$idTypeEvent)-> whereBetween('date',[$dateBegin,$dateEnd ])
-                    ->select('MyEvent.*','type_event.type_name')
-                    ->Where(function($query)use($search){
-                        $query->where('MyEvent.id', 'LIKE', "%{$search}%")
-                        ->orWhere('MyEvent.name', 'LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.address', 'LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.amount','LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.date','LIKE',"%{$search}%");
-                    })
-                    ->offset($start)
-                    ->limit($limit)
-                    ->orderBy($order,$dir)
-                    ->get();
-                }
             }else{
-                $totalData =  MyEvent::where('idUser','=',$idUser)->count();
-                $totalFiltered =$totalData;
-                if(empty($search)){
-                    $MyEvent = MyEvent::join('type_event','type_event.id','=','MyEvent.idTypeEvent')
-                    ->where('idUser','=',$idUser)->where('idTypeEvent','=',$idTypeEvent)
-                    ->select('MyEvent.*','type_event.type_name')
-                    ->offset($start)
-                    ->limit($limit)
-                    ->orderBy($order,$dir)
-                    ->get();
-                }else{
-                    $MyEvent = MyEvent::join('type_event','type_event.id','=','MyEvent.idTypeEvent')
-                    ->where('idUser','=',$idUser)->where('idTypeEvent','=',$idTypeEvent)
-                    ->select('MyEvent.*','type_event.type_name')
-                    ->Where(function($query)use($search){
-                        $query->where('MyEvent.id', 'LIKE', "%{$search}%")
-                        ->orWhere('MyEvent.name', 'LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.address', 'LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.amount','LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.date','LIKE',"%{$search}%");
-                    })
-                    ->offset($start)
-                    ->limit($limit)
-                    ->orderBy($order,$dir)
-                    ->get();
-                }
+                $MyEvent = MyEvent::join('group_my_event','group_my_event.id','=','MyEvent.idGroupMyEvent')
+                ->where('my_event.idUser','=',$idUser)->where('my_event.idGroupMyEvent','=',$idGroupMyEvent)
+                ->select('my_event.*','group_my_event.group_name')
+                ->Where(function($query)use($search){
+                    $query->where('my_event.id', 'LIKE', "%{$search}%")
+                    ->orWhere('my_event.name', 'LIKE',"%{$search}%")
+                    ->orWhere('my_event.address', 'LIKE',"%{$search}%")
+                    ->orWhere('my_event.amount','LIKE',"%{$search}%")
+                    ->orWhere('my_event.date','LIKE',"%{$search}%");
+                })
+                ->offset($start)
+                ->limit($limit)
+                ->orderBy($order,$dir)
+                ->get();
             }
+            
         }else{
-            if(!empty($dateBegin)&&!empty($dateEnd)){
-                $totalData =  MyEvent::where('idUser','=',$idUser)->whereBetween('date',[$dateBegin,$dateEnd ])->count();
-                $totalFiltered =$totalData;
-                if(empty($search)){
+           
+            $totalData =  MyEvent::where('idUser','=',$idUser)
+            ->where('idGroupMyEvent','=',$idGroupMyEvent)
+            // ->whereBetween('date',[$dateBegin,$dateEnd ])
+            ->count();
+            $totalFiltered =$totalData;
+            if(empty($search)){
                     $MyEvent = MyEvent::
-                    join('type_event','type_event.id','=','MyEvent.idTypeEvent')
-                    ->where('idUser','=',$idUser)-> whereBetween('date',[$dateBegin,$dateEnd ])
-                    ->select('MyEvent.*','type_event.type_name')
+                    join('group_my_event','group_my_event.id','=','my_event.idGroupMyEvent')
+                    ->where('my_event.idUser','=',$idUser)
+                    // ->whereBetween('date',[$dateBegin,$dateEnd ])
+                    ->select('my_event.*','group_my_event.group_name')
                     ->offset($start)
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
-                }else{
-                    $MyEvent = MyEvent::
-                    join('type_event','type_event.id','=','MyEvent.idTypeEvent')
-                    ->where('idUser','=',$idUser)-> whereBetween('date',[$dateBegin,$dateEnd ])
-                    ->select('MyEvent.*','type_event.type_name')
-                    ->Where(function($query)use($search){
-                        $query->where('MyEvent.id', 'LIKE', "%{$search}%")
-                        ->orWhere('MyEvent.name', 'LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.address', 'LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.amount','LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.date','LIKE',"%{$search}%");
-                    })
-                    ->offset($start)
-                    ->limit($limit)
-                    ->orderBy($order,$dir)
-                    ->get();
-                }
             }else{
-                $totalData =  MyEvent::where('idUser','=',$idUser)->count();
-                $totalFiltered =$totalData;
-                if(empty($search)){
-                    $MyEvent = MyEvent::join('type_event','type_event.id','=','MyEvent.idTypeEvent')
-                    ->where('idUser','=',$idUser)
-                    ->select('MyEvent.*','type_event.type_name')
-                    ->offset($start)
-                    ->limit($limit)
-                    ->orderBy($order,$dir)
-                    ->get();
-                }else{
-                    $MyEvent = MyEvent::join('type_event','type_event.id','=','MyEvent.idTypeEvent')
-                    ->where('idUser','=',$idUser)
-                    ->select('MyEvent.*','type_event.type_name')
+                    $MyEvent = MyEvent::
+                    join('group_my_event','group_my_event.id','=','my_event.idGroupMyEvent')
+                    ->where('my_event.idUser','=',$idUser)
+                    // ->whereBetween('date',[$dateBegin,$dateEnd ])
+                    ->select('my_event.*','group_my_event.group_name')
                     ->Where(function($query)use($search){
-                        $query->where('MyEvent.id', 'LIKE', "%{$search}%")
-                        ->orWhere('MyEvent.name', 'LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.address', 'LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.amount','LIKE',"%{$search}%")
-                        ->orWhere('MyEvent.date','LIKE',"%{$search}%");
+                        $query->where('my_event.id', 'LIKE', "%{$search}%")
+                        ->orWhere('my_event.name', 'LIKE',"%{$search}%")
+                        ->orWhere('my_event.address', 'LIKE',"%{$search}%")
+                        ->orWhere('my_event.amount','LIKE',"%{$search}%")
+                        ->orWhere('my_event.date','LIKE',"%{$search}%");
                     })
                     ->offset($start)
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
-                }
             }
         }
         $json_data = array(
@@ -181,7 +126,7 @@ class MyEventController extends Controller
         $MyEvent = new MyEvent();
         $MyEvent->idUser = Auth::user()->id;
         $MyEvent->idWallet = $Request->idWallet;
-        $MyEvent->idTypeEvent = $Request->idTypeEvent;
+        $MyEvent->idGroupMyEvent = $Request->idGroupMyEvent;
         $MyEvent->name = $Request->name;
         $MyEvent->address = $Request->address;
         $MyEvent->amount = $Request->amount;
@@ -197,7 +142,7 @@ class MyEventController extends Controller
     {
         $MyEvent =  MyEvent::find((int)$Request->id);
         $MyEvent->idUser = Auth::user()->id;
-        $MyEvent->idTypeEvent = $Request->idTypeEvent;
+        $MyEvent->idGroupMyEvent = $Request->idGroupMyEvent;
         $MyEvent->idWallet = $Request->idWallet;
         $MyEvent->name = $Request->name;
         $MyEvent->address = $Request->address;

@@ -14,19 +14,19 @@ class GroupMyEventTableSeeder extends Seeder
         DB::table('group_my_event')->insert([
             [
                 'idUser'=>1,
-                'name'=>'CON A',
+                'group_name'=>'ĐÁM CON A',
                 'note'=>'',
                 'date'=>date('Y-m-d')
             ],
             [
                 'idUser'=>1,
-                'name'=>'CON B',
+                'group_name'=>'ĐÁM CON B',
                 'note'=>'',
                 'date'=>date('Y-m-d')
             ],
             [
                 'idUser'=>1,
-                'name'=>'CON C',
+                'group_name'=>'ĐÁM CON C',
                 'note'=>'',
                 'date'=>date('Y-m-d')
             ]

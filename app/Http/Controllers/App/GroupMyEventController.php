@@ -18,9 +18,10 @@ class GroupMyEventController extends Controller
     {
         $columns = array( 
             0 => 'created_at',
-            1 => 'name',
+            1 => 'group_name',
             2 => 'note',
-            3 => 'created_at'
+            3 => 'date',
+            4 => 'created_at'
         );
         $idUser = Auth::user()->id;
         $limit = $Request->input('length');
@@ -32,12 +33,11 @@ class GroupMyEventController extends Controller
         $dateBegin = $Request->input('dateBegin');
         $dateEnd = $Request->input('dateEnd');
         if(!empty($dateBegin)&&!empty($dateEnd)){
-            $totalData =  GroupMyEvent::where('idUser','=',$idUser)->where('idTypeEvent','=',$idTypeEvent)->whereBetween('date',[$dateBegin,$dateEnd ])->count();
+            $totalData =  GroupMyEvent::where('idUser','=',$idUser)->whereBetween('date',[$dateBegin,$dateEnd ])->count();
             $totalFiltered =$totalData;
             if(empty($search)){
                 $GroupMyEvent = GroupMyEvent::where('idUser','=',$idUser)
                 ->whereBetween('date',[$dateBegin,$dateEnd ])
-                ->select('*','type_event.type_name')
                 ->offset($start)
                 ->limit($limit)
                 ->orderBy($order,$dir)
@@ -47,7 +47,7 @@ class GroupMyEventController extends Controller
                 ->whereBetween('date',[$dateBegin,$dateEnd ])
                 ->Where(function($query)use($search){
                     $query->where('id', 'LIKE', "%{$search}%")
-                    ->orWhere('name', 'LIKE',"%{$search}%")
+                    ->orWhere('group_name', 'LIKE',"%{$search}%")
                     ->orWhere('note','LIKE',"%{$search}%")
                     ->orWhere('date','LIKE',"%{$search}%");
                 })
@@ -69,7 +69,7 @@ class GroupMyEventController extends Controller
                 $GroupMyEvent = GroupMyEvent::where('idUser','=',$idUser)
                 ->Where(function($query)use($search){
                     $query->where('id', 'LIKE', "%{$search}%")
-                    ->orWhere('name', 'LIKE',"%{$search}%")
+                    ->orWhere('group_name', 'LIKE',"%{$search}%")
                     ->orWhere('note','LIKE',"%{$search}%")
                     ->orWhere('date','LIKE',"%{$search}%");
                 })
@@ -101,11 +101,8 @@ class GroupMyEventController extends Controller
 
         $GroupMyEvent = new GroupMyEvent();
         $GroupMyEvent->idUser = Auth::user()->id;
-        $GroupMyEvent->idWallet = $Request->idWallet;
-        $GroupMyEvent->idTypeEvent = $Request->idTypeEvent;
-        $GroupMyEvent->name = $Request->name;
-        $GroupMyEvent->address = $Request->address;
-        $GroupMyEvent->amount = $Request->amount;
+        $GroupMyEvent->group_name = $Request->group_name;
+        $GroupMyEvent->note = $Request->note;
         $GroupMyEvent->date = $Request->date;
         $GroupMyEvent->save();
         if($GroupMyEvent){
@@ -118,16 +115,8 @@ class GroupMyEventController extends Controller
     public function postUpdate(Request $Request)
     {
         $GroupMyEvent =  GroupMyEvent::find((int)$Request->id);
-        $old_amount = $GroupMyEvent->amount;//Củ
-        $new_amount = $Request->amount;//Mới
-        $old_idWallet = $GroupMyEvent->idWallet;//Củ
-        $new_idWallet = $Request->idWallet;//Mới
-        $GroupMyEvent->idUser = Auth::user()->id;
-        $GroupMyEvent->idTypeEvent = $Request->idTypeEvent;
-        $GroupMyEvent->idWallet = $Request->idWallet;
-        $GroupMyEvent->name = $Request->name;
-        $GroupMyEvent->address = $Request->address;
-        $GroupMyEvent->amount = $Request->amount;
+        $GroupMyEvent->group_name = $Request->group_name;
+        $GroupMyEvent->note = $Request->note;
         $GroupMyEvent->date = $Request->date;
         $GroupMyEvent->save();
         if($GroupMyEvent){

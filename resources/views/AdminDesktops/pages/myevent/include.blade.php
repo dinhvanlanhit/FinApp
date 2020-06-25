@@ -20,10 +20,10 @@
 
                             <div class="form-group" >
                                
-                                <select class="form-control select2bs4" id="idTypeEventInput" name="idTypeEventInput">
-                                <option value="">-- Chọn Sự Kiện -- </option>    
-                                @foreach ($typeevent as $item)
-                                    <option value="{{$item->id}}">{{$item->type_name}}</option>                      
+                                <select class="form-control select2bs4" id="idGroupMyEventInput" name="idGroupMyEventInput">
+                                <option value="">-- Chọn Nhóm Sự Kiện -- </option>    
+                                @foreach ($groupmyevent as $item)
+                                    <option value="{{$item->id}}">{{$item->group_name}}</option>                      
                                 @endforeach
                                 </select>
                             
@@ -35,19 +35,19 @@
                             <input class="form-control" id="name" name="name"/>
                         </div>
                     </div>
-                    
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Địa chỉ</label>
-                            <input class="form-control" id="address" name="address"/>
-                        </div>
-                    </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Số tiền</label>
                             <input class="form-control" id="amount" name="amount"/>
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <input class="form-control" id="address" name="address"/>
+                        </div>
+                    </div>
+               
                     <div class="col-md-12">
                         <div class="form-group"> 
                             <label>Ngày đi </label>

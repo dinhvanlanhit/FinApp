@@ -12,8 +12,11 @@ function surplus()
     $sumSalary  = \App\Models\Salary::where('idUser','=',\Auth::user()->id)->sum('amount');
     $sumLendloan  = \App\Models\Lendloan::where('idUser','=',\Auth::user()->id)->sum('amount');
     $sumInvest  = \App\Models\Invest::where('idUser','=',\Auth::user()->id)->sum('amount');
-
+    $sumMyEvent  = \App\Models\MyEvent::where('idUser','=',\Auth::user()->id)->sum('amount');
+    
     $sumDebt  = \App\Models\Debt::where('idUser','=',\Auth::user()->id)->where('idWallet','!=','null')->sum('amount');
+
+
 
     $sumWallet=$sumWallet-$sumEvent;
     $sumWallet=$sumWallet-$sumShopping;
@@ -21,6 +24,7 @@ function surplus()
     $sumWallet=$sumWallet+$sumSalary;
     $sumWallet=$sumWallet-$sumLendloan;
     $sumWallet=$sumWallet-$sumInvest;
+    $sumWallet=$sumWallet+$sumMyEvent;
     $sumWallet=$sumWallet+$sumDebt;
     return $sumWallet;
 

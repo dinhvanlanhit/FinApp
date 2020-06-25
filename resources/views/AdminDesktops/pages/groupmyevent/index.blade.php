@@ -33,7 +33,7 @@
         </form>
         <div class="row">
           <div class="col-md-12">
-              <table class="table table-bordered row-border hover text-small" id="group_my_event-table"></table>
+              <table class="table table-bordered row-border hover text-small" id="groupmyevent-table"></table>
           </div>
         </div>
         
