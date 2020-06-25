@@ -53,20 +53,29 @@ function users() {
 					data: "status_name",
 					name: "status_name",
 					className: "text-center",
+					render: function (data, type, row, meta) {
+						  return data+"<br>"+row.status_payment_name;
+					}
 					
+					
+				},
+				{
+					title: "Hạn Sử Dụng",
+					data: "status_payment_name",
+					name: "status_payment_name",
+					className: "text-center",
+					render: function (data, type, row, meta) {
+						return moment(row.date,'YYYY-MM-DD').add(row.sumMonth,'month').format('YYYY-MM-DD');
+					}
 				},
 			    {
 					title: "Ngày Đăng Ký",
 					data: "date",
 					name: "date",
 					className: "text-center",
-				},
-				{
-					title: "Sử Dụng",
-					data: "status_payment_name",
-					name: "status_payment_name",
-					className: "text-center",
-				},
+					
+					
+				}, 
 				{
 					title: "Tác vụ",
 					data: "created_at",
