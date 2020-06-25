@@ -34,6 +34,8 @@ class UsersTableSeeder extends Seeder
             'postal_code'=>'0966334404',
             'type'=>'admin',
             'date'=>date('Y-m-d'),
+            'status'=>0,
+            'status_name'=>'Mở',
             'status_payment'=>0,
             'status_payment_name'=>'Miễn Phí',
         ]);
@@ -60,6 +62,8 @@ class UsersTableSeeder extends Seeder
             'postal_code'=>'',
             'type'=>'member',
             'date'=>date('Y-m-d'),
+            'status'=>0,
+            'status_name'=>'Mở',
             'status_payment'=>0,
             'status_payment_name'=>'Miễn Phí',
         ]);
@@ -89,6 +93,8 @@ class UsersTableSeeder extends Seeder
                 'postal_code'=>'0966334404',
                 'type'=>'member',
                 'date'=>date('Y-m-d'),
+                'status'=>0,
+                'status_name'=>'Mở',
                 'status_payment'=>1,
                 'status_payment_name'=>'Trả Phí',
             ]);

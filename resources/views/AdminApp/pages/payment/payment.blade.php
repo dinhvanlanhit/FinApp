@@ -11,7 +11,11 @@
   <div class="card-body card-body-dashboard">
       <form id="formSearch">
           <div class="row">
-              <div class="col-md-8">
+   
+              <div class="col-sm-12 col-md-2 ">
+                  @include('AdminDesktops.fromControl.dateRange')
+              </div>
+              <div class="col-md-6">
                 <div class="form-group">
                       <input class="form-control" id="search" name="search" placeholder="Từ khóa tìm kiếm ..."/>
                 </div>

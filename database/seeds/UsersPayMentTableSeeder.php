@@ -15,14 +15,18 @@ class UsersPayMentTableSeeder extends Seeder
             [
                 'idUser'=>1,
                 'idUsePayment'=>1,
-                'numberMonth'=>0,
+                'numberMonth'=>12,
                 'amount'=>0,
+                'created_at'=>date('Y-m-d H:s:i'),
+                'updated_at'=>date('Y-m-d H:s:i')
             ],
             [
                 'idUser'=>1,
-                'idUsePayment'=>1,
-                'numberMonth'=>0,
-                'amount'=>0,
+                'idUsePayment'=>2,
+                'numberMonth'=>3,
+                'amount'=>200000,
+                'created_at'=>date('Y-m-d H:s:i'),
+                'updated_at'=>date('Y-m-d H:s:i')
             ]
             
         ]);

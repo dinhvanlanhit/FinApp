@@ -31,8 +31,8 @@
 								<div class="form-group">
 									<label for="status" class=" col-form-label">Trạng Thái Sửa Dụng</label>
 									<select class="form-control select2bs4" style="width: 100%;" id="status_payment" name="status_payment">
-										<option value="1" {{$users->status_payment_name==1?'selected':''}}>-- Trả Phí --</option>
-										<option value="0" {{$users->status_payment_name==0?'selected':''}}>-- Miễn Phí --</option>
+										<option value="1" {{$users->status_payment==1?'selected':''}}>-- Trả Phí --</option>
+										<option value="0" {{$users->status_payment==0?'selected':''}}>-- Miễn Phí --</option>
 									</select>
 								</div>
 								

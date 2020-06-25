@@ -20,8 +20,6 @@ function users() {
 				type: "GET",
 				data: function (d) {
 					return $.extend({}, d, {
-						// dateBegin: $("#dateBegin").val(),
-						// dateEnd: $("#dateEnd").val(),
 						status : $("#status").val(),
 						search: $("#search").val(),
 					});
@@ -59,8 +57,14 @@ function users() {
 				},
 			    {
 					title: "Ngày Đăng Ký",
-					data: "created_at",
-					name: "created_at",
+					data: "date",
+					name: "date",
+					className: "text-center",
+				},
+				{
+					title: "Sử Dụng",
+					data: "status_payment_name",
+					name: "status_payment_name",
 					className: "text-center",
 				},
 				{
@@ -122,10 +126,6 @@ function users() {
 			return window.location.href=datas.routes.payment+'/'+id;
 		
 		});
-		
-		
-
-
 		$("#btn-insert").on("click", function () {
 			$('#modal-action-title').text("Thêm mới");
 			$("#onSave").attr('data-url', datas.routes.insert);

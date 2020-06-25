@@ -13,14 +13,6 @@ class UsePayMentTableSeeder extends Seeder
     {
         DB::table('use_payment')->insert([
             [
-                
-                
-                'name'=>'Miễn Phí',
-                'numberMonth'=>0,
-                'note'=>'Sử dụng miễn phí',
-                'amount'=>0,
-            ],
-            [
                
                 'name'=>'Sử dụng thử',
                 'numberMonth'=>12,

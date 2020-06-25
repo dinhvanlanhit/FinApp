@@ -22,8 +22,9 @@ class UsersController extends Controller
             1 => 'full_name',
             2 => 'address_1',
             3 => 'status_name',
-            4 => 'created_at',
-            5 => 'created_at'
+            4 => 'status_payment_name',
+            5 => 'created_at',
+            6 => 'created_at'
         );
 
         $limit = $Request->input('length');
@@ -55,6 +56,7 @@ class UsersController extends Controller
                         ->orWhere('phone_number', 'LIKE',"%{$search}%")
                         ->orWhere('address_1', 'LIKE',"%{$search}%")
                         ->orWhere('status_name', 'LIKE',"%{$search}%")
+                        ->orWhere('status_payment_name', 'LIKE',"%{$search}%")
                         ->orWhere('created_at','LIKE',"%{$search}%");
                     })
                     ->offset($start)
@@ -82,6 +84,7 @@ class UsersController extends Controller
                     ->orWhere('phone_number', 'LIKE',"%{$search}%")
                     ->orWhere('address_1', 'LIKE',"%{$search}%")
                     ->orWhere('status_name', 'LIKE',"%{$search}%")
+                    ->orWhere('status_payment_name', 'LIKE',"%{$search}%")
                     ->orWhere('created_at','LIKE',"%{$search}%");
                 })
                 ->offset($start)
@@ -121,6 +124,9 @@ class UsersController extends Controller
             $Users->full_name =$Request->full_name;
             $Users->sex = $Request->sex;
             $Users->status = (int)$Request->status;
+            $Users->status_name = (int)$Request->status==1?'Khóa':'Mở';
+            $Users->status_payment = (int)$Request->status_payment;
+            $Users->status_payment_name = (int)$Request->status_payment==1?'Trả Phí':'Miễn Phí';
             if($Request->password!=''){
                 $Users->password =bcrypt($Request->password);
             }
@@ -149,6 +155,10 @@ class UsersController extends Controller
             $Users->full_name =$Request->full_name;
             $Users->sex = $Request->sex;
             $Users->status = (int)$Request->status;
+            $Users->status_name = (int)$Request->status==1?'Khóa':'Mở';
+            $Users->status_payment = (int)$Request->status_payment;
+            $Users->status_payment_name = (int)$Request->status_payment==1?'Trả Phí':'Miễn Phí';
+
             if($Request->password!=''){
                 $Users->password =bcrypt($Request->password);
             }
