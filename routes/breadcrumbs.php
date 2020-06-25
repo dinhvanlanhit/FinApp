@@ -11,6 +11,14 @@ Breadcrumbs::for('event', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Sự kiện', route('event'));
 });
+Breadcrumbs::for('groupmyevent', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Nhóm Sự Kiện', route('groupmyevent'));
+});
+Breadcrumbs::for('myevent', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Sự Kiện Của Tôi', route('myevent'));
+});
 Breadcrumbs::for('cost', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Chi Tiêu', route('cost'));

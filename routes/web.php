@@ -107,7 +107,22 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/update','AssetController@getUpdate')->name('asset_update');
         Route::post('/delete','AssetController@postDelete')->name('asset_delete');
     });
-    
+    Route::group(['prefix' => 'group-my-event'], function () {
+        Route::get('/datatable','GroupMyEventController@getDatatable')->name('groupmyevent_table');
+        Route::get('/','GroupMyEventController@getGroupMyEvent')->name('groupmyevent');
+        Route::post('/insert','GroupMyEventController@postInsert')->name('groupmyevent_insert');
+        Route::post('/update','GroupMyEventController@postUpdate')->name('groupmyevent_update');
+        Route::get('/update','GroupMyEventController@getUpdate')->name('groupmyevent_update');
+        Route::post('/delete','GroupMyEventController@postDelete')->name('groupmyevent_delete');
+    });
+    Route::group(['prefix' => 'my-event'], function () {
+        Route::get('/datatable','MyEventController@getDatatable')->name('myevent_table');
+        Route::get('/','MyEventController@getMyEvent')->name('myevent');
+        Route::post('/insert','MyEventController@postInsert')->name('myevent_insert');
+        Route::post('/update','MyEventController@postUpdate')->name('myevent_update');
+        Route::get('/update','MyEventController@getUpdate')->name('myevent_update');
+        Route::post('/delete','MyEventController@postDelete')->name('myevent_delete');
+    });
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/','ProfileController@getProfile')->name('profile');
         Route::post('/','ProfileController@postProfile')->name('profile');

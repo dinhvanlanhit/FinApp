@@ -29,7 +29,9 @@ class DatabaseSeeder extends Seeder
             InvestTableSeeder::class,
             Goals_dreamsTableSeeder::class,
             AssetTypeTableSeeder::class,
-            AssetTableSeeder::class
+            AssetTableSeeder::class,
+            GroupMyEventTableSeeder::class,
+            MyEventTableSeeder::class
         ]);
     }
 }

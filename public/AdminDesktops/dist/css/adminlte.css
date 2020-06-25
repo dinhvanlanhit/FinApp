@@ -11996,6 +11996,10 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
   background-color: rgba(0, 0, 0, 0.1);
   color: #212529;
 }
+.menu-open-new >.nav-link {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #212529;
+}
 
 [class*='sidebar-light-'] .nav-sidebar > .nav-item > .nav-link.active {
   color: #000;
