@@ -147,11 +147,9 @@
         </h3>
         <div class="card-tools">
           <!-- button with a dropdown -->
-         
           <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
             <i class="fas fa-minus"></i>
           </button>
-          
         </div>
       </div>
       <div class="card-body pt-2">
@@ -163,17 +161,12 @@
     <div class="card">
       <div class="card-header">
         <h5 class="card-title">Biểu Đồ Tổng Quan</h5>
-        
       </div>
-      <!-- /.card-header -->
       <div class="card-body-dashboard">
         <div class="row">
           <div class="col-md-12">
             <div id="dashboard-chart-top" style="height:400px"></div>
           </div>
-     
-          
-      <!-- /.chart-responsive -->
         </div>
       </div>
     </div>
@@ -182,9 +175,7 @@
     <div class="card">
       <div class="card-header">
         <h5 class="card-title">Biểu Đồ Chi Tiết</h5>
-  
       </div>
-      <!-- /.card-header -->
       <div class="card-body-dashboard">
         <div class="row">
   
@@ -221,9 +212,6 @@
     </div>
   </div>
 </div>
-
-
-
 @endsection
 @section('javascript')
 <script src="{{asset('AdminDesktops/plugins/echarts/echarts-en.min.js')}}"></script>
