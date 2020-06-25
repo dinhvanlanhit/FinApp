@@ -84,7 +84,7 @@ function users() {
 							text: 'Sửa'
 						},
 						{
-							class: 'btn-update',
+							class: 'btn-payment',
 							value: row.id,
 							title: 'Thanh Toán',
 							icon: '',
@@ -117,6 +117,12 @@ function users() {
 			return window.location.href=datas.routes.update+'/'+id;
 		
 		});
+		$(document).delegate(".btn-payment", "click", function () {
+			var id = $(this).val();
+			return window.location.href=datas.routes.payment+'/'+id;
+		
+		});
+		
 		
 
 

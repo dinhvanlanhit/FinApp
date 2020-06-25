@@ -64,6 +64,7 @@
           status:"{{route('admin_users_status')}}",
           update:"{{route('admin_users_update')}}",
           delete:"{{route('admin_users_delete')}}",
+          payment:"{{route('admin_users_payment')}}"
         }
     }   
     users.runJS();

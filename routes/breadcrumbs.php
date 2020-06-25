@@ -80,3 +80,8 @@ Breadcrumbs::for('admin_users_insert', function ($trail) {
     $trail->push('Người Dùng'); 
     $trail->push('Thêm Người Dùng', route('admin_users_insert'));
 });
+Breadcrumbs::for('admin_users_payment', function ($trail) {
+    $trail->parent('admin_dashboard');
+    $trail->push('Người Dùng'); 
+    $trail->push('Thanh Toán', route('admin_users_payment'));
+});
