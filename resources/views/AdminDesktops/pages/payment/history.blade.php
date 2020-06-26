@@ -27,10 +27,10 @@
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <button type="button"  class="btn btn-info btn-block" id="btn-insert">
+                  <a href="{{route('methods_payment')}}"  class="btn btn-info btn-block" id="btn-insert">
                       
                       Gia Hạn
-                    </button>
+                  </a>
                  </div>
               </div>
           </div>

@@ -29,6 +29,16 @@ class CreateSettingsTable extends Migration
             $table->text('themes')->nullable();
             $table->text('content_banktransfer')->nullable();
             $table->text('content_contact')->nullable();
+            $table->text('facebook_url')->nullable();
+            $table->text('twitter_url')->nullable();
+            $table->text('instagram_url')->nullable();
+            $table->text('pinterest_url')->nullable();
+            $table->text('linkedin_url')->nullable();
+            $table->text('vk_url')->nullable();
+            $table->text('telegram_url')->nullable();
+            $table->text('youtube_url')->nullable();
+            $table->text('code_fanpage')->nullable();
+            
             $table->timestamps();
         });
     }

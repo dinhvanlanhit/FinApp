@@ -133,9 +133,13 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('history-datatable','PaymentController@getDatatable')->name('history_datatable');
         Route::get('notice','PaymentController@getNotice')->name('notice_payment');
         Route::get('methods','PaymentController@getMethods')->name('methods_payment');
-        
-
     }); 
+    Route::group(['prefix' => 'contact'], function (){
+        Route::get('/','ContactController@getContact')->name('contact');
+        Route::post('contact-send','ContactController@getContact')->name('contact_send');
+       
+    }); 
+
     Route::group(['prefix' => 'menu'], function () {
         Route::get('/','MenuController@getMenu')->name('menu');
     });

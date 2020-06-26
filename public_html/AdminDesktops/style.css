@@ -7,3 +7,65 @@
 .card-body-dashboard{
     padding: 5px;
 }
+
+
+ a.facebook {
+    background: #3b5998 !important;
+}
+ a.twitter {
+    background: #55acee;
+}
+ a.instagram {
+    background: #125688;
+}
+ a.pinterest {
+    background: #cb2027;
+}
+ a.linkedin {
+    background: #007bb5;
+}
+ a.vk {
+    background: #4D76A1;
+}
+
+.contact-social {
+    margin-top: 5px;
+    float: left;
+}
+.contact-social ul {
+    margin: 0;
+    padding: 0;
+}
+.contact-social ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+.contact-social ul li a {
+    border: 1px solid #373737;
+    color: #a0a0a0;
+}
+.contact-social ul li a {
+    border: 1px solid #dfdfdf;
+    border-radius: 100%;
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
+    font-size: 15px;
+}
+.contact-item {
+    margin-bottom: 10px;
+    display: block;
+    float: left;
+    width: 100%;
+}
+.contact-item .contact-icon {
+    max-width: 5px;
+    padding-right: 0;
+    text-align: center;
+    font-size: 15px;
+    color: #444;
+}

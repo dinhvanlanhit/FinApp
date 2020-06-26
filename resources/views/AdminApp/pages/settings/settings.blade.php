@@ -102,6 +102,20 @@
                                             </textarea>
                                         </div>
                                         <div class="form-group">
+                                            <label> Code Google Map  </label>
+                                            <textarea id="googleMap" name="googleMap" class="form-control">
+                                                {{$data->googleMap}}
+                                            </textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label> JavaScript SDK  </label>
+                                            <textarea id="code_fanpage" name="code_fanpage"  class="form-control">
+                                                {{$data->code_fanpage}}
+                                            </textarea>
+                                        </div>
+                                        
+                                        
+                                        <div class="form-group">
                                             <a  href="{{route('admin_dashboard')}}" class="btn btn-danger  float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
                                             <button type="submit"   class="btn btn-success float-fight onSave">Lưu</button>
                                         </div>

@@ -11,7 +11,7 @@
       <a href="{{route('profile')}}" class="nav-link active"><b> <i class="fa fa-user"></i> {{Auth::user()->full_name}}</b></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link"><b>Liên Hệ</b></a>
+      <a href="{{route('contact')}}" class="nav-link"><b>Liên Hệ</b></a>
     </li>
   </ul>
   <!-- SEARCH FORM -->

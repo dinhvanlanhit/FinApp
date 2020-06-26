@@ -68,7 +68,10 @@ Breadcrumbs::for('methods_payment', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Phương Thức Thanh Toán', route('methods_payment'));
 });
-
+Breadcrumbs::for('contact', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Liên Hệ', route('contact'));
+});
 
 ///// ADMIN
 Breadcrumbs::for('admin_dashboard', function ($trail) {

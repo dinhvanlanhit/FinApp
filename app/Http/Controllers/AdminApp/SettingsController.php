@@ -71,6 +71,8 @@ class SettingsController extends Controller
         $data->themes = $Request->themes;
         $data->content_banktransfer = $Request->content_banktransfer;
         $data->content_contact = $Request->content_contact;
+        $data->code_fanpage = $Request->code_fanpage;
+        $data->googleMap = $Request->googleMap;
         if($data->save()){
             return JSON2(true,"Cập Nhật Thành Công");
         }else{
