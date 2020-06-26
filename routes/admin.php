@@ -40,6 +40,9 @@ Route::group(['namespace' => 'AdminApp','prefix' => 'app','middleware' => ['Chec
         }); 
         Route::group(['prefix' => 'setting'], function (){
             Route::get('admin-setting','SettingsController@getSetting')->name('admin_setting');
+            Route::post('admin-setting','SettingsController@postSetting')->name('admin_setting');
+            Route::post('admin-setting-upload','SettingsController@postUpload')->name('admin_setting_upload');
+            
            
         }); 
         

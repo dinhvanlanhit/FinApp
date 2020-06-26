@@ -16,7 +16,7 @@ class SettingsTableSeeder extends Seeder
                   'company_name'=>'Fin App',
                   'title'=>'Fin - App',
                   'logo'=>'logofinapp.png',
-                  'icon' => 'logofinapp.png',
+                  'icon' => 'icon.jpg',
                   'googleMap'=>'',
                   'address' => '138  Lý Nam Đế  - Thành Phố Đà Lạt',
                   'email'=>'finapp.fun@gmail.com',

@@ -101,29 +101,7 @@ function deleteFile($file)
 		File::delete(base_path("{$file}"));
 	}
 }
-function uploadFile($File,$rootFile,$url)
-{
-    $fileName = NULL;
-    if ($File != NULL) {
-        $filenameRoot  = $File->getClientOriginalName();
-        $extension = $File->getClientOriginalExtension();
-        $fileName   = $filenameRoot.'-'.date('Y-m-d-H-i-s') . "." . $extension;
-        if (!empty($rootFile) || $rootFile != NULL || $rootFile != '') {
-            if (file_exists(base_path("{$rootFile}"))) {
-                File::delete(base_path("{$rootFile}"));
-                $File->move(base_path("{$url}"), $fileName);
-                return  $url.'/'.$fileName;
-            } else {
-                $File->move(base_path("{$url}"), $fileName);
-                return  $url.'/'.$fileName;
-            }
-        } else {
-            $File->move(base_path("{$url}"), $fileName);
-            return  $url.'/'.$fileName;
-        }
-    }
-    return $fileName;
-}
+
 function  JSON1($data=null)
 {
     $Responses = new \stdClass;
@@ -217,4 +195,8 @@ function template()
 function templateAdminApp()
 {
     return "AdminApp";
+}
+function setting()
+{
+   return \App\Models\Settings::find(1);
 }

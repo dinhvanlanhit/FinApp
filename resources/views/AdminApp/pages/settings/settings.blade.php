@@ -1,7 +1,6 @@
 @extends('AdminApp.layouts.layout')
 @section('AdminApp')
-
-
+<form id="formSetting">
         <div class="card">
             <div class="card-header p-2">
                 <ul class="nav nav-pills">
@@ -9,9 +8,9 @@
                     </li>
                     <li class="nav-item"><a class="nav-link " href="#Contact" data-toggle="tab"> Liên Hệ</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link " href="#Theme" data-toggle="tab"> Giao Diện</a>
-                    </li>
                     <li class="nav-item"><a class="nav-link " href="#PayMent" data-toggle="tab">Thanh Toán</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link " href="#Theme" data-toggle="tab"> Giao Diện</a>
                     </li>
                 </ul>
             </div>
@@ -19,7 +18,6 @@
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="Setting">
-                        <form id="x">
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="card">
@@ -49,6 +47,10 @@
                                                     <label for="company_name">Mật Khẩu</label>
                                                     <input type="password" value="{{$data->password}}" id="password" name="password" class="form-control">
                                                 </div>
+                                                <div class="form-group">
+                                                    <a  href="{{route('admin_dashboard')}}" class="btn btn-danger  float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
+                                                    <button type="submit"   class="btn btn-success float-fight onSave">Lưu</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -59,10 +61,10 @@
                                             </div>
                                             <div class="card-body box-profile">
                                                 <div class="text-center">
-                                                  <label for="changeAvatar">
-                                                  <img class="img-responsive btn-block" id="user_avatar_profile" 
-                                                  src="{{asset('SytemFinApp/logo/')}}/{{$data->icon}}" alt="User profile picture">
-                                                  <input type="file" id="changeAvatar" class="d-none" name="avatar">
+                                                  <label for="changeLogo">
+                                                  <img class="img-responsive btn-block" id="img_logo" 
+                                                  src="{{asset('SytemFinApp/logo/')}}/{{$data->logo}}" alt="User profile picture">
+                                                  <input type="file" id="changeLogo" class="d-none" name="logo">
                                                 </label>
                                               </div>
                                             </div>
@@ -73,57 +75,96 @@
                                             </div>
                                             <div class="card-body box-profile">
                                                 <div class="text-center">
-                                                  <label for="changeAvatar">
-                                                  <img class="img-responsive btn-block" id="user_avatar_profile" 
-                                                  src="{{asset('SytemFinApp/logo/')}}/{{$data->icon}}" alt="User profile picture">
-                                                  <input type="file" id="changeAvatar" class="d-none" name="avatar">
+                                                  <label for="changeIcon">
+                                                  <img class="img-responsive btn-block" id="img_icon" 
+                                                  src="{{asset('SytemFinApp/icon/')}}/{{$data->icon}}" alt="User profile picture">
+                                                  <input type="file" id="changeIcon" class="d-none" name="icon">
                                                 </label>
                                               </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                        </form>
+                              
                     </div>
                     <div class="tab-pane " id="Contact">
-                        <form id="">
-         
-                        </form>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="text-center">  Thông Tin Liên Hệ </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                         
+                                            <textarea id="content_contact"  class="form-control">
+                                                {{$data->content_contact}}
+                                            </textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <a  href="{{route('admin_dashboard')}}" class="btn btn-danger  float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
+                                            <button type="submit"   class="btn btn-success float-fight onSave">Lưu</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="text-center">  Mạng Xã Hội </h6>
+                                    </div>
+                                    <div class="card-body box-profile">
+                                        
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+                        </div>
                         
                     </div>
+                    <div class="tab-pane " id="PayMent">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="text-center">  Thông Tin Thanh Toán </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <textarea id="content_banktransfer"  class="form-control">
+                                                    {{$data->content_banktransfer}}
+                                            </textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <a  href="{{route('admin_dashboard')}}" class="btn btn-danger  float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
+                                            <button type="submit"   class="btn btn-success float-fight onSave">Lưu</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                        
+                    </div>
+                   
                 </div>
+               
             </div>
-            <div class="card-footer">
-                <div class="row">
-                    <div class="col-md-1">
-                        <div class="form-group">
-                            <a  href="{{route('admin_dashboard')}}" class="btn btn-danger btn-block float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
-
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="form-group">
-                           
-                            <button type="submit"  class="btn btn-success btn-block float-left"></i> Lưu</button>
-                        </div>
-                    </div>
-                </div>
-
-              </div>
+            
         </div>
-
-
-    
+</form>
 @endsection
 @section('javascript')
 <script src="{{asset('app/admin/setting/setting.js')}}"></script>
 <script> 
-    var setting = new setting(); 
-    setting.datas={
+    var settings = new settings(); 
+    settings.datas={
         routes:{
-          updatte:"{{route('admin_setting')}}",
+          update:"{{route('admin_setting')}}",
+          upload:"{{route('admin_setting_upload')}}",
         }
     }   
-    setting.runJS();
+    settings.runJS();
 </script>
 @endsection

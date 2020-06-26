@@ -15,6 +15,12 @@
 <script src="{{asset('AdminDesktops/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/toastr/toastr.min.js')}}"></script>
+<script src="{{asset('AdminDesktops/plugins/tinymce/jquery.tinymce.min.js')}}"></script>
+<script src="{{asset('AdminDesktops/plugins/tinymce/tinymce.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/dist/js/adminlte.js')}}"></script>
-<script> var wallet_total = "{{route('wallet_total')}}"; </script>
-<script src="{{asset('app/desktops/main.min.js')}}"></script>
+<script> 
+    var editor_content_css = "{{asset('AdminDesktops/plugins/tinymce/editor_content.css')}}";
+    var editor_ui_css = "{{asset('AdminDesktops/plugins/tinymce/editor_ui.css')}}";
+    var wallet_total = "{{route('wallet_total')}}"; 
+</script>
+<script src="{{asset('app/admin/main.min.js')}}"></script>

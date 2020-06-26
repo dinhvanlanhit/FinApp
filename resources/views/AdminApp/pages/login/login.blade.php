@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Admin - FinApp </title>
-  <link rel="icon" type="image/png" href="{{asset('SytemFinApp/icon/icon.jpg')}}" >
+  <link rel="icon" type="image/png" href="{{asset('SytemFinApp/icon/')}}/{{setting()->icon}}" >
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -26,7 +26,7 @@
 
     <div class="card-body login-card-body">
       <div class="login-logo">
-            <img class="btn-block" src="{{asset('SytemFinApp/logo/logofinapp.png')}}"/>
+            <img class="btn-block" src="{{asset('SytemFinApp/logo/')}}/{{setting()->logo}}"/>
       </div>
       <div id="alert"></div>
       <form id="form-login"  method="post">
