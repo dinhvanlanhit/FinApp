@@ -55,6 +55,12 @@ Breadcrumbs::for('asset', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Tài Sản', route('asset'));
 });
+Breadcrumbs::for('history_payment', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Lịch Sử Thanh Toán', route('history_payment'));
+});
+ 
+
 
 ///// ADMIN
 Breadcrumbs::for('admin_dashboard', function ($trail) {

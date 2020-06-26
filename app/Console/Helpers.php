@@ -183,6 +183,24 @@ function  JSON3($data=null,$type=false,$messages=null)
     return json_encode($Responses);
 
 }
+function getExpiryDate()
+{
+        $users = \Auth::user();
+        $SQL = "SELECT * FROM users AS users_PARENT LEFT JOIN ";
+        $SQL .="( SELECT SUM(numberMonth) AS sumMonth , idUser  ";
+        $SQL .=" FROM users_payment ";
+        $SQL .=" GROUP BY idUser    ";
+        $SQL .=") AS child ON ";
+        $SQL .= " child.idUser = users_PARENT.id ";
+        $SQL .= " WHERE type = '{$users->type}' ";
+        $SQL .= " AND id = {$users->id} ";
+        $result  =  DB::select(DB::raw($SQL)); 
+        $today = $result[0]->date;
+        $sumMonth = $result[0]->sumMonth;
+        $month = strtotime(date("Y-m-d", strtotime($today)) . " +$sumMonth month");
+        $month = strftime("%d-%m-%Y", $month);
+        return $month;
+}
 function template()
 {
     $agent = new \Jenssegers\Agent\Agent;

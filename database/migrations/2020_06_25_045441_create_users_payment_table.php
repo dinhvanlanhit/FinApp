@@ -19,7 +19,7 @@ class CreateUsersPaymentTable extends Migration
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('idUsePayment')->unsigned()->nullable();
             $table->foreign('idUsePayment')->references('id')->on('use_payment')->onDelete('cascade')->onUpdate('cascade');
-            $table->Integer('numberMonth')->nullable();
+            $table->Integer('numberMonth')->default(0)->nullable();
             $table->double('amount')->default(0)->nullable();
             $table->Integer('payment_methods')->nullable();
             $table->string('payment_methods_name')->nullable();

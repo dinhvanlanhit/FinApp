@@ -1,5 +1,5 @@
-@extends('AdminApp.layouts.layout')
-@section('AdminApp')
+@extends('AdminDesktops.layouts.layout')
+@section('desktops')
 <div class="card">
   <div class="card-header">
     <h3 class="card-title">
@@ -29,7 +29,7 @@
                 <div class="form-group">
                   <button type="button"  class="btn btn-info btn-block" id="btn-insert">
                       
-                      Thêm Thanh Toán
+                      Gia Hạn
                     </button>
                  </div>
               </div>
@@ -47,20 +47,14 @@
   </div>
 </div>
     
-@include('AdminApp.pages.payment.include')
 @endsection
 @section('javascript')
-<script src="{{asset('app/admin/payment/payment.js')}}"></script>
+<script src="{{asset('app/desktops/payment/payment.js')}}"></script>
 <script> 
     var payment = new payment(); 
     payment.datas={
-        idUser:"{{$idUser}}",
         routes:{
-          datatable:"{{route('admin_payment_datatable')}}",
-          status:"{{route('admin_payment_status')}}",
-          insert:"{{route('admin_payment_insert')}}",
-          update:"{{route('admin_payment_update')}}",
-          delete:"{{route('admin_payment_delete')}}",
+          datatable:"{{route('history_datatable')}}",
         }
     }   
     payment.runJS();

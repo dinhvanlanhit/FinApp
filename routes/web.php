@@ -128,6 +128,10 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::post('/','ProfileController@postProfile')->name('profile');
         Route::post('/uploadFile','ProfileController@uploadFile')->name('uploadFile');
     });
+    Route::group(['prefix' => 'payment'], function (){
+        Route::get('history','PaymentController@getPayMent')->name('history_payment');
+        Route::get('history-datatable','PaymentController@getDatatable')->name('history_datatable');
+    }); 
     Route::group(['prefix' => 'menu'], function () {
         Route::get('/','MenuController@getMenu')->name('menu');
     });

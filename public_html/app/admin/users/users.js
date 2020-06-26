@@ -81,6 +81,7 @@ function users() {
 					render: function (data, type, row, meta) {
 						var date = new Date();
 						var dateUse = moment(row.date,'YYYY-MM-DD').add(row.sumMonth,'month').format('YYYY-MM-DD');
+						console.log('A:'+moment(date,'YYYY-MM-DD').format('YYYY-MM-DD')+'   B:'+dateUse)
 						if(moment(date,'YYYY-MM-DD').format('YYYY-MM-DD') === moment(dateUse,'YYYY-MM-DD').format('YYYY-MM-DD')){
 							return '<b class="text-danger">Hết Hạn Sử Dụng</b>';
 						}else{
