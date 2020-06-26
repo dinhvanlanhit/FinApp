@@ -24,7 +24,7 @@
       </a>
     </li> --}}
     @if (Auth::user()->type=='admin')
-      <li class="nav-item">
+    <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('admin_dashboard')}}"  title="Quản Lý Hệ Thống" class="nav-link">
           <i class="fas fa-desktop"></i>
         </a>

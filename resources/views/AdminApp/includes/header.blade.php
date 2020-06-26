@@ -8,7 +8,7 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
+      <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('dashboard')}}"  title="Fin-App" class="nav-link">
           <i class="fas fa-desktop"></i>
         </a>
