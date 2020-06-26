@@ -131,10 +131,16 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     Route::group(['prefix' => 'payment'], function (){
         Route::get('history','PaymentController@getPayMent')->name('history_payment');
         Route::get('history-datatable','PaymentController@getDatatable')->name('history_datatable');
+        Route::get('notice','PaymentController@getNotice')->name('notice_payment');
+        Route::get('methods','PaymentController@getMethods')->name('methods_payment');
+        
+
     }); 
     Route::group(['prefix' => 'menu'], function () {
         Route::get('/','MenuController@getMenu')->name('menu');
     });
+
+    
     
 });
 Route::get('/mobile',function(){

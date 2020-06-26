@@ -14,7 +14,7 @@ class PaymentController extends Controller
 {
     public function getPayMent(Request $Request)
     {
-        return view(template().'.pages.payment.payment');
+        return view(template().'.pages.payment.history');
     }
     public function getDatatable(Request $Request)
     {
@@ -109,5 +109,13 @@ class PaymentController extends Controller
             "data"            => $Payment   
         );
         echo json_encode($json_data); 
+    }
+    public function getNotice(Request $Request)
+    {
+        return view(template().'.pages.payment.notice');
+    }
+    public function getMethods(Request $Request)
+    {
+        return view(template().'.pages.payment.method');
     }
 }

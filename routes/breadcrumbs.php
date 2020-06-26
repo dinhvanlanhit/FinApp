@@ -59,7 +59,15 @@ Breadcrumbs::for('history_payment', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Lịch Sử Thanh Toán', route('history_payment'));
 });
- 
+Breadcrumbs::for('notice_payment', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Thông Báo Thanh Toán', route('notice_payment'));
+});
+
+Breadcrumbs::for('methods_payment', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Phương Thức Thanh Toán', route('methods_payment'));
+});
 
 
 ///// ADMIN

@@ -137,6 +137,7 @@
         </a>
         
       </li>
+      
       <li class="nav-item menu-open-new">
         <a href="{{route('history_payment')}}" class="nav-link ">
           <i class="nav-icon fas fa-history"></i>

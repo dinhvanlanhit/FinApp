@@ -8,8 +8,8 @@
 						<label for="changeAvatar">
 							<img class="img-responsive btn-block" id="user_avatar_profile" @if (empty(Auth::user()->avatar)) src="{{asset('./data/default/profile-default.png')}}" @else @if (file_exists('./data/users/users'.Auth::user()->id.'/'.Auth::user()->avatar)) src="{{asset('./data/users/users'.Auth::user()->id.'/'.Auth::user()->avatar)}}" @else src="{{asset('./data/default/profile-default.png')}}" @endif @endif alt="User profile picture"></label>
 					</div>
-					<h3 class="profile-username text-center full_name_show text-info"><b>{{ mb_strtoupper(Auth::user()->full_name, "UTF-8")}}</b></h3>
-					<p class="text-muted text-center full_email_show"><b>{{Auth::user()->email}}</b>
+					<h3 class="profile-username text-center  text-info"><b class="full_name_show">{{ mb_strtoupper(Auth::user()->full_name, "UTF-8")}}</b></h3>
+					<p class="text-muted text-center "><b class="full_email_show">{{Auth::user()->email}}</b>
 					</p>
           <input type="file" id="changeAvatar" class="d-none" name="avatar" />
           @if (Auth::user()->status_payment==0)

@@ -1,8 +1,8 @@
-function payment(){
+function history(){
     this.datas = null;
     this.runJS = function(){
         var datas = this.datas;
-		var table = $("#payment-table").DataTable({
+		var table = $("#history-table").DataTable({
 			serverSide: true,
 			processing: true,
 			paging: true,

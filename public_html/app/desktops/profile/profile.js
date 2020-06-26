@@ -100,7 +100,7 @@ function profile(){
 						if (data.statusBoolen) {
 							buttonloading('#onSave', false);
                             $("#modal-action").modal('hide');
-                            $(".full_name_show").text(formData.get('full_name'));
+                            $(".full_name_show").text(formData.get('full_name').toUpperCase());
                             $(".email_show").text(formData.get('email'));
 							Toast.fire({
 								icon: data.icon,

@@ -21,7 +21,7 @@
                             <div class="form-group" >
                                
                                 <select class="form-control select2bs4" id="idTypeCostInput" name="idTypeCostInput">
-                                <option value="">-- Chọn Sự Kiện -- </option>    
+                                <option value="">-- Chọn Nhóm Chi Phí -- </option>    
                                 @foreach ($typecost as $item)
                                     <option value="{{$item->id}}">{{$item->type_name}}</option>                      
                                 @endforeach
