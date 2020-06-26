@@ -26,9 +26,14 @@ class SettingsTableSeeder extends Seeder
                   'themes'=>'[]',
                   'content_banktransfer'=>'',
                   'content_contact'=>'',
-                  'code_fanpage'=>'',
-       
-                 
+                  'facebook_url'=>'https://www.facebook.com/',
+                  'twitter_url'=>'https://twitter.com',
+                  'instagram_url'=>'https://www.instagram.com',
+                  'pinterest_url'=>'',
+                  'linkedin_url'=>'https://www.linkedin.com/',
+                  'vk_url'=>'https://vk.com',
+                  'telegram_url'=>'',
+                  'youtube_url'=>''
             ]);
     }
 }

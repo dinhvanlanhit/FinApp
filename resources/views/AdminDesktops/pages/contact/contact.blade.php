@@ -7,6 +7,7 @@
     </h3>
 	</div>
 	<div class="card-body card-body">
+    @if (setting()->content_contact!=NULL) {!!setting()->content_contact!!} @endif
 		<form id="formContact">
 			<div class="row">
 				<div class="col-md-8">
@@ -16,7 +17,7 @@
 					</div>
 					<div class="form-group">
 						<label for="">Địa chỉ Email</label>
-						<input type="text" class="form-control" id="name" name="name" placeholder="Email">
+						<input type="text" class="form-control" id="email" name="email" placeholder="Email">
 					</div>
 					<div class="form-group">
 						<label for="">Số ĐT</label>
@@ -48,22 +49,22 @@
           </div>
           <div class="col-sm-12 col-xs-12 contact-social text-center">
             <ul>
-              <li> <a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+              <li> <a class="facebook" href="{{setting()->facebook_url}}" target="_blank"><i class="fab fa-facebook"></i></a>
               </li>
               <!--if twitter url exists-->
-              <li> <a class="twitter" href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+              <li> <a class="twitter" href="{{setting()->twitter_url}}" target="_blank"><i class="fab fa-twitter"></i></a>
               </li>
               <!--if pinterest url exists-->
-              <li> <a class="pinterest" href="https://www.pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+              <li> <a class="pinterest" href="{{setting()->pinterest_url}}" target="_blank"><i class="fab fa-pinterest"></i></a>
               </li>
               <!--if instagram url exists-->
-              <li> <a class="instagram" href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+              <li> <a class="instagram" href="{{setting()->instagram_url}}" target="_blank"><i class="fab fa-instagram"></i></a>
               </li>
               <!--if linkedin url exists-->
-              <li> <a class="linkedin" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <li> <a class="linkedin" href="{{setting()->linkedin_url}}" target="_blank"><i class="fab fa-linkedin"></i></a>
               </li>
               <!--if vk url exists-->
-              <li> <a class="vk" href="https://vk.com" target="_blank"><i class="fab fa-vk"></i></a>
+              <li> <a class="vk" href="{{setting()->vk_url}}" target="_blank"><i class="fab fa-vk"></i></a>
               </li>
             </ul>
           </div>

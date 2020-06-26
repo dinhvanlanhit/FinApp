@@ -127,7 +127,36 @@
                                     <div class="card-header">
                                         <h6 class="text-center">  Mạng Xã Hội </h6>
                                     </div>
-                                    <div class="card-body box-profile">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="facebook_url">Facebook</label>
+                                            <input type="text" class="form-control" id="facebook_url" name="facebook_url" placeholder="Url ... ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="twitter_url">Twitter</label>
+                                            <input type="text" class="form-control" id="twitter_url" name="twitter_url" placeholder="Url ... ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="instagram_url">Instagram</label>
+                                            <input type="text" class="form-control" id="instagram_url" name="instagram_url" placeholder="Url ... ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="linkedin_url">Linkedin</label>
+                                            <input type="text" class="form-control" id="linkedin_url" name="linkedin_url" placeholder="Url ... ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="vk_url">VK</label>
+                                            <input type="text" class="form-control" id="vk_url" name="vk_url" placeholder="Url ... ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telegram_url">Telegram</label>
+                                            <input type="text" class="form-control" id="telegram_url" name="telegram_url" placeholder="Url ... ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="youtube_url">YouTube</label>
+                                            <input type="text" class="form-control" id="youtube_url" name="youtube_url" placeholder="Url ... ">
+                                        </div>
+
                                         
                                     </div>
 
