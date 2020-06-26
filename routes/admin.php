@@ -38,6 +38,11 @@ Route::group(['namespace' => 'AdminApp','prefix' => 'app','middleware' => ['Chec
             Route::post('admin-payment-delete','PaymentController@postDelete')->name('admin_payment_delete');
             Route::post('admin-payment-status','PaymentController@postUpdate')->name('admin_payment_status');
         }); 
+        Route::group(['prefix' => 'setting'], function (){
+            Route::get('admin-setting','SettingsController@getSetting')->name('admin_setting');
+           
+        }); 
+        
    
 });
 

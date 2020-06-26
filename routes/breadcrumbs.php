@@ -99,3 +99,9 @@ Breadcrumbs::for('admin_users_payment', function ($trail) {
     $trail->push('Người Dùng'); 
     $trail->push('Thanh Toán', route('admin_users_payment'));
 });
+Breadcrumbs::for('admin_setting', function ($trail) {
+    $trail->parent('admin_dashboard');
+
+    $trail->push('Cài Đặt Hệ Thống', route('admin_setting'));
+});
+ 

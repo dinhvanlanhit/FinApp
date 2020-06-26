@@ -27,6 +27,14 @@
       </li>
       <li class="nav-item menu-open">
         <a href="" class="nav-link ">
+          <i class="nav-icon fas fa-users"></i>
+          <p>
+             Thành Viên Hệ Thống
+          </p>
+        </a>
+      </li>
+      <li class="nav-item menu-open">
+        <a href="{{route('admin_setting')}}" class="nav-link ">
           <i class="nav-icon fas fa-cogs"></i>
           <p>
              Cài Đặt Hệ Thống
