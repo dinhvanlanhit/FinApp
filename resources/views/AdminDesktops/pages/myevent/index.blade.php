@@ -10,12 +10,12 @@
         <!-- button with a dropdown -->
         <div class="btn-group">
           <button type="button" class="btn btn-success btn-sm">
-            Nhập Excel
+            <i class="fa fa-file-excel-o" aria-hidden="true"></i> Nhập Excel
           </button>
         </div>
           <div class="btn-group">
-          <button type="button" class="btn btn-success btn-sm">
-            Xuất Excel
+          <button type="button" class="btn btn-info btn-sm">
+            <i class="fa fa-file-excel-o" aria-hidden="true"></i> Xuất Excel
           </button>
         </div>
           <div class="btn-group">
