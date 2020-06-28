@@ -44,6 +44,7 @@ Route::group(['namespace' => 'AdminApp','prefix' => 'app','middleware' => ['Chec
         }); 
         Route::group(['prefix' => 'contact'], function (){
             Route::get('admin-contact','ContactController@getContact')->name('admin_contact');
+            Route::get('admin-contact-datatable','ContactController@getDatatable')->name('admin_contact_datatable');
             Route::post('admin-contact','ContactController@postDelete')->name('admin_contact_delete');
         }); 
 });
