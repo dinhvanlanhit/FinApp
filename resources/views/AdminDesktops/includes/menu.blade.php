@@ -89,14 +89,6 @@
           </p>
         </a>
       </li>
-      {{-- <li class="nav-item menu-open-new ">
-        <a href="" class="nav-link ">
-          <i class="nav-icon fas fa-money"></i>
-          <p>
-            Chuyển Khoản
-          </p>
-        </a>
-      </li> --}}
       <li class="nav-item menu-open-new">
         <a href="{{route('invest')}}" class="nav-link ">
           <i class="nav-icon fas fa-building"></i>

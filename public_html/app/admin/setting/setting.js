@@ -2,8 +2,8 @@ function settings(){
     this.datas= null;
     this.runJS=function(){
         var datas= this.datas;
-        init_tinymce('#content_contact',500);
-        init_tinymce('#content_banktransfer',500);
+        init_tinymce('#content_contact',300);
+        init_tinymce('#content_banktransfer',300);
         function UploadFile(fileInput,type){
             var is=false;
             var formData = new FormData();
