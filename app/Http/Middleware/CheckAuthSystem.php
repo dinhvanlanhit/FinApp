@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 use Illuminate\Http\Request;
-class CheckAuth
+class CheckAuthSystem
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class CheckAuth
     {   
         if($Request->ajax()){
             if (Auth::check()) {
-                if(Auth::user()->status==0){
+                if(Auth::user()->status==0&&Auth::user()->type=='admin'){
                     return $next($Request);
                 }else{
                     return JSON2(false,'Session');
@@ -27,7 +27,7 @@ class CheckAuth
             }
         }else{
             if (Auth::check()) {
-                if(Auth::user()->status==0){
+                if(Auth::user()->status==0&&Auth::user()->type=='admin'){
                     return $next($Request);
                 }else{
                     return redirect()->route('login');

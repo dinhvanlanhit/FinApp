@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'CheckAuth' => \App\Http\Middleware\CheckAuth::class,
         'CheckExpiration'=> \App\Http\Middleware\CheckExpiration::class,
+        'CheckAuthSystem'=>\App\Http\Middleware\CheckAuthSystem::class,
 
       
         

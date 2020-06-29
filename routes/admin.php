@@ -1,5 +1,5 @@
 <?php
-Route::group(['namespace' => 'AdminApp','prefix' => 'app','middleware' => ['CheckAuth']], function () {
+Route::group(['namespace' => 'AdminApp','prefix' => 'app','middleware' => ['CheckAuthSystem']], function () {
     Route::get('dashboard','DashboardController@Dashboard')->name('admin_dashboard');
     Route::get('admin-dashboard','DashboardController@getDashboard')->name('admin_getDashboard');
     Route::get('admin-chart-dashboard','DashboardController@getCharDashboard')->name('admin_getCharDashboard');
