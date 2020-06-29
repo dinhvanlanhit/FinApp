@@ -27,26 +27,49 @@
                                                     <input type="text" value="{{$data->company_name}}" id="company_name" name="company_name" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="company_name">Tiêu Đề</label>
+                                                    <label for="title">Tiêu Đề</label>
                                                     <input type="text" value="{{$data->title}}" id="title" name="title" class="form-control">
                                                    
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="company_name">Năm Thành Lập</label>
+                                                    <label for="date">Năm Thành Lập</label>
                                                     <input type="text" value="{{$data->date}}" id="date" name="date" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="company_name">Địa Chỉ</label>
+                                                    <label for="address">Địa Chỉ</label>
                                                      <input type="text" value="{{$data->address}}" id="address" name="address" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="company_name">Email</label>
+                                                    <label for="email">Email</label>
                                                     <input type="text" value="{{$data->email}}" id="email" name="email" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="company_name">Mật Khẩu</label>
+                                                    <label for="password">Mật Khẩu</label>
                                                     <input type="password" value="{{$data->password}}" id="password" name="password" class="form-control">
                                                 </div>
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                      <h3 class="card-title">Google reCAPTCHA </h3>
+                                      
+                                                      <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                        </button>
+                                                      </div>
+                                                    </div>
+                                                    <!-- /.card-header -->
+                                                    <div class="card-body card-body-dashboard">
+                                                        <div class="form-group">
+                                                            <label for="GOOGLE_RECAPTCHA_KEY">KEY</label>
+                                                            <input type="text" value="{{$data->GOOGLE_RECAPTCHA_KEY}}" id="GOOGLE_RECAPTCHA_KEY" name="GOOGLE_RECAPTCHA_KEY" class="form-control">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="GOOGLE_RECAPTCHA_SECRET">SECRET</label>
+                                                            <input type="text" value="{{$data->GOOGLE_RECAPTCHA_SECRET}}" id="GOOGLE_RECAPTCHA_SECRET" name="GOOGLE_RECAPTCHA_SECRET" class="form-control">
+                                                        </div>
+                                                    
+                                                    </div>
+                                                    <!-- /.footer -->
+                                                  </div>
                                                 <div class="form-group">
                                                     <a  href="{{route('admin_dashboard')}}" class="btn btn-danger  float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
                                                     <button type="submit"   class="btn btn-success float-fight onSave">Lưu</button>

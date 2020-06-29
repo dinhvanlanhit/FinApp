@@ -139,6 +139,14 @@
         </a>
       </li>
       <li class="nav-item menu-open-new">
+        <a href="{{route('contact')}}" class="nav-link ">
+          <i class="nav-icon fa fa-envelope"></i>
+          <p>
+             Liên Hệ
+          </p>
+        </a>
+      </li>
+      <li class="nav-item menu-open-new">
         <a href="{{route('profile')}}" class="nav-link ">
           <i class="nav-icon fas fa-user"></i>
           <p>

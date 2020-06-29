@@ -33,7 +33,10 @@ class SettingsTableSeeder extends Seeder
                   'linkedin_url'=>'https://www.linkedin.com/',
                   'vk_url'=>'https://vk.com',
                   'telegram_url'=>'',
-                  'youtube_url'=>''
+                  'youtube_url'=>'',
+                  'GOOGLE_RECAPTCHA_KEY'=>'6Ld6yaoZAAAAAEFcZwW6Snl3j63ek7jiAlBg0u6n',
+                  'GOOGLE_RECAPTCHA_SECRET'=>'6Ld6yaoZAAAAAFs-uhYxs9AdTziUs4K8VQTgMqRE',
+                //   
             ]);
     }
 }

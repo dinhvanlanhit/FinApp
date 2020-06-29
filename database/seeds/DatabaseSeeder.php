@@ -34,7 +34,8 @@ class DatabaseSeeder extends Seeder
             GroupMyEventTableSeeder::class,
             MyEventTableSeeder::class,
             UsePayMentTableSeeder::class,
-            UsersPayMentTableSeeder::class
+            UsersPayMentTableSeeder::class,
+            ContactTableSeeder::class,
         ]);
     }
 }

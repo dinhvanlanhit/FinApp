@@ -136,7 +136,7 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     }); 
     Route::group(['prefix' => 'contact'], function (){
         Route::get('/','ContactController@getContact')->name('contact');
-        Route::post('contact-send','ContactController@getContact')->name('contact_send');
+        Route::post('contact-send','ContactController@postContact')->name('contact_send');
        
     }); 
 

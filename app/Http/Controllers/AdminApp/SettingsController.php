@@ -81,6 +81,10 @@ class SettingsController extends Controller
         $data->vk_url = $Request->vk_url;
         $data->telegram_url = $Request->telegram_url;
         $data->youtube_url = $Request->youtube_url;
+
+        $data->GOOGLE_RECAPTCHA_KEY = $Request->GOOGLE_RECAPTCHA_KEY;
+        $data->GOOGLE_RECAPTCHA_SECRET = $Request->GOOGLE_RECAPTCHA_SECRET;
+        
         if($data->save()){
             return JSON2(true,"Cập Nhật Thành Công");
         }else{

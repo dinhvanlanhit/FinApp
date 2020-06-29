@@ -12,23 +12,28 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="form-group">
-						<label for="">Tên</label>
-						<input type="text" class="form-control" id="name" name="name" placeholder="Tên">
+						<label for="full_name">Tên</label>
+						<input type="text" class="form-control" value="{{Auth::user()->full_name}}" id="full_name" name="full_name" required placeholder="Tên">
 					</div>
 					<div class="form-group">
-						<label for="">Địa chỉ Email</label>
-						<input type="text" class="form-control" id="email" name="email" placeholder="Email">
+						<label for="email">Địa chỉ Email</label>
+						<input type="email" class="form-control" value="{{Auth::user()->email}}" id="email" name="email" placeholder="Email" required>
 					</div>
 					<div class="form-group">
-						<label for="">Số ĐT</label>
-						<input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Số ĐT">
+						<label for="phone_number">Số ĐT</label>
+						<input type="text" class="form-control" value="{{Auth::user()->phone_number}}" id="phone_number" name="phone_number"  placeholder="Số ĐT">
 					</div>
 					<div class="form-group">
-						<label for="">Thông Điệp</label>
-						<textarea class="form-control" rows="4" id="ms" name="ms" placeholder="Thông điệp"></textarea>
-					</div>
+						<label for="msg">Thông Điệp</label>
+						<textarea class="form-control" rows="4" id="msg" name="msg" placeholder="Thông điệp" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Xác nhận</label>
+            <div class="g-recaptcha" data-sitekey="{{setting()->GOOGLE_RECAPTCHA_KEY}}" ></div>
+            <b><span class="text-danger" id="recaptcha-msg"></span></b>
+          </div>
 					<div class="form-group "> <a href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
-						<button type="button" class="btn btn-success ">Gửi</button>
+						<button type="submit" class="btn btn-success" id="onSend"> Gửi </button>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -74,6 +79,9 @@
 		</form>
 	</div>
 </div>@endsection @section('javascript')
+@if (setting()->GOOGLE_RECAPTCHA_KEY&&setting()->GOOGLE_RECAPTCHA_SECRET)
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endif
 <script src="{{asset('app/desktops/contact/contact.js')}}"></script>
 <script>
 	var contact = new contact(); 
