@@ -44,6 +44,25 @@
    <a href="{{route('admin_dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
   </div>
 </div>
+<div class="modal fade" id="modal-status" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Thông báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="modal-text-status"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" data-status="" value="" id="onStatus">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 @section('javascript')
 <script src="{{asset('app/admin/contact/contact.js')}}"></script>
@@ -51,8 +70,10 @@
     var contact = new contact(); 
     contact.datas={
         routes:{
+         
           datatable:"{{route('admin_contact_datatable')}}",
           delete:"{{route('admin_contact_delete')}}",
+          status:"{{route('admin_contact_status')}}",
         }
     }   
     contact.runJS();

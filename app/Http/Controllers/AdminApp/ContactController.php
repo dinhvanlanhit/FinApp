@@ -23,8 +23,9 @@ class ContactController extends Controller
             2 => 'email',
             3 => 'phone_number',
             4 => 'msg', 
-            5 => 'status', 
-            6 => 'created_at'
+            5 => 'status_name', 
+            6 => 'created_at',
+            7 => 'created_at'
         );
         $idUser = Auth::user()->id;
         $limit = $Request->input('length');
@@ -48,6 +49,7 @@ class ContactController extends Controller
                     $query->where('id', 'LIKE', "%{$search}%")
                     ->orWhere('created_at', 'LIKE',"%{$search}%")
                     ->orWhere('full_name', 'LIKE',"%{$search}%")
+                    ->orWhere('status_name', 'LIKE',"%{$search}%")
                     ->orWhere('email', 'LIKE',"%{$search}%")
                     ->orWhere('phone_number','LIKE',"%{$search}%")
                     ->orWhere('msg','LIKE',"%{$search}%");
@@ -91,5 +93,31 @@ class ContactController extends Controller
             "data"            => $Contact   
         );
         echo json_encode($json_data); 
+    }
+    public function postStatus(Request $Request)
+    {
+        $rs = Contact::where('id','=',$Request->id)->first();
+        if($rs){
+            $Contact = Contact::find((int)$Request->id);
+            $Contact->status=$Request->status==0?1:0;
+            $Contact->status_name=$Request->status==0?' Đã Xác Nhận':'Chưa Xác Nhận';
+            if($Contact->save()){
+                return JSON2(true,'Cập Nhật Thành Công');
+            }else{
+                return JSON2(true,'Cập Nhật Không Thành Công');
+            }
+        }
+    }
+    public function postDelete(Request $Request)
+    {
+        $rs = Contact::where('id','=',$Request->id)->first();
+        if($rs){
+            $Contact = Contact::find((int)$Request->id);
+            if($Contact->delete()){
+                return JSON2(true,'Xóa Thành Công');
+            }else{
+                return JSON2(true,'Xóa Không Thành Công');
+            }
+        }
     }
 }

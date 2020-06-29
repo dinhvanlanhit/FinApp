@@ -22,33 +22,26 @@
 	<link rel="stylesheet" href="{{asset('AdminDesktops/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
 	<link rel="stylesheet" href="{{asset('AdminDesktops/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('AdminDesktops/plugins/toastr/toastr.min.css')}}">
-	<link rel="stylesheet" href="{{asset('AdminDesktops/dist/css/adminlte.min.css')}}">
+	<link rel="stylesheet" href="{{asset('AdminDesktops/dist/css/adminlte.css')}}">
 	<link rel="stylesheet" href="{{asset('AdminDesktops/style.css')}}">
 
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
-<body class="hold-transition register-page">
+<body class=" register-page">
 	<div class="register-box" >
 		<div class="card">
-			<div class="card-body register-card-body">
+			<div class="card-body ">
 				<div class="register-logo">
 					<img class="btn-block" src="{{asset('SytemFinApp/logo/logofinapp.png')}}" />
 				</div>
 				<div id="alert"></div>
 				<form id="form-register">
 					<div class="form-group">
-						<label class="email">Loại người dùng</label>
-						<select name="user_type" class="form-control select2bs4">
-							<option value="0">Độc Thân</option>
-							<option value="1">Đã Có Gia Đình</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label class="full_name">Họ Và Tên</label>
+						<label class="full_name">Họ và tên</label>
 						<div class="input-group">
-							<input type="text" class="form-control" value="" name="full_name" placeholder="...">
+							<input type="text" class="form-control" value="" id="full_name" name="full_name" placeholder="...">
 							<div class="input-group-append">
 								<div class="input-group-text"> <span class="fas fa-user"></span>
 								</div>
@@ -58,17 +51,17 @@
 					<div class="form-group">
 						<label class="email">Email</label>
 						<div class="input-group">
-							<input type="email" class="form-control" value="" name="email" placeholder="Email">
+							<input type="email" class="form-control" value="" id="email" name="email" placeholder="Email">
 							<div class="input-group-append">
-								<div class="input-group-text"> <span class="fas fa-user"></span>
+								<div class="input-group-text"> <span class="fas fa-envelope"></span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="password">Mật Khẩu</label>
+						<label class="password">Mật khẩu</label>
 						<div class="input-group">
-							<input type="password" class="form-control" value="" name="password" placeholder="">
+							<input type="password" class="form-control" value="" id="password" name="password" placeholder="">
 							<div class="input-group-append">
 								<div class="input-group-text"> <span class="fas fa-key"></span>
 								</div>
@@ -76,16 +69,20 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="confirm_password">Nhập Lại Mật Khẩu</label>
+						<label class="confirm_password">Nhập lại mật khẩu</label>
 						<div class="input-group">
-							<input type="password" class="form-control" value="" name="confirm_password" placeholder="">
+							<input type="password" class="form-control" value=""  id="confirm_password"name="confirm_password" placeholder="">
 							<div class="input-group-append">
 								<div class="input-group-text"> <span class="fas fa-key"></span>
 								</div>
 							</div>
 						</div>
 					</div>
-
+					<div class="form-group ">
+						<label for="">Xác nhận</label>
+						<div class="g-recaptcha" data-sitekey="{{setting()->GOOGLE_RECAPTCHA_KEY}}" ></div>
+						<b><span class="text-danger" id="recaptcha-msg"></span></b>
+					  </div>
 					<div class="row">
 						<div class="col-12">
 							<div class="form-group">
@@ -107,8 +104,7 @@
 	<script>
 		routes = {
 			login:"{{route('login')}}",
-		    register:"{{route('register')}}",
-		  
+		    register:"{{route('register')}}"
 		}
 	</script>
 	<script src="{{asset('AdminDesktops/plugins/jquery/jquery.min.js')}}"></script>
@@ -128,6 +124,9 @@
 	<script src="{{asset('AdminDesktops/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 	<script src="{{asset('AdminDesktops/plugins/toastr/toastr.min.js')}}"></script>
 	<script src="{{asset('AdminDesktops/dist/js/adminlte.js')}}"></script>
+	@if (setting()->GOOGLE_RECAPTCHA_KEY&&setting()->GOOGLE_RECAPTCHA_SECRET)
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	@endif
 	<script src="{{asset('app/auth/register.min.js')}}"></script>
 </body>
 

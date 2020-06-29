@@ -6,25 +6,19 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Đăng Nhập - FinApp </title>
   <link rel="icon" type="image/png" href="{{asset('SytemFinApp/icon/')}}/{{setting()->icon}}" >
-  <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/fontawesome-free/css/all.min.css')}}">
-  <!-- Ionicons -->
+  <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/font-awesome/4.7.0/css/font-awesome.min.css')}}">
+  <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/fontawesome-free/css/all.min.css')}}">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- icheck bootstrap -->
   <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-  <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('AdminDesktops/dist/css/adminlte.min.css')}}">
-  <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
- 
   <div class="card">
-
-    <div class="card-body login-card-body">
+    <div class="card-body ">
       <div class="login-logo">
             <img class="btn-block" src="{{asset('SytemFinApp/logo/')}}/{{setting()->logo}}"/>
       </div>
@@ -58,20 +52,27 @@
             </div>
           </div>
           <div class="col-6">
-            <button type="submit" id="button-login" class="btn btn-success btn-block"> Đăng nhập </button>
+            <button type="submit" id="button-login" class="btn btn-success  btn-flat btn-block"> Đăng nhập </button>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+                <button type="button" disabled id="button-login-facebook" class="btn btn-info btn-flat btn-block">
+                  <i class="fab fa-facebook" aria-hidden="true"></i>
+                   Đăng nhập Facebook </button>
+          </div>
+        </div> 
+        <br>
+        <div class="row">
+          <div class="col-md-6 text-left">
+              <a href="{{route('forgot-password')}}" class=" text-info">Tôi quên mật khẩu của tôi</a>
+          </div>
+          <div class="col-md-6 text-right">
+              <a href="{{route('register')}}" class=" text-info">Đăng ký thành viên mới</a>
           </div>
         </div>
       </form>
-      <p class="mb-0">
-        <a href="{{route('forgot-password')}}" class="text-center text-success">Tôi quên mật khẩu của tôi</a>
-      </p>
-      <p class="mb-1">
-        <a href="{{route('register')}}" class="text-center text-success">Đăng ký thành viên mới</a>
-      </p>
-      <div class="callout callout-success mb-1">
-        <h5><b>Tài khoản sử dụng thử</b></h5>
-        <p>Email : dinhvanlanh.it@gmail.com <br> Mật khẩu : 12345</p>
-      </div>
     </div>
   </div>
 </div>

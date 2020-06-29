@@ -87,6 +87,7 @@
 	var contact = new contact(); 
 	    contact.datas={
 	        routes:{
+            contact:"{{route('contact')}}",
 	          send:"{{route('contact_send')}}",
 	        }
 	    }   

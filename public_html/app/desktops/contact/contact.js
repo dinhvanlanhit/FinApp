@@ -25,6 +25,8 @@ function contact (){
                         $("#full_name").val('');
                         $("#email").val('');
                         $("#recaptcha-msg").text('');
+                        grecaptcha.reset(0);
+                        // return window.location.href=datas.routes.contact;
 					} else {
                         Toast.fire({
 							icon: data.icon,

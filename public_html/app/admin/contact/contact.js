@@ -44,7 +44,7 @@ function contact() {
 					className: "text-center",
 				},
 				{
-					title: "Địa Chỉ",
+					title: "Email",
 					data: "email",
 					name: "email",
 					className: "text-center",
@@ -60,12 +60,7 @@ function contact() {
 					data: "msg",
 					name: "msg",
 					className: "text-center",
-				},{
-					title: "Ngày",
-					data: "created_at",
-					name: "created_at",
-					className: "text-center",
-                },
+				},
                 {
 					title: "Trạng Thái",
 					data: "status_name",
@@ -78,6 +73,12 @@ function contact() {
                             return '<b class="text-success">'+data+'</b>';
                         }
 					}
+                }
+                ,{
+					title: "Ngày",
+					data: "created_at",
+					name: "created_at",
+					className: "text-center",
                 },
                 {
 					title: "Tác vụ",
@@ -92,11 +93,12 @@ function contact() {
 							icon: '',
 							text: 'Xóa'
 						}, {
-							class: 'btn-confim',
+							class: 'btn-status',
 							value: row.id,
 							title: 'Xử lý',
 							icon: '',
-							text: 'Xử lý'
+                            text: 'Xử lý',
+                            attr:'data-status="'+row.status+'"'
 						}]);
 					}
 				}
@@ -128,10 +130,34 @@ function contact() {
 			}, datas.routes.delete);
 			if (result) {
 				table.ajax.reload();
-				surplus();
 				$("#modal-delete").modal('hide');
 				buttonloading('#onDelete', false);
 			}
-		});
+        });
+        $(document).delegate(".btn-status", "click", function () {
+            var id = $(this).val();
+            var status =  $(this).attr('data-status');
+			$('#modal-text-status').text("Bạn có muốn xác nhận không ?");
+            $("#onStatus").attr('value', id);
+            $("#onStatus").attr('data-status',status);
+			$("#modal-status").modal('show');
+        });
+        $("#onStatus").on('click',function(){
+            $.ajax({
+                url:datas.routes.status,
+                data:{
+                    id:$(this).attr('value'),
+                    status:$(this).attr('data-status')
+                },
+                type:'POST',
+                dataType:'JSON',
+                success:function(data){
+                    table.ajax.reload();
+                    $("#modal-status").modal('hide');
+                },error:function(error){
+                    console.log(error);
+                }   
+            })
+        })
 	}
 }

@@ -5,6 +5,9 @@ function users() {
 		$("#date").datepicker();
 		$('#date').css("z-index", "0");
 		$('#date').datepicker("option", "dateFormat", 'dd-mm-yy');
+		function echo(e){
+			return	e==null?'':e;
+		}
 		var table = $("#users-table").DataTable({
 			serverSide: true,
 			processing: true,
@@ -35,8 +38,8 @@ function users() {
 					render: function (data, type, row, meta) {
 						var htm = '<b><span> Họ Tên : '+row.full_name+'</span><br>';
 						htm+= '<span>Email : '+row.email+'</span><br>';
-						htm+= '<span>Địa chỉ : '+row.address_1+'</span><br>';
-						htm+='<span>Số ĐT : '+row.phone_number+'</span><br>';
+						htm+= '<span>Địa chỉ : '+echo(row.address_1)+'</span><br>';
+						htm+='<span>Số ĐT : '+echo(row.phone_number)+'</span><br>';
 						
 						return htm;
 				   }
@@ -52,7 +55,7 @@ function users() {
 						htm+='<span>Ngay Đăng Ký : '+row.date+'</span><br>';
 						var date = new Date();
 						var dateUse = moment(row.date,'YYYY-MM-DD').add(row.sumMonth,'month').format('YYYY-MM-DD');
-						console.log('A:'+moment(date,'YYYY-MM-DD').format('YYYY-MM-DD')+'   B:'+dateUse)
+						// console.log('A:'+moment(date,'YYYY-MM-DD').format('YYYY-MM-DD')+'   B:'+dateUse)
 						if(moment(date,'YYYY-MM-DD').format('YYYY-MM-DD') === moment(dateUse,'YYYY-MM-DD').format('YYYY-MM-DD')){
 							htm+= 'Hạn sử dụng : <span class="text-danger">Hết Hạn Sử Dụng</span>';
 						}else{

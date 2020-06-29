@@ -118,7 +118,6 @@ class PaymentController extends Controller
         );
         echo json_encode($json_data); 
        
-    
     }
     public function postDelete(Request $Request)
     {

@@ -34,6 +34,8 @@ class ContactController extends Controller
             $Contact->email = $Request->post('email');
             $Contact->phone_number = $Request->post('phone_number');
             $Contact->msg = $Request->post('msg');
+            $Contact->status = 0;
+            $Contact->status_name = 'Chưa Xử Lý';
             if($Contact->save()){
                 return JSON2(true,'Gửi Thành công');
             }else{
