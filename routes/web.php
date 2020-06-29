@@ -4,14 +4,10 @@ Route::group(['namespace' => 'App'], function () {
     Route::get('/login','LoginController@getLogin')->name('login');
     Route::post('/login','LoginController@postLogin')->name('login');
     Route::get('/logout','LoginController@getLogout')->name('logout');
-
     Route::get('/register','RegisterController@getRegister')->name('register');
     Route::post('/register','RegisterController@postRegister')->name('register');
-
     Route::get('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
     Route::post('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
-
-    
 });
 Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     Route::get('/','DashboardController@Dashboard')->name('dashboard');
@@ -138,5 +134,8 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
 Route::get('/mobile',function(){
     return view('welcome');
 });
+
+
+
 
 

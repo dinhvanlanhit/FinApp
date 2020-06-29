@@ -12,12 +12,11 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-          <a href="{{route('admin_login')}}" class="btn btn-primary">Yes</a>
+          <a href="{{route('logout')}}" class="btn btn-primary">Yes</a>
         </div>
       </div>
     </div>
   </div>
-
   <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">

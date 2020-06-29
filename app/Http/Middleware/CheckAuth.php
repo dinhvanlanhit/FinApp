@@ -17,7 +17,11 @@ class CheckAuth
     {   
         if($Request->ajax()){
             if (Auth::check()) {
-                return $next($Request);
+                if(Auth::user()->status==1){
+                    return JSON2(false,'Session');
+                }else{
+                    return $next($Request);
+                }
             }else{
                 return JSON2(false,'Session');
             }
