@@ -6,7 +6,7 @@
       LIÊN HỆ CHÚNG TÔI
     </h3>
 	</div>
-	<div class="card-body card-body">
+	<div class="card-body card-body card-body-dashboard">
     @if (setting()->content_contact!=NULL) {!!setting()->content_contact!!} @endif
 		<form id="formContact">
 			<div class="row">
@@ -25,7 +25,7 @@
 					</div>
 					<div class="form-group">
 						<label for="">Thông Điệp</label>
-						<textarea class="form-control" rows="8" id="ms" name="ms" placeholder="Thông điệp"></textarea>
+						<textarea class="form-control" rows="4" id="ms" name="ms" placeholder="Thông điệp"></textarea>
 					</div>
 					<div class="form-group "> <a href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
 						<button type="button" class="btn btn-success ">Gửi</button>

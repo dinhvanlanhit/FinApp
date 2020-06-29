@@ -15,13 +15,13 @@
                 </ul>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
+            <div class="card-body card-body-dashboard">
                 <div class="tab-content">
                     <div class="tab-pane active" id="Setting">
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="card">
-                                            <div class="card-body">
+                                            <div class="card-body card-body-dashboard">
                                                 <div class="form-group">
                                                     <label for="company_name">Tên Hệ Thống</label>
                                                     <input type="text" value="{{$data->company_name}}" id="company_name" name="company_name" class="form-control">
@@ -59,7 +59,7 @@
                                             <div class="card-header">
                                                 <h3 class="text-center"> LOGO </h3>
                                             </div>
-                                            <div class="card-body box-profile">
+                                            <div class="card-body card-body-dashboard box-profile">
                                                 <div class="text-center">
                                                   <label for="changeLogo">
                                                   <img class="img-responsive btn-block" id="img_logo" 
@@ -73,7 +73,7 @@
                                             <div class="card-header">
                                                 <h3 class="text-center"> ICON </h3>
                                             </div>
-                                            <div class="card-body box-profile">
+                                            <div class="card-body card-body-dashboard box-profile">
                                                 <div class="text-center">
                                                   <label for="changeIcon">
                                                   <img class="img-responsive btn-block" id="img_icon" 
@@ -94,7 +94,7 @@
                                     <div class="card-header">
                                         <h6 class="text-center">  Thông Tin Liên Hệ </h6>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body card-body-dashboard">
                                         <div class="form-group">
                                          
                                             <textarea id="content_contact"  class="form-control">
@@ -127,34 +127,34 @@
                                     <div class="card-header">
                                         <h6 class="text-center">  Mạng Xã Hội </h6>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body card-body-dashboard">
                                         <div class="form-group">
                                             <label for="facebook_url">Facebook</label>
-                                            <input type="text" class="form-control" id="facebook_url" name="facebook_url" placeholder="Url ... ">
+                                            <input type="text" class="form-control" id="facebook_url" value="{{$data->facebook_url}}" name="facebook_url" placeholder="Url ... ">
                                         </div>
                                         <div class="form-group">
                                             <label for="twitter_url">Twitter</label>
-                                            <input type="text" class="form-control" id="twitter_url" name="twitter_url" placeholder="Url ... ">
+                                            <input type="text" class="form-control" id="twitter_url" value="{{$data->twitter_url}}" name="twitter_url" placeholder="Url ... ">
                                         </div>
                                         <div class="form-group">
                                             <label for="instagram_url">Instagram</label>
-                                            <input type="text" class="form-control" id="instagram_url" name="instagram_url" placeholder="Url ... ">
+                                            <input type="text" class="form-control" id="instagram_url" value="{{$data->instagram_url}}" name="instagram_url" placeholder="Url ... ">
                                         </div>
                                         <div class="form-group">
                                             <label for="linkedin_url">Linkedin</label>
-                                            <input type="text" class="form-control" id="linkedin_url" name="linkedin_url" placeholder="Url ... ">
+                                            <input type="text" class="form-control" id="linkedin_url" value="{{$data->linkedin_url}}" name="linkedin_url" placeholder="Url ... ">
                                         </div>
                                         <div class="form-group">
                                             <label for="vk_url">VK</label>
-                                            <input type="text" class="form-control" id="vk_url" name="vk_url" placeholder="Url ... ">
+                                            <input type="text" class="form-control" id="vk_url" value="{{$data->vk_url}}" name="vk_url" placeholder="Url ... ">
                                         </div>
                                         <div class="form-group">
                                             <label for="telegram_url">Telegram</label>
-                                            <input type="text" class="form-control" id="telegram_url" name="telegram_url" placeholder="Url ... ">
+                                            <input type="text" class="form-control" id="telegram_url" value="{{$data->telegram_url}}" name="telegram_url" placeholder="Url ... ">
                                         </div>
                                         <div class="form-group">
                                             <label for="youtube_url">YouTube</label>
-                                            <input type="text" class="form-control" id="youtube_url" name="youtube_url" placeholder="Url ... ">
+                                            <input type="text" class="form-control" id="youtube_url" value="{{$data->youtube_url}}" name="youtube_url" placeholder="Url ... ">
                                         </div>
 
                                         
@@ -173,7 +173,7 @@
                                     <div class="card-header">
                                         <h6 class="text-center">  Thông Tin Thanh Toán </h6>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body card-body-dashboard">
                                         <div class="form-group">
                                             <textarea id="content_banktransfer"  class="form-control">
                                                     {{$data->content_banktransfer}}

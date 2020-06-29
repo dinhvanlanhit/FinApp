@@ -26,7 +26,6 @@ Route::group(['namespace' => 'AdminApp','prefix' => 'app','middleware' => ['Chec
             Route::post('admin-users-insert','UsersController@postInsert')->name('admin_users_insert');
             Route::post('admin-users-delete','UsersController@postDelete')->name('admin_users_delete');
             Route::post('admin-users-status','UsersController@postUpdate')->name('admin_users_status');
-           
         });
         Route::group(['prefix' => 'payment'], function (){
             Route::get('admin-users-payment/{id?}','PaymentController@getPayMent')->name('admin_users_payment');
@@ -42,11 +41,12 @@ Route::group(['namespace' => 'AdminApp','prefix' => 'app','middleware' => ['Chec
             Route::get('admin-setting','SettingsController@getSetting')->name('admin_setting');
             Route::post('admin-setting','SettingsController@postSetting')->name('admin_setting');
             Route::post('admin-setting-upload','SettingsController@postUpload')->name('admin_setting_upload');
-            
-           
         }); 
-        
-   
+        Route::group(['prefix' => 'contact'], function (){
+            Route::get('admin-contact','ContactController@getContact')->name('admin_contact');
+            Route::get('admin-contact-datatable','ContactController@getDatatable')->name('admin_contact_datatable');
+            Route::post('admin-contact','ContactController@postDelete')->name('admin_contact_delete');
+        }); 
 });
 
 

@@ -18,7 +18,7 @@
         </a>
       </li>
       <li class="nav-item menu-open">
-        <a href="" class="nav-link ">
+        <a href="{{route('admin_contact')}}" class="nav-link ">
           <i class="nav-icon far fa-envelope"></i>
           <p>
              Tin Nhắn Liên Hệ

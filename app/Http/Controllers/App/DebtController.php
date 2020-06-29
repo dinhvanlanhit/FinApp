@@ -22,8 +22,8 @@ class DebtController extends Controller
             1 => 'type_name',
             2 => 'amount',
             3 => 'amount', 
-            3 => 'date', 
-            4 => 'created_at'
+            4 => 'date', 
+            5 => 'created_at'
         );
         $idUser = Auth::user()->id;
         $limit = $Request->input('length');

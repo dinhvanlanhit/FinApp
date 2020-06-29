@@ -73,6 +73,14 @@ class SettingsController extends Controller
         $data->content_contact = $Request->content_contact;
         $data->code_fanpage = $Request->code_fanpage;
         $data->googleMap = $Request->googleMap;
+
+        $data->facebook_url = $Request->facebook_url;
+        $data->twitter_url = $Request->twitter_url;
+        $data->instagram_url = $Request->instagram_url;
+        $data->linkedin_url = $Request->linkedin_url;
+        $data->vk_url = $Request->vk_url;
+        $data->telegram_url = $Request->telegram_url;
+        $data->youtube_url = $Request->youtube_url;
         if($data->save()){
             return JSON2(true,"Cập Nhật Thành Công");
         }else{

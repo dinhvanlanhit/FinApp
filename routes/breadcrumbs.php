@@ -104,7 +104,10 @@ Breadcrumbs::for('admin_users_payment', function ($trail) {
 });
 Breadcrumbs::for('admin_setting', function ($trail) {
     $trail->parent('admin_dashboard');
-
     $trail->push('Cài Đặt Hệ Thống', route('admin_setting'));
+});
+Breadcrumbs::for('admin_contact', function ($trail) {
+    $trail->parent('admin_dashboard');
+    $trail->push('Tin Nhắn Liên Hệ', route('admin_contact'));
 });
  
