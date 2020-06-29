@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Auth;
 use App\Models\Users;
 use App\Models\UsePayMent;
-use App\Models\UsersPayMent;
+use App\Models\UsersPayment;
 use File;
 class PaymentController extends Controller
 {
@@ -37,12 +37,12 @@ class PaymentController extends Controller
         $dateEnd = $Request->input('dateEnd');
 
         if(!empty($dateBegin)&&!empty($dateEnd)){
-                $totalData =  UsersPayMent::where('idUser','=',$idUser)
+                $totalData =  UsersPayment::where('idUser','=',$idUser)
                 ->whereBetween('date',[$dateBegin,$dateEnd ])
                 ->count();
                 $totalFiltered =$totalData;
                 if(empty($search)){
-                    $Payment = UsersPayMent::
+                    $Payment = UsersPayment::
                     join('use_payment','use_payment.id','=','users_payment.idUsePayment')
                     ->where('users_payment.idUser','=',$idUser)
                     ->whereBetween('users_payment.date',[$dateBegin,$dateEnd ])
@@ -52,7 +52,7 @@ class PaymentController extends Controller
                     ->orderBy($order,$dir)
                     ->get();
                 }else{
-                    $Payment = UsersPayMent::
+                    $Payment = UsersPayment::
                     join('use_payment','use_payment.id','=','users_payment.idUsePayment')
                     ->where('users_payment.idUser','=',$idUser)
 
@@ -73,10 +73,10 @@ class PaymentController extends Controller
                     ->get();
                 }
         }else{
-            $totalData =  UsersPayMent::where('idUser','=',$idUser)->count();
+            $totalData =  UsersPayment::where('idUser','=',$idUser)->count();
             $totalFiltered =$totalData;
             if(empty($search)){
-                $Payment = UsersPayMent::join('use_payment','use_payment.id','=','users_payment.idUsePayment')
+                $Payment = UsersPayment::join('use_payment','use_payment.id','=','users_payment.idUsePayment')
                 ->where('users_payment.idUser','=',$idUser)
                 ->select('users_payment.*','use_payment.name')
                 ->offset($start)
@@ -84,7 +84,7 @@ class PaymentController extends Controller
                 ->orderBy($order,$dir)
                 ->get();
             }else{
-                $Payment = UsersPayMent::join('use_payment','use_payment.id','=','users_payment.idUsePayment')
+                $Payment = UsersPayment::join('use_payment','use_payment.id','=','users_payment.idUsePayment')
                 ->where('users_payment.idUser','=',$idUser)
                 ->Where(function($query)use($search){
                     $query->where('users_payment.id', 'LIKE', "%{$search}%")
