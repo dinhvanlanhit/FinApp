@@ -35,6 +35,6 @@
     </div>
         @include('AdminDesktops.partials.scripts')
         @yield('javascript')
-        {!!setting()->code_chat_facebook!!}
+       
 </body>
 </html>

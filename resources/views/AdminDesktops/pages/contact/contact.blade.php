@@ -92,4 +92,6 @@
 	        }
 	    }   
 	    contact.runJS();
-</script>@endsection
+</script>
+{!!setting()->code_chat_facebook!!}
+@endsection
