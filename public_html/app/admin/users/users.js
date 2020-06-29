@@ -25,69 +25,40 @@ function users() {
 					});
 				}
 			},
-			order: [0, "desc"],
+			order: [2, "desc"],
 			columns: [
 				{
-				title: "#",
-				data: "created_at",
-				name: "created_at",
-				className: "text-center",
-					render: function (data, type, row, meta) {
-						return meta.row + meta.settings._iDisplayStart + 1;
-					}
-				}, 
-				{
-					title: "Họ Và Tên",
+					title: "Thông Tin",
 					data: "full_name",
 					name: "full_name",
-					className: "text-center",
+					className: "text-left",
 					render: function (data, type, row, meta) {
-						return'<b>'+data+'</b>';
+						var htm = '<b><span> Họ Tên : '+row.full_name+'</span><br>';
+						htm+= '<span>Email : '+row.email+'</span><br>';
+						htm+= '<span>Địa chỉ : '+row.address_1+'</span><br>';
+						htm+='<span>Số ĐT : '+row.phone_number+'</span><br>';
+						
+						return htm;
 				   }
-				},
-				{
-					title: "Địa chỉ",
-					data: "address_1",
-					name: "address_1",
-					className: "text-center",
-					render: function (data, type, row, meta) {
-						return '<b>'+data+'</b>';
-				   }
-				
 				}, 
 				{
 					title: "Trạng Thái",
 					data: "status_name",
 					name: "status_name",
-					className: "text-center",
+					className: "text-left",
 					render: function (data, type, row, meta) {
-						  return data+"<br>"+row.status_payment_name;
-					}
-				},
-				{
-					title: "Ngày Đăng Ký",
-					data: "date",
-					name: "date",
-					className: "text-center",
-					render: function (data, type, row, meta) {
-						return '<b class="text-info">'+data+'</b>';
-					}
-				}, 
-				{
-					title: "Hạn Sử Dụng",
-					data: "status_payment_name",
-					name: "status_payment_name",
-					className: "text-center",
-					render: function (data, type, row, meta) {
+						var htm = '<b><span>Sử dụng : '+row.status_payment_name+'</span><br>';
+						htm+= '<span>Trạng thái : '+row.status_name+'</span><br>';
+						htm+='<span>Ngay Đăng Ký : '+row.date+'</span><br>';
 						var date = new Date();
 						var dateUse = moment(row.date,'YYYY-MM-DD').add(row.sumMonth,'month').format('YYYY-MM-DD');
 						console.log('A:'+moment(date,'YYYY-MM-DD').format('YYYY-MM-DD')+'   B:'+dateUse)
 						if(moment(date,'YYYY-MM-DD').format('YYYY-MM-DD') === moment(dateUse,'YYYY-MM-DD').format('YYYY-MM-DD')){
-							return '<b class="text-danger">Hết Hạn Sử Dụng</b>';
+							htm+= 'Hạn sử dụng : <span class="text-danger">Hết Hạn Sử Dụng</span>';
 						}else{
-							return '<b class="text-success">'+dateUse+'</b>';
+							htm+= '<span>Hạn sử dụng : '+dateUse+'</span><b><br>';
 						}
-						
+						return htm;
 					}
 				},
 				{
@@ -127,6 +98,10 @@ function users() {
 		});
 		$("#formSearch").on('submit', function (e) {
 			e.preventDefault();
+			buttonloading(".formSearch", true);
+			table.ajax.reload();
+		})
+		$("#status").on('change', function (e) {
 			buttonloading(".formSearch", true);
 			table.ajax.reload();
 		})

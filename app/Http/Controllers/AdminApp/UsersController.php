@@ -20,13 +20,10 @@ class UsersController extends Controller
     
         $type = 'member';
         $columns = array( 
-            0 => 'created_at',
-            1 => 'full_name',
-            2 => 'address_1',
-            3 => 'status_name',
-            4 => 'status_payment_name',
-            5 => 'created_at',
-            6 => 'created_at'
+            0 => 'full_name',
+            1 => 'status_name',
+            2 => 'created_at',
+           
         );
         $limit = $Request->input('length');
         $start = $Request->input('start');
@@ -48,6 +45,9 @@ class UsersController extends Controller
             if(!empty($search)){
                 $SQL .= " AND (";
                 $SQL .= " full_name LIKE N'%$search%'";
+                $SQL .= " OR email LIKE N'%$search%'";
+                $SQL .= " OR phone_number LIKE N'%$search%'";
+                $SQL .= " OR date LIKE N'%$search%'";
                 $SQL .= " OR address_1 LIKE N'%$search%'";
                 $SQL .= " OR status_name LIKE N'%$search%'";
                 $SQL .= " OR status_payment_name LIKE N'%$search%'";
@@ -66,6 +66,9 @@ class UsersController extends Controller
             if(!empty($search)){
                 $SQL .= " AND (";
                 $SQL .= " full_name LIKE N'%$search%'";
+                $SQL .= " OR email LIKE N'%$search%'";
+                $SQL .= " OR phone_number LIKE N'%$search%'";
+                $SQL .= " OR date LIKE N'%$search%'";
                 $SQL .= " OR address_1 LIKE N'%$search%'";
                 $SQL .= " OR status_name LIKE N'%$search%'";
                 $SQL .= " OR status_payment_name LIKE N'%$search%'";
