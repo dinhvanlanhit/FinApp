@@ -13,11 +13,13 @@ Breadcrumbs::for('event', function ($trail) {
 });
 Breadcrumbs::for('groupmyevent', function ($trail) {
     $trail->parent('dashboard');
+    $trail->push('Sự Kiện Của Tôi');
     $trail->push('Nhóm Sự Kiện', route('groupmyevent'));
 });
 Breadcrumbs::for('myevent', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('Sự Kiện Của Tôi', route('myevent'));
+    $trail->push('Sự Kiện Của Tôi');
+    $trail->push('Danh Sách Sự Kiện', route('myevent'));
 });
 Breadcrumbs::for('cost', function ($trail) {
     $trail->parent('dashboard');
@@ -49,7 +51,7 @@ Breadcrumbs::for('goals_dreams', function ($trail) {
 });
 Breadcrumbs::for('wallet', function ($trail) {
     $trail->parent('dashboard');
-    $trail->push('Mục Tiêu Của Tôi', route('wallet'));
+    $trail->push('Ví Tiền Của Tôi', route('wallet'));
 });
 Breadcrumbs::for('asset', function ($trail) {
     $trail->parent('dashboard');

@@ -128,9 +128,9 @@ function getExpiryDate()
         $SQL .= " AND id = {$users->id} ";
         $result  =  DB::select(DB::raw($SQL)); 
         $today = $result[0]->date;
-        $sumMonth = $result[0]->sumMonth;
+        $sumMonth = $result[0]->sumMonth==null?0:$result[0]->sumMonth;
         $month = strtotime(date("Y-m-d", strtotime($today)) . " +$sumMonth month");
-        $month = strftime("%d-%m-%Y", $month);
+        $month = strftime("%Y-%m-%d", $month);
         return $month;
 }
 function template()

@@ -18,7 +18,7 @@
           <ul class="list-group list-group-unbordered mb-3">
 						<li class="list-group-item"> <b>Ngày Đăng Ký </b>  <a class="float-right"><b>{{date_format(date_create($users->date),"d-m-Y")}}</b></a>
 						</li>
-						<li class="list-group-item"> <b>Sử Dụng Đến </b>  <a class="float-right"><b>{{getExpiryDate()}}</b></a>
+						<li class="list-group-item"> <b>Sử Dụng Đến </b>  <a class="float-right"><b>{{date_format(date_create(getExpiryDate()),"d-m-Y")}}</b></a>
 						</li>
           </ul> 
           <a href="{{route('methods_payment')}}" class="btn btn-info btn-block"><b>  <i class="nav-icon fas fa-money"></i> Gia Hạn</b></a>
