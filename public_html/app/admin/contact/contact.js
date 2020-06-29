@@ -20,7 +20,9 @@ function contact() {
 				type: "GET",
 				data: function (d) {
 					return $.extend({}, d, {
-						status: $("#status").val()
+                        status: $("#status").val(),
+                        search: $("#search").val(),
+                        
 					});
 				}
 			},
@@ -55,15 +57,29 @@ function contact() {
 				}, 
 				{
 					title: "Thông Điệp",
-					data: "note",
-					name: "note",
+					data: "msg",
+					name: "msg",
 					className: "text-center",
 				},{
 					title: "Ngày",
 					data: "created_at",
 					name: "created_at",
 					className: "text-center",
-				},{
+                },
+                {
+					title: "Trạng Thái",
+					data: "status_name",
+					name: "status_name",
+                    className: "text-center",
+                    render: function (data, type, row, meta) {
+                        if(row.status==0){
+                            return '<b class="text-danger">'+data+'</b>';
+                        }else{
+                            return '<b class="text-success">'+data+'</b>';
+                        }
+					}
+                },
+                {
 					title: "Tác vụ",
 					data: "created_at",
 					name: "created_at",
@@ -76,11 +92,11 @@ function contact() {
 							icon: '',
 							text: 'Xóa'
 						}, {
-							class: 'btn-update',
+							class: 'btn-confim',
 							value: row.id,
-							title: 'Sửa',
+							title: 'Xử lý',
 							icon: '',
-							text: 'Sửa'
+							text: 'Xử lý'
 						}]);
 					}
 				}
@@ -94,58 +110,13 @@ function contact() {
 			buttonloading(".formSearch", true);
 			table.ajax.reload();
 		})
-		$("#amount").on("input", function () {
-			input_money_format(this);
-		});
 		$(document).delegate(".btn-delete", "click", function () {
 			var id = $(this).val();
 			$('#modal-text-delete').text("Bạn có muốn xóa không ?");
 			$("#onDelete").attr('value', id);
 			$("#modal-delete").modal('show');
 		});
-		$(document).delegate(".btn-update", "click", function () {
-			var id = $(this).val();
-			var elementbtn = $(this);
-			buttonloading(elementbtn, true);
-			$('#modal-action-title').text("Chỉnh sửa");
-			$.ajax({
-				url: datas.routes.update,
-				data: {
-					id: id
-				},
-				type: 'GET',
-				dataType: 'JSON',
-				success: function (data) {
-					$('#idWallet').val(data.data.idWallet); 
-					$('#idWallet').trigger('change'); 
-					$("#onSave").attr('data-url', datas.routes.update);
-					$("#onSave").attr('data-id', data.data.id);
-					$("#onSave").attr('data-action', 'update');
-					$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#name').val(data.data.name);
-					$('#amount').val(money_format(data.data.amount));
-					$('#note').val(data.data.note);
-					$('#address').val(data.data.address);
-					$("#modal-action").modal('show');
-					buttonloading(elementbtn, false);
-				},
-				error: function (error) {}
-			});
-		});
-		$("#btn-insert").on("click", function () {
-			$('#modal-action-title').text("Thêm mới");
-			$('#idWallet').val(''); 
-			$('#idWallet').trigger('change'); 
-			$("#onSave").attr('data-url', datas.routes.insert);
-			$("#onSave").attr('data-action', 'insert');
-			$('#date').datepicker('setDate', new Date());
-			$('#name').val('');
-			$('#amount').val('');
-			$('#note').val('');
-			$('#address').val('');
-			$("#modal-action").modal('show');
-		});
-		$("#idTypeInvest").on("change", function (e) {
+		$("#status").on("change", function (e) {
 			table.ajax.reload();
 		});
 		$("#onDelete").on("click", function (e) {
@@ -161,91 +132,6 @@ function contact() {
 				$("#modal-delete").modal('hide');
 				buttonloading('#onDelete', false);
 			}
-		});
-		$("#loan").on("input", function () {
-			input_money_format(this);
-		});
-		$("#interest_rate").on("input", function () {
-			input_money_format(this);
-		});
-		$('#formAction').validate({
-			rules: {
-				idWallet:{
-					required: true
-				},
-				name: {
-					required: true
-				},
-				amount: {
-					required: true
-				},
-				date: {
-					required: true
-				},
-			},
-			messages: {
-				idWallet: {
-					required: "Vui lòng chọn ví tiền để giao dịch !",
-				},
-				name: {
-					required: "Vui lòng nhập lĩnh vực đâu tư !",
-				},
-				amount: {
-					required: "Vui lòng nhập lĩnh vực đâu tư !",
-				},
-				date: {
-					required: "Vui lòng nhập ngày đâu tư !",
-				},
-				
-			},
-			errorElement: 'span',
-			errorPlacement: function (error, element) {
-				error.addClass('invalid-feedback');
-				element.closest('.form-group').append(error);
-			},
-			highlight: function (element, errorClass, validClass) {
-				$(element).addClass('is-invalid');
-			},
-			unhighlight: function (element, errorClass, validClass) {
-				$(element).removeClass('is-invalid');
-			},
-			submitHandler: function (e) {
-				var formData = new FormData($("#formAction")[0]);
-				formData.append('id', $("#onSave").attr('data-id'));
-				formData.set('date', moment(formData.get('date'), "DD-MM-YYYY").format('YYYY-MM-DD'));
-				formData.set('amount', money_format_to_number(formData.get('amount')));
-				var url = $("#onSave").attr('data-url');
-				buttonloading('#onSave', true);
-				$.ajax({
-					url: url,
-					type: 'POST',
-					data: formData,
-					dataType: 'JSON',
-					processData: false,
-					contentType: false,
-					success: function (data) {
-						if (data.statusBoolen) {
-							buttonloading('#onSave', false);
-							table.ajax.reload();
-							$("#modal-action").modal('hide');
-							surplus();
-							Toast.fire({
-								icon: data.icon,
-								title: data.messages
-							});
-						} else {
-							buttonloading('#onSave', false);
-						}
-					},
-					error: function (error) {
-						console.log(error);
-						buttonloading('#onSave', false);
-					}
-				});
-			}
-		});
-		$("#formAction").on('submit', function (e) {
-			e.preventDefault();
 		});
 	}
 }

@@ -18,7 +18,8 @@ class CreateContactTable extends Migration
             $table->bigInteger('idUser')->unsigned()->nullable();
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('full_name')->nullable();
-            $table->Integer('contact_status')->default(0)->nullable();
+            $table->Integer('status')->default(0)->nullable();
+            $table->string('status_name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->text('msg')->nullable();
