@@ -7,55 +7,55 @@
           <div class="small-box bg-info">
             <div class="inner">
                 <h5 id=""> 
-                  {{$countUsersActive}} 
+                  {{$countMemberActive}} 
                 </h5>
               <p>Hoạt Động</p>
             </div>
             <div class="icon">
                 <i class="fa fa-users" aria-hidden="true"></i>
             </div>
-            <a href="{{route('event')}}" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{route('admin_users')}}" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-                <h5 id="">{{$countUsersActive}}  </h5>
+                <h5 id="">{{$countMemberLocked}}  </h5>
 
               <p>Đã Khóa</p>
             </div>
             <div class="icon">
                 <i class="fa fa-users" aria-hidden="true"></i>
             </div>
-            <a href="{{route('shopping')}}" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{route('admin_users')}}" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-                <h5 id=""> {{$countUsersActive}} </h5> 
+                <h5 id=""> {{$countMemberPayfee}} </h5> 
 
-              <p>Hết Hạng</p>
+              <p>Trả Phí</p>
             </div>
             <div class="icon">
                 <i class="fa fa-credit-card" aria-hidden="true"></i>
             </div>
-            <a href="{{route('cost')}}" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{route('admin_users')}}" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h5 id="">{{$countUsersActive}}  </h5>
-              <p>Trả Phí</p>
+              <h5 id="">{{$countMemberFree}}  </h5>
+              <p>Miễn Phí</p>
             </div>
             <div class="icon">
                 <i class="fa fa-money" aria-hidden="true"></i>
             </div>
-            <a href="{{route('salary')}}" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{route('admin_users')}}" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
     </div>

@@ -71,7 +71,7 @@ class SettingsController extends Controller
         $data->themes = $Request->themes;
         $data->content_banktransfer = $Request->content_banktransfer;
         $data->content_contact = $Request->content_contact;
-        $data->code_fanpage = $Request->code_fanpage;
+        $data->code_chat_facebook = $Request->code_chat_facebook;
         $data->googleMap = $Request->googleMap;
 
         $data->facebook_url = $Request->facebook_url;

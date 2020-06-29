@@ -37,7 +37,7 @@ class CreateSettingsTable extends Migration
             $table->text('vk_url')->nullable();
             $table->text('telegram_url')->nullable();
             $table->text('youtube_url')->nullable();
-            $table->text('code_fanpage')->nullable();
+            $table->text('code_chat_facebook')->nullable();
 
             $table->text('GOOGLE_RECAPTCHA_KEY')->nullable();
             $table->text('GOOGLE_RECAPTCHA_SECRET')->nullable();

@@ -131,9 +131,9 @@
                                             </textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label> JavaScript SDK  </label>
-                                            <textarea id="code_fanpage" name="code_fanpage"  class="form-control">
-                                                {{$data->code_fanpage}}
+                                            <label>Chat Facebook JavaScript SDK  </label>
+                                            <textarea id="code_chat_facebook" name="code_chat_facebook"  class="form-control">
+                                                {{$data->code_chat_facebook}}
                                             </textarea>
                                         </div>
                                         
