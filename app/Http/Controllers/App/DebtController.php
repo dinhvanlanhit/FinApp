@@ -67,6 +67,7 @@ class DebtController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                     $totalFiltered =$Debt->count();
                 }
             }else{
                 $totalData =  Debt::where('idUser','=',$idUser)->count();
@@ -95,6 +96,7 @@ class DebtController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                     $totalFiltered =$Debt->count();
                 }
             }
         }else{
@@ -127,6 +129,7 @@ class DebtController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                     $totalFiltered =$Debt->count();
                 }
             }else{
                 $totalData =  Debt::where('idUser','=',$idUser)->count();
@@ -155,6 +158,7 @@ class DebtController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                     $totalFiltered =$Debt->count();
                 }
             }
         }

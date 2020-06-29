@@ -70,7 +70,21 @@ function myevent() {
 				data: "date",
 				name: "date",
 				className: "text-center",
-			}, {
+			},
+			{
+				title: "Trạng thái",
+				data: "status_name",
+				name: "status_name",
+				className: "text-center",
+				render: function (data, type, row, meta) {
+					if(row.status==1){
+						return '<b class="text-danger">'+row.status_name+'</b>';
+					}else{
+						return '<b class="text-success">'+row.status_name+'</b>';
+					}
+				}
+			},
+			{
 				title: "Tác vụ",
 				data: "created_at",
 				name: "created_at",
@@ -119,10 +133,10 @@ function myevent() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-				
 					$('#idGroupMyEventInput').val(data.data.idGroupMyEvent);
 					$('#idGroupMyEventInput').trigger('change');
-
+					$('#status').val(data.data.status);
+					$('#status').trigger('change');
 					$('#idWallet').val(data.data.idWallet); 
 					$('#idWallet').trigger('change'); 
 					$("#onSave").attr('data-url', datas.routes.update);

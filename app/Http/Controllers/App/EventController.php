@@ -69,6 +69,7 @@ class EventController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Event->count();
                 }
             }else{
                 $totalData =  Event::where('idUser','=',$idUser)->count();
@@ -97,6 +98,7 @@ class EventController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Event->count();
                 }
             }
         }else{
@@ -129,6 +131,7 @@ class EventController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Event->count();
                 }
             }else{
                 $totalData =  Event::where('idUser','=',$idUser)->count();
@@ -157,6 +160,7 @@ class EventController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Event->count();
                 }
             }
         }

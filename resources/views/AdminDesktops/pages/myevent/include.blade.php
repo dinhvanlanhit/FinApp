@@ -47,7 +47,15 @@
                             <input class="form-control" id="address" name="address"/>
                         </div>
                     </div>
-               
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label>Trạng Thái</label>
+                            <select class="form-control select2bs4" id="status" name="status">
+                                <option value="1">Còn Nợ</option>                      
+                                <option value="0">Hết Nợ</option>   
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-md-12">
                         <div class="form-group"> 
                             <label>Ngày đi </label>

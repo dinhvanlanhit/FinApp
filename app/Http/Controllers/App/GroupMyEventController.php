@@ -55,6 +55,7 @@ class GroupMyEventController extends Controller
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
+                 $totalFiltered =$GroupMyEvent->count();
             }
         }else{
             $totalData =  GroupMyEvent::where('idUser','=',$idUser)->count();
@@ -77,6 +78,7 @@ class GroupMyEventController extends Controller
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
+                 $totalFiltered =$GroupMyEvent->count();
             }
         }  
         $json_data = array(

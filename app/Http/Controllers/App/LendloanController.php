@@ -65,6 +65,7 @@ class LendloanController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                     $totalFiltered =$LendLoan->count();
                 }
         }else{
             $totalData =  Lendloan::where('idUser','=',$idUser)->count();
@@ -96,6 +97,7 @@ class LendloanController extends Controller
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
+                 $totalFiltered =$LendLoan->count();
             }
         }
         $json_data = array(

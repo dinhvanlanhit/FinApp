@@ -67,6 +67,7 @@ class ShoppingController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Shopping->count();
                 }
             }else{
                 $totalData =  Shopping::where('idUser','=',$idUser)->count();
@@ -94,6 +95,7 @@ class ShoppingController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Shopping->count();
                 }
             }
         }else{
@@ -124,6 +126,7 @@ class ShoppingController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Shopping->count();
                 }
             }else{
                 $totalData =  Shopping::where('idUser','=',$idUser)->count();
@@ -151,6 +154,7 @@ class ShoppingController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Shopping->count();
                 }
             }
         }

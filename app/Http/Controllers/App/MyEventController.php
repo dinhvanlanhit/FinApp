@@ -27,7 +27,8 @@ class MyEventController extends Controller
             3 => 'amount',
             4 => 'address',
             5 => 'date', 
-            6 => 'created_at'
+            6 => 'status_name',
+            7 => 'created_at'
         );
         $idUser = Auth::user()->id;
         $limit = $Request->input('length');
@@ -57,6 +58,7 @@ class MyEventController extends Controller
                 ->Where(function($query)use($search){
                     $query->where('my_event.id', 'LIKE', "%{$search}%")
                     ->orWhere('my_event.name', 'LIKE',"%{$search}%")
+                    ->orWhere('my_event.status_name', 'LIKE',"%{$search}%")
                     ->orWhere('my_event.address', 'LIKE',"%{$search}%")
                     ->orWhere('my_event.amount','LIKE',"%{$search}%")
                     ->orWhere('my_event.date','LIKE',"%{$search}%");
@@ -65,20 +67,19 @@ class MyEventController extends Controller
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
+                $totalFiltered =$MyEvent->count();
             }
             
         }else{
            
             $totalData =  MyEvent::where('idUser','=',$idUser)
-            ->where('idGroupMyEvent','=',$idGroupMyEvent)
-            // ->whereBetween('date',[$dateBegin,$dateEnd ])
+           
             ->count();
             $totalFiltered =$totalData;
             if(empty($search)){
                     $MyEvent = MyEvent::
                     join('group_my_event','group_my_event.id','=','my_event.idGroupMyEvent')
                     ->where('my_event.idUser','=',$idUser)
-                    // ->whereBetween('date',[$dateBegin,$dateEnd ])
                     ->select('my_event.*','group_my_event.group_name')
                     ->offset($start)
                     ->limit($limit)
@@ -88,11 +89,11 @@ class MyEventController extends Controller
                     $MyEvent = MyEvent::
                     join('group_my_event','group_my_event.id','=','my_event.idGroupMyEvent')
                     ->where('my_event.idUser','=',$idUser)
-                    // ->whereBetween('date',[$dateBegin,$dateEnd ])
                     ->select('my_event.*','group_my_event.group_name')
                     ->Where(function($query)use($search){
                         $query->where('my_event.id', 'LIKE', "%{$search}%")
                         ->orWhere('my_event.name', 'LIKE',"%{$search}%")
+                        ->orWhere('my_event.status_name', 'LIKE',"%{$search}%")
                         ->orWhere('my_event.address', 'LIKE',"%{$search}%")
                         ->orWhere('my_event.amount','LIKE',"%{$search}%")
                         ->orWhere('my_event.date','LIKE',"%{$search}%");
@@ -101,6 +102,7 @@ class MyEventController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$MyEvent->count();
             }
         }
         $json_data = array(
@@ -131,6 +133,8 @@ class MyEventController extends Controller
         $MyEvent->address = $Request->address;
         $MyEvent->amount = $Request->amount;
         $MyEvent->date = $Request->date;
+        $MyEvent->status = $Request->status;
+        $MyEvent->status_name = (int)$Request->status==1?'Còn Nợ':'Hết Nợ';
         $MyEvent->save();
         if($MyEvent){
             return JSON2(true,"Thêm thành công");
@@ -142,12 +146,14 @@ class MyEventController extends Controller
     {
         $MyEvent =  MyEvent::find((int)$Request->id);
         $MyEvent->idUser = Auth::user()->id;
-        $MyEvent->idGroupMyEvent = $Request->idGroupMyEvent;
         $MyEvent->idWallet = $Request->idWallet;
+        $MyEvent->idGroupMyEvent = $Request->idGroupMyEvent;
         $MyEvent->name = $Request->name;
         $MyEvent->address = $Request->address;
         $MyEvent->amount = $Request->amount;
         $MyEvent->date = $Request->date;
+        $MyEvent->status = $Request->status;
+        $MyEvent->status_name = (int)$Request->status==1?'Còn Nợ':'Hết Nợ';
         $MyEvent->save();
         if($MyEvent){
             return JSON2(true,"Thêm thành công");

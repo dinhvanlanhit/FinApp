@@ -58,6 +58,7 @@ class InvestController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                     $totalFiltered =$Invest->count();
                 }
         }else{
             $totalData =  Invest::where('idUser','=',$idUser)->count();
@@ -82,6 +83,7 @@ class InvestController extends Controller
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
+                 $totalFiltered =$Invest->count();
             }
         }
         $json_data = array(

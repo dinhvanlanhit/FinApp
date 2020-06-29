@@ -64,6 +64,7 @@ class AssetController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                      $totalFiltered =$Asset->count();
                 }
             }else{
                 $totalData =  Asset::where('idUser','=',$idUser)->count();
@@ -91,6 +92,7 @@ class AssetController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                      $totalFiltered =$Asset->count();
                 }
             }
         }else{
@@ -122,6 +124,7 @@ class AssetController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                      $totalFiltered =$Asset->count();
                 }
             }else{
                 $totalData =  Asset::where('idUser','=',$idUser)->count();
@@ -149,6 +152,7 @@ class AssetController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                      $totalFiltered =$Asset->count();
                 }
             }
         }

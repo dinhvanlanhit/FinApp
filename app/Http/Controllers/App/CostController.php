@@ -66,6 +66,7 @@ class CostController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Cost->count();
                 }
             }else{
                 $totalData =  Cost::where('idUser','=',$idUser)->count();
@@ -93,6 +94,7 @@ class CostController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Cost->count();
                 }
             }
         }else{
@@ -124,6 +126,7 @@ class CostController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Cost->count();
                 }
             }else{
                 $totalData =  Cost::where('idUser','=',$idUser)->count();
@@ -151,6 +154,7 @@ class CostController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                    $totalFiltered =$Cost->count();
                 }
             }
         }

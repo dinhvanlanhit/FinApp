@@ -20,7 +20,9 @@ class MyEventTableSeeder extends Seeder
                 'amount' => 250000,
                 'date' => date('Y-m-d'),
                 'note'=>'',
-                'address'=>'Sơn Hạ'
+                'address'=>'Sơn Hạ',
+                'status'=>1,
+                'status_name'=>'Còn Nợ'
             ],
             [
                 'idUser'=>1,
@@ -30,7 +32,9 @@ class MyEventTableSeeder extends Seeder
                 'amount' => 250000,
                 'date' => date('Y-m-d'),
                 'note'=>'',
-                'address'=>'Sơn Hạ'
+                'address'=>'Sơn Hạ',
+                'status'=>1,
+                'status_name'=>'Còn Nợ'
             ],
             [
                 'idUser'=>1,
@@ -40,7 +44,9 @@ class MyEventTableSeeder extends Seeder
                 'amount' => 250000,
                 'date' => date('Y-m-d'),
                 'note'=>'',
-                'address'=>'Thành Phố Quảng Ngãi'
+                'address'=>'Thành Phố Quảng Ngãi',
+                'status'=>1,
+                'status_name'=>'Còn Nợ'
             ],
         ]);
     }

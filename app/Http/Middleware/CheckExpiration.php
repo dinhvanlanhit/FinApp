@@ -16,10 +16,14 @@ class CheckExpiration
     public function handle(Request $Request ,Closure $next)
     {   
         $today = date("Y-m-d");
-        if (strtotime(getExpiryDate()) >strtotime($today)) {
+        if( Auth::user()->status_payment == 0 || Auth::user()->type!='member'){
             return $next($Request);
-        } else {
-            return redirect()->route('notice_payment');
+        }else{
+            if (strtotime(getExpiryDate()) >strtotime($today)) {
+                return $next($Request);
+            } else {
+                return redirect()->route('notice_payment');
+            }
         }
     }
 }

@@ -54,6 +54,7 @@ class Goals_dreamsController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                     $totalFiltered =$Goals_dreams->count();
                 }
         }else{
             $totalData =  Goals_dreams::where('idUser','=',$idUser)->count();
@@ -77,6 +78,7 @@ class Goals_dreamsController extends Controller
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
+                 $totalFiltered =$Goals_dreams->count();
             }
         }
         $json_data = array(

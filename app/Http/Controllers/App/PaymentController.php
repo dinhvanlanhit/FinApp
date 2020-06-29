@@ -71,6 +71,7 @@ class PaymentController extends Controller
                     ->limit($limit)
                     ->orderBy($order,$dir)
                     ->get();
+                     $totalFiltered =$UsersPayment->count();
                 }
         }else{
             $totalData =  UsersPayment::where('idUser','=',$idUser)->count();
@@ -100,6 +101,7 @@ class PaymentController extends Controller
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
+                 $totalFiltered =$UsersPayment->count();
             }
         }
         $json_data = array(
