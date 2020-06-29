@@ -129,7 +129,14 @@
         </a>
         
       </li>
-      
+      <li class="nav-item menu-open-new">
+        <a href="{{route('methods_payment')}}" class="nav-link  ">
+          <i class="nav-icon fas fa-money"></i>
+          <p>
+            Thanh Toán
+          </p>
+        </a>
+      </li>
       <li class="nav-item menu-open-new">
         <a href="{{route('history_payment')}}" class="nav-link ">
           <i class="nav-icon fas fa-history"></i>

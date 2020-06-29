@@ -21,7 +21,7 @@
 						<li class="list-group-item"> <b>Sử Dụng Đến </b>  <a class="float-right"><b>{{getExpiryDate()}}</b></a>
 						</li>
           </ul> 
-          <a href="#" class="btn btn-info btn-block"><b>Gia Hạn</b></a>
+          <a href="{{route('methods_payment')}}" class="btn btn-info btn-block"><b>  <i class="nav-icon fas fa-money"></i> Gia Hạn</b></a>
           @endif
 					
 				</div>
@@ -85,14 +85,14 @@
 								</div>
 								<div class="form-group ">
 									<label for="address" class=" col-form-label">Mối Quan Hệ</label>
-									<select name="user_type" class="form-control">
+									<select name="user_type" class="form-control select2bs4">
 										<option {{$users->user_type==0?'selected':''}} value="0">Độc Thân</option>
 										<option {{$users->user_type==1?'selected':''}} value="1">Có Gia Đình</option>
 									</select>
 								</div>
 								<div class="form-group ">
 									<div class=""> <a href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
-										<button type="submit" id="onSave" class="btn btn-danger">Lưu</button>
+										<button type="submit" id="onSave" class="btn btn-success">Lưu</button>
 									</div>
 								</div>
 							</form>
@@ -122,7 +122,7 @@
 								</div>
 								<div class="form-group row">
 									<div class="offset-sm-2 col-sm-10"> <a href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
-										<button type="submit" class="btn btn-danger">Lưu</button>
+										<button type="submit" class="btn btn-success">Lưu</button>
 									</div>
 								</div>
 							</form>
