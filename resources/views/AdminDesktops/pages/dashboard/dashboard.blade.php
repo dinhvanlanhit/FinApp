@@ -17,7 +17,9 @@
       </div>
   </div>
   <div class="col-sm-12 col-md-3 ">
+    <div class="form-group">
       <button type="submit" class="btn btn-success" id="export-excel">Xuất Excel</button>
+    </div>
   </div>
 </div>
 </form>
