@@ -14,7 +14,7 @@
                   <div class="form-group">
                     <label>Xem Tổng Quan</label>
                     <select class="form-control select2bs4" style="width:100%" multiple name="permission[]">
-                            <option @if($permissions) {{$permissions->contains('view')==true?'selected':''}}  @endif value="view">Xem</option>
+                            <option @if($permissions) {{$permissions->contains('dashboard_view')==true?'selected':''}}  @endif value="dashboard_view">Xem</option>
                     </select>
                   </div>
                 </div>
@@ -22,21 +22,32 @@
                     <div class="form-group">
                       <label>Người Dùng</label>
                       <select class="form-control select2bs4" style="width:100%" multiple name="permission[]">
-                              <option  @if($permissions) {{$permissions->contains('view')==true?'selected':''}}  @endif value="view">Xem</option>
-                              <option  @if($permissions) {{$permissions->contains('insert')==true?'selected':''}}  @endif value="insert">Thêm</option>
-                              <option  @if($permissions) {{$permissions->contains('update')==true?'selected':''}}  @endif value="update">Sửa</option>
-                              <option  @if($permissions) {{$permissions->contains('delete')==true?'selected':''}}  @endif value="delete">Xóa</option>
-                              <option  @if($permissions) {{$permissions->contains('payment')==true?'selected':''}}  @endif value="payment">Thanh toán</option>
+                              <option  @if($permissions) {{$permissions->contains('users_view')==true?'selected':''}}  @endif value="users_view">Xem</option>
+                              <option  @if($permissions) {{$permissions->contains('users_insert')==true?'selected':''}}  @endif value="users_insert">Thêm</option>
+                              <option  @if($permissions) {{$permissions->contains('users_update')==true?'selected':''}}  @endif value="users_update">Sửa</option>
+                              <option  @if($permissions) {{$permissions->contains('users_delete')==true?'selected':''}}  @endif value="users_delete">Xóa</option>
+                             
                       </select>
                     </div>
                 </div>
                 <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Thanh Toán</label>
+                    <select class="form-control select2bs4" style="width:100%" multiple name="permission[]">
+                            <option  @if($permissions) {{$permissions->contains('payment_view')==true?'selected':''}}  @endif value="payment_view">Xem</option>
+                            <option  @if($permissions) {{$permissions->contains('payment_insert')==true?'selected':''}}  @endif value="payment_insert">Thêm</option>
+                            <option  @if($permissions) {{$permissions->contains('payment_update')==true?'selected':''}}  @endif value="payment_update">Sửa</option>
+                            <option  @if($permissions) {{$permissions->contains('payment_delete')==true?'selected':''}}  @endif value="payment_delete">Xóa</option>
+                    </select>
+                  </div>
+              </div>
+                <div class="col-md-3">
                     <div class="form-group">
                       <label>Tin Nhắn Liên Hệ</label>
                       <select class="form-control select2bs4" style="width:100%" multiple name="permission[]">
-                              <option @if($permissions) {{$permissions->contains('view')==true?'selected':''}}  @endif value="view">Xem</option>
-                              <option @if($permissions) {{$permissions->contains('delete')==true?'selected':''}}  @endif value="delete">Xóa</option>
-                              <option @if($permissions) {{$permissions->contains('status')==true?'selected':''}}  @endif value="status">Trạng Thái</option>
+                              <option @if($permissions) {{$permissions->contains('contact_view')==true?'selected':''}}  @endif value="contact_view">Xem</option>
+                              <option @if($permissions) {{$permissions->contains('contact_delete')==true?'selected':''}}  @endif value="contact_delete">Xóa</option>
+                              <option @if($permissions) {{$permissions->contains('contact_status')==true?'selected':''}}  @endif value="contact_status">Trạng Thái</option>
                       </select>
                     </div>
                 </div>
@@ -44,10 +55,10 @@
                     <div class="form-group">
                       <label>Thành Viên Hệ Thống</label>
                       <select class="form-control select2bs4" style="width:100%" multiple name="permission[]">
-                        <option  @if($permissions) {{$permissions->contains('view')==true?'selected':''}}  @endif value="view">Xem</option>
-                        <option  @if($permissions) {{$permissions->contains('insert')==true?'selected':''}}  @endif value="insert">Thêm</option>
-                        <option  @if($permissions) {{$permissions->contains('update')==true?'selected':''}}  @endif value="update">Sửa</option>
-                        <option  @if($permissions) {{$permissions->contains('delete')==true?'selected':''}}  @endif value="delete">Xóa</option>
+                        <option  @if($permissions) {{$permissions->contains('users_admin_view')==true?'selected':''}}  @endif value="users_admin_view">Xem</option>
+                        <option  @if($permissions) {{$permissions->contains('users_admin_insert')==true?'selected':''}}  @endif value="users_admin_insert">Thêm</option>
+                        <option  @if($permissions) {{$permissions->contains('users_admin_update')==true?'selected':''}}  @endif value="users_admin_update">Sửa</option>
+                        <option  @if($permissions) {{$permissions->contains('users_admin_delete')==true?'selected':''}}  @endif value="users_admin_delete">Xóa</option>
                       </select>
                     </div>
                 </div>
@@ -55,10 +66,10 @@
                     <div class="form-group">
                       <label>Phân Quyền</label>
                       <select class="form-control select2bs4" style="width:100%" multiple name="permission[]">
-                        <option @if($permissions) {{$permissions->contains('delete')==true?'selected':''}}  @endif value="view">Xem</option>
-                        <option @if($permissions) {{$permissions->contains('insert')==true?'selected':''}}  @endif value="insert">Thêm</option>
-                        <option @if($permissions) {{$permissions->contains('update')==true?'selected':''}}  @endif value="update">Sửa</option>
-                        <option @if($permissions) {{$permissions->contains('delete')==true?'selected':''}}  @endif value="delete">Xóa</option>
+                        <option @if($permissions) {{$permissions->contains('roles_delete')==true?'selected':''}}  @endif value="roles_view">Xem</option>
+                        <option @if($permissions) {{$permissions->contains('roles_insert')==true?'selected':''}}  @endif value="roles_insert">Thêm</option>
+                        <option @if($permissions) {{$permissions->contains('roles_update')==true?'selected':''}}  @endif value="roles_update">Sửa</option>
+                        <option @if($permissions) {{$permissions->contains('roles_delete')==true?'selected':''}}  @endif value="roles_delete">Xóa</option>
                       </select>
                     </div>
                 </div>
@@ -66,8 +77,8 @@
                     <div class="form-group">
                       <label>Cài Đặt Hệ Thống</label>
                       <select class="form-control select2bs4" style="width:100%" multiple name="permission[]">
-                        <option  @if($permissions) {{$permissions->contains('delete')==true?'view':''}}  @endif value="view">Xem</option>
-                        <option  @if($permissions) {{$permissions->contains('delete')==true?'update':''}}  @endif value="update">Sửa</option>
+                        <option  @if($permissions) {{$permissions->contains('setting_view')==true?'selected':''}}  @endif value="setting_view">Xem</option>
+                        <option  @if($permissions) {{$permissions->contains('setting_update')==true?'selected':''}}  @endif value="setting_update">Sửa</option>
                       </select>
                     </div>
                 </div>

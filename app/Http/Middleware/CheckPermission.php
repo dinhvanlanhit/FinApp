@@ -16,6 +16,7 @@ class CheckPermission
      */
     public function handle(Request $request ,Closure $next,$permission=null)
     {   
+        // return $next($request);
             $roles =  collect(json_decode(Roles::where('id','=',Auth::user()->idRoles)->first()->permission));
             if($request->ajax()){
                 if($roles->contains($permission)){
