@@ -289,14 +289,11 @@ function myevent() {
 				type: 'POST',
 				data: {
 					idGroupMyEvent:$("#idGroupMyEvent").val(),
-					dateBegin:$("#dateBegin").val(),
-					dateEnd:$("#dateEnd").val(),
+					search:$("#search").val(),
 				},
 				dataType: 'JSON',
 				success: function (data) {
 					if (data.statusBoolen) {
-						buttonloading('#export-excel', false);
-						$("#modal-action").modal('hide');
 						Toast.fire({
 							icon: data.icon,
 							title: data.messages
@@ -307,8 +304,9 @@ function myevent() {
 						a.attr("download", data.name + ".xls"),
 						a[0].click(),
 						a.remove();
+						buttonloading('#button-export', false);
 					} else {
-						buttonloading('#export-excel', false);
+						buttonloading('#button-export', false);
 					}
 				
 				},

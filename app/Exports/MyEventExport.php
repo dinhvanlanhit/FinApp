@@ -19,20 +19,18 @@ class MyEventExport
      
         $spreadsheet = new Spreadsheet();
         $excel = $spreadsheet->getActiveSheet();
-        $SheetEvent = new \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($spreadsheet, 'SỰ KIỆN');
-        $excel = $spreadsheet->addSheet($SheetEvent, 0);
-        $excel = EventExport::Export($excel,$Request);
-        $SheetShopping = new \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($spreadsheet, 'MUA SẮM');
-        $excel = $spreadsheet->addSheet($SheetShopping,1);
-        $excel = ShoppingExport::Export($excel,$Request);
-        $SheetCost = new \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($spreadsheet, 'CHI TIÊU');
-        $excel = $spreadsheet->addSheet($SheetCost,2);
-        $excel = CostExport::Export($excel,$Request);
-        $SheetSalary = new \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet($spreadsheet, 'THU NHẬP');
-        $excel = $spreadsheet->addSheet($SheetSalary,3);
-        $excel = SalaryExport::Export($excel,$Request);
- 
 
+        $row = 1;
+        $excel->getColumnDimension('A')->setWidth(10.5);
+        $excel->getColumnDimension('B')->setWidth(15.5);
+        $excel->getColumnDimension('C')->setWidth(30.5);
+        $excel->getColumnDimension('D')->setWidth(50.5);
+        $excel->getColumnDimension('E')->setWidth(25.5);
+        $excel->getColumnDimension('F')->setWidth(10.5);
+        $excel->getColumnDimension('G')->setWidth(50.5);
+
+        $excel->setCellValue('A'.$row, 'SỰ KIỆN');
+        $excel->mergeCells('A'.$row.':G'.$row);
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
         ob_start();
@@ -44,7 +42,7 @@ class MyEventExport
             'icon'=>'success',
             'messages'=>'Xuất Thành Công',
             'file' => "data:application/vnd.ms-excel;base64," . base64_encode($xlsData),
-            'name' => "Fin-App",
+            'name' => "Sự Kiện Của Tôi",
         );
         die(json_encode($response));
     }
