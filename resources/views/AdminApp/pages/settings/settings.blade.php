@@ -39,14 +39,32 @@
                                                     <label for="address">Địa Chỉ</label>
                                                      <input type="text" value="{{$data->address}}" id="address" name="address" class="form-control">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="email">Email</label>
-                                                    <input type="text" value="{{$data->email}}" id="email" name="email" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="password">Mật Khẩu</label>
-                                                    <input type="password" value="{{$data->password}}" id="password" name="password" class="form-control">
-                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                      <h3 class="card-title">Thiết Lập Email </h3>
+                                      
+                                                      <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                        </button>
+                                                      </div>
+                                                    </div>
+                                                    <!-- /.card-header -->
+                                                    <div class="card-body card-body-dashboard">
+                                                         <div class="form-group">
+                                                            <label for="email">Email</label>
+                                                            <input type="text" value="{{$data->email}}" id="email" name="email" class="form-control">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password"> Mật Khẩu </label>
+                                                            <input type="password" value="{{$data->password}}" id="password" name="password" class="form-control">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email_receive">Email nhận</label>
+                                                            <input type="text" value="{{$data->email_receive}}" id="email_receive" name="email_receive" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.footer -->
+                                                  </div>
                                                 <div class="card">
                                                     <div class="card-header">
                                                       <h3 class="card-title">Google reCAPTCHA </h3>
@@ -70,11 +88,11 @@
                                                     </div>
                                                     <!-- /.footer -->
                                                   </div>
-                                                <div class="form-group">
-                                                    <a  href="{{route('admin_dashboard')}}" class="btn btn-danger  float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
-                                                    <button type="submit"   class="btn btn-success float-fight onSave">Lưu</button>
+                                                    <div class="form-group">
+                                                        <a  href="{{route('admin_dashboard')}}" class="btn btn-danger  float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
+                                                        <button type="submit"   class="btn btn-success float-fight onSave">Lưu</button>
+                                                    </div>
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Contact;
 use Auth;
+use Mail;
 use GuzzleHttp\Client;
 class ContactController extends Controller
 {
@@ -27,6 +28,7 @@ class ContactController extends Controller
             ]
         );
         $body = json_decode((string)$response->getBody());
+      
         if($body->success){
             $Contact = new Contact();
             $Contact->idUser = Auth::user()->id;
@@ -37,6 +39,22 @@ class ContactController extends Controller
             $Contact->status = 0;
             $Contact->status_name = 'Chưa Xử Lý';
             if($Contact->save()){
+                $emailTo = setting()->email_receive;
+                $mailfb= array(
+                    'full_name' => $Request->post('full_name'),
+                    'email' => $Request->post('email'),
+                    'phone_number' => $Request->post('phone_number'),
+                    'msg' => $Request->post('msg')
+                );
+                try{
+                    Mail::send(template().'.pages.contact.mailfb',$mailfb,function ($message) use ($emailTo) {
+                        $message->to($emailTo, 'Recovery')->subject('Liên Hệ');
+                    });
+                }
+                catch(Exception $ex)
+                {
+                    return JSON2(true,'Gửi Thành công');
+                }
                 return JSON2(true,'Gửi Thành công');
             }else{
                 return JSON2(false,'Gửi Không Thành công');

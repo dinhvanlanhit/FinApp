@@ -1,7 +1,8 @@
 function dashboard() {
 	this.datas = null;
 	this.runJS = function () {
-        var me =  this;
+		var me =  this;
+		me.Export();
 		var datas = this.datas;
 		$('#calendar').datetimepicker({
 			format: 'L',
@@ -140,6 +141,44 @@ function dashboard() {
 			}
 		});
 		
+	}
+	this.Export =function(){
+		var datas = this.datas;
+		$("#formExport").on('submit',function(e){
+			e.preventDefault();
+			buttonloading('#export-excel', true);
+			var formData = new FormData($(this)[0]);
+			$.ajax({
+				url: datas.routes.export,
+				type: 'POST',
+				data: formData,
+				dataType: 'JSON',
+				processData: false,
+				contentType: false,
+				success: function (data) {
+					if (data.statusBoolen) {
+						buttonloading('#export-excel', false);
+						$("#modal-action").modal('hide');
+						Toast.fire({
+							icon: data.icon,
+							title: data.messages
+						});
+						var a = $("<a>");
+						a.attr("href", data.file),
+						$("body").append(a),
+						a.attr("download", data.name + ".xls"),
+						a[0].click(),
+						a.remove();
+					} else {
+						buttonloading('#export-excel', false);
+					}
+				},
+				error: function (error) {
+					console.log(error);
+					buttonloading('#export-excel', false);
+				}
+			});
+		});
 	}
 
 }

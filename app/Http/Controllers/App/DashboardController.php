@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\App;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -13,13 +12,17 @@ use App\Models\Invest;
 use App\Models\Lendloan;
 use App\Models\Debt;
 use App\Models\Asset;
-
 use App\Models\TypeCost;
 use App\Models\TypeEvent;
 use App\Models\TypeSalary;
 use App\Models\TypeShopping;
-
+use Excel;
 use Auth;
+use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\WithDrawings;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
+use App\Exports\DashboardExport;
+
 class DashboardController extends Controller
 {
    
@@ -322,6 +325,10 @@ class DashboardController extends Controller
             'color'=>$color,
             'data'=> $data
         ));
+    }
+    public function postExport (Request $Request)
+    {
+        return DashboardExport::Export($Request);
     }
     
 

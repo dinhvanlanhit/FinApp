@@ -13,6 +13,7 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     Route::get('/','DashboardController@Dashboard')->name('dashboard');
     Route::get('/chart','DashboardController@getDashboard')->name('getDashboard');
     Route::get('/char-dashboard','DashboardController@getCharDashboard')->name('getCharDashboard');
+    Route::post('/export-dashboard','DashboardController@postExport')->name('export');
     Route::group(['middleware' => ['CheckExpiration']],function (){
         Route::group(['prefix' => 'event'], function () {
             Route::get('/datatable','EventController@getDatatable')->name('event_table');

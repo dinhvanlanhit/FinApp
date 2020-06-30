@@ -23,6 +23,7 @@ class CreateSettingsTable extends Migration
             $table->text('googleMap')->nullable();
             $table->text('address')->nullable();
             $table->string('email')->nullable();
+            $table->string('email_receive')->nullable();
             $table->string('password')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('date')->nullable();

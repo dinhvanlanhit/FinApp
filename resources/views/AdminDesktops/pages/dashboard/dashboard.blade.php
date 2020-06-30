@@ -1,5 +1,6 @@
 @extends('AdminDesktops.layouts.layout')
 @section('desktops')
+<form id="formExport">
 <div class="row">
     <div class="col-sm-12 col-md-3 ">
         @include('AdminDesktops.fromControl.dateRange',
@@ -12,11 +13,14 @@
     </div>
     <div class="col-sm-12 col-md-3 ">
       <div class="form-group">
-        <input class="daterangepicker_label form-control text-center"  value="Tháng này" readonly/>
+        <input class="daterangepicker_label form-control text-center" name="label" value="Tháng này" readonly/>
       </div>
   </div>
-    
+  <div class="col-sm-12 col-md-3 ">
+      <button type="submit" class="btn btn-success" id="export-excel">Xuất Excel</button>
+  </div>
 </div>
+</form>
 <div class="row">
   <div class="col-md-12">
     <div class="row">
@@ -220,6 +224,7 @@
     var dashboard = new dashboard(); 
     dashboard.datas={
         routes:{
+          export:"{{route('export')}}",
           dashboard:"{{route('getDashboard')}}",
           getCharDashboard:"{{route('getCharDashboard')}}",
         }

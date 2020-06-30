@@ -73,7 +73,6 @@ class SettingsController extends Controller
         $data->content_contact = $Request->content_contact;
         $data->code_chat_facebook = $Request->code_chat_facebook;
         $data->googleMap = $Request->googleMap;
-
         $data->facebook_url = $Request->facebook_url;
         $data->twitter_url = $Request->twitter_url;
         $data->instagram_url = $Request->instagram_url;
@@ -81,14 +80,26 @@ class SettingsController extends Controller
         $data->vk_url = $Request->vk_url;
         $data->telegram_url = $Request->telegram_url;
         $data->youtube_url = $Request->youtube_url;
-
+        $data->email_receive = $Request->email_receive;
         $data->GOOGLE_RECAPTCHA_KEY = $Request->GOOGLE_RECAPTCHA_KEY;
         $data->GOOGLE_RECAPTCHA_SECRET = $Request->GOOGLE_RECAPTCHA_SECRET;
-        
+        $this->setEnv('MAIL_USERNAME',$Request->email);
+        $this->setEnv('MAIL_PASSWORD',$Request->password);
+        $this->setEnv('MAIL_RECEIVE',$Request->email_receive);
         if($data->save()){
             return JSON2(true,"Cập Nhật Thành Công");
         }else{
             return JSON2(false,"Cập Nhật Không Thành Công");
         }
     }
+    function setEnv($name, $value)
+    {
+        $path = base_path('.env');
+        if (file_exists($path)) {
+            file_put_contents($path, str_replace(
+                $name . '=' . env($name), $name . '=' . $value, file_get_contents($path)
+            ));
+        }
+    }
+
 }
