@@ -161,5 +161,24 @@
           </p>
         </a>
       </li>
+      @if (Auth::user()->type=='admin')
+     
+      <li class="nav-item menu-open-new">
+        <a href="{{route('admin_dashboard')}}" class="nav-link ">
+          <i class="nav-icon fa fa-cogs"></i>
+          <p>
+             Hệ Thống FinApp
+          </p>
+        </a>
+      </li>
+      @endif
+      <li class="nav-item menu-open-new">
+        <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-logout"class="nav-link ">
+          <i class="nav-icon fa fa-sign-out-alt"></i>
+          <p>
+            Đăng Xuất
+          </p>
+        </a>
+      </li>
     </ul>
   </nav>

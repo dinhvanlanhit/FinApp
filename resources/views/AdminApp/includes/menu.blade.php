@@ -23,6 +23,7 @@
           <p>
              Tin Nhắn Liên Hệ
           </p>
+          <span class="badge badge-danger right" id="countContact">{{countContact()}}</span>
         </a>
       </li>
       <li class="nav-item menu-open">
@@ -30,6 +31,14 @@
           <i class="nav-icon fas fa-users"></i>
           <p>
              Thành Viên Hệ Thống
+          </p>
+        </a>
+      </li>
+      <li class="nav-item menu-open">
+        <a href="{{route('admin_roles')}}" class="nav-link ">
+          <i class="nav-icon fas  fa-check"></i>
+          <p>
+             Phân Quyền
           </p>
         </a>
       </li>

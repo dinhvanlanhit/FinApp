@@ -119,20 +119,19 @@
                                     </div>
                                     <div class="card-body card-body-dashboard">
                                         <div class="form-group">
-                                         
                                             <textarea id="content_contact"  class="form-control">
                                                 {{$data->content_contact}}
                                             </textarea>
                                         </div>
                                         <div class="form-group">
                                             <label> Code Google Map  </label>
-                                            <textarea id="googleMap" name="googleMap" class="form-control">
+                                            <textarea id="googleMap" rows="10" name="googleMap" class="form-control">
                                                 {{$data->googleMap}}
                                             </textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Chat Facebook JavaScript SDK  </label>
-                                            <textarea id="code_chat_facebook" name="code_chat_facebook"  class="form-control">
+                                            <textarea id="code_chat_facebook" rows="10" name="code_chat_facebook"  class="form-control">
                                                 {{$data->code_chat_facebook}}
                                             </textarea>
                                         </div>

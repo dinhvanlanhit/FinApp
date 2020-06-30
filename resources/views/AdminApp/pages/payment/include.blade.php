@@ -22,7 +22,7 @@
                             data-numbermonth="{{$item->numberMonth}}"
                             data-amount="{{$item->amount}}"
                             data-note="{{$item->note}}"
-                            >{{$item->name}}</option>
+                            >{{$item->name}} | {{number_format($item->amount)}} VNĐ</option>
                         @endforeach
                        </select>
                     </div>

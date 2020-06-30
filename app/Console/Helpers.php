@@ -154,3 +154,7 @@ function setting()
 {
    return \App\Models\Settings::find(1);
 }
+function countContact()
+{
+    return \App\Models\Contact::where('status','=',0)->count();
+}

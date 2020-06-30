@@ -101,10 +101,11 @@ class ContactController extends Controller
             $Contact = Contact::find((int)$Request->id);
             $Contact->status=$Request->status==0?1:0;
             $Contact->status_name=$Request->status==0?' Đã Xác Nhận':'Chưa Xác Nhận';
+           
             if($Contact->save()){
-                return JSON2(true,'Cập Nhật Thành Công');
+                return JSON3(countContact(),true,'Cập Nhật Thành Công');
             }else{
-                return JSON2(true,'Cập Nhật Không Thành Công');
+                return JSON3(countContact(),true,'Cập Nhật Không Thành Công');
             }
         }
     }

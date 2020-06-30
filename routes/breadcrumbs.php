@@ -113,3 +113,20 @@ Breadcrumbs::for('admin_contact', function ($trail) {
     $trail->push('Tin Nhắn Liên Hệ', route('admin_contact'));
 });
  
+Breadcrumbs::for('admin_roles', function ($trail) {
+    $trail->parent('admin_dashboard');
+    $trail->push('Phân Quyền', route('admin_roles'));
+});
+Breadcrumbs::for('admin_roles_permission', function ($trail) {
+    $trail->parent('admin_dashboard');
+    $trail->push('Cập Nhật Quyền Hệ Thống', route('admin_roles_permission'));
+});
+Breadcrumbs::for('admin_404', function ($trail) {
+    $trail->parent('admin_dashboard');
+    $trail->push('Không Tìm Thấy Trang ', route('admin_404'));
+});
+
+Breadcrumbs::for('admin_505', function ($trail) {
+    $trail->parent('admin_dashboard');
+    $trail->push('Không Tìm Thấy Trang ', route('admin_505'));
+});

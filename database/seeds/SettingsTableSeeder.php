@@ -35,6 +35,12 @@ class SettingsTableSeeder extends Seeder
                   <p style="font-weight: 400;">Ng&acirc;n h&agrave;ng thụ hưởng (Receiving Bank):&nbsp;</p>
                   <p style="font-weight: 400;">T&ecirc;n người gửi (Sender name):&nbsp;</p>
                   <p style="font-weight: 400;">Đ&iacute;nh k&egrave;m chứng từ giao dịch, ủy nhiệm chi nếu c&oacute;.</p>
+                  <p style="font-weight: 400;"><strong>X&aacute;c nhận qua zalo : 0966334404</strong></p>
+                  <p style="font-weight: 400;"><b><strong>Ti&ecirc;u đề (Subject)</strong></b>: Payment Confirmation</p>
+                  <p style="font-weight: 400;"><b><strong>Nội dung (Content):&nbsp;</strong></b></p>
+                  <p style="font-weight: 400;">Ng&acirc;n h&agrave;ng thụ hưởng (Receiving Bank):&nbsp;</p>
+                  <p style="font-weight: 400;">T&ecirc;n người gửi (Sender name):&nbsp;</p>
+                  <p style="font-weight: 400;">Đ&iacute;nh k&egrave;m chứng từ giao dịch, ủy nhiệm chi nếu c&oacute;.<strong></strong></p>
                   <p style="font-weight: 400;"><em>Khi nhận được th&ocirc;ng tin chuyển tiền v&agrave; nhận được email của qu&yacute; kh&aacute;ch, ch&uacute;ng t&ocirc;i sẽ tiến h&agrave;nh thực hiện y&ecirc;u cầu của bạn trong v&ograve;ng<span>&nbsp;</span><b><strong>24 giờ</strong></b><span>&nbsp;</span>trong ng&agrave;y l&agrave;m việc.</em></p>',
                   'content_contact'=>'',
                   'facebook_url'=>'https://www.facebook.com/',

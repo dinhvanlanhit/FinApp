@@ -71,6 +71,7 @@ class Kernel extends HttpKernel
         'CheckAuth' => \App\Http\Middleware\CheckAuth::class,
         'CheckExpiration'=> \App\Http\Middleware\CheckExpiration::class,
         'CheckAuthSystem'=>\App\Http\Middleware\CheckAuthSystem::class,
+        'CheckPermission'=>\App\Http\Middleware\CheckPermission::class,
 
       
         

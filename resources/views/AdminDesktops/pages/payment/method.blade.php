@@ -8,8 +8,8 @@
             <ul class="nav nav-pills">
                 <li class="nav-item"><a class="nav-link  active" href="#Banktransfer" data-toggle="tab"> Chuyển Khoản</a>
                 </li>
-                <li class="nav-item"><a class="nav-link " href="#Scratchcards" data-toggle="tab"> Thẻ Cào</a>
-                </li>
+                {{-- <li class="nav-item"><a class="nav-link " href="#Scratchcards" data-toggle="tab"> Thẻ Cào</a>
+                </li> --}}
             </ul>
         </div>
         <!-- /.card-header -->

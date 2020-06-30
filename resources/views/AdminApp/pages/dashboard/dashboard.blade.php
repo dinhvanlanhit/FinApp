@@ -63,7 +63,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h5 class="card-title">Biểu Đồ Tổng Quan</h5>
+        <h5 class="card-title">Tin Nhắn Liên Hệ </h5>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse">
             <i class="fas fa-minus"></i>

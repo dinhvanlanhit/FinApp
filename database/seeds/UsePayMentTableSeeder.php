@@ -15,8 +15,8 @@ class UsePayMentTableSeeder extends Seeder
             [
                
                 'name'=>'Sử dụng thử',
-                'numberMonth'=>12,
-                'note'=>'Sử dụng thử 1 năm',
+                'numberMonth'=>3,
+                'note'=>'Sử dụng thử 3 Tháng',
                 'amount'=>0,
             ],
             [
@@ -24,35 +24,28 @@ class UsePayMentTableSeeder extends Seeder
                 'name'=>'Gói 3 Tháng',
                 'numberMonth'=>3,
                 'note'=>'Sử Dụng  3 Tháng',
-                'amount'=>200000,
+                'amount'=>150000,
             ],
             [
                
                 'name'=>'Gói 6 Tháng',
                 'numberMonth'=>6,
                 'note'=>'Sử Dụng 6 Tháng',
-                'amount'=>400000,
+                'amount'=>300000,
             ],
             [
                 
                 'name'=>'Gói 1 Năm',
                 'numberMonth'=>12,
                 'note'=>'Sử Dụng 12 Tháng',
-                'amount'=>800000,
+                'amount'=>600000,
             ],
             [
               
                 'name'=>'Gói 2 Năm',
                 'numberMonth'=>24,
                 'note'=>'Sử Dụng 2 Năm',
-                'amount'=>1600000,
-            ],
-            [
-              
-                'name'=>'Gói 3 Năm',
-                'numberMonth'=>36,
-                'note'=>'Sử Dụng 3 Năm',
-                'amount'=>2400000,
+                'amount'=>1200000,
             ]
         ]);
     }

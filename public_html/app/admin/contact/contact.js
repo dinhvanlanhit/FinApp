@@ -152,8 +152,13 @@ function contact() {
                 type:'POST',
                 dataType:'JSON',
                 success:function(data){
-                    table.ajax.reload();
-                    $("#modal-status").modal('hide');
+					table.ajax.reload();
+					$("#countContact").text(data.data);
+					$("#modal-status").modal('hide');
+					Toast.fire({
+						icon: data.icon,
+						title: data.messages
+					});
                 },error:function(error){
                     console.log(error);
                 }   
