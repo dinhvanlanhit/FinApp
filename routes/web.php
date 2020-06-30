@@ -112,6 +112,8 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
             Route::post('/update','MyEventController@postUpdate')->name('myevent_update');
             Route::get('/update','MyEventController@getUpdate')->name('myevent_update');
             Route::post('/delete','MyEventController@postDelete')->name('myevent_delete');
+            Route::post('/export','MyEventController@postExport')->name('myevent_export');
+            
         });
     });
     Route::group(['prefix' => 'payment'], function (){

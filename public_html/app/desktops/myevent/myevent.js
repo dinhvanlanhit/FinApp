@@ -281,5 +281,42 @@ function myevent() {
 		$("#formAction").on('submit', function (e) {
 			e.preventDefault();
 		});
+
+		$("#button-export").on('click',function(){
+			buttonloading('#button-export', true);
+			$.ajax({
+				url: datas.routes.export,
+				type: 'POST',
+				data: {
+					idGroupMyEvent:$("#idGroupMyEvent").val(),
+					dateBegin:$("#dateBegin").val(),
+					dateEnd:$("#dateEnd").val(),
+				},
+				dataType: 'JSON',
+				success: function (data) {
+					if (data.statusBoolen) {
+						buttonloading('#export-excel', false);
+						$("#modal-action").modal('hide');
+						Toast.fire({
+							icon: data.icon,
+							title: data.messages
+						});
+						var a = $("<a>");
+						a.attr("href", data.file),
+						$("body").append(a),
+						a.attr("download", data.name + ".xls"),
+						a[0].click(),
+						a.remove();
+					} else {
+						buttonloading('#export-excel', false);
+					}
+				
+				},
+				error: function (error) {
+					console.log(error);
+					buttonloading('#button-export', false);
+				}
+			});
+		});
 	}
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\GroupMyEvent;
 use App\Models\MyEvent;
 use App\Models\TypeEvent;
+use App\Exports\MyEventExport;
 use Auth;
 class MyEventController extends Controller
 {
@@ -170,6 +171,10 @@ class MyEventController extends Controller
         }else{
             return JSON1($MyEvent);
         }
+    }
+    public function postExport(Request $Request)
+    {
+        return MyEventExport::Export($Request);
     }
 
 }

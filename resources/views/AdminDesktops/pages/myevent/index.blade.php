@@ -14,7 +14,7 @@
           </button>
         </div>
           <div class="btn-group">
-          <button type="button" class="btn btn-info btn-sm">
+          <button type="button" id="button-export" class="btn btn-info btn-sm">
             <i class="fa fa-file-excel-o" aria-hidden="true"></i> Xuất Excel
           </button>
         </div>
@@ -86,6 +86,7 @@
           insert:"{{route('myevent_insert')}}",
           update:"{{route('myevent_update')}}",
           delete:"{{route('myevent_delete')}}",
+          export:"{{route('myevent_export')}}",
         }
     }   
     myevent.runJS();
