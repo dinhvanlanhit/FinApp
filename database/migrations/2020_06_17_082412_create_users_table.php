@@ -18,8 +18,22 @@ class CreateUsersTable extends Migration
             $table->bigInteger('idRoles')->unsigned()->nullable();
             $table->foreign('idRoles')->references('id')->on('roles')->onUpdate('cascade');
             $table->integer('user_type')->nullable()->default(0);
+
+            $table->string('name');
             $table->string('email')->unique()->nullable();
+            $table->string('provider');
+            $table->string('provider_id');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->rememberToken()->nullable();
+            $table->string('type')->default('member')->nullable();
+            $table->integer('status')->nullable()->default(0);
+            $table->string('status_name')->nullable()->default('Mở');
+            $table->integer('status_payment')->nullable()->default(1);
+            $table->string('status_payment_name')->nullable()->default('Trả Phí');
+            $table->date('date')->nullable();
+
+
             $table->string('avatar')->nullable()->default(null);
             $table->string('full_name')->nullable();
             $table->string('english_name')->nullable();
@@ -28,7 +42,6 @@ class CreateUsersTable extends Migration
             $table->boolean('sex')->nullable()->default(true);
             $table->longText('introduce')->nullable();
             $table->string('birthday')->nullable();
-            $table->date('date')->nullable();
             $table->string('address_1')->nullable();
             $table->string('address_2')->nullable();
             $table->string('address_3')->nullable();
@@ -40,13 +53,9 @@ class CreateUsersTable extends Migration
             $table->string('fax')->nullable();
             $table->string('cmnn_passport')->nullable();
             $table->string('postal_code')->nullable();
-            $table->string('type')->default('member')->nullable();
-            $table->integer('status')->nullable()->default(0);
-            $table->string('status_name')->nullable()->default('Mở');
-            $table->integer('status_payment')->nullable()->default(1);
-            $table->string('status_payment_name')->nullable()->default('Trả Phí');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+
+  
+        
             $table->timestamps();
         });
     }
