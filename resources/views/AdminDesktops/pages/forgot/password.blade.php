@@ -25,11 +25,11 @@
 					<div class="password"></div>
 					<div class="form-group">
 						<label>Nhập mật khẩu mới</label>
-						<input type="text" class="form-control " value="" name="password" placeholder=" .... ">
+						<input type="password" class="form-control " value="" name="password" placeholder=" .... ">
 					</div>
 					<div class="form-group">
 						<label>Xác nhận mật khẩu mới</label>
-						<input type="text" class="form-control " value="" name="re_password" placeholder=" .... ">
+						<input type="password" class="form-control " value="" name="re_password" placeholder=" .... ">
 					</div>
 					<div class="form-group">
 						<button type="submit" id="button-password" class="btn btn-info btn-block btn-flat pull-right">Tiếp tục</button>
