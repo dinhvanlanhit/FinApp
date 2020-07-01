@@ -17,21 +17,22 @@
 
 <body class="hold-transition login-page">
 	<div class="login-box">
-		<div id="" class="card formRecoverCcode ">
-			<form id="formConfirmCode">
+		<div id="" class="card formRecoverCode ">
+			<form id="formRecoverCode">
 				<div class="card-header">
 					<h3 class="card-title">Nhập mã bảo mật</h3>
 				</div>
 				<div class="card-body card-body-dashboard">
-					<p style="font-size: 10pt">Chúng tôi đã gửi cho bạn mã đến : dinhvanlanh.it@gmail.com</p>
+					<p style="font-size: 10pt">Chúng tôi đã gửi cho bạn mã đến : {{ Session::get('EMAIL')}}</p>
 					<p style="font-size: 10pt">Vui lòng kiểm tra mã trong email của bạn. Mã này gồm 6 số.</p>
 					<div class="recover_code"></div>
 					<div class="form-group mb-3">
-						<input type="text" class="form-control " value="" name="remember_token" placeholder=" .... ">
+						<input type="text" class="form-control " required value="" name="remember_token" placeholder=" .... ">
+						<input type="text" class="form-control d-none" readonly value="{{$email}}" id="email" name="email" placeholder=" .... ">
 					</div>
 				</div>
 				<div class="card-footer">
-					<button type="button" class="btn btn-danger btn-sm btn-flat pull-right" id="btn-cancel-formSendEmail">Hủy</button>
+					<a href="{{route('forgot-password')}}" class="btn btn-danger btn-sm btn-flat pull-right" id="btn-cancel-formSendEmail">Hủy</a>
 					<button type="button" class="btn btn-success btn-sm btn-flat pull-left" value="" id="btn-formSendEmail">Bạn chưa có mã?</button>
 					<button type="submit" id="button-recover_code" class="btn btn-primary btn-sm btn-flat pull-right">Tiếp tục</button>
 				</div>

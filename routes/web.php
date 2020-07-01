@@ -17,8 +17,10 @@ Route::group(['namespace' => 'App'], function () {
     Route::get('/recover/code','RegisterController@getRecovercode')->name('recover_code');
     Route::post('/recover/code','RegisterController@postRecovercode')->name('recover_code');
     
-    Route::get('password','RegisterController@getPassword')->name('password');
-    Route::post('password','RegisterController@postPassword')->name('password');
+    Route::get('recover/password/','RegisterController@getPassword')->name('password');
+    Route::post('recover/password/','RegisterController@postPassword')->name('password');
+
+    
 
 });
 Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){

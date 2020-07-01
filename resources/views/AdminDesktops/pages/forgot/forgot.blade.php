@@ -22,11 +22,11 @@
 			</div>
 			<div class="card-body card-body-dashboard">
 				<form id="formSendEmail">
-					<div class="input-group"> <span class="">Vui lòng nhập email để tìm kiếm tài khoản.</span>
+					<div class="input-group mb-3"> <span class="">Vui lòng nhập email để tìm kiếm tài khoản.</span>
 					</div>
 					<div class="email"></div>
 					<div class="input-group mb-3">
-						<input type="email" class="form-control " value="" name="email" placeholder="Email">
+						<input type="email" class="form-control " required value="" name="email" placeholder="Email">
 						<div class="input-group-append">
 							<div class="input-group">
 								<button type="submit" id="button-formSendEmail" class="btn btn-warning btn-flat btn-block">Gửi</button>
