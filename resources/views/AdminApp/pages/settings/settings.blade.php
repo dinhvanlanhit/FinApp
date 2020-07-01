@@ -64,7 +64,7 @@
                                                         </div>
                                                     </div>
                                                     <!-- /.footer -->
-                                                  </div>
+                                                </div>
                                                 <div class="card">
                                                     <div class="card-header">
                                                       <h3 class="card-title">Google reCAPTCHA </h3>
@@ -87,12 +87,37 @@
                                                     
                                                     </div>
                                                     <!-- /.footer -->
-                                                  </div>
-                                                    <div class="form-group">
-                                                        <a  href="{{route('admin_dashboard')}}" class="btn btn-danger  float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
-                                                        <button type="submit"   class="btn btn-success float-fight onSave">Lưu</button>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                      <h3 class="card-title">Login Facebook </h3>
+                                                      <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                        </button>
+                                                      </div>
+                                                    </div>
+                                                    <!-- /.card-header -->
+                                                    <div class="card-body card-body-dashboard">
+                                                        <div class="form-group">
+                                                            <label for="FACEBOOK_APP_ID">APP ID</label>
+                                                            <input type="text" value="{{$data->FACEBOOK_APP_ID}}" id="FACEBOOK_APP_ID" name="FACEBOOK_APP_ID" class="form-control">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="FACEBOOK_APP_SECRET">SECRET</label>
+                                                            <input type="text" value="{{$data->FACEBOOK_APP_SECRET}}" id="FACEBOOK_APP_SECRET" name="FACEBOOK_APP_SECRET" class="form-control">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="FACEBOOK_APP_CALLBACK_URL">APP CALLBACK URL</label>
+                                                            <input type="text" value="{{$data->FACEBOOK_APP_CALLBACK_URL}}" id="FACEBOOK_APP_CALLBACK_URL" name="FACEBOOK_APP_CALLBACK_URL" class="form-control">
+                                                        </div>
+                                                    
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <a  href="{{route('admin_dashboard')}}" class="btn btn-danger  float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
+                                                    <button type="submit"   class="btn btn-success float-fight onSave">Lưu</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3">

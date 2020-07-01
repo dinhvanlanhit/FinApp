@@ -9,8 +9,8 @@ Route::group(['namespace' => 'App'], function () {
     Route::get('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
     Route::post('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
 
-    Route::get('/redirect/{provider?}', 'SocialController@redirect')->name('login-redirect');
-    Route::get('/callback/{provider?}', 'SocialController@callback')->name('login-callback');
+    Route::get('/redirect/{provider?}', 'SocialController@redirectToProvider')->name('login-redirect');
+    Route::get('/callback/{provider?}', 'SocialController@handleProviderCallback')->name('login-callback');
 
 
 });

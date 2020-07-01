@@ -9,11 +9,12 @@ use Socialite;
 use App\User;
 class SocialController extends Controller
 {
-    public function redirect($provider=null)
+
+    public function redirectToProvider($provider)
     {
         return Socialite::driver($provider)->redirect();
     }
-    public function callback($provider)
+    public function handleProviderCallback()
     {
         $getInfo = Socialite::driver($provider)->user(); 
         $user = $this->createUser($getInfo,$provider); 

@@ -56,14 +56,16 @@
           </div>
         </div>
         <br>
+        @if (setting()->FACEBOOK_APP_ID!=''&&setting()->FACEBOOK_APP_SECRET&&setting()->FACEBOOK_APP_CALLBACK_URL)
         <div class="row">
           <div class="col-md-12">
-                <a href="{{route('login-redirect')}}"  id="button-login-facebook" class="btn btn-info btn-flat btn-block">
+                <a href="{{route('login-redirect','facebook')}}"  id="button-login-facebook" class="btn btn-info btn-flat btn-block">
                   <i class="fab fa-facebook" aria-hidden="true"></i>
                    Đăng nhập Facebook </a>
           </div>
         </div> 
         <br>
+        @endif
         <div class="row">
           <div class="col-md-6 text-left">
               <a href="{{route('forgot-password')}}" class=" text-info">Tôi quên mật khẩu của tôi</a>

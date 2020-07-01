@@ -53,7 +53,7 @@ class ContactController extends Controller
                 }
                 catch(Exception $ex)
                 {
-                    return JSON2(true,'Gửi Thành công');
+                    return JSON2(true,'Gửi Không Thành công');
                 }
                 return JSON2(true,'Gửi Thành công');
             }else{

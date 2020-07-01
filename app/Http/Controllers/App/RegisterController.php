@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use Route;
 use DB;
 use Auth;
+use Mail;
 use GuzzleHttp\Client;
 use App\Models\Users;
 use App\Models\UsePayment;
@@ -55,6 +56,20 @@ class RegisterController extends Controller
                         $Payment->date = date('Y-m-d');
                         $Payment->created_at = date('Y-m-d H:s:i');
                         $Payment->save();
+                        $emailTo = setting()->email_receive;
+                        $mailfb= array(
+                            'full_name' =>  $Request->full_name,
+                            'email' =>$Request->email
+                        );
+                        try{
+                            Mail::send(template().'.pages.contact.mailfb',$mailfb,function ($message) use ($emailTo) {
+                                $message->to($emailTo, 'Recovery')->subject('Đăng Ký Thành Viên Mới');
+                            });
+                        }
+                        catch(Exception $ex)
+                        {
+                            return JSON2(false,"Đăng ký không thành công !");
+                        }
                         return JSON2(true,"Đăng ký thành công bạn có thế đăng nhập tài khoản vừa đăng ký");
                      }else{
                          return JSON2(false,"Đăng ký không thành công !");

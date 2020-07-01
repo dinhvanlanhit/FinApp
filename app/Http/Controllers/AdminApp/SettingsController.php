@@ -89,10 +89,10 @@ class SettingsController extends Controller
         $data->FACEBOOK_APP_ID = $Request->FACEBOOK_APP_ID;
         $data->FACEBOOK_APP_SECRET = $Request->FACEBOOK_APP_SECRET;
         $data->FACEBOOK_APP_CALLBACK_URL = $Request->FACEBOOK_APP_CALLBACK_URL;
-        $this->setEnv('FACEBOOK_APP_ID')->nullable();
-        $this->setEnv('FACEBOOK_APP_SECRET')->nullable();
-        $this->setEnv('FACEBOOK_APP_CALLBACK_URL')->nullable();
-        if($this->save()){
+        $this->setEnv('FACEBOOK_APP_ID',$Request->FACEBOOK_APP_ID);
+        $this->setEnv('FACEBOOK_APP_SECRET',$Request->FACEBOOK_APP_SECRET);
+        $this->setEnv('FACEBOOK_APP_CALLBACK_URL',$Request->FACEBOOK_APP_CALLBACK_URL);
+        if($data->save()){
             return JSON2(true,"Cập Nhật Thành Công");
         }else{
             return JSON2(false,"Cập Nhật Không Thành Công");
