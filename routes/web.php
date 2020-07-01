@@ -8,6 +8,11 @@ Route::group(['namespace' => 'App'], function () {
     Route::post('/register','RegisterController@postRegister')->name('register');
     Route::get('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
     Route::post('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
+
+    Route::get('/redirect/{provider?}', 'SocialController@redirect')->name('login-redirect');
+    Route::get('/callback/{provider?}', 'SocialController@callback')->name('login-callback');
+
+
 });
 Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     Route::get('/','DashboardController@Dashboard')->name('dashboard');

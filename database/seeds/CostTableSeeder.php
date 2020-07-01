@@ -19,7 +19,7 @@ class CostTableSeeder extends Seeder
                   'idWallet'=>1,
                   'note' => 'Đóng Tiền Nhà Trọ',
                   'amount' => 2000000,
-                  'date' => '2020-06-10',
+                  'date' => '2020-07-10',
                   
                 ],
                 [
@@ -28,7 +28,7 @@ class CostTableSeeder extends Seeder
                     'idWallet'=>1,
                     'note' => 'Tiền Ăn Hàng Tháng',
                     'amount' => 2000000,
-                    'date' => '2020-06-10',
+                    'date' => '2020-07-10',
                     
                 ],
     

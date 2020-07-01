@@ -41,6 +41,9 @@ class CreateSettingsTable extends Migration
             $table->text('code_chat_facebook')->nullable();
             $table->text('GOOGLE_RECAPTCHA_KEY')->nullable();
             $table->text('GOOGLE_RECAPTCHA_SECRET')->nullable();
+            $table->text('FACEBOOK_APP_ID')->nullable();
+            $table->text('FACEBOOK_APP_SECRET')->nullable();
+            $table->text('FACEBOOK_APP_CALLBACK_URL')->nullable();
             $table->text('terms_conditions')->nullable();
             $table->timestamps();
         });

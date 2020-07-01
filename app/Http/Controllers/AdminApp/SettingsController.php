@@ -86,7 +86,13 @@ class SettingsController extends Controller
         $this->setEnv('MAIL_USERNAME',$Request->email);
         $this->setEnv('MAIL_PASSWORD',$Request->password);
         $this->setEnv('MAIL_RECEIVE',$Request->email_receive);
-        if($data->save()){
+        $data->FACEBOOK_APP_ID = $Request->FACEBOOK_APP_ID;
+        $data->FACEBOOK_APP_SECRET = $Request->FACEBOOK_APP_SECRET;
+        $data->FACEBOOK_APP_CALLBACK_URL = $Request->FACEBOOK_APP_CALLBACK_URL;
+        $this->setEnv('FACEBOOK_APP_ID')->nullable();
+        $this->setEnv('FACEBOOK_APP_SECRET')->nullable();
+        $this->setEnv('FACEBOOK_APP_CALLBACK_URL')->nullable();
+        if($this->save()){
             return JSON2(true,"Cập Nhật Thành Công");
         }else{
             return JSON2(false,"Cập Nhật Không Thành Công");

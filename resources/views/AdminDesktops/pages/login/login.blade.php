@@ -58,9 +58,9 @@
         <br>
         <div class="row">
           <div class="col-md-12">
-                <button type="button" disabled id="button-login-facebook" class="btn btn-info btn-flat btn-block">
+                <a href="{{route('login-redirect')}}"  id="button-login-facebook" class="btn btn-info btn-flat btn-block">
                   <i class="fab fa-facebook" aria-hidden="true"></i>
-                   Đăng nhập Facebook </button>
+                   Đăng nhập Facebook </a>
           </div>
         </div> 
         <br>
