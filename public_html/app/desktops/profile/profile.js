@@ -120,6 +120,42 @@ function profile(){
 		$("#formProfile").on('submit', function (e) {
 			e.preventDefault();
 		});
+		
+		$("#formChangePassword").on('submit',function(e){
+			e.preventDefault();
+			var formData = new FormData($(this)[0]);
+				buttonloading('#btn-change-password', true);
+				$.ajax({
+					url: datas.routes.changepassword,
+					type: 'POST',
+					data: formData,
+					dataType: 'JSON',
+					processData: false,
+					contentType: false,
+					success: function (data) {
+						if (data.statusBoolen) {
+							buttonloading('#btn-change-password', false);
+                            $("#old_password").val('');
+							$("#new_password").val('');
+							$("#re_password").val('');
+							$(".alertJS").html(alertJS(data.messages,'success'));
+							Toast.fire({
+								icon: data.icon,
+								title: data.messages
+							});
+						} else {
+							$(".alertJS").html(alertJS(data.messages,'danger'));
+							buttonloading('#btn-change-password', false);
+						}
+					},
+					error: function (error) {
+						console.log(error);
+						$(".alertJS").html(alertJS(error,'danger'));
+						buttonloading('#btn-change-password', false);
+					}
+				});
+			
+		});
 
     }
 }

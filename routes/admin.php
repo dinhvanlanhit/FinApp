@@ -8,6 +8,7 @@ Route::group(['namespace' => 'AdminApp','prefix' => 'app','middleware' => ['Chec
         Route::get('admin-profile','ProfileController@getProfile')->name('admin_profile');
         Route::post('admin-profile','ProfileController@postProfile')->name('admin_profile');
         Route::post('admin-uploadFile','ProfileController@uploadFile')->name('admin_uploadFile');
+        Route::post('/admin-change-password','ProfileController@postChangePassword')->name('admin-change-password');
     });
     Route::group(['prefix' => 'users'], function () {
         Route::get('admin-users','UsersController@getIndex')->name('admin_users')->middleware('CheckPermission:users_view');
@@ -20,14 +21,14 @@ Route::group(['namespace' => 'AdminApp','prefix' => 'app','middleware' => ['Chec
         Route::post('admin-users-status','UsersController@postUpdate')->name('admin_users_status')->middleware('CheckPermission:users_status');
     });
     Route::group(['prefix' => 'payment'], function (){
-        Route::get('admin-users-payment/{id?}','PaymentController@getPayMent')->name('admin_users_payment')->middleware('CheckPermission:payment_status');
+        Route::get('admin-users-payment/{id?}','PaymentController@getPayMent')->name('admin_users_payment')->middleware('CheckPermission:payment_view');
         Route::get('admin-payment-datatable','PaymentController@getDatatable')->name('admin_payment_datatable');
-        Route::get('admin-payment-update/{id?}','PaymentController@getUpdate')->name('admin_payment_update')->middleware('CheckPermission:payment_status');
-        Route::post('admin-payment-update','PaymentController@postUpdate')->name('admin_payment_update')->middleware('CheckPermission:payment_status');
-        Route::get('admin-payment-insert','PaymentController@getInsert')->name('admin_payment_insert')->middleware('CheckPermission:payment_status');
-        Route::post('admin-payment-insert','PaymentController@postInsert')->name('admin_payment_insert')->middleware('CheckPermission:payment_status');
-        Route::post('admin-payment-delete','PaymentController@postDelete')->name('admin_payment_delete')->middleware('CheckPermission:payment_status');
-        Route::post('admin-payment-status','PaymentController@postUpdate')->name('admin_payment_status')->middleware('CheckPermission:payment_status');
+        Route::get('admin-payment-update/{id?}','PaymentController@getUpdate')->name('admin_payment_update')->middleware('CheckPermission:payment_update');
+        Route::post('admin-payment-update','PaymentController@postUpdate')->name('admin_payment_update')->middleware('CheckPermission:payment_update');
+        Route::get('admin-payment-insert','PaymentController@getInsert')->name('admin_payment_insert')->middleware('CheckPermission:payment_insert');
+        Route::post('admin-payment-insert','PaymentController@postInsert')->name('admin_payment_insert')->middleware('CheckPermission:payment_insert');
+        Route::post('admin-payment-delete','PaymentController@postDelete')->name('admin_payment_delete')->middleware('CheckPermission:payment_delete');
+        Route::post('admin-payment-status','PaymentController@postUpdate')->name('admin_payment_status');
     }); 
     Route::group(['prefix' => 'setting'], function (){
         Route::get('admin-setting','SettingsController@getSetting')->name('admin_setting')->middleware('CheckPermission:setting_view');

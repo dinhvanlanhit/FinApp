@@ -6,12 +6,19 @@ Route::group(['namespace' => 'App'], function () {
     Route::get('/logout','LoginController@getLogout')->name('logout');
     Route::get('/register','RegisterController@getRegister')->name('register');
     Route::post('/register','RegisterController@postRegister')->name('register');
-    Route::get('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
-    Route::post('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
+    
 
     Route::get('/redirect/{provider?}', 'SocialController@redirectToProvider')->name('login-redirect');
     Route::get('/callback/{provider?}', 'SocialController@handleProviderCallback')->name('login-callback');
+    
+    Route::get('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
+    Route::post('/sendEmail','RegisterController@sendEmail')->name('sendEmail');
 
+    Route::get('/recover/code','RegisterController@getRecovercode')->name('recover_code');
+    Route::post('/recover/code','RegisterController@postRecovercode')->name('recover_code');
+    
+    Route::get('password','RegisterController@getPassword')->name('password');
+    Route::post('password','RegisterController@postPassword')->name('password');
 
 });
 Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
@@ -131,6 +138,8 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::get('/','ProfileController@getProfile')->name('profile');
         Route::post('/','ProfileController@postProfile')->name('profile');
         Route::post('/uploadFile','ProfileController@uploadFile')->name('uploadFile');
+        Route::post('/change-password','ProfileController@postChangePassword')->name('change-password');
+        
     });
     Route::group(['prefix' => 'contact'], function (){
         Route::get('/','ContactController@getContact')->name('contact');

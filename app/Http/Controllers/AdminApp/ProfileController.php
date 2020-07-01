@@ -74,5 +74,21 @@ class ProfileController extends Controller
             }
         }
     }
+    public function postChangePassword(Request $request)
+    {
+        if ($request->old_password . "" === "" || $request->new_password . "" === "" || $request->re_password . "" === "") {
+            return JSON2(false, 'Vui lòng nhập đầy đủ thông tin');
+        }
+        if (\Hash::check($request->old_password, Auth::user()->password)) {
+            if ($request->new_password === $request->re_password) {
+                Users::where('email', '=', Auth::user()->email)->update(['password' => \Hash::make($request->new_password)]);
+                return JSON2(true, 'Cập nhập mật khẩu thành công');
+            } else {
+                return JSON2(false, 'Mật khẩu mới không khớp !');
+            }
+        } else {
+            return JSON2(false, 'Mật khẩu củ không hợp lệ !');
+        }
+    }
 
 }

@@ -14,31 +14,28 @@
 	<link rel="stylesheet" href="{{asset('AdminDesktops/dist/css/adminlte.min.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+
 <body class="hold-transition login-page">
 	<div class="login-box">
-		<div class="card formSendEmail ">
-			<div class="card-header">
-				<h3 class="card-title">Tìm tài khoản</h3>
-			</div>
-			<div class="card-body card-body-dashboard">
-				<form id="formSendEmail">
-					<div class="input-group"> <span class="">Vui lòng nhập email để tìm kiếm tài khoản.</span>
-					</div>
-					<div class="email"></div>
-					<div class="input-group mb-3">
-						<input type="email" class="form-control " value="" name="email" placeholder="Email">
-						<div class="input-group-append">
-							<div class="input-group">
-								<button type="submit" id="button-formSendEmail" class="btn btn-warning btn-flat btn-block">Gửi</button>
-							</div>
-						</div>
-					</div>
-				</form>
-				<div class="form-group"> <a href="{{route('login')}}" id="button-register" class="btn btn-flat btn-success btn-block">Đăng nhập</a>
+		<div id="" class="card formRecoverCcode ">
+			<form id="formConfirmCode">
+				<div class="card-header">
+					<h3 class="card-title">Nhập mã bảo mật</h3>
 				</div>
-				<div class="form-group"> <a href="{{route('register')}}" id="button-register" class="btn btn-flat btn-info btn-block">Đăng Ký</a>
+				<div class="card-body card-body-dashboard">
+					<p style="font-size: 10pt">Chúng tôi đã gửi cho bạn mã đến : dinhvanlanh.it@gmail.com</p>
+					<p style="font-size: 10pt">Vui lòng kiểm tra mã trong email của bạn. Mã này gồm 6 số.</p>
+					<div class="recover_code"></div>
+					<div class="form-group mb-3">
+						<input type="text" class="form-control " value="" name="remember_token" placeholder=" .... ">
+					</div>
 				</div>
-			</div>
+				<div class="card-footer">
+					<button type="button" class="btn btn-danger btn-sm btn-flat pull-right" id="btn-cancel-formSendEmail">Hủy</button>
+					<button type="button" class="btn btn-success btn-sm btn-flat pull-left" value="" id="btn-formSendEmail">Bạn chưa có mã?</button>
+					<button type="submit" id="button-recover_code" class="btn btn-primary btn-sm btn-flat pull-right">Tiếp tục</button>
+				</div>
+			</form>
 		</div>
 	</div>
 	<script>

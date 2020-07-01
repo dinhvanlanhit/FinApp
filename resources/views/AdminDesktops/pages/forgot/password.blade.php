@@ -14,30 +14,28 @@
 	<link rel="stylesheet" href="{{asset('AdminDesktops/dist/css/adminlte.min.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+
 <body class="hold-transition login-page">
 	<div class="login-box">
-		<div class="card formSendEmail ">
+		<div id="" class="card formChangePassword d-none">
 			<div class="card-header">
-				<h3 class="card-title">Tìm tài khoản</h3>
+				<h3 class="card-title">Nhập mật khẩu mới</h3>
 			</div>
 			<div class="card-body card-body-dashboard">
-				<form id="formSendEmail">
-					<div class="input-group"> <span class="">Vui lòng nhập email để tìm kiếm tài khoản.</span>
+				<form id="formChangePassword">
+					<div class="passowrd"></div>
+					<div class="form-group">
+						<label>Nhập mật khẩu mới</label>
+						<input type="text" class="form-control " value="" name="passowrd" placeholder=" .... ">
 					</div>
-					<div class="email"></div>
-					<div class="input-group mb-3">
-						<input type="email" class="form-control " value="" name="email" placeholder="Email">
-						<div class="input-group-append">
-							<div class="input-group">
-								<button type="submit" id="button-formSendEmail" class="btn btn-warning btn-flat btn-block">Gửi</button>
-							</div>
-						</div>
+					<div class="form-group">
+						<label>Xác nhận mật khẩu mới</label>
+						<input type="text" class="form-control " value="" name="re_passowrd" placeholder=" .... ">
+					</div>
+					<div class="form-group">
+						<button type="submit" id="button-passowrd" class="btn btn-info btn-block btn-flat pull-right">Tiếp tục</button>
 					</div>
 				</form>
-				<div class="form-group"> <a href="{{route('login')}}" id="button-register" class="btn btn-flat btn-success btn-block">Đăng nhập</a>
-				</div>
-				<div class="form-group"> <a href="{{route('register')}}" id="button-register" class="btn btn-flat btn-info btn-block">Đăng Ký</a>
-				</div>
 			</div>
 		</div>
 	</div>

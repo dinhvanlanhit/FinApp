@@ -116,39 +116,35 @@
                           </form>
                         </div>
                         <div class="tab-pane" id="userChanePass">
-                            <form class="form-horizontal">
-                              <div class="form-group row">
-                                <label for="old_password" class="col-sm-2 col-form-label"> Nhập lại mật khẩu củ 
-                                    <span class="text-danger old_password"></span>
-                                </label>
-                                <div class="col-sm-10">
-                                  <input type="password" class="form-control" id="old_password" name="old_password" placeholder="">
-                                </div>
+                          <form id="formChangePassword" class="form-horizontal">
+                            <div class="form-group">
+                              <div class="alertJS"></div>
+                            </div>
+                            <div class="form-group ">
+                              <label for="old_password" >Nhập lại mật khẩu củ <span class="text-danger old_password"></span>
+                              </label>
+                              <input type="password" class="form-control" id="old_password" name="old_password" placeholder="">
+                              
+                            </div>
+                            <div class="form-group ">
+                              <label for="new_password" >Nhập mật khẩu mới <span class="text-danger old_password"></span>
+                              </label>
+                            
+                                <input type="password" class="form-control" id="new_password" name="new_password">
+                            
+                            </div>
+                            <div class="form-group ">
+                              <label for="re_password" class="">Xác nhận lại mật khẩu mới <span class="text-danger old_password"></span>
+                              </label>
+                              <input type="password" class="form-control" id="re_password" name="re_password" placeholder="...">
+                              
+                            </div>
+                            <div class="form-group ">
+                              <div class="offset-sm-2 col-sm-10"> <a href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
+                                <button type="submit" id="btn-change-password" class="btn btn-success">Lưu</button>
                               </div>
-                              <div class="form-group row">
-                                <label for="password1" class="col-sm-2 col-form-label"> Nhập mật khẩu mới
-                                    <span class="text-danger old_password"></span>
-                                </label>
-                                <div class="col-sm-10">
-                                  <input type="password" class="form-control"  id="password1" name="password1" >
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="inputName2" class="col-sm-2 col-form-label">
-                                    Xác nhận lại mật khẩu mới
-                                    <span class="text-danger old_password"></span>
-                                </label>
-                                <div class="col-sm-10">
-                                  <input type="password" class="form-control" id="password2" name="password2" placeholder="...">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <div class="offset-sm-2 col-sm-10">
-                                  <a  href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
-                                  <button type="submit" class="btn btn-danger">Lưu</button>
-                                </div>
-                              </div>
-                            </form>
+                            </div>
+                          </form>
                           </div>
                         <!-- /.tab-pane -->
                       </div>
@@ -173,6 +169,7 @@
         routes:{
           profile:"{{route('admin_profile')}}",
           uploadFile:"{{route('admin_uploadFile')}}",
+          changepassword:"{{route('admin-change-password')}}"
         }
     }   
     profile.runJS();

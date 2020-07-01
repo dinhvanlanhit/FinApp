@@ -118,6 +118,6 @@ class PaymentController extends Controller
     }
     public function getMethods(Request $Request)
     {
-        return view(template().'.pages.payment.method');
+        return view(template().'.pages.payment.method',['usepayments'=>UsePayment::get()]);
     }
 }

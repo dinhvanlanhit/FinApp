@@ -68,10 +68,10 @@
         @endif
         <div class="row">
           <div class="col-md-6 text-left">
-              <a href="{{route('forgot-password')}}" class=" text-info">Tôi quên mật khẩu của tôi</a>
+              <a href="{{route('forgot-password')}}" class="btn-link ">Tôi quên mật khẩu của tôi</a>
           </div>
           <div class="col-md-6 text-right">
-              <a href="{{route('register')}}" class=" text-info">Đăng ký thành viên mới</a>
+              <a href="{{route('register')}}" class="btn-link ">Đăng ký thành viên mới</a>
           </div>
         </div>
       </form>

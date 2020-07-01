@@ -89,5 +89,21 @@ class RegisterController extends Controller
     {
         return view(template().'.pages.forgot.forgot');
     }
-
+    public function sendEmail(Request $Request)
+    {
+        # code...
+    }
+    public function recovercode(Request $Request)
+    {
+        # code...
+    }
+    
+    public function postRecovercode(Request $Request)
+    {
+        # code...
+    }
+    public function password(Request $Request)
+    {
+        # code...
+    }
 }
