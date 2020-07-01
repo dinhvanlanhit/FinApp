@@ -91,7 +91,7 @@ class DashboardController extends Controller
     }
     public function sumEvent($Between)
     {
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         if(!empty($Between[0])||!empty($Between[1])){
             return Event::where('idUser','=',$idUser)->whereBetween('date',$Between)->sum('amount');
         }else{
@@ -101,7 +101,7 @@ class DashboardController extends Controller
     }
     public function sumShopping($Between)
     {
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         if(!empty($Between[0])||!empty($Between[1])){
             return Shopping::where('idUser','=',$idUser)->whereBetween('date',$Between)->sum('amount');
         }else{
@@ -112,7 +112,7 @@ class DashboardController extends Controller
     public function sumCost($Between)
     {
        
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         if(!empty($Between[0])||!empty($Between[1])){
             return Cost::where('idUser','=',$idUser)->whereBetween('date',$Between)->sum('amount');
         }else{
@@ -122,7 +122,7 @@ class DashboardController extends Controller
     public function sumSalary($Between)
     {
        
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         if(!empty($Between[0])||!empty($Between[1])){
             return Salary::where('idUser','=',$idUser)->whereBetween('date',$Between)->sum('amount');
         }else{
@@ -130,7 +130,7 @@ class DashboardController extends Controller
         }
     }
     public function sumInvest($Between){
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         if(!empty($Between[0])||!empty($Between[1])){
             return Invest::where('idUser','=',$idUser)->whereBetween('date',$Between)->sum('amount');
         }else{
@@ -138,7 +138,7 @@ class DashboardController extends Controller
         }
     }
     public function sumLendloan($Between){
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         if(!empty($Between[0])||!empty($Between[1])){
             return Lendloan::where('idUser','=',$idUser)->whereBetween('date',$Between)->sum('amount');
         }else{
@@ -146,7 +146,7 @@ class DashboardController extends Controller
         }
     }
     public function sumDebt($Between){
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         if(!empty($Between[0])||!empty($Between[1])){
             return Debt::where('idUser','=',$idUser)->whereBetween('date',$Between)->sum('amount');
         }else{
@@ -154,14 +154,14 @@ class DashboardController extends Controller
         }
     }
     public function sumAsset($Between){
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         return Asset::where('idUser','=',$idUser)->sum('amount')+surplus();
         
     }
 
     public function getCharDashboard(Request $Request)
     {
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $Between =  [$Request->dateBegin, $Request->dateEnd];
         $type = $Request->type;
         if($type=='event'){

@@ -25,7 +25,7 @@ class DebtController extends Controller
             4 => 'date', 
             5 => 'created_at'
         );
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $limit = $Request->input('length');
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
@@ -175,7 +175,7 @@ class DebtController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result =Debt::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result =Debt::where('idUser','=',idUser())->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -186,7 +186,7 @@ class DebtController extends Controller
     {
 
         $Debt = new Debt();
-        $Debt->idUser = Auth::user()->id;
+        $Debt->idUser = idUser();
         $Debt->idTypeDebt = $Request->idTypeDebt;
         $Debt->idWallet = $Request->idWallet;
         $Debt->name= $Request->name;
@@ -208,7 +208,7 @@ class DebtController extends Controller
     {
 
         $Debt =  Debt::find((int)$Request->id);
-        $Debt->idUser = Auth::user()->id;
+        $Debt->idUser = idUser();
         $Debt->idWallet = $Request->idWallet;
         $Debt->idTypeDebt = $Request->idTypeDebt;
         $Debt->name= $Request->name;
@@ -228,7 +228,7 @@ class DebtController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $Debt =  Debt::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        $Debt =  Debt::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Debt){
             return JSON1($Debt);
         }else{

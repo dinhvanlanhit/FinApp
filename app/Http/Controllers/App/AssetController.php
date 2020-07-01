@@ -25,7 +25,7 @@ class AssetController extends Controller
             4 => 'note', 
             5 => 'created_at'
         );
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $limit = $Request->input('length');
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
@@ -155,8 +155,7 @@ class AssetController extends Controller
                       $totalFiltered =$Asset->count();
                 }
             }
-        }
-            
+        }    
         $json_data = array(
             "draw"            => intval($Request->input('draw')),  
             "recordsTotal"    => intval($totalData),  
@@ -169,7 +168,7 @@ class AssetController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result =Asset::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result =Asset::where('idUser','=',idUser())->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -179,7 +178,7 @@ class AssetController extends Controller
     public function postInsert(Request $Request)
     {
         $Asset = new Asset();
-        $Asset->idUser = Auth::user()->id;
+        $Asset->idUser = idUser();
         $Asset->idTypeAsset = $Request->idTypeAsset;
         $Asset->name=$Request->name;
         $Asset->amount = $Request->amount;
@@ -196,7 +195,7 @@ class AssetController extends Controller
     {
 
         $Asset =  Asset::find((int)$Request->id);
-        $Asset->idUser = Auth::user()->id;
+        $Asset->idUser = idUser();
         $Asset->idTypeAsset = $Request->idTypeAsset;
         $Asset->name=$Request->name;
         $Asset->amount = $Request->amount;
@@ -211,7 +210,7 @@ class AssetController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $Asset =  Asset::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        $Asset =  Asset::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Asset){
             return JSON1($Asset);
         }else{

@@ -26,7 +26,8 @@
                               <option  @if($permissions) {{$permissions->contains('users_insert')==true?'selected':''}}  @endif value="users_insert">Thêm</option>
                               <option  @if($permissions) {{$permissions->contains('users_update')==true?'selected':''}}  @endif value="users_update">Sửa</option>
                               <option  @if($permissions) {{$permissions->contains('users_delete')==true?'selected':''}}  @endif value="users_delete">Xóa</option>
-                             
+                              <option  @if($permissions) {{$permissions->contains('users_data_view')==true?'selected':''}}  @endif value="users_data_view">Truy cập</option>
+                              
                       </select>
                     </div>
                 </div>

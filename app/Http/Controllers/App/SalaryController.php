@@ -26,7 +26,7 @@ class SalaryController extends Controller
             5 => 'date', 
             6 => 'created_at'
         );
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $limit = $Request->input('length');
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
@@ -171,7 +171,7 @@ class SalaryController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result =Salary::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result =Salary::where('idUser','=',idUser())->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -182,7 +182,7 @@ class SalaryController extends Controller
     {
 
         $Salary = new Salary();
-        $Salary->idUser = Auth::user()->id;
+        $Salary->idUser = idUser();
         $Salary->idWallet = $Request->idWallet;
         $Salary->idTypeSalary = $Request->idTypeSalary;
         $Salary->amount = $Request->amount;
@@ -205,7 +205,7 @@ class SalaryController extends Controller
     {
 
         $Salary =  Salary::find((int)$Request->id);
-        $Salary->idUser = Auth::user()->id;
+        $Salary->idUser = idUser();
         $Salary->idWallet = $Request->idWallet;
         $Salary->company = $Request->company;
         $Salary->idTypeSalary = $Request->idTypeSalary;
@@ -226,7 +226,7 @@ class SalaryController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $Salary =  Salary::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        $Salary =  Salary::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Salary){
             return JSON1($Salary);
         }else{

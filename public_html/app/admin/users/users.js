@@ -90,6 +90,13 @@ function users() {
 							title: 'Thanh Toán',
 							icon: '',
 							text: 'Thanh Toán'
+						},
+						{
+							class: 'btn-view',
+							value: row.id,
+							title: 'Truy cập',
+							icon: '',
+							text: 'Truy cập'
 						}
 					]);
 					}
@@ -122,6 +129,12 @@ function users() {
 			return window.location.href=datas.routes.update+'/'+id;
 		
 		});
+		$(document).delegate(".btn-view", "click", function () {
+			var id = $(this).val();
+			return window.location.href=datas.routes.viewUsers+'/'+id;
+		
+		});
+		
 		$(document).delegate(".btn-payment", "click", function () {
 			var id = $(this).val();
 			return window.location.href=datas.routes.payment+'/'+id;

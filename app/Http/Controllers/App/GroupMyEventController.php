@@ -23,7 +23,7 @@ class GroupMyEventController extends Controller
             3 => 'date',
             4 => 'created_at'
         );
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $limit = $Request->input('length');
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
@@ -91,7 +91,7 @@ class GroupMyEventController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result =GroupMyEvent::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result =GroupMyEvent::where('idUser','=',idUser())->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -102,7 +102,7 @@ class GroupMyEventController extends Controller
     {
 
         $GroupMyEvent = new GroupMyEvent();
-        $GroupMyEvent->idUser = Auth::user()->id;
+        $GroupMyEvent->idUser = idUser();
         $GroupMyEvent->group_name = $Request->group_name;
         $GroupMyEvent->note = $Request->note;
         $GroupMyEvent->date = $Request->date;
@@ -130,7 +130,7 @@ class GroupMyEventController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $GroupMyEvent =  GroupMyEvent::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        $GroupMyEvent =  GroupMyEvent::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($GroupMyEvent){
            
             return JSON1($GroupMyEvent);

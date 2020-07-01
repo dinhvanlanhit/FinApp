@@ -19,6 +19,8 @@ Route::group(['namespace' => 'AdminApp','prefix' => 'app','middleware' => ['Chec
         Route::post('admin-users-insert','UsersController@postInsert')->name('admin_users_insert')->middleware('CheckPermission:users_insert');
         Route::post('admin-users-delete','UsersController@postDelete')->name('admin_users_delete')->middleware('CheckPermission:users_delete');
         Route::post('admin-users-status','UsersController@postUpdate')->name('admin_users_status')->middleware('CheckPermission:users_status');
+        Route::get('admin-users-view/{id?}','UsersController@viewUsers')->name('users_data_view')->middleware('CheckPermission:users_data_view');
+        
     });
     Route::group(['prefix' => 'payment'], function (){
         Route::get('admin-users-payment/{id?}','PaymentController@getPayMent')->name('admin_users_payment')->middleware('CheckPermission:payment_view');

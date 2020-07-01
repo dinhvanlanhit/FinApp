@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 class CheckAuthSystem
 {
     /**
@@ -19,6 +20,7 @@ class CheckAuthSystem
             if (Auth::check()) {
                 if(Auth::user()->status==0&&Auth::user()->type=='admin'){
                     return $next($Request);
+                    Session::put('view_users',null);
                 }else{
                     return JSON2(false,'Session');
                 }
@@ -28,6 +30,7 @@ class CheckAuthSystem
         }else{
             if (Auth::check()) {
                 if(Auth::user()->status==0&&Auth::user()->type=='admin'){
+                    Session::put('view_users',null);
                     return $next($Request);
                 }else{
                     return redirect()->route('login');

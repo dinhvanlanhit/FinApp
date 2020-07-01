@@ -25,7 +25,7 @@ class LendloanController extends Controller
             3 => 'date', 
             4 => 'created_at'
         );
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $limit = $Request->input('length');
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
@@ -112,7 +112,7 @@ class LendloanController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result =Lendloan::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result =Lendloan::where('idUser','=',idUser())->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -123,7 +123,7 @@ class LendloanController extends Controller
     {
 
         $Lendloan = new Lendloan();
-        $Lendloan->idUser = Auth::user()->id;
+        $Lendloan->idUser = idUser();
         $Lendloan->idWallet = $Request->idWallet;
         $Lendloan->name= $Request->name;
         $Lendloan->birthday = $Request->birthday;
@@ -147,7 +147,7 @@ class LendloanController extends Controller
     public function postUpdate(Request $Request)
     {
         $Lendloan =  Lendloan::find((int)$Request->id);
-        $Lendloan->idUser = Auth::user()->id;
+        $Lendloan->idUser = idUser();
         $Lendloan->idWallet = $Request->idWallet;
         $Lendloan->name= $Request->name;
         $Lendloan->birthday = $Request->birthday;
@@ -169,7 +169,7 @@ class LendloanController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $Lendloan =  Lendloan::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        $Lendloan =  Lendloan::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Lendloan){
             return JSON1($Lendloan);
         }else{

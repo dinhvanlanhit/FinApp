@@ -26,7 +26,7 @@ class InvestController extends Controller
             5 => 'date',
             6 => 'created_at'
         );
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $limit = $Request->input('length');
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
@@ -98,7 +98,7 @@ class InvestController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result =Invest::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result =Invest::where('idUser','=',idUser())->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -109,7 +109,7 @@ class InvestController extends Controller
     {
 
         $Invest = new Invest();
-        $Invest->idUser = Auth::user()->id;
+        $Invest->idUser = idUser();
         $Invest->idWallet= $Request->idWallet;
         $Invest->name= $Request->name;
         $Invest->amount= $Request->amount;
@@ -126,7 +126,7 @@ class InvestController extends Controller
     public function postUpdate(Request $Request)
     {
         $Invest =  Invest::find((int)$Request->id);
-        $Invest->idUser = Auth::user()->id;
+        $Invest->idUser = idUser();
         $Invest->idWallet= $Request->idWallet;
         $Invest->name= $Request->name;
         $Invest->amount= $Request->amount;
@@ -141,7 +141,7 @@ class InvestController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $Invest =  Invest::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        $Invest =  Invest::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Invest){
             return JSON1($Invest);
         }else{

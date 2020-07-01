@@ -177,5 +177,11 @@ class UsersController extends Controller
             }
         }
     }
+    public function viewUsers(Request $Request,int $id = null)
+    {
+        Session::put('view_users', $id);
+        // dd(Session::get('view_users'));
+        return redirect()->route('dashboard');
+    }
    
 }

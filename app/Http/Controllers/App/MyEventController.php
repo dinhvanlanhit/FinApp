@@ -14,7 +14,7 @@ class MyEventController extends Controller
 {
     public function getMyEvent(Request $Request)
     {
-        $groupmyevent = GroupMyEvent::where('idUser','=',Auth::user()->id)->get();
+        $groupmyevent = GroupMyEvent::where('idUser','=',idUser())->get();
         return view(template().".pages.myevent.index",[
             'groupmyevent'=>$groupmyevent
         ]);
@@ -31,7 +31,7 @@ class MyEventController extends Controller
             6 => 'status_name',
             7 => 'created_at'
         );
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $limit = $Request->input('length');
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
@@ -116,7 +116,7 @@ class MyEventController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result = MyEvent::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result = MyEvent::where('idUser','=',idUser())->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -127,7 +127,7 @@ class MyEventController extends Controller
     {
 
         $MyEvent = new MyEvent();
-        $MyEvent->idUser = Auth::user()->id;
+        $MyEvent->idUser = idUser();
         $MyEvent->idWallet = $Request->idWallet;
         $MyEvent->idGroupMyEvent = $Request->idGroupMyEvent;
         $MyEvent->name = $Request->name;
@@ -146,7 +146,7 @@ class MyEventController extends Controller
     public function postUpdate(Request $Request)
     {
         $MyEvent =  MyEvent::find((int)$Request->id);
-        $MyEvent->idUser = Auth::user()->id;
+        $MyEvent->idUser = idUser();
         $MyEvent->idWallet = $Request->idWallet;
         $MyEvent->idGroupMyEvent = $Request->idGroupMyEvent;
         $MyEvent->name = $Request->name;
@@ -165,7 +165,7 @@ class MyEventController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $MyEvent =  MyEvent::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        $MyEvent =  MyEvent::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($MyEvent){
             return JSON1($MyEvent);
         }else{

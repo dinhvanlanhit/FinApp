@@ -23,7 +23,7 @@ class Goals_dreamsController extends Controller
             4 => 'dateEnd',
             5 => 'created_at'
         );
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $limit = $Request->input('length');
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
@@ -91,7 +91,7 @@ class Goals_dreamsController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result =Goals_dreams::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result =Goals_dreams::where('idUser','=',idUser())->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -102,7 +102,7 @@ class Goals_dreamsController extends Controller
     {
 
         $Goals_dreams = new Goals_dreams();
-        $Goals_dreams->idUser = Auth::user()->id;
+        $Goals_dreams->idUser = idUser();
         $Goals_dreams->name= $Request->name;
         $Goals_dreams->note = $Request->note;
         $Goals_dreams->dateBegin = $Request->dateBegin;
@@ -118,7 +118,7 @@ class Goals_dreamsController extends Controller
     public function postUpdate(Request $Request)
     {
         $Goals_dreams =  Goals_dreams::find((int)$Request->id);
-        $Goals_dreams->idUser = Auth::user()->id;
+        $Goals_dreams->idUser = idUser();
         $Goals_dreams->name= $Request->name;
         $Goals_dreams->note = $Request->note;
         $Goals_dreams->dateBegin = $Request->dateBegin;
@@ -132,7 +132,7 @@ class Goals_dreamsController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $Goals_dreams =  Goals_dreams::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        $Goals_dreams =  Goals_dreams::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Goals_dreams){
             return JSON1($Goals_dreams);
         }else{

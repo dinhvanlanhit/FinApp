@@ -27,7 +27,7 @@ class EventController extends Controller
             6 => 'date', 
             7 => 'created_at'
         );
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $limit = $Request->input('length');
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
@@ -177,7 +177,7 @@ class EventController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result =Event::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result =Event::where('idUser','=',idUser())->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -188,7 +188,7 @@ class EventController extends Controller
     {
 
         $Event = new Event();
-        $Event->idUser = Auth::user()->id;
+        $Event->idUser = idUser();
         $Event->idWallet = $Request->idWallet;
         $Event->idTypeEvent = $Request->idTypeEvent;
         $Event->name = $Request->name;
@@ -211,7 +211,7 @@ class EventController extends Controller
         $new_amount = $Request->amount;//Mới
         $old_idWallet = $Event->idWallet;//Củ
         $new_idWallet = $Request->idWallet;//Mới
-        $Event->idUser = Auth::user()->id;
+        $Event->idUser = idUser();
         $Event->idTypeEvent = $Request->idTypeEvent;
         $Event->idWallet = $Request->idWallet;
         $Event->name = $Request->name;
@@ -229,7 +229,7 @@ class EventController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $Event =  Event::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        $Event =  Event::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Event){
            
             return JSON1($Event);

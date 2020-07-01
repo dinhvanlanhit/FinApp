@@ -7,22 +7,18 @@
     <li class="nav-item  ">
       <a href="{{route('wallet')}}" class="nav-link active"> <b> <i class="fa fa-money"></i> </b><b class="surplus" id="surplus"> {{number_format(surplus())}}</b><b> VNĐ </b></a>
     </li>
-    <li class="nav-item d-none d-sm-inline-block">
-      <a href="{{route('profile')}}" class="nav-link active"><b> <i class="fa fa-user"></i> {{Auth::user()->full_name}}</b></a>
-    </li>
+    @if (Session::get('view_users')!=null)
+    <a href="javascript:void(0)" class="nav-link active"><b> <i class="fa fa-user"></i> {{user()->full_name}}</b></a>
+    @else
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{route('profile')}}" class="nav-link active"><b> <i class="fa fa-user"></i> {{user()->full_name}}</b></a>
+      </li>
+    @endif
     <li class="nav-item d-none d-sm-inline-block">
       <a href="{{route('contact')}}" class="nav-link"><b>Liên Hệ</b></a>
     </li>
   </ul>
-  <!-- SEARCH FORM -->
-
-  <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
-    {{-- <li class="nav-item">
-      <a href="{{route('mobile-test')}}"  class="nav-link" role="button">
-        <i class="fas fa-mobile-alt"></i>
-      </a>
-    </li> --}}
     @if (Auth::user()->type=='admin')
     <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('admin_dashboard')}}"  title="Quản Lý Hệ Thống" class="nav-link">
@@ -30,7 +26,6 @@
         </a>
       </li>
     @endif
-    
     <li class="nav-item">
       <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-logout" class="nav-link" role="button">
         <i class="fas fa-sign-out-alt"></i>

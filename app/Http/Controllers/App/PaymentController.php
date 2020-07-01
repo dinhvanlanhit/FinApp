@@ -32,7 +32,7 @@ class PaymentController extends Controller
         $order = $columns[$Request->input('order.0.column')];
         $dir = $Request->input('order.0.dir');
         $search = $Request->input('search');
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $dateBegin = $Request->input('dateBegin');
         $dateEnd = $Request->input('dateEnd');
 

@@ -27,7 +27,7 @@ class ShoppingController extends Controller
             5 => 'date', 
             6 => 'created_at'
         );
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $limit = $Request->input('length');
         $start = $Request->input('start');
         $order = $columns[$Request->input('order.0.column')];
@@ -173,7 +173,7 @@ class ShoppingController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result =Shopping::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result =Shopping::where('idUser','=',idUser())->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -184,7 +184,7 @@ class ShoppingController extends Controller
     {
 
         $Shopping = new Shopping();
-        $Shopping->idUser = Auth::user()->id;
+        $Shopping->idUser = idUser();
         $Shopping->idWallet= $Request->idWallet;
         $Shopping->idTypeShopping = $Request->idTypeShopping;
         $Shopping->name = $Request->name;
@@ -204,7 +204,7 @@ class ShoppingController extends Controller
         $Shopping =  Shopping::find((int)$Request->id);
         $Shopping->idWallet= $Request->idWallet;
         $Shopping->idTypeShopping = $Request->idTypeShopping;
-        $Shopping->idUser = Auth::user()->id;
+        $Shopping->idUser = idUser();
         $Shopping->name = $Request->name;
         $Shopping->note = $Request->note;
         $Shopping->amount = $Request->amount;
@@ -218,7 +218,7 @@ class ShoppingController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $Shopping =  Shopping::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        $Shopping =  Shopping::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Shopping){
             return JSON1($Shopping);
         }else{

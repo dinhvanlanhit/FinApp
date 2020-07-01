@@ -30,7 +30,7 @@ class WalletController extends Controller
     }
     public function postDelete(Request $Request)
     {
-        $result =Wallet::where('idUser','=',Auth::user()->id)->where('id','=',$Request->id)->delete();
+        $result =Wallet::where('idUser','=',idUser())->where('id','=',$Request->id)->delete();
         if($result){
             return JSON2(true,"");
         }else{
@@ -40,7 +40,7 @@ class WalletController extends Controller
     public function postInsert(Request $Request)
     {
         $Wallet = new Wallet();
-        $Wallet->idUser = Auth::user()->id;
+        $Wallet->idUser = idUser();
         $Wallet->name= $Request->name;
         $Wallet->idTypeWallet = $Request->idTypeWallet;
         $Wallet->note = $Request->note;
@@ -54,7 +54,7 @@ class WalletController extends Controller
     public function postUpdate(Request $Request)
     {
         $Wallet =  Wallet::find((int)$Request->id);
-        $Wallet->idUser = Auth::user()->id;
+        $Wallet->idUser = idUser();
         $Wallet->name= $Request->name;
         $Wallet->idTypeWallet = $Request->idTypeWallet;
         $Wallet->note = $Request->note;
@@ -68,7 +68,7 @@ class WalletController extends Controller
     }
     public function getUpdate (Request $Request)
     {
-        $Wallet =  Wallet::where('id','=',(int)$Request->id)->where('idUser','=',Auth::user()->id)->first();
+        $Wallet =  Wallet::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Wallet){
             return JSON1($Wallet);
         }else{
@@ -78,7 +78,7 @@ class WalletController extends Controller
     }
     public function datatable()
     {
-        $idUser = Auth::user()->id;
+        $idUser = idUser();
         $SQL="SELECT * FROM (SELECT * FROM wallet AS wallet_PARENT LEFT JOIN"
                 ."(SELECT SUM(sumCOST) AS sumCOST, idWallet  FROM ("
                     ." SELECT SUM(amount) AS sumCOST , idWallet "

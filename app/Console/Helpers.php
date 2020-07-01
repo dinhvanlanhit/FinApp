@@ -1,20 +1,32 @@
 <?php
+
+function idUser()
+{
+    if(\Session::get('view_users')!=null){
+        return \Session::get('view_users');
+    }else{
+        return \Auth::user()->id;
+    }
+   
+}
+function user()
+{
+    return \App\Models\Users::where('id','=',idUser())->first();
+}
 function surplus()
 {
-    $idUser = \Auth::user()->id;
+    $idUser = idUser();
     $sumWallet  = \App\Models\Wallet::where('idUser','=',$idUser)->sum('amount');
-
-
     ///////////////////////////////////////
     $sumEvent = \App\Models\Event::where('idUser','=',$idUser)->sum('amount');
-    $sumShopping  = \App\Models\Shopping::where('idUser','=',\Auth::user()->id)->sum('amount');
-    $sumCost  = \App\Models\Cost::where('idUser','=',\Auth::user()->id)->sum('amount');
-    $sumSalary  = \App\Models\Salary::where('idUser','=',\Auth::user()->id)->sum('amount');
-    $sumLendloan  = \App\Models\Lendloan::where('idUser','=',\Auth::user()->id)->sum('amount');
-    $sumInvest  = \App\Models\Invest::where('idUser','=',\Auth::user()->id)->sum('amount');
-    $sumMyEvent  = \App\Models\MyEvent::where('idUser','=',\Auth::user()->id)->sum('amount');
+    $sumShopping  = \App\Models\Shopping::where('idUser','=',idUser())->sum('amount');
+    $sumCost  = \App\Models\Cost::where('idUser','=',idUser())->sum('amount');
+    $sumSalary  = \App\Models\Salary::where('idUser','=',idUser())->sum('amount');
+    $sumLendloan  = \App\Models\Lendloan::where('idUser','=',idUser())->sum('amount');
+    $sumInvest  = \App\Models\Invest::where('idUser','=',idUser())->sum('amount');
+    $sumMyEvent  = \App\Models\MyEvent::where('idUser','=',idUser())->sum('amount');
     
-    $sumDebt  = \App\Models\Debt::where('idUser','=',\Auth::user()->id)->where('idWallet','!=','null')->sum('amount');
+    $sumDebt  = \App\Models\Debt::where('idUser','=',idUser())->where('idWallet','!=','null')->sum('amount');
 
 
 
@@ -45,7 +57,7 @@ function  ActiveMenu($nameRoute = null)
 }
 function getWallet()
 {
-    $rs = \App\Models\Wallet::where('idUser','=',\Auth::user()->id)->get();
+    $rs = \App\Models\Wallet::where('idUser','=',idUser())->get();
     return $rs;
 }
 

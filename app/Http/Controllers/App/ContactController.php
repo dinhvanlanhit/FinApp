@@ -31,7 +31,7 @@ class ContactController extends Controller
       
         if($body->success){
             $Contact = new Contact();
-            $Contact->idUser = Auth::user()->id;
+            $Contact->idUser = idUser();
             $Contact->full_name = $Request->post('full_name');
             $Contact->email = $Request->post('email');
             $Contact->phone_number = $Request->post('phone_number');

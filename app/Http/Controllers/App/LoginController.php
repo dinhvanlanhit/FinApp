@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\Session;
 use Route;
 use DB;
 use Auth;
+use Illuminate\Support\Facades\Crypt;
 use App\Models\Users;
 use App\Models\Companies;
 class LoginController extends Controller
 {
     public function getLogin(Request $Request)
     {
-       return view(template().'.pages.login.login');
+        Session::put('view_users',null);
+        return view(template().'.pages.login.login');
     }
     public function postLogin(Request $Request)
     {
