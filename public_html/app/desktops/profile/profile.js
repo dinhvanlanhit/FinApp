@@ -106,7 +106,13 @@ function profile(){
 								icon: data.icon,
 								title: data.messages
 							});
+							$('.error-email').html('');
 						} else {
+							Toast.fire({
+								icon: data.icon,
+								title: data.messages
+							});
+							$('.error-email').html('('+data.messages+')');
 							buttonloading('#onSave', false);
 						}
 					},

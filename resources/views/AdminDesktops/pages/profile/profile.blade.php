@@ -9,22 +9,27 @@
 							<img class="img-responsive btn-block" id="user_avatar_profile" @if (empty(Auth::user()->avatar)) src="{{asset('./data/default/profile-default.png')}}" @else @if (file_exists('./data/users/users'.Auth::user()->id.'/'.Auth::user()->avatar)) src="{{asset('./data/users/users'.Auth::user()->id.'/'.Auth::user()->avatar)}}" @else src="{{asset('./data/default/profile-default.png')}}" @endif @endif alt="User profile picture"></label>
 					</div>
 					<h3 class="profile-username text-center  text-info"><b class="full_name_show">{{ mb_strtoupper(Auth::user()->full_name, "UTF-8")}}</b></h3>
-					<h3 class="profile-username text-center  text-info"><b class="full_name_show">{{ mb_strtoupper(Auth::user()->idKey, "UTF-8")}}</b></h3>
+					<h3 class="profile-username text-center  text-info"><b class="">{{ mb_strtoupper(Auth::user()->idKey, "UTF-8")}}</b></h3>
 					<p class="text-muted text-center "><b class="full_email_show">{{Auth::user()->email}}</b>
 					</p>
-          <input type="file" id="changeAvatar" class="d-none" name="avatar" />
-          @if (Auth::user()->status_payment==0)
+          			<input type="file" id="changeAvatar" class="d-none" name="avatar" />
+          	@if (Auth::user()->status_payment==0)
             <button type="button" class="btn btn-info btn-block"><b>Sử Dụng Miễn Phí</b></button>
-          @else
-          <ul class="list-group list-group-unbordered mb-3">
-						<li class="list-group-item"> <b>Ngày Đăng Ký </b>  <a class="float-right"><b>{{date_format(date_create($users->date),"d-m-Y")}}</b></a>
-						</li>
-						<li class="list-group-item"> <b>Sử Dụng Đến </b>  <a class="float-right"><b>{{date_format(date_create(getExpiryDate()),"d-m-Y")}}</b></a>
-						</li>
-          </ul> 
-          <a href="{{route('methods_payment')}}" class="btn btn-info btn-block"><b>  <i class="nav-icon fas fa-money"></i> Gia Hạn</b></a>
-          @endif
-					
+			<ul class="list-group list-group-unbordered mb-3">
+		  	@else
+				<li class="list-group-item"> <b>Ngày Đăng Ký </b>  <a class="float-right"><b>{{date_format(date_create($users->date),"d-m-Y")}}</b></a>
+				</li>
+				<li class="list-group-item"> <b>Sử Dụng Đến </b>  <a class="float-right"><b>{{date_format(date_create(getExpiryDate()),"d-m-Y")}}</b></a>
+				</li>
+				<li class="list-group-item"> 
+					@if (Auth::user()->type=='member')
+					<a href="{{route('methods_payment')}}" class="btn btn-info btn-block"><b>  <i class="nav-icon fas fa-money"></i> Gia Hạn</b></a>
+				@endif
+				</a>
+				</li>
+			@endif
+			</ul> 
+			
 				</div>
 				<!-- /.card-body -->
 			</div>
@@ -50,7 +55,7 @@
 									<input type="text" class="form-control" value="{{$users->full_name}}" id="full_name" name="full_name" placeholder="Họ và tên ....">
 								</div>
 								<div class="form-group">
-									<label for="email" class="col-form-label">Email</label>
+									<label for="email" class="col-form-label">Email <small class="error-email text-danger"></small></label>
 									<input type="email" class="form-control" id="email" value="{{$users->email}}" name="email" placeholder="Email">
 								</div>
 								<div class="form-group">

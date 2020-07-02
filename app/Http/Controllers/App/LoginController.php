@@ -20,15 +20,19 @@ class LoginController extends Controller
     }
     public function postLogin(Request $Request)
     {
-        $credentials = $Request->only('name','email', 'password');
-        if (Auth::attempt($credentials)) {
+        $fieldType = filter_var($Request->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $data = ['email'=>$Request->email,'password'=>$Request->password];
+        if($fieldType=='username'){
+            $data = ['username'=>$Request->email,'password'=>$Request->password];
+        }
+        if (Auth::attempt($data)) {
             if(Auth::user()->status==0){
                 return JSON2(true,"");
             }else{
                 return JSON2(false,"Tài khoản của bạn đã bị khóa");
             }
         }else {
-            return JSON2(false,'Email hoặt mật khẩu không đúng !');
+            return JSON2(false,'Tai khoản hoặt mật khẩu không đúng !');
         }
     }
     public function getLogout(Request $Request)

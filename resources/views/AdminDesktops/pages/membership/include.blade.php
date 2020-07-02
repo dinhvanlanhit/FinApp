@@ -25,7 +25,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"> {{Auth::user()->idKey}}_</span>
                             </div>
-                            <input class="form-control" id="name" name="name" placeholder="Tên đăng nhập"/>
+                            <input class="form-control" id="username" name="username" placeholder="Tên đăng nhập"/>
                           </div>
                         </div>
                     </div>

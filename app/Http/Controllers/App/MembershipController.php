@@ -19,9 +19,9 @@ class MembershipController extends Controller
         $columns = array( 
             0 => 'created_at',
             1 => 'full_name',
-            2 => 'name',
+            2 => 'username',
             3 => 'note', 
-            4 => 'created_at',
+            4 => 'updated_at',
             5 => 'created_at'
         );
         $idUser = idUser();
@@ -45,9 +45,10 @@ class MembershipController extends Controller
             ->Where(function($query)use($search){
                 $query->where('id', 'LIKE', "%{$search}%")
                     ->orWhere('full_name', 'LIKE',"%{$search}%")
-                    ->orWhere('name', 'LIKE',"%{$search}%")
+                    ->orWhere('username', 'LIKE',"%{$search}%")
                     ->orWhere('note', 'LIKE',"%{$search}%")
-                    ->orWhere('created_at','LIKE',"%{$search}%");
+                    ->orWhere('created_at', 'LIKE',"%{$search}%")
+                    ->orWhere('updated_at','LIKE',"%{$search}%");
             })
             ->offset($start)
             ->limit($limit)
@@ -69,7 +70,8 @@ class MembershipController extends Controller
         $Users = new Users();
         $Users->parent_id = idUser();
         $Users->full_name= $Request->full_name;
-        $Users->name= $Request->name;
+        $Users->username= $Request->username;
+        $Users->type= 'membership';
         if($Request->password==''){
             $Users->password = bcrypt('12345');
         }else{
@@ -88,7 +90,8 @@ class MembershipController extends Controller
         $Users =  Users::find((int)$Request->id);
         $Users->parent_id = idUser();
         $Users->full_name= $Request->full_name;
-        $Users->name= $Request->name;
+        $Users->type= 'membership';
+        $Users->username= $Request->username;
         if($Request->password!=''){
             $Users->password = bcrypt($Request->password);
         }

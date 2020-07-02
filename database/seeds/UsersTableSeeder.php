@@ -80,7 +80,7 @@ class UsersTableSeeder extends Seeder
             DB::table('users')->insert([
                 'parent_id'=>1,
                 'email' => $i.'@gmail.com',
-                'name' =>$rs->idKey.'_'.$ABC,
+                'username' =>$rs->idKey.'_'.$ABC,
                 'password' => bcrypt('12345'),
                 'avatar'=>null,
                 'full_name'=>'Đinh Văn '.$ABC,
@@ -100,7 +100,7 @@ class UsersTableSeeder extends Seeder
                 'fax'=>'0966334404',
                 'cmnn_passport'=>'0966334404',
                 'postal_code'=>'0966334404',
-                'type'=>'member',
+                'type'=>'membership',
                 'date'=>date('Y-m-d'),
                 'status'=>0,
                 'status_name'=>'Mở',

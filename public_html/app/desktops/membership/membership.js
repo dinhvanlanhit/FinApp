@@ -42,8 +42,8 @@ function membership(){
                 },
                 {
 					title: "Tên Đăng Nhập",
-					data: "name",
-					name: "name",
+					data: "username",
+					name: "username",
 					className: "text-center",
 					
 				},
@@ -55,8 +55,8 @@ function membership(){
                 },
                 {
 					title: "Ngày Cập Nhật",
-					data: "created_at",
-					name: "created_at",
+					data: "updated_at",
+					name: "updated_at",
 					className: "text-center",
                 }
                 ,{
@@ -114,7 +114,7 @@ function membership(){
 					$("#onSave").attr('data-url', datas.routes.update);
 					$("#onSave").attr('data-id', data.data.id);
 					$("#onSave").attr('data-action', 'update');
-					$('#name').val(data.data.name.slice(lengthidKey));
+					$('#username').val(data.data.username.slice(lengthidKey));
 					$('#note').val(data.data.note);
 					$('#full_name').val(data.data.full_name);
 					$("#modal-action").modal('show');
@@ -126,7 +126,9 @@ function membership(){
 		$("#btn-insert").on("click", function () {
 			$('#modal-action-title').text("Thêm mới");
 			$('#text-password').text("(Không nhập mặt định là : 12345)");
-			$('#name').val('');
+			$("#onSave").attr('data-url', datas.routes.insert);
+			$("#onSave").attr('data-action', 'insert');
+			$('#username').val('');
 			$('#note').val('');
 			$('#full_name').val('');
 			$("#modal-action").modal('show');
@@ -153,7 +155,7 @@ function membership(){
 				full_name:{
 					required: true
 				},
-				name: {
+				username: {
 					required: true
 				}
 			},
@@ -161,7 +163,7 @@ function membership(){
 				full_name: {
 					required: "Vui lòng nhập họ tên !",
 				},
-				name: {
+				username: {
 					required: "Vui lòng nhập tên đăng nhập !",
 				}
 			},
@@ -179,7 +181,7 @@ function membership(){
 			submitHandler: function (e) {
 				var formData = new FormData($("#formAction")[0]);
 				formData.append('id', $("#onSave").attr('data-id'));
-				formData.set('name',datas.idKey+'_'+formData.get('name') );
+				formData.set('username',datas.idKey+'_'+formData.get('username') );
 				var url = $("#onSave").attr('data-url');
 				buttonloading('#onSave', true);
 				$.ajax({

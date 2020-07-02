@@ -78,8 +78,10 @@ Breadcrumbs::for('membership', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Thành Viên', route('membership'));
 });
-
-
+Breadcrumbs::for('404', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Không Tìm Thấy Trang ', route('404'));
+});
 ///// ADMIN
 Breadcrumbs::for('admin_dashboard', function ($trail) {
 

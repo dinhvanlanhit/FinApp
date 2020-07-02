@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('idRoles')->unsigned()->nullable();
             $table->foreign('idRoles')->references('id')->on('roles')->onUpdate('cascade');
             $table->integer('user_type')->nullable()->default(0);
-            $table->string('name');
+            $table->string('username')->unique()->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('provider');
             $table->string('provider_id');
@@ -31,7 +31,6 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->rememberToken()->nullable();
             $table->longText('remember_token_password')->nullable();
-           
             $table->integer('status')->nullable()->default(0);
             $table->string('status_name')->nullable()->default('Mở');
             $table->integer('status_payment')->nullable()->default(1);

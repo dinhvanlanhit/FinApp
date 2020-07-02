@@ -9,14 +9,49 @@ function RandomString($length = 6)
     }
     return $randomString;
 }
+
+function getExpiryDate()
+{
+        $users = \Auth::user();
+        $idUser = null;
+        $type = null;
+        if($users->type=='membership'){
+            $idUser = $users->parent_id;
+            $type = 'member';
+        }else{
+            $idUser = $users->id;
+            $type = $users->type;
+        }
+        $SQL = "SELECT * FROM users AS users_PARENT LEFT JOIN ";
+        $SQL .="( SELECT SUM(numberMonth) AS sumMonth , idUser  ";
+        $SQL .=" FROM users_payment ";
+        $SQL .=" GROUP BY idUser    ";
+        $SQL .=") AS child ON ";
+        $SQL .= " child.idUser = users_PARENT.id ";
+        $SQL .= " WHERE type = '{$type}' ";
+        $SQL .= " AND id = {$idUser} ";
+        $result  =  DB::select(DB::raw($SQL)); 
+        $today = $result[0]->date;
+        $sumMonth = $result[0]->sumMonth==null?0:$result[0]->sumMonth;
+        $month = strtotime(date("Y-m-d", strtotime($today)) . " +$sumMonth month");
+        $month = strftime("%Y-%m-%d", $month);
+        return $month;
+}
 function idUser()
 {
+    $idUser = null;
     if(\Session::get('view_users')!=null){
-        return \Session::get('view_users');
+        $idUser =  \Session::get('view_users');
     }else{
-        return \Auth::user()->id;
+        if(\Auth::user()->type=='membership')
+        {
+            $idUser =\Auth::user()->parent_id;
+
+        }else{
+            $idUser =  \Auth::user()->id;
+        } 
     }
-   
+    return $idUser;
 }
 function user()
 {
@@ -136,24 +171,7 @@ function  JSON3($data=null,$type=false,$messages=null)
     return json_encode($Responses);
 
 }
-function getExpiryDate()
-{
-        $users = \Auth::user();
-        $SQL = "SELECT * FROM users AS users_PARENT LEFT JOIN ";
-        $SQL .="( SELECT SUM(numberMonth) AS sumMonth , idUser  ";
-        $SQL .=" FROM users_payment ";
-        $SQL .=" GROUP BY idUser    ";
-        $SQL .=") AS child ON ";
-        $SQL .= " child.idUser = users_PARENT.id ";
-        $SQL .= " WHERE type = '{$users->type}' ";
-        $SQL .= " AND id = {$users->id} ";
-        $result  =  DB::select(DB::raw($SQL)); 
-        $today = $result[0]->date;
-        $sumMonth = $result[0]->sumMonth==null?0:$result[0]->sumMonth;
-        $month = strtotime(date("Y-m-d", strtotime($today)) . " +$sumMonth month");
-        $month = strftime("%Y-%m-%d", $month);
-        return $month;
-}
+
 function template()
 {
     $agent = new \Jenssegers\Agent\Agent;

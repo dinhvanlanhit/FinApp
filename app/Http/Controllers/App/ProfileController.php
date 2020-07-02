@@ -55,10 +55,9 @@ class ProfileController extends Controller
     }
     public function postProfile(Request $Request)
     {
-        $isCheckEmail = Users::where('email','=',$Request->email)
-                        ->where('id','!=',Auth::user()->id)->first();
+        $isCheckEmail = Users::where('email','=',$Request->email)->where('id','!=',Auth::user()->id)->first();
         if($isCheckEmail){
-            return JSON2(false,'Email đã tồn tại vui lòng nhập Email khác !!');
+            return JSON2(false,'Email đã tồn tại vui lòng nhập Email khác !');
         }else{
             $Users =  Users::find(Auth::user()->id);
             $Users->user_type = $Request->user_type;
@@ -83,7 +82,7 @@ class ProfileController extends Controller
         }
         if (\Hash::check($request->old_password, Auth::user()->password)) {
             if ($request->new_password === $request->re_password) {
-                Users::where('email', '=', Auth::user()->email)->update(['password' => \Hash::make($request->new_password)]);
+                Users::where('id', '=', Auth::user()->id)->update(['password' => \Hash::make($request->new_password)]);
                 return JSON2(true, 'Cập nhập mật khẩu thành công');
             } else {
                 return JSON2(false, 'Mật khẩu mới không khớp !');

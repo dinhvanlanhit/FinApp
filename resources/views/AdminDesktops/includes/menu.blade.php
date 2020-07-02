@@ -125,6 +125,16 @@
           </p>
         </a>
       </li>
+
+      <li class="nav-item menu-open-new">
+        <a href="{{route('contact')}}" class="nav-link ">
+          <i class="nav-icon fa fa-envelope"></i>
+          <p>
+             Liên Hệ
+          </p>
+        </a>
+      </li>
+      @if (Auth::user()->type!='membership')
       <li class="nav-item menu-open-new">
         <a href="{{route('methods_payment')}}" class="nav-link  ">
           <i class="nav-icon fas fa-money"></i>
@@ -141,45 +151,35 @@
           </p>
         </a>
       </li>
-      <li class="nav-item menu-open-new">
-        <a href="{{route('contact')}}" class="nav-link ">
-          <i class="nav-icon fa fa-envelope"></i>
-          <p>
-             Liên Hệ
-          </p>
-        </a>
-      </li>
-      
-      <li class="nav-item has-treeview menu-open-new">
-        <a href="#" class="nav-link ">
-          <i class="nav-icon fas fa-cog"></i>
-          <p>
-            Cài Đặt
-            <i class="right fas fa-angle-left"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{route('membership')}}" class="nav-link ">
-              <i class="far fa-circle nav-icon"></i>
+        <li class="nav-item has-treeview menu-open-new">
+          <a href="#" class="nav-link ">
+            <i class="nav-icon fas fa-cog"></i>
+            <p>
+              Cài Đặt
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('membership')}}" class="nav-link ">
+                <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Thành Viên
+                  </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('profile')}}" class="nav-link ">
+                <i class="far fa-circle nav-icon"></i>
                 <p>
-                  Thành Viên
+                  Thông Tin Cá Nhân
                 </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('profile')}}" class="nav-link ">
-              <i class="far fa-circle nav-icon"></i>
-              <p>
-                Thông Tin Cá Nhân
-              </p>
-            </a>
-          </li>
-        </ul>
-      </li>
-     
+              </a>
+            </li>
+          </ul>
+        </li>
+      @endif
       @if (Auth::user()->type=='admin')
-     
       <li class="nav-item menu-open-new">
         <a href="{{route('admin_dashboard')}}" class="nav-link ">
           <i class="nav-icon fa fa-cogs"></i>

@@ -6,28 +6,21 @@ Route::group(['namespace' => 'App'], function () {
     Route::get('/logout','LoginController@getLogout')->name('logout');
     Route::get('/register','RegisterController@getRegister')->name('register');
     Route::post('/register','RegisterController@postRegister')->name('register');
-    
-
     Route::get('/redirect/{provider?}', 'SocialController@redirectToProvider')->name('login-redirect');
     Route::get('/callback/{provider?}', 'SocialController@handleProviderCallback')->name('login-callback');
-    
     Route::get('/forgot-password','RegisterController@getForgotPassword')->name('forgot-password');
     Route::post('/sendEmail','RegisterController@sendEmail')->name('sendEmail');
-
     Route::get('/recover/code','RegisterController@getRecovercode')->name('recover_code');
     Route::post('/recover/code','RegisterController@postRecovercode')->name('recover_code');
-    
     Route::get('recover/password/','RegisterController@getPassword')->name('password');
     Route::post('recover/password/','RegisterController@postPassword')->name('password');
-
-    
-
 });
 Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     Route::get('/','DashboardController@Dashboard')->name('dashboard');
     Route::get('/chart','DashboardController@getDashboard')->name('getDashboard');
     Route::get('/char-dashboard','DashboardController@getCharDashboard')->name('getCharDashboard');
     Route::post('/export-dashboard','DashboardController@postExport')->name('export');
+    Route::get('404','ErrorController@get404')->name('404');
     Route::group(['middleware' => ['CheckExpiration']],function (){
         Route::group(['prefix' => 'event'], function () {
             Route::get('/datatable','EventController@getDatatable')->name('event_table');
@@ -129,23 +122,25 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
             Route::post('/export','MyEventController@postExport')->name('myevent_export');
             
         });
-        Route::group(['prefix' => 'membership'], function () {
-            Route::get('/datatable','MembershipController@getDatatable')->name('membership_datatable');
-            Route::get('/','MembershipController@getMembership')->name('membership');
-            Route::post('/insert','MembershipController@postInsert')->name('membership_insert');
-            Route::post('/update','MembershipController@postUpdate')->name('membership_update');
-            Route::get('/update','MembershipController@getUpdate')->name('membership_update');
-            Route::post('/delete','MembershipController@postDelete')->name('membership_delete');
-            Route::post('/export','MembershipController@postExport')->name('membership_export');
+        Route::group(['middleware' => ['CheckMemberShip']],function (){
+            Route::group(['prefix' => 'membership'], function () {
+                Route::get('/datatable','MembershipController@getDatatable')->name('membership_datatable');
+                Route::get('/','MembershipController@getMembership')->name('membership');
+                Route::post('/insert','MembershipController@postInsert')->name('membership_insert');
+                Route::post('/update','MembershipController@postUpdate')->name('membership_update');
+                Route::get('/update','MembershipController@getUpdate')->name('membership_update');
+                Route::post('/delete','MembershipController@postDelete')->name('membership_delete');
+            });
         });
-        
     });
-    Route::group(['prefix' => 'payment'], function (){
-        Route::get('history','PaymentController@getPayMent')->name('history_payment');
-        Route::get('history-datatable','PaymentController@getDatatable')->name('history_datatable');
-        Route::get('notice','PaymentController@getNotice')->name('notice_payment');
-        Route::get('methods','PaymentController@getMethods')->name('methods_payment');
-    }); 
+    Route::group(['middleware' => ['CheckMemberShip']],function (){
+        Route::group(['prefix' => 'payment'], function (){
+            Route::get('history','PaymentController@getPayMent')->name('history_payment');
+            Route::get('history-datatable','PaymentController@getDatatable')->name('history_datatable');
+            Route::get('notice','PaymentController@getNotice')->name('notice_payment');
+            Route::get('methods','PaymentController@getMethods')->name('methods_payment');
+        }); 
+    });
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/','ProfileController@getProfile')->name('profile');
         Route::post('/','ProfileController@postProfile')->name('profile');
@@ -158,7 +153,6 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::post('contact-send','ContactController@postContact')->name('contact_send');
        
     });  
-    
 });
 Route::get('/mobile',function(){
     return view('welcome');

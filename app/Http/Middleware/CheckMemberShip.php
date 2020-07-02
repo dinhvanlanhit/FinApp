@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 use Illuminate\Http\Request;
-class CheckExpiration
+class CheckMemberShip
 {
     /**
      * Handle an incoming request.
@@ -15,15 +15,10 @@ class CheckExpiration
      */
     public function handle(Request $Request ,Closure $next)
     {   
-        $today = date("Y-m-d");
-        if( Auth::user()->status_payment == 0){
-            return $next($Request);
+        if(Auth::user()->type ==='membership'){
+            return redirect()->route('404');
         }else{
-            if (strtotime(getExpiryDate()) >strtotime($today)) {
-                return $next($Request);
-            } else {
-                return redirect()->route('notice_payment');
-            }
+            return $next($Request);
         }
     }
 }
