@@ -107,8 +107,6 @@ function groupmyevent() {
 				dataType: 'JSON',
 				success: function (data) {
 					if(data.statusBoolen){
-						$('#idWallet').val(data.data.idWallet); 
-						$('#idWallet').trigger('change'); 
 						$("#onSave").attr('data-url', datas.routes.update);
 						$("#onSave").attr('data-id', data.data.id);
 						$("#onSave").attr('data-action', 'update');
