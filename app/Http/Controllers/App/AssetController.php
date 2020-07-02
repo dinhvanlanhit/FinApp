@@ -212,9 +212,9 @@ class AssetController extends Controller
     {
         $Asset =  Asset::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Asset){
-            return JSON1($Asset);
+            return JSON3($Asset,true,'');
         }else{
-            return JSON1($Asset);
+            return JSON3($Asset,false,'');
         }
 
     }

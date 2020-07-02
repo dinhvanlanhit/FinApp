@@ -100,7 +100,7 @@ function asset() {
 		$(document).delegate(".btn-update", "click", function () {
 			var id = $(this).val();
 			var elementbtn = $(this);
-			buttonloading(elementbtn, true);
+			
 			$('#modal-action-title').text("Chỉnh sửa");
 			$.ajax({
 				url: datas.routes.update,
@@ -110,17 +110,23 @@ function asset() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					$('#idTypeAssetInput').val(data.data.idTypeAsset); // Select the option with a value of '1'
-					$('#idTypeAssetInput').trigger('change'); // Notify any JS components that the value changed
-					$("#onSave").attr('data-url', datas.routes.update);
-					$("#onSave").attr('data-id', data.data.id);
-					$("#onSave").attr('data-action', 'update');
-					$('#name').val(data.data.name);
-					$('#amount').val(money_format(data.data.amount));
-					$('#note').val(data.data.note);
-					$('#address').val(data.data.address);
-					$("#modal-action").modal('show');
-					buttonloading(elementbtn, false);
+					if(data.data.statusBoolen){
+						$('#idTypeAssetInput').val(data.data.idTypeAsset); // Select the option with a value of '1'
+						$('#idTypeAssetInput').trigger('change'); // Notify any JS components that the value changed
+						$("#onSave").attr('data-url', datas.routes.update);
+						$("#onSave").attr('data-id', data.data.id);
+						$("#onSave").attr('data-action', 'update');
+						$('#name').val(data.data.name);
+						$('#amount').val(money_format(data.data.amount));
+						$('#note').val(data.data.note);
+						$('#address').val(data.data.address);
+						$("#modal-action").modal('show');
+					}else{
+						Toast.fire({
+							icon: data.icon,
+							title: data.messages
+						});
+					}
 				},
 				error: function (error) {}
 			});

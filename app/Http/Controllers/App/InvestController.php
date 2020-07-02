@@ -143,9 +143,9 @@ class InvestController extends Controller
     {
         $Invest =  Invest::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Invest){
-            return JSON1($Invest);
+            return JSON3($Invest,true,'');
         }else{
-            return JSON1($Invest);
+            return JSON3($Invest,false,'');
         }
 
     }

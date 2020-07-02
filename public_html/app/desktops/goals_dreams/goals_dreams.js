@@ -103,7 +103,7 @@ function goals_dreams() {
 		$(document).delegate(".btn-update", "click", function () {
 			var id = $(this).val();
 			var elementbtn = $(this);
-			buttonloading(elementbtn, true);
+			
 			$('#modal-action-title').text("Chỉnh sửa");
 			$.ajax({
 				url: datas.routes.update,
@@ -113,17 +113,23 @@ function goals_dreams() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					$("#onSave").attr('data-url', datas.routes.update);
-					$("#onSave").attr('data-id', data.data.id);
-					$("#onSave").attr('data-action', 'update');
-					$('#typeInput').val(data.data.type); 
-					$('#typeInput').trigger('change'); 
-					$('#dateBegin').val(moment(data.data.dateBegin, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#dateEnd').val(moment(data.data.dateEnd, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#name').val(data.data.name);
-					$('#note').val(data.data.note);
-					$("#modal-action").modal('show');
-					buttonloading(elementbtn, false);
+					if(data.data.statusBoolen){
+						$("#onSave").attr('data-url', datas.routes.update);
+						$("#onSave").attr('data-id', data.data.id);
+						$("#onSave").attr('data-action', 'update');
+						$('#typeInput').val(data.data.type); 
+						$('#typeInput').trigger('change'); 
+						$('#dateBegin').val(moment(data.data.dateBegin, " YYYY-MM-DD").format('DD-MM-YYYY'));
+						$('#dateEnd').val(moment(data.data.dateEnd, " YYYY-MM-DD").format('DD-MM-YYYY'));
+						$('#name').val(data.data.name);
+						$('#note').val(data.data.note);
+						$("#modal-action").modal('show');
+					}else{
+						Toast.fire({
+							icon: data.icon,
+							title: data.messages
+						});
+					}	
 				},
 				error: function (error) {}
 			});

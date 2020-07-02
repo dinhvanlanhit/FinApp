@@ -217,9 +217,9 @@ class CostController extends Controller
     {
         $Cost =  Cost::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Cost){
-            return JSON1($Cost);
+            return JSON3($Cost,true,'');
         }else{
-            return JSON1($Cost);
+            return JSON3($Cost,false,'');
         }
 
     }

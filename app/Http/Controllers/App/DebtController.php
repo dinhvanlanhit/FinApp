@@ -230,9 +230,9 @@ class DebtController extends Controller
     {
         $Debt =  Debt::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Debt){
-            return JSON1($Debt);
+            return JSON3($Debt,true,'');
         }else{
-            return JSON1($Debt);
+            return JSON3($Debt,false,'');
         }
 
     }

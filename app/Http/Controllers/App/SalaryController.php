@@ -228,9 +228,9 @@ class SalaryController extends Controller
     {
         $Salary =  Salary::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Salary){
-            return JSON1($Salary);
+            return JSON3($Salary,true,'');
         }else{
-            return JSON1($Salary);
+            return JSON3($Salary,false,'');
         }
 
     }

@@ -167,10 +167,11 @@ class MyEventController extends Controller
     {
         $MyEvent =  MyEvent::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($MyEvent){
-            return JSON1($MyEvent);
+            return JSON3($MyEvent,true,'');
         }else{
-            return JSON1($MyEvent);
+            return JSON3($MyEvent,false,'');
         }
+
     }
     public function postExport(Request $Request)
     {

@@ -134,9 +134,9 @@ class Goals_dreamsController extends Controller
     {
         $Goals_dreams =  Goals_dreams::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Goals_dreams){
-            return JSON1($Goals_dreams);
+            return JSON3($Goals_dreams,true,'');
         }else{
-            return JSON1($Goals_dreams);
+            return JSON3($Goals_dreams,false,'');
         }
 
     }

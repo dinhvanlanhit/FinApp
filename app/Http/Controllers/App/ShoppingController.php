@@ -220,9 +220,9 @@ class ShoppingController extends Controller
     {
         $Shopping =  Shopping::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Shopping){
-            return JSON1($Shopping);
+            return JSON3($Shopping,true,'');
         }else{
-            return JSON1($Shopping);
+            return JSON3($Shopping,false,'');
         }
 
     }

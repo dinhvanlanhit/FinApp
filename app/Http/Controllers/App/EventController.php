@@ -231,10 +231,9 @@ class EventController extends Controller
     {
         $Event =  Event::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Event){
-           
-            return JSON1($Event);
+            return JSON3($Event,true,'');
         }else{
-            return JSON1($Event);
+            return JSON3($Event,false,'');
         }
 
     }

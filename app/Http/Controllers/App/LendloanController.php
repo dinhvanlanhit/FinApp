@@ -171,10 +171,11 @@ class LendloanController extends Controller
     {
         $Lendloan =  Lendloan::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Lendloan){
-            return JSON1($Lendloan);
+            return JSON3($Invest,true,'');
         }else{
-            return JSON1($Lendloan);
+            return JSON3($Invest,false,'');
         }
+
 
     }
 

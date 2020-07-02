@@ -136,7 +136,7 @@ function lendloan() {
 		$(document).delegate(".btn-update", "click", function () {
 			var id = $(this).val();
 			var elementbtn = $(this);
-			buttonloading(elementbtn, true);
+			
 			$('#modal-action-title').text("Chỉnh sửa");
 			$.ajax({
 				url: datas.routes.update,
@@ -146,27 +146,34 @@ function lendloan() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					$('#idWallet').val(data.data.idWallet); 
-					$('#idWallet').trigger('change'); 
-					$('#sex').val(data.data.sex); 
-					$('#sex').trigger('change'); 
-					$('#status').val(data.data.status); 
-					$('#status').trigger('change'); 
-					$('#birthday').val(moment(data.data.birthday, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$("#onSave").attr('data-url', datas.routes.update);
-					$("#onSave").attr('data-id', data.data.id);
-					$("#onSave").attr('data-action', 'update');
-					$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#expiration_date').val(moment(data.data.expiration_date, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#name').val(data.data.name);
-					$('#amount').val(money_format(data.data.amount));
-					$('#interest_rate').val(money_format(data.data.interest_rate));
-					$('#note').val(data.data.note);
-					$('#tenor').val(data.data.tenor);
-					$('#mortgage').val(data.data.mortgage);
-					$('#address').val(data.data.address);
-					$("#modal-action").modal('show');
-					buttonloading(elementbtn, false);
+					if(data.data.statusBoolen){
+						$('#idWallet').val(data.data.idWallet); 
+						$('#idWallet').trigger('change'); 
+						$('#sex').val(data.data.sex); 
+						$('#sex').trigger('change'); 
+						$('#status').val(data.data.status); 
+						$('#status').trigger('change'); 
+						$('#birthday').val(moment(data.data.birthday, " YYYY-MM-DD").format('DD-MM-YYYY'));
+						$("#onSave").attr('data-url', datas.routes.update);
+						$("#onSave").attr('data-id', data.data.id);
+						$("#onSave").attr('data-action', 'update');
+						$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
+						$('#expiration_date').val(moment(data.data.expiration_date, " YYYY-MM-DD").format('DD-MM-YYYY'));
+						$('#name').val(data.data.name);
+						$('#amount').val(money_format(data.data.amount));
+						$('#interest_rate').val(money_format(data.data.interest_rate));
+						$('#note').val(data.data.note);
+						$('#tenor').val(data.data.tenor);
+						$('#mortgage').val(data.data.mortgage);
+						$('#address').val(data.data.address);
+						$("#modal-action").modal('show');
+					}else{
+						Toast.fire({
+							icon: data.icon,
+							title: data.messages
+						});
+					}
+					
 				},
 				error: function (error) {}
 			});

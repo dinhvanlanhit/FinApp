@@ -70,9 +70,9 @@ class WalletController extends Controller
     {
         $Wallet =  Wallet::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($Wallet){
-            return JSON1($Wallet);
+            return JSON3($Wallet,true,'');
         }else{
-            return JSON1($Wallet);
+            return JSON3($Wallet,false,'');
         }
 
     }

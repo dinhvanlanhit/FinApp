@@ -106,7 +106,7 @@ function wallet() {
 		$(document).delegate(".btn-update", "click", function () {
 			var id = $(this).val();
 			var elementbtn = $(this);
-			buttonloading(elementbtn, true);
+			
 			$('#modal-action-title').text("Chỉnh sửa");
 			$.ajax({
 				url: datas.routes.update,
@@ -116,17 +116,22 @@ function wallet() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					$("#onSave").attr('data-url', datas.routes.update);
-					$("#onSave").attr('data-id', data.data.id);
-					$('#idTypeWallet').val(data.data.idTypeWallet); // Select the option with a value of '1'
-					$('#idTypeWallet').trigger('change'); // Notify any JS components that the value changed
-					
-					$("#onSave").attr('data-action', 'update');
-					$('#name').val(data.data.name);
-					$('#note').val(data.data.note);
-					$('#amount').val(money_format(data.data.amount));
-					$("#modal-action").modal('show');
-					buttonloading(elementbtn, false);
+					if(data.data.statusBoolen){
+						$("#onSave").attr('data-url', datas.routes.update);
+						$("#onSave").attr('data-id', data.data.id);
+						$('#idTypeWallet').val(data.data.idTypeWallet); // Select the option with a value of '1'
+						$('#idTypeWallet').trigger('change'); // Notify any JS components that the value changed
+						$("#onSave").attr('data-action', 'update');
+						$('#name').val(data.data.name);
+						$('#note').val(data.data.note);
+						$('#amount').val(money_format(data.data.amount));
+						$("#modal-action").modal('show');
+					}else{
+						Toast.fire({
+							icon: data.icon,
+							title: data.messages
+						});
+					}
 				},
 				error: function (error) {}
 			});

@@ -132,10 +132,9 @@ class GroupMyEventController extends Controller
     {
         $GroupMyEvent =  GroupMyEvent::where('id','=',(int)$Request->id)->where('idUser','=',idUser())->first();
         if($GroupMyEvent){
-           
-            return JSON1($GroupMyEvent);
+            return JSON3($GroupMyEvent,true,'');
         }else{
-            return JSON1($GroupMyEvent);
+            return JSON3($GroupMyEvent,false,'');
         }
 
     }

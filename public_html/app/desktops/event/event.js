@@ -113,7 +113,6 @@ function event() {
 		$(document).delegate(".btn-update", "click", function () {
 			var id = $(this).val();
 			var elementbtn = $(this);
-			buttonloading(elementbtn, true);
 			$('#modal-action-title').text("Chỉnh sửa");
 			$.ajax({
 				url: datas.routes.update,
@@ -123,24 +122,27 @@ function event() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					// $('#idTypeEventInput').val(data.data.idTypeEvent);
-		
-					$('#idTypeEventInput').val(data.data.idTypeEvent);
-					$('#idTypeEventInput').trigger('change');
-					$('#idWallet').val(data.data.idWallet); 
-					$('#idWallet').trigger('change'); 
-
+					if(data.data.statusBoolen){
+						$('#idTypeEventInput').val(data.data.idTypeEvent);
+						$('#idTypeEventInput').trigger('change');
+						$('#idWallet').val(data.data.idWallet); 
+						$('#idWallet').trigger('change'); 
+						$("#onSave").attr('data-url', datas.routes.update);
+						$("#onSave").attr('data-id', data.data.id);
+						$("#onSave").attr('data-action', 'update');
+						$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
+						$('#address').val(data.data.address);
+						$('#amount').val(money_format(data.data.amount));
+						$('#name').val(data.data.name);
+						$('#note').val(data.data.note);
+						$("#modal-action").modal('show');
+					}else{
+						Toast.fire({
+							icon: data.icon,
+							title: data.messages
+						});
+					}
 					
-					$("#onSave").attr('data-url', datas.routes.update);
-					$("#onSave").attr('data-id', data.data.id);
-					$("#onSave").attr('data-action', 'update');
-					$('#date').val(moment(data.data.date, " YYYY-MM-DD").format('DD-MM-YYYY'));
-					$('#address').val(data.data.address);
-					$('#amount').val(money_format(data.data.amount));
-					$('#name').val(data.data.name);
-					$('#note').val(data.data.note);
-					$("#modal-action").modal('show');
-					buttonloading(elementbtn, false);
 				},
 				error: function (error) {}
 			});
