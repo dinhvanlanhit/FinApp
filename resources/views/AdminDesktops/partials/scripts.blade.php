@@ -13,7 +13,7 @@
 <script src="{{asset('AdminDesktops/plugins/moment/moment.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/inputmask/jquery.inputmask.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/daterangepicker/daterangepicker.js')}}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{asset('AdminDesktops/plugins/pace/pace.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <script src="{{asset('AdminDesktops/plugins/toastr/toastr.min.js')}}"></script>
