@@ -102,6 +102,15 @@ class MembershipController extends Controller
             return JSON2(false,"Cập nhật thất bại");
         }
     }
+    public function postDelete(Request $Request)
+    {
+        $result =Users::where('id','=',(int)$Request->id)->where('parent_id','=',idUser())->delete();
+        if($result){
+            return JSON2(true,"");
+        }else{
+            return JSON2(false,"");
+        }
+    }
     public function getUpdate (Request $Request)
     {
         $Users =  Users::where('id','=',(int)$Request->id)->where('parent_id','=',idUser())->first();
@@ -112,4 +121,27 @@ class MembershipController extends Controller
         }
 
     }
+    public function getPermission(Request $Request,int $id=null)
+    {
+        $Users =  Users::where('id','=',$id)->where('parent_id','=',idUser())->first();
+        if($Users){
+            $data =  collect(json_decode($Users->permission));
+            // dd($data);
+            return view(template().".pages.membership.permission",['id'=>$Users->id,'data'=>$data]);
+        }else{
+            return redirect()->route('404');
+        }
+        
+    }
+    public function postPermission(Request $Request)
+    {
+        $Users =  Users::find((int)$Request->id);
+        $Users->permission = json_encode($Request->permission);
+        if( $Users->save()){
+            return JSON2(true,'Cập Nhật Quyền Thành Công');
+        }else{
+            return JSON2(false,'Cập Nhật Quyền Không Thành Công !');
+        }
+    }
+    
 }

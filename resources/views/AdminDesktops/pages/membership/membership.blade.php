@@ -54,7 +54,7 @@
           insert:"{{route('membership_insert')}}",
           update:"{{route('membership_update')}}",
           delete:"{{route('membership_delete')}}",
-          export:"{{route('membership_export')}}",
+          permission:"{{route('membership_permission')}}",
         }
     }   
     membership.runJS();

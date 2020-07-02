@@ -77,7 +77,16 @@ function membership(){
 							title: 'Sửa',
 							icon: '',
 							text: 'Sửa'
-						}]);
+						},
+						{
+							class: 'btn-permission text-info',
+							value: row.id,
+							title: 'Phân Quyền',
+							icon: '',
+							text: 'Phân Quyền'
+						}
+						// permission
+					]);
 					}
 				}
 			],
@@ -95,6 +104,20 @@ function membership(){
 			$('#modal-text-delete').text("Bạn có muốn xóa không ?");
 			$("#onDelete").attr('value', id);
 			$("#modal-delete").modal('show');
+		});
+		$(document).delegate(".btn-permission", "click", function () {
+			var id = $(this).val();
+			$.ajax({
+                url: datas.routes.permission+'/'+id,
+                type: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#html-permission').html(data);
+                    $("#modal-permission").modal('show');
+                }, error: function (error) {
+                    console.log(error);
+                }
+            });
 		});
 		$(document).delegate(".btn-update", "click", function () {
 			var id = $(this).val();
@@ -215,5 +238,36 @@ function membership(){
 		$("#formAction").on('submit', function (e) {
 			e.preventDefault();
 		});
+		$("#formPermission").on('submit', function (e) {
+			e.preventDefault();
+			var formData = new FormData($(this)[0]);
+			buttonloading("#onSavePermission", true);
+			$.ajax({
+				url: datas.routes.permission,
+				type: 'POST',
+				data: formData,
+				dataType: 'JSON',
+				processData: false,
+				contentType: false,
+				success: function (data) {
+					if (data.statusBoolen) {
+						buttonloading('#onSavePermission', false);
+						table.ajax.reload();
+						$("#modal-permission").modal('hide');
+						Toast.fire({
+							icon: data.icon,
+							title: data.messages
+						});
+					} else {
+						buttonloading('#onSavePermission', false);
+					}
+				},
+				error: function (error) {
+					console.log(error);
+					buttonloading('#onSavePermission', false);
+				}
+			});
+		});
+		
     }
 }

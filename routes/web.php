@@ -130,6 +130,8 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
                 Route::post('/update','MembershipController@postUpdate')->name('membership_update');
                 Route::get('/update','MembershipController@getUpdate')->name('membership_update');
                 Route::post('/delete','MembershipController@postDelete')->name('membership_delete');
+                Route::get('/permission/{id?}','MembershipController@getPermission')->name('membership_permission');
+                Route::post('/permission','MembershipController@postPermission')->name('membership_permission');
             });
         });
     });
