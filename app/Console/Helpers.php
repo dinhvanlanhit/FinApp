@@ -17,8 +17,9 @@ function getExpiryDate()
         $type = null;
         if($users->type=='membership'){
             $idUser = $users->parent_id;
-            $type = 'member';
-        }else{
+            $type =  'member';
+        }
+        else{
             $idUser = $users->id;
             $type = $users->type;
         }
@@ -30,7 +31,7 @@ function getExpiryDate()
         $SQL .= " child.idUser = users_PARENT.id ";
         $SQL .= " WHERE type = '{$type}' ";
         $SQL .= " AND id = {$idUser} ";
-        $result  =  DB::select(DB::raw($SQL)); 
+        $result  =  DB::select(DB::raw($SQL));
         $today = $result[0]->date;
         $sumMonth = $result[0]->sumMonth==null?0:$result[0]->sumMonth;
         $month = strtotime(date("Y-m-d", strtotime($today)) . " +$sumMonth month");
