@@ -22,7 +22,7 @@ class CheckPermission
                 if($roles->contains($permission)){
                     return $next($request);
                 }else{
-                    return response(JSON2(false,'Bạn không có quyền sử dụng chức năng này !'));
+                    return response(JSON3('',false,'Bạn không có quyền sử dụng chức năng này !'));
                 }
             }else{
                 if($roles->contains($permission)){

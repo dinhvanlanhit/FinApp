@@ -115,7 +115,7 @@ function shopping() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					if(data.data.statusBoolen){
+					if(data.statusBoolen){
 						$('#idWallet').val(data.data.idWallet); // Select the option with a value of '1'
 						$('#idWallet').trigger('change'); // Notify any JS components that the value changed
 						$('#idTypeShoppingInput').val(data.data.idTypeShopping); // Select the option with a value of '1'

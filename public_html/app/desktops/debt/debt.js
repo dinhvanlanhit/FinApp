@@ -136,7 +136,7 @@ function debt() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					if(data.data.statusBoolen){
+					if(data.statusBoolen){
 						$('#idTypeDebtInput').val(data.data.idTypeDebt); 
 						$('#idTypeDebtInput').trigger('change'); 
 						$('#status').val(data.data.status); 

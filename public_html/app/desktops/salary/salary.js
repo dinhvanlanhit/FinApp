@@ -127,7 +127,7 @@ function salary() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					if(data.data.statusBoolen){
+					if(data.statusBoolen){
 						$('#idTypeSalaryInput').val(data.data.idTypeSalary); // Select the option with a value of '1'
 						$('#idTypeSalaryInput').trigger('change'); // Notify any JS components that the value changed
 						$('#idWallet').val(data.data.idWallet); 

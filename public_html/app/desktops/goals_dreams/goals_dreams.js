@@ -113,7 +113,7 @@ function goals_dreams() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					if(data.data.statusBoolen){
+					if(data.statusBoolen){
 						$("#onSave").attr('data-url', datas.routes.update);
 						$("#onSave").attr('data-id', data.data.id);
 						$("#onSave").attr('data-action', 'update');

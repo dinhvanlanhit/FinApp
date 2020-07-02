@@ -122,7 +122,7 @@ function event() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					if(data.data.statusBoolen){
+					if(data.statusBoolen){
 						$('#idTypeEventInput').val(data.data.idTypeEvent);
 						$('#idTypeEventInput').trigger('change');
 						$('#idWallet').val(data.data.idWallet); 

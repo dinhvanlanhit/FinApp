@@ -116,7 +116,7 @@ function wallet() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					if(data.data.statusBoolen){
+					if(data.statusBoolen){
 						$("#onSave").attr('data-url', datas.routes.update);
 						$("#onSave").attr('data-id', data.data.id);
 						$('#idTypeWallet').val(data.data.idTypeWallet); // Select the option with a value of '1'

@@ -115,7 +115,7 @@ function cost() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					if(data.data.statusBoolen){
+					if(data.statusBoolen){
 						$('#idWallet').val(data.data.idWallet); 
 						$('#idWallet').trigger('change'); 
 						$('#idTypeCostInput').val(data.data.idTypeCost); // Select the option with a value of '1'

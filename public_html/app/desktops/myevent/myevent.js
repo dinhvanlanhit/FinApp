@@ -133,7 +133,7 @@ function myevent() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					if(data.data.statusBoolen){
+					if(data.statusBoolen){
 						$('#idGroupMyEventInput').val(data.data.idGroupMyEvent);
 						$('#idGroupMyEventInput').trigger('change');
 						$('#status').val(data.data.status);

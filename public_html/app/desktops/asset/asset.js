@@ -110,7 +110,7 @@ function asset() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					if(data.data.statusBoolen){
+					if(data.statusBoolen){
 						$('#idTypeAssetInput').val(data.data.idTypeAsset); // Select the option with a value of '1'
 						$('#idTypeAssetInput').trigger('change'); // Notify any JS components that the value changed
 						$("#onSave").attr('data-url', datas.routes.update);

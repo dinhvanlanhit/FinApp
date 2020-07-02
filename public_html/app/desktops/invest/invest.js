@@ -121,7 +121,7 @@ function invest() {
 				type: 'GET',
 				dataType: 'JSON',
 				success: function (data) {
-					if(data.data.statusBoolen){
+					if(data.statusBoolen){
 						$('#idWallet').val(data.data.idWallet); 
 						$('#idWallet').trigger('change'); 
 						$("#onSave").attr('data-url', datas.routes.update);
