@@ -166,6 +166,10 @@ function invest() {
 				$("#modal-delete").modal('hide');
 				buttonloading('#onDelete', false);
 			}
+			else{
+				$("#modal-delete").modal('hide');
+				buttonloading('#onDelete', false);
+			}
 		});
 		$("#loan").on("input", function () {
 			input_money_format(this);
@@ -240,6 +244,10 @@ function invest() {
 							});
 						} else {
 							buttonloading('#onSave', false);
+							Toast.fire({
+								icon: data.icon,
+								title: data.messages
+							});
 						}
 					},
 					error: function (error) {

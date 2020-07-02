@@ -176,6 +176,9 @@ function event() {
 				$("#modal-delete").modal('hide');
 				buttonloading('#onDelete', false);
 				surplus();
+			}else{
+				$("#modal-delete").modal('hide');
+				buttonloading('#onDelete', false);
 			}
 		});
 		$("#amount").on("input", function () {
@@ -260,6 +263,10 @@ function event() {
 							});
 						} else {
 							buttonloading('#onSave', false);
+							Toast.fire({
+								icon: data.icon,
+								title: data.messages
+							});
 						}
 					},
 					error: function (error) {
