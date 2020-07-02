@@ -10,6 +10,27 @@ function RandomString($length = 6)
     return $randomString;
 }
 
+function checkUsers()
+{
+    $type =  Auth::user()->type;
+    $users  = \App\Models\Users::where('id','=',Auth::user()->parent_id)->first();
+    if($users){
+        if($users->status_payment==0){
+            return false;
+        }else{
+            return true;
+        }
+    }else{
+        if(Auth::user()->status_payment==0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
+    
+}
+
 function getExpiryDate()
 {
         $users = \Auth::user();

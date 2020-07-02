@@ -20,18 +20,23 @@ class CheckMBSPMS
             if(Auth::user()->type=='admin'){
                 return $next($request);
             }else{
-                if($request->ajax()){
-                    if($roles->contains($data)){
-                        return $next($request);
+                if(Auth::user()->type=='membership')
+                {
+                    if($request->ajax()){
+                        if($roles->contains($data)){
+                            return $next($request);
+                        }else{
+                            return response(JSON3('',false,'Bạn không có quyền sử dụng chức năng này !'));
+                        }
                     }else{
-                        return response(JSON3('',false,'Bạn không có quyền sử dụng chức năng này !'));
+                        if($roles->contains($data)){
+                            return $next($request);
+                        }else{
+                            return redirect()->route('404');  
+                        }
                     }
                 }else{
-                    if($roles->contains($data)){
-                        return $next($request);
-                    }else{
-                        return redirect()->route('404');  
-                    }
+                    return $next($request);
                 }
             }
            

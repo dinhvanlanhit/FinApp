@@ -12,8 +12,8 @@ class ProfileController extends Controller
 {
     public function getProfile(Request $Request)
     {
-        getExpiryDate();
-         return view(template().'.pages.profile.profile',['users'=>Auth::user()]);
+       
+        return view(template().'.pages.profile.profile',['users'=>Auth::user()]);
         
     }
     public function update_avatar($Request)

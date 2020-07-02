@@ -1,5 +1,5 @@
 @extends('AdminDesktops.layouts.layout') @section('desktops')
-<form id="formProfile">
+
 	<div class="row">
 		<div class="col-md-3">
 			<div class="card card-primary card-outline">
@@ -12,27 +12,41 @@
 					<h3 class="profile-username text-center  text-info"><b class="">{{ mb_strtoupper(Auth::user()->idKey, "UTF-8")}}</b></h3>
 					<p class="text-muted text-center "><b class="full_email_show">{{Auth::user()->email}}</b>
 					</p>
-          			<input type="file" id="changeAvatar" class="d-none" name="avatar" />
-          	@if (Auth::user()->status_payment==0)
-            <button type="button" class="btn btn-info btn-block"><b>Sử Dụng Miễn Phí</b></button>
-			<ul class="list-group list-group-unbordered mb-3">
-		  	@else
-				<li class="list-group-item"> <b>Ngày Đăng Ký </b>  <a class="float-right"><b>{{date_format(date_create($users->date),"d-m-Y")}}</b></a>
-				</li>
-				<li class="list-group-item"> <b>Sử Dụng Đến </b>  <a class="float-right"><b>{{date_format(date_create(getExpiryDate()),"d-m-Y")}}</b></a>
-				</li>
-				<li class="list-group-item"> 
-					@if (Auth::user()->type=='member')
-					<a href="{{route('methods_payment')}}" class="btn btn-info btn-block"><b>  <i class="nav-icon fas fa-money"></i> Gia Hạn</b></a>
-				@endif
-				</a>
-				</li>
-			@endif
-			</ul> 
-			
-				</div>
-				<!-- /.card-body -->
+					<input type="file" id="changeAvatar" class="d-none" name="avatar" />
+					@if (Auth::user()->status_payment==0)
+						@if (Auth::user()->type!='admin') 
+						<button type="button" class="btn btn-info btn-block"><b>Sử Dụng Miễn Phí</b>
+						</button>
+						@endif
+						<ul class="list-group list-group-unbordered mb-3">
+					@else
+						<li class="list-group-item"> <b>Ngày Đăng Ký </b>  <a class="float-right"><b>{{date_format(date_create($users->date),"d-m-Y")}}</b></a>
+						</li>
+						@if (checkUsers())
+								<li class="list-group-item"> 
+									<b>Sử Dụng Đến </b>  
+									<a class="float-right"><b>{{date_format(date_create(getExpiryDate()),"d-m-Y")}}</b></a>
+								</li>
+								@if (Auth::user()->type=='member') 
+									<li class="list-group-item">
+										<a href="{{route('methods_payment')}}" class="btn btn-info btn-block">
+											<i class="nav-icon fas fa-money"></i> Gia Hạn
+										</a>
+									</li>
+								@endif
+						@else
+							<li class="list-group-item">
+								@if (Auth::user()->type!='admin') 
+								<button type="button" class="btn btn-info btn-block"><b>Sử Dụng Miễn Phí</b>
+								</button>
+								@endif
+							</li>
+						@endif	
+					@endif 
+				
+				</ul>
 			</div>
+		</div>
 		</div>
 		<!-- /.col -->
 		<div class="col-md-9">
@@ -49,13 +63,14 @@
 				<div class="card-body">
 					<div class="tab-content">
 						<div class="tab-pane active" id="userInfo">
-							<form class="form-horizontal">
+							<form id="formProfile" class="form-horizontal">
 								<div class="form-group ">
 									<label for="full_name" class="col-form-label">Họ Và Tên</label>
 									<input type="text" class="form-control" value="{{$users->full_name}}" id="full_name" name="full_name" placeholder="Họ và tên ....">
 								</div>
 								<div class="form-group">
-									<label for="email" class="col-form-label">Email <small class="error-email text-danger"></small></label>
+									<label for="email" class="col-form-label">Email <small class="error-email text-danger"></small>
+									</label>
 									<input type="email" class="form-control" id="email" value="{{$users->email}}" name="email" placeholder="Email">
 								</div>
 								<div class="form-group">
@@ -109,23 +124,19 @@
 									<div class="alertJS"></div>
 								</div>
 								<div class="form-group ">
-									<label for="old_password" >Nhập lại mật khẩu củ <span class="text-danger old_password"></span>
+									<label for="old_password">Nhập lại mật khẩu củ <span class="text-danger old_password"></span>
 									</label>
 									<input type="password" class="form-control" id="old_password" name="old_password" placeholder="">
-									
 								</div>
 								<div class="form-group ">
-									<label for="new_password" >Nhập mật khẩu mới <span class="text-danger old_password"></span>
+									<label for="new_password">Nhập mật khẩu mới <span class="text-danger old_password"></span>
 									</label>
-								
-										<input type="password" class="form-control" id="new_password" name="new_password">
-								
+									<input type="password" class="form-control" id="new_password" name="new_password">
 								</div>
 								<div class="form-group ">
 									<label for="re_password" class="">Xác nhận lại mật khẩu mới <span class="text-danger old_password"></span>
 									</label>
 									<input type="password" class="form-control" id="re_password" name="re_password" placeholder="...">
-									
 								</div>
 								<div class="form-group ">
 									<div class="offset-sm-2 col-sm-10"> <a href="{{route('dashboard')}}/" class="btn btn-danger float-feft"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
@@ -145,7 +156,8 @@
 		</div>
 		<!-- /.col -->
 	</div>
-</form>@endsection @section('javascript')
+
+@endsection @section('javascript')
 <script src="{{asset('app/desktops/profile/profile.js')}}"></script>
 <script>
 	var profile = new profile(); 

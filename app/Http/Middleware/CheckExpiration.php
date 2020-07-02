@@ -28,7 +28,9 @@ class CheckExpiration
                 $type = Users::where('id','=',Auth::user()->parent_id)->pluck('type')->first();
                 if($type=='admin'){
                     return $next($Request);
+                   
                 }else{
+                   
                     if (strtotime(getExpiryDate()) >strtotime($today)) {
                         return $next($Request);
                     } else {
