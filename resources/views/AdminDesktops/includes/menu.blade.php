@@ -154,10 +154,18 @@
         </a>
       </li>
       <li class="nav-item menu-open-new">
+        <a href="{{route('membership')}}" class="nav-link ">
+          <i class="nav-icon fas fa-users"></i>
+          <p>
+             Thành Viên Của Tôi
+          </p>
+        </a>
+      </li>
+      <li class="nav-item menu-open-new">
         <a href="{{route('profile')}}" class="nav-link ">
           <i class="nav-icon fas fa-user"></i>
           <p>
-             Hô sơ cá nhân
+             Hô Sơ Cá Nhân
           </p>
         </a>
       </li>

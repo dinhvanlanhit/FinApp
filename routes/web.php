@@ -129,6 +129,16 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
             Route::post('/export','MyEventController@postExport')->name('myevent_export');
             
         });
+        Route::group(['prefix' => 'membership'], function () {
+            Route::get('/datatable','Membership@getDatatable')->name('membership_table');
+            Route::get('/','Membership@getMembership')->name('membership');
+            Route::post('/insert','Membership@postInsert')->name('membership_insert');
+            Route::post('/update','Membership@postUpdate')->name('membership_update');
+            Route::get('/update','Membership@getUpdate')->name('membership_update');
+            Route::post('/delete','Membership@postDelete')->name('membership_delete');
+            Route::post('/export','Membership@postExport')->name('membership_export');
+        });
+        
     });
     Route::group(['prefix' => 'payment'], function (){
         Route::get('history','PaymentController@getPayMent')->name('history_payment');

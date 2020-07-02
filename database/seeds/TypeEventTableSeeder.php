@@ -31,7 +31,7 @@ class TypeEventTableSeeder extends Seeder
                   'color'=>'#002661'
                 ],
                 [
-                  'type_name' => 'Đám Ma',
+                  'type_name' => 'Đám Tan',
                   'color'=>'#0396FF'
                 ]
                 ,

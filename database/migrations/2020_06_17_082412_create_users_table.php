@@ -15,10 +15,10 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('idKey')->unique();
             $table->bigInteger('idRoles')->unsigned()->nullable();
             $table->foreign('idRoles')->references('id')->on('roles')->onUpdate('cascade');
             $table->integer('user_type')->nullable()->default(0);
-
             $table->string('name');
             $table->string('email')->unique()->nullable();
             $table->string('provider');
@@ -33,8 +33,6 @@ class CreateUsersTable extends Migration
             $table->integer('status_payment')->nullable()->default(1);
             $table->string('status_payment_name')->nullable()->default('Trả Phí');
             $table->date('date')->nullable();
-
-
             $table->string('avatar')->nullable()->default(null);
             $table->string('full_name')->nullable();
             $table->string('english_name')->nullable();
@@ -54,9 +52,6 @@ class CreateUsersTable extends Migration
             $table->string('fax')->nullable();
             $table->string('cmnn_passport')->nullable();
             $table->string('postal_code')->nullable();
-
-  
-        
             $table->timestamps();
         });
     }

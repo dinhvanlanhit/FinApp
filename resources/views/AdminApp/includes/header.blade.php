@@ -13,10 +13,12 @@
           <i class="fas fa-desktop"></i>
         </a>
       </li>
+      
       <li class="nav-item">
         <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-logout" class="nav-link" role="button">
           <i class="fas fa-sign-out-alt"></i>
         </a>
       </li>
+     
     </ul>
   </nav>

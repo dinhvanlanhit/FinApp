@@ -7,6 +7,15 @@
 .card-body-dashboard{
     padding: 5px;
 }
+.brand-link {
+    display: block;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    padding: 0px 0px;
+    transition: width 0.3s ease-in-out;
+    white-space: nowrap;
+}
+
 
 
  a.facebook {

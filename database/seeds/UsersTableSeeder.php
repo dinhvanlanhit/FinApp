@@ -11,8 +11,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+       $data =  DB::table('users')->insert([
             'idRoles'=>1,
+            'idKey'=> '1'.RandomString(5),
             'email' => 'dinhvanlanh.it@gmail.com',
             'password' => bcrypt('12345'),
             'avatar'=>null,
@@ -40,7 +41,10 @@ class UsersTableSeeder extends Seeder
             'status_payment'=>0,
             'status_payment_name'=>'Miễn Phí',
         ]);
+      
+        // RandomString
         DB::table('users')->insert([
+            'idKey'=> '2'.RandomString(5),
             'email' => 'dinhthinamsha@gmail.com',
             'password' => bcrypt('12345'),
             'avatar'=>null,
