@@ -17,18 +17,23 @@ class CheckMBSPMS
     public function handle(Request $request ,Closure $next,$data=null)
     {   
             $roles =  collect(json_decode(Auth::user()->permission));
-            if($request->ajax()){
-                if($roles->contains($data)){
-                    return $next($request);
-                }else{
-                    return response(JSON2(false,'Bạn không có quyền sử dụng chức năng này !'));
-                }
+            if(Auth::user()->type=='admin'){
+                return $next($request);
             }else{
-                if($roles->contains($data)){
-                    return $next($request);
+                if($request->ajax()){
+                    if($roles->contains($data)){
+                        return $next($request);
+                    }else{
+                        return response(JSON2(false,'Bạn không có quyền sử dụng chức năng này !'));
+                    }
                 }else{
-                    return redirect()->route('404');  
+                    if($roles->contains($data)){
+                        return $next($request);
+                    }else{
+                        return redirect()->route('404');  
+                    }
                 }
             }
+           
     }
 }
