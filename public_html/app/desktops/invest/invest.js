@@ -156,7 +156,6 @@ function invest() {
 		$("#onDelete").on("click", function (e) {
 			var id = $(this).val();
 			e.preventDefault(e);
-			buttonloading('#onDelete', true);
 			var result = _AjaxDelete({
 				id: id
 			}, datas.routes.delete);
@@ -164,11 +163,11 @@ function invest() {
 				table.ajax.reload();
 				surplus();
 				$("#modal-delete").modal('hide');
-				buttonloading('#onDelete', false);
+
 			}
 			else{
 				$("#modal-delete").modal('hide');
-				buttonloading('#onDelete', false);
+
 			}
 		});
 		$("#loan").on("input", function () {

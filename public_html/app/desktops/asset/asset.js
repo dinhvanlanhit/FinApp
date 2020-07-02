@@ -140,18 +140,18 @@ function asset() {
 		$("#onDelete").on("click", function (e) {
 			var id = $(this).val();
 			e.preventDefault(e);
-			buttonloading('#onDelete', true);
+			
 			var result = _AjaxDelete({
 				id: id
 			}, datas.routes.delete);
 			if (result) {
 				table.ajax.reload();
 				$("#modal-delete").modal('hide');
-				buttonloading('#onDelete', false);
+				
 			}
 			else{
 				$("#modal-delete").modal('hide');
-				buttonloading('#onDelete', false);
+				
 			}
 		});
 		$("#amount").on("input", function () {
