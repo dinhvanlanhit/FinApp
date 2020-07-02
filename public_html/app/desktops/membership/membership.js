@@ -122,7 +122,7 @@ function membership(){
 		$(document).delegate(".btn-update", "click", function () {
 			var id = $(this).val();
 			var elementbtn = $(this);
-			buttonloading(elementbtn, true);
+			
 			$('#modal-action-title').text("Chỉnh sửa");
 			$('#text-password').text("(Nhập mật khẩu mới để thay đổi)");
 			$.ajax({
@@ -141,7 +141,7 @@ function membership(){
 					$('#note').val(data.data.note);
 					$('#full_name').val(data.data.full_name);
 					$("#modal-action").modal('show');
-					buttonloading(elementbtn, false);
+					
 				},
 				error: function (error) {}
 			});
@@ -162,7 +162,6 @@ function membership(){
 		$("#onDelete").on("click", function (e) {
 			var id = $(this).val();
 			e.preventDefault(e);
-			buttonloading('#onDelete', true);
 			var result = _AjaxDelete({
 				id: id
 			}, datas.routes.delete);
@@ -170,7 +169,6 @@ function membership(){
 				table.ajax.reload();
 				surplus();
 				$("#modal-delete").modal('hide');
-				buttonloading('#onDelete', false);
 			}
 		});
 		$('#formAction').validate({

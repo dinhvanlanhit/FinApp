@@ -56,6 +56,9 @@ class RegisterController extends Controller
                         $Payment->date = date('Y-m-d');
                         $Payment->created_at = date('Y-m-d H:s:i');
                         $Payment->save();
+                        $Users = Users::find($Users->id);
+                        $Users->idKey = $Users->id.''.RandomString(5);
+                        $Users->save();
                         $emailTo = setting()->email_receive;
                         $mailfb= array(
                             'full_name' =>  $Request->full_name,
