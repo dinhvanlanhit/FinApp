@@ -114,20 +114,16 @@
           <i class="nav-icon fas fa-money"></i>
           <p>
             Ví Tiền
-          
           </p>
         </a>
-        
       </li>
       <li class="nav-item menu-open-new">
         <a href="{{route('asset')}}" class="nav-link ">
           <i class="nav-icon fas fa-hdd-o"></i>
           <p>
             Tài Sản
-          
           </p>
         </a>
-        
       </li>
       <li class="nav-item menu-open-new">
         <a href="{{route('methods_payment')}}" class="nav-link  ">
@@ -153,22 +149,35 @@
           </p>
         </a>
       </li>
-      <li class="nav-item menu-open-new">
-        <a href="{{route('membership')}}" class="nav-link ">
-          <i class="nav-icon fas fa-users"></i>
+      
+      <li class="nav-item has-treeview menu-open-new">
+        <a href="#" class="nav-link ">
+          <i class="nav-icon fas fa-cog"></i>
           <p>
-             Thành Viên Của Tôi
+            Cài Đặt
+            <i class="right fas fa-angle-left"></i>
           </p>
         </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{{route('membership')}}" class="nav-link ">
+              <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Thành Viên
+                </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('profile')}}" class="nav-link ">
+              <i class="far fa-circle nav-icon"></i>
+              <p>
+                Thông Tin Cá Nhân
+              </p>
+            </a>
+          </li>
+        </ul>
       </li>
-      <li class="nav-item menu-open-new">
-        <a href="{{route('profile')}}" class="nav-link ">
-          <i class="nav-icon fas fa-user"></i>
-          <p>
-             Hô Sơ Cá Nhân
-          </p>
-        </a>
-      </li>
+     
       @if (Auth::user()->type=='admin')
      
       <li class="nav-item menu-open-new">

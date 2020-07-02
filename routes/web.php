@@ -130,13 +130,13 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
             
         });
         Route::group(['prefix' => 'membership'], function () {
-            Route::get('/datatable','Membership@getDatatable')->name('membership_table');
-            Route::get('/','Membership@getMembership')->name('membership');
-            Route::post('/insert','Membership@postInsert')->name('membership_insert');
-            Route::post('/update','Membership@postUpdate')->name('membership_update');
-            Route::get('/update','Membership@getUpdate')->name('membership_update');
-            Route::post('/delete','Membership@postDelete')->name('membership_delete');
-            Route::post('/export','Membership@postExport')->name('membership_export');
+            Route::get('/datatable','MembershipController@getDatatable')->name('membership_datatable');
+            Route::get('/','MembershipController@getMembership')->name('membership');
+            Route::post('/insert','MembershipController@postInsert')->name('membership_insert');
+            Route::post('/update','MembershipController@postUpdate')->name('membership_update');
+            Route::get('/update','MembershipController@getUpdate')->name('membership_update');
+            Route::post('/delete','MembershipController@postDelete')->name('membership_delete');
+            Route::post('/export','MembershipController@postExport')->name('membership_export');
         });
         
     });

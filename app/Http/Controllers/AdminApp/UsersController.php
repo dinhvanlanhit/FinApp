@@ -38,6 +38,7 @@ class UsersController extends Controller
         $SQL .=") AS child ON ";
         $SQL .= " child.idUser = users_PARENT.id ";
         $SQL .= " WHERE type = '{$type}' ";
+        $SQL .= " AND parent_id IS NULL ";
         if(!empty($status)){
             $SQL .= " AND status = '{$status}' ";
             $totalData = count(DB::select(DB::raw($SQL)));

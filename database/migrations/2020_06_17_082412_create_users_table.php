@@ -15,7 +15,11 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('idKey')->unique();
+            $table->string('idKey')->unique()->nullable();
+            $table->string('type')->default('member')->nullable();
+            $table->bigInteger('parent_id')->unsigned()->nullable();
+            $table->foreign('parent_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->longText('permission')->nullable();
             $table->bigInteger('idRoles')->unsigned()->nullable();
             $table->foreign('idRoles')->references('id')->on('roles')->onUpdate('cascade');
             $table->integer('user_type')->nullable()->default(0);
@@ -27,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->rememberToken()->nullable();
             $table->longText('remember_token_password')->nullable();
-            $table->string('type')->default('member')->nullable();
+           
             $table->integer('status')->nullable()->default(0);
             $table->string('status_name')->nullable()->default('Mở');
             $table->integer('status_payment')->nullable()->default(1);
@@ -52,15 +56,10 @@ class CreateUsersTable extends Migration
             $table->string('fax')->nullable();
             $table->string('cmnn_passport')->nullable();
             $table->string('postal_code')->nullable();
+            $table->longText('note')->nullable();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('users');

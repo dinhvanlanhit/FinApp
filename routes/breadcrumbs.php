@@ -74,6 +74,11 @@ Breadcrumbs::for('contact', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Liên Hệ', route('contact'));
 });
+Breadcrumbs::for('membership', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('Thành Viên', route('membership'));
+});
+
 
 ///// ADMIN
 Breadcrumbs::for('admin_dashboard', function ($trail) {

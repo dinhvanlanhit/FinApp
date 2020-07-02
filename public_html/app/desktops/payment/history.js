@@ -67,6 +67,7 @@ function history(){
 					name: "created_at",
 					className: "text-center",
 				}
+				
 			],
 			drawCallback: function (settings) {
                 buttonloading(".formSearch", false);
