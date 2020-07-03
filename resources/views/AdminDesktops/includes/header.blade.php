@@ -4,7 +4,7 @@
 		<li class="nav-item"> <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
 		</li>
 		<li class="nav-item  ">
-			<a href="{{route('wallet')}}" class="nav-link active"> <b class="surplus" id="surplus"> {{number_format(surplus())}} </b> <b  class="d-none d-sm-inline-block"> VNĐ </b>
+			<a href="{{route('wallet')}}" class="nav-link active"> <b class="surplus" id="surplus"> {{number_format(surplus())}} </b> <b  class=""> VNĐ </b>
 			</a>
 		</li>
 		@if (Session::get('view_users')!=null) 
