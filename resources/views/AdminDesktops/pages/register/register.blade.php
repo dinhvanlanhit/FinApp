@@ -25,8 +25,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 	<style>
 		.logo-finapp{
-		  font-size:70pt; font-weight: bold
-		}
+        font-size:65pt; font-weight: bold
+      }
 		.card{
 		  border: solid 5px rgb(51, 153, 90)
 		}

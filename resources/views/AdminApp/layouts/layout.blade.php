@@ -35,5 +35,6 @@
     </div>
         @include(templateAdminApp().'.partials.scripts')
         @yield('javascript')
+        
 </body>
 </html>
