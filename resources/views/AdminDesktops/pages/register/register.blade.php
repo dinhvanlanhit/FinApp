@@ -23,13 +23,52 @@
 	<link rel="stylesheet" href="{{asset('AdminDesktops/dist/css/adminlte.css')}}">
 	<link rel="stylesheet" href="{{asset('AdminDesktops/style.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	<style>
+		.logo-finapp{
+		  font-size:70pt; font-weight: bold
+		}
+		.card{
+		  border: solid 5px rgb(51, 153, 90)
+		}
+		@media only screen and (max-width: 300px) {
+		  .text-remember{
+			font-size: 8pt;
+		  }
+		}
+		@media only screen and (max-width: 400px) {
+		  .text-remember{
+			font-size: 10pt;
+		  }
+		  .button-sm{
+			padding: 0.25rem 0.5rem;
+			font-size: 0.875rem;
+			line-height: 1.5;
+           }
+		}
+		@media only screen and (max-width: 500px) {
+		  .logo-finapp {
+			font-size:35pt; font-weight: bold
+		  }
+		  .card-body{
+			padding: 5px;
+		  }
+		}
+		@media only screen and (max-width: 600px) {
+		  .logo-finapp {
+			font-size:45pt; font-weight: bold
+		  }
+		  .card-body{
+			padding: 10px;
+		  }
+		}
+	</style>
 </head>
 <body class=" register-page">
 	<div class="register-box" >
 		<div class="card">
 			<div class="card-body ">
 				<div class="register-logo">
-					<img class="btn-block" src="{{asset('SytemFinApp/logo/logofinapp.png')}}" />
+					<span   class="logo-finapp"><b class="text-success">{{mb_strtoupper(setting()->company_name,'UTF-8')}}</b></span>
 				</div>
 				<div id="alert"></div>
 				<form id="form-register">
@@ -81,12 +120,12 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="form-group">
-								<button type="submit" id="button-register" class="btn btn-primary btn-block">Đăng ký</button>
+								<button type="submit" id="button-register" class="button-sm btn btn-flat btn-block btn-outline-primary btn-block">Đăng ký</button>
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="form-group">
-							<a href="{{route('login')}}" id="button-register" class="btn btn-success btn-block">Đăng nhập</a>
+							<a href="{{route('login')}}" id="button-register" class="button-sm btn btn-flat btn-block btn-outline-info btn-block">Đăng nhập</a>
 							</div>
 						</div>
 						

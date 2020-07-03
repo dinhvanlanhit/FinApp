@@ -14,19 +14,66 @@
   <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('AdminDesktops/dist/css/adminlte.min.css')}}">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>
+      .logo-finapp{
+        font-size:70pt; font-weight: bold
+      }
+      .card{
+        border: solid 5px rgb(51, 153, 90)
+      }
+      @media only screen and (max-width: 300px) {
+        .text-remember{
+          font-size: 4pt;
+        }
+      }
+      @media only screen and (max-width: 350px) {
+        .text-remember{
+          font-size: 5pt;
+        }
+        #button-login{
+          padding: 0.25rem 0.5rem;
+          font-size: 0.875rem;
+          line-height: 1.5;
+        }
+      }
+      @media only screen and (max-width: 450px) {
+        .text-remember{
+          font-size: 10pt;
+        }
+      }
+      @media only screen and (max-width: 500px) {
+        .logo-finapp {
+          font-size:35pt; font-weight: bold
+        }
+        .card-body{
+          padding: 5px;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        .logo-finapp {
+          font-size:45pt; font-weight: bold
+        }
+        .card-body{
+          padding: 10px;
+        }
+      }
+      
+      
+      
+  </style>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="card">
     <div class="card-body ">
       <div class="login-logo">
-            <img class="btn-block" src="{{asset('SytemFinApp/logo/')}}/{{setting()->logo}}"/>
+      <span   class="logo-finapp"><b class="text-success">{{mb_strtoupper(setting()->company_name,'UTF-8')}}</b></span>
       </div>
       <div id="alert"></div>
       <form id="form-login"  method="post">
         <span class="email text-danger"></span>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" value="" name="email" placeholder="Email or Name">
+          <input type="text" class="form-control" value="" name="email" placeholder="Tài khoản">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -35,7 +82,7 @@
         </div>
         <span class="password text-danger"></span>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" value="" name="password"  placeholder="Password">
+          <input type="password" class="form-control" value="" name="password"  placeholder="Mật khẩu">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -46,13 +93,13 @@
           <div class="col-6">
             <div class="icheck-success">
               <input type="checkbox" id="remember">
-              <label for="remember">
+              <label for="remember" class="text-remember">
                 Nhớ đăng nhập
               </label>
             </div>
           </div>
           <div class="col-6">
-            <button type="submit" id="button-login" class="btn btn-success  btn-flat btn-block"> Đăng nhập </button>
+            <button type="submit" id="button-login" class="btn  btn-outline-info btn-flat btn-block"> Đăng nhập </button>
           </div>
         </div>
         <br>
@@ -67,12 +114,17 @@
         <br>
         @endif
         <div class="row">
-          <div class="col-md-6 text-left">
-              <a href="{{route('forgot-password')}}" class="btn-link ">Tôi quên mật khẩu của tôi</a>
+          <div class="col-md-12 ">
+            <div class="form-group">
+              <a href="{{route('forgot-password')}}" class="btn btn-flat btn-block btn-outline-dark">Tôi quên mật khẩu của tôi</a>
+            </div>
+            <div class="form-group">
+              <a href="{{route('register')}}" class="btn btn-flat btn-block btn-outline-info ">Đăng ký thành viên mới</a>
+            </div>
+              
+              
           </div>
-          <div class="col-md-6 text-right">
-              <a href="{{route('register')}}" class="btn-link ">Đăng ký thành viên mới</a>
-          </div>
+         
         </div>
       </form>
     </div>

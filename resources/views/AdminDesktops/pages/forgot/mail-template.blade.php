@@ -4,13 +4,13 @@
     <b style="font-size: 11px;
     font-family: LucidaGrande,tahoma,verdana,arial,sans-serif;
     padding: 10px;
-    background-color: #f2f2f2;
+    background-color: #0d4e43;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;">{{$remember_token}}</b>
 </p>
-<p>Ngoài ra bạn có thể thay đổi trực tiếp mật khẩu của mình. </p>
+{{-- <p>Ngoài ra bạn có thể thay đổi trực tiếp mật khẩu của mình. </p>
 <a href="{{$route}}" target="_blank" style="border-collapse: collapse;
 width:150px;
 border-radius: 2px;
@@ -22,4 +22,4 @@ color:antiquewhite;
 text-decoration: none;
 padding: 7px 16px 11px 16px;">
 Đổi mật khẩu
-</a>
+</a> --}}
