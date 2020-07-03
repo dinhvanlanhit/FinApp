@@ -40,7 +40,6 @@ function dashboard() {
 				}
 			});
 		}
-		
         me.chartDashboard();
 	},
 	this.chartDashboard = function () {
@@ -62,7 +61,12 @@ function dashboard() {
         });
 	
 	},
+	this.format =function(a){
+		// console.log(a);
+		return a.seriesName+'<br>'+a.name+' : '+money_format(a.value)+' ('+a.percent+'%)';
+	}
 	this.runChar=function(data,id){
+		var me = this;
 		$(window).resize(function () {
 			EventDoughnut.resize();
 		});
@@ -81,7 +85,7 @@ function dashboard() {
 			},
 			tooltip: {
 				trigger: 'item',
-				formatter: '{a} <br/>{b}: {c} ({d}%)'
+				formatter:me.format
 			},
 			legend: {
 				bottom: 10,
@@ -132,7 +136,7 @@ function dashboard() {
 			dataType: 'JSON',
 			async:false,
 			success: function (data) {
-				console.log(data)
+				// console.log(data)
 				me.runChar(data.data,idChart);
 				
 			},
