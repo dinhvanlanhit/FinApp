@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="vi">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,15 +10,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @include('AdminDesktops.partials.stylesheet')
 </head>
-<body class="sidebar-mini layout-fixed  text-sm">
+<body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed text-sm">
     <div class="wrapper">
         <!-- Navbar -->
         @include('AdminDesktops.includes.header')
         <!-- /.navbar -->
         @include('AdminDesktops.includes.sidebar')
         <div class="content-wrapper">
-            <div class="container-fluid">
-              <div class="breadcrumbs" id="breadcrumbs-finApp">
+            <div class="container-fluid ">
+              <div class="breadcrumbs" id="breadcrumbs-finApp  mb-10">
                 {{ Breadcrumbs::render() }}
               </div>
             </div>

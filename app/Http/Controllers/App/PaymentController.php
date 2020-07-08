@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Auth;
 use App\Models\Users;
-use App\Models\UsePayMent;
+use App\Models\UsePayment;
 use App\Models\UsersPayment;
 use File;
 class PaymentController extends Controller
