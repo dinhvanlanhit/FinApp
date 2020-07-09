@@ -15,9 +15,6 @@
     transition: width 0.3s ease-in-out;
     white-space: nowrap;
 }
-
-
-
  a.facebook {
     background: #3b5998 !important;
 }
@@ -77,4 +74,113 @@
     text-align: center;
     font-size: 15px;
     color: #444;
+}
+
+#loader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99999;
+	background: rgb(255, 255, 255);
+	display: flex;
+	align-items: center;
+	justify-content: center
+}
+ #loader .loading-icon {
+	width: 300px;
+	height: auto;
+	animation: loadingAnimation 1s infinite
+} 
+@keyframes loadingAnimation {
+	0% {
+		transform: rotate(0deg)
+	}
+	100% {
+		transform: rotate(360deg)
+	}
+}
+.logo-finapp{
+    font-size:65pt; font-weight: bold
+  }
+  .letter{
+    font-size:65pt; font-weight: bold
+    }
+  .card-app{
+    border: solid 5px rgb(51, 153, 90)
+  }
+  .login-logo{
+    font-size: 2.1rem;
+    font-weight: 300;
+    margin-bottom: 0px;
+    text-align: center;
+    border: 5px solid #dee2e6;
+    margin-bottom: 10px;
+  }
+
+  @media only screen and (max-width: 300px) {
+    .text-remember{
+      font-size: 4pt;
+    }
+  }
+  @media only screen and (max-width: 350px) {
+    .text-remember{
+      font-size: 5pt;
+    }
+    #button-login{
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+  }
+  @media only screen and (max-width: 450px) {
+    .text-remember{
+      font-size: 10pt;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .logo-finapp {
+      font-size:35pt; font-weight: bold
+    }
+    .letter{
+      font-size:35pt; font-weight: bold
+    }
+    .card-body{
+      padding: 5px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .logo-finapp {
+      font-size:45pt; font-weight: bold
+    }
+    .letter{
+      font-size:45pt; font-weight: bold
+    }
+    .card-body{
+      padding: 10px;
+    }
+  }
+.letter:nth-child(1) {
+color: #4285f4;
+}
+.letter:nth-child(2) {
+color: #ea4335;
+}
+.letter:nth-child(3) {
+color: #fbbc05;
+}
+.letter:nth-child(4) {
+color: #4285f4;
+}
+.letter:nth-child(5) {
+color: #34a853;
+}
+.letter:nth-child(6) {
+color: #ea4335;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.1rem;
 }

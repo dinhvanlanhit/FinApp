@@ -11,6 +11,9 @@
   @include('AdminDesktops.partials.stylesheet')
 </head>
 <body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed text-sm">
+    <div id="loader">
+      <img src="{{asset('SytemFinApp/loading/loading.gif')}}" alt="icon" class="loading-icon">
+    </div>
     <div class="wrapper">
         <!-- Navbar -->
         @include('AdminDesktops.includes.header')

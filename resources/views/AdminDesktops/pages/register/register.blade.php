@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="vi">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,9 +22,6 @@
     <meta name="twitter:site" content="@FinApp"/>
     <meta name="twitter:title" content="FinApp  - Đăng Ký Thành Viên"/>
     <meta name="twitter:description" content="FinApp - Quản Lý Số Tiền , Tài Sản , Chi Tiêu , Thu Nhập "/>
-	
-	
-	
 	<link rel="icon" type="image/png" href="{{asset('SytemFinApp/icon/icon.jpg')}}" >
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{asset('AdminDesktops/plugins/fontawesome-free/css/all.min.css')}}">
@@ -43,48 +40,23 @@
 	<link rel="stylesheet" href="{{asset('AdminDesktops/dist/css/adminlte.css')}}">
 	<link rel="stylesheet" href="{{asset('AdminDesktops/style.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-	<style>
-	.logo-finapp{
-        font-size:65pt; font-weight: bold
-      }
-		.card{
-		  border: solid 5px rgb(51, 153, 90)
-		}
-		@media only screen and (max-width: 300px) {
-		  .text-remember{
-			font-size: 8pt;
-		  }
-		}
-		@media only screen and (max-width: 400px) {
-		  .text-remember{
-			font-size: 10pt;
-		  }
-		}
-		@media only screen and (max-width: 500px) {
-		  .logo-finapp {
-			font-size:35pt; font-weight: bold
-		  }
-		  .card-body{
-			padding: 5px;
-		  }
-		}
-		@media only screen and (max-width: 600px) {
-		  .logo-finapp {
-			font-size:45pt; font-weight: bold
-		  }
-		  .card-body{
-			padding: 10px;
-		  }
-		}
-	</style>
+	<link rel="stylesheet" href="{{asset('AdminDesktops/style.css')}}">
 </head>
 <body class=" register-page">
 	<div class="register-box" >
 		<div class="card">
 			<div class="card-body ">
-				<div class="register-logo">
-					<span   class="logo-finapp"><b class="text-success">{{mb_strtoupper(setting()->company_name,'UTF-8')}}</b></span>
-				</div>
+				<div class="login-logo">
+					<div class="bounce">
+					  <span class="letter">F</span>
+					  <span class="letter">I</span>
+					  <span class="letter">N</span>
+					  <span class="letter">A</span>
+					  <span class="letter">P</span>
+					  <span class="letter">P</span>
+					</div>
+				  {{-- <span   class="logo-finapp"><b class="text-success">{{mb_strtoupper(setting()->company_name,'UTF-8')}}</b></span> --}}
+				  </div>
 				<div id="alert"></div>
 				<form id="form-register">
 					<div class="form-group">
@@ -135,12 +107,12 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="form-group">
-								<button type="submit" id="button-register" class="btn btn-primary btn-block">Đăng ký</button>
+								<button type="submit" id="button-register" class="btn btn-outline-primary btn-block">Đăng ký</button>
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="form-group">
-							<a href="{{route('login')}}" id="button-register" class="btn btn-success btn-block">Đăng nhập</a>
+							<a href="{{route('login')}}" id="button-register" class="btn btn-outline-success btn-block">Đăng nhập</a>
 							</div>
 						</div>
 						
