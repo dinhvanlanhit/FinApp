@@ -23,7 +23,7 @@
     <meta name="twitter:title" content="FinApp - Đăng Nhập"/>
     <meta name="twitter:description" content="FinApp - Quản Lý Tài Sản,Chi Tiêu,Tiệc Đám Cưới,Thu Nhập,Hàng Tháng,Hàng Năm"/>
   <link rel="icon" type="image/png" href="{{asset('SytemFinApp/icon/')}}/{{setting()->icon}}" >
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
   <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/fontawesome-free/css/all.min.css')}}">
   <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/font-awesome/4.7.0/css/font-awesome.min.css')}}">
   <link rel="stylesheet" href="{{asset('AdminDesktops/plugins/fontawesome-free/css/all.min.css')}}">
