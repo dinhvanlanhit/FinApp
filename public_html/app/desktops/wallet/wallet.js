@@ -46,7 +46,7 @@ function wallet() {
 					name: "amount",
 					className: "text-center",
 					render: function (data, type, row, meta) {
-						var amount = data+row.cumINCOME-row.sumCOST;
+						var amount = (row.amount+row.sumINCOME) - row.sumCOST;
 						return '<b class="">' + money_format(amount) + ' VNĐ</b>';
 					}
 				},
