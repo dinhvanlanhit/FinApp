@@ -118,25 +118,15 @@
     border: 5px solid #dee2e6;
     margin-bottom: 10px;
   }
-
-  @media only screen and (max-width: 300px) {
-    .text-remember{
-      font-size: 4pt;
+  @media only screen and (max-width: 600px) {
+    .logo-finapp {
+      font-size:45pt; font-weight: bold
     }
-  }
-  @media only screen and (max-width: 350px) {
-    .text-remember{
-      font-size: 5pt;
+    .letter{
+      font-size:45pt; font-weight: bold
     }
-    #button-login{
-      padding: 0.25rem 0.5rem;
-      font-size: 0.875rem;
-      line-height: 1.5;
-    }
-  }
-  @media only screen and (max-width: 450px) {
-    .text-remember{
-      font-size: 10pt;
+    .card-body{
+      padding: 10px;
     }
   }
   @media only screen and (max-width: 500px) {
@@ -150,17 +140,34 @@
       padding: 5px;
     }
   }
-  @media only screen and (max-width: 600px) {
-    .logo-finapp {
-      font-size:45pt; font-weight: bold
-    }
-    .letter{
-      font-size:45pt; font-weight: bold
-    }
-    .card-body{
-      padding: 10px;
+  @media only screen and (max-width: 450px) {
+    .text-remember{
+      font-size: 12pt;
     }
   }
+  @media only screen and (max-width: 350px) {
+    .text-remember{
+      font-size: 10pt;
+    }
+    #button-login{
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    .letter{
+      font-size:30pt; font-weight: bold
+    }
+  }
+  @media only screen and (max-width: 300px) {
+    .text-remember{
+      font-size: 7pt;
+    }
+    .letter{
+      font-size:25pt; font-weight: bold
+    }
+  }
+
+
 .letter:nth-child(1) {
 color: #4285f4;
 }
