@@ -1,4 +1,4 @@
-<nav class="main-header navbar navbar-expand navbar-dark navbar-success">
+<nav class="main-header navbar navbar-expand navbar-dark navbar-danger">
 	<!-- Left navbar links -->
 	<ul class="navbar-nav ">
 		<li class="nav-item"> <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -21,7 +21,18 @@
 
 		<li class="nav-item dropdown">
 			<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle active"> 
-        <i class="fa fa-user-circle d-sm-none"></i>  <b class="d-none d-sm-inline-block">{{Auth::user()->full_name}} </b>
+				<i class="fa fa-user-circle "></i>
+				{{-- <img
+				 @if (empty(Auth::user()->avatar)) 
+				 	src="{{asset('./data/default/profile-default.png')}}" 
+				 @else 
+					 @if (file_exists('./data/users/users'.Auth::user()->id.'/'.Auth::user()->avatar)) src="{{asset('./data/users/users'.Auth::user()->id.'/'.Auth::user()->avatar)}}" 
+						 @else src="{{asset('./data/default/profile-default.png')}}"
+					@endif 
+				@endif 
+				class="" width="50px" height="50px" alt="User Image"> --}}
+
+        		<b class="d-none d-sm-inline-block">{{Auth::user()->full_name}} </b>
 			</a>
 			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="left: 0px; right: inherit;">
 				<li><a href="{{route('profile')}}" class="dropdown-item"><i class="fas fa-user"></i> Hô Sơ Cá Nhân</a>
