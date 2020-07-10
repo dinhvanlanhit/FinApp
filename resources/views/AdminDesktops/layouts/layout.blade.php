@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="icon" type="image/png" href="{{asset('SytemFinApp/icon/')}}/{{setting()->icon}}" >
-  <title>FinApp</title>
-
+  <title>FinApp - 2020</title>
   @include('AdminDesktops.partials.stylesheet')
 </head>
 <body class="sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed text-sm">
