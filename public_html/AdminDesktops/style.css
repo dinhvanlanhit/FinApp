@@ -144,6 +144,9 @@
     .text-remember{
       font-size: 12pt;
     }
+    .table.dataTable {
+      font-size: 9.5pt;
+    }
   }
   @media only screen and (max-width: 350px) {
     .text-remember{
@@ -154,6 +157,9 @@
       font-size: 0.875rem;
       line-height: 1.5;
     }
+    .table.dataTable {
+      font-size: 8pt;
+    }
     .letter{
       font-size:30pt; font-weight: bold
     }
@@ -161,6 +167,9 @@
   @media only screen and (max-width: 300px) {
     .text-remember{
       font-size: 7pt;
+    }
+    .table.dataTable {
+      font-size: 8pt;
     }
     .letter{
       font-size:25pt; font-weight: bold
