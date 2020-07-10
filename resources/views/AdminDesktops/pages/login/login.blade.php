@@ -11,8 +11,8 @@
     <meta property="og:locale" content="en_US"/>
     <meta property="og:site_name" content="FinApp"/>
     <meta property="og:image" content="{{asset('SytemFinApp/icon/')}}/{{setting()->icon}}"/>
-    <meta property="og:image:width" content="240"/>
-    <meta property="og:image:height" content="90"/>
+    <meta property="og:image:width" content="{{icon_w()}}"/>
+    <meta property="og:image:height" content="{{icon_h()}}"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="FinApp - Đăng Nhập"/>
     <meta property="og:description" content="FinApp - Quản Lý Tài Sản,Chi Tiêu,Tiệc Đám Cưới,Thu Nhập,Hàng Tháng,Hàng Năm"/>

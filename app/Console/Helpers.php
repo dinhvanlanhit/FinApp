@@ -9,7 +9,24 @@ function RandomString($length = 6)
     }
     return $randomString;
 }
-
+function icon_w()
+{
+    $rs = 0;
+    if (file_exists(base_path('public_html/SytemFinApp/icon').'/'.setting()->icon)) {
+      $data =  getimagesize(base_path('public_html/SytemFinApp/icon').'/'.setting()->icon);
+      $rs = $data[0];
+    }
+    return  $rs;
+}
+function icon_h()
+{
+    $rs = 0;
+    if (file_exists(base_path('public_html/SytemFinApp/icon').'/'.setting()->icon)) {
+      $data =  getimagesize(base_path('public_html/SytemFinApp/icon').'/'.setting()->icon);
+      $rs = $data[1];
+    }
+    return  $rs;
+}
 function checkUsers()
 {
     $type =  Auth::user()->type;

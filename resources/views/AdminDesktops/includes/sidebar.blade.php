@@ -1,4 +1,4 @@
-<aside class="main-sidebar elevation-4 sidebar-light-success">
+<aside class="main-sidebar elevation-4 sidebar-light-info">
     <a href="{{route('dashboard')}}" class="brand-link text-center">
       <div class="bounce">
         <b>
