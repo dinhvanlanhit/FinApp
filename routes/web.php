@@ -22,7 +22,6 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     Route::post('/export-dashboard','DashboardController@postExport')->name('export');
     Route::get('404','ErrorController@get404')->name('404');
     Route::group(['middleware' => ['CheckExpiration']],function (){
-
         Route::group(['prefix' => 'event'], function () {
             Route::get('/datatable','EventController@getDatatable')->name('event_table');
             Route::get('/','EventController@getEvent')->name('event')->middleware('CheckMBSPMS:event_view');
@@ -156,7 +155,6 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
     Route::group(['prefix' => 'contact'], function (){
         Route::get('/','ContactController@getContact')->name('contact');
         Route::post('contact-send','ContactController@postContact')->name('contact_send');
-       
     });  
 });
 Route::get('/mobile',function(){

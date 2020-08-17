@@ -102,7 +102,7 @@
 								</div>
 								<div class="form-group ">
 									<label for="phone_number" class=" col-form-label">Số Điện Thoại</label>
-									<input type="text" class="form-control" id="phone_number" name="phone_number" value="{{$users->phone_number}}" placeholder="Địa chỉ ... ">
+									<input type="text" class="form-control" id="phone_number" name="phone_number" value="{{$users->phone_number}}" placeholder="Số ĐT" ... ">
 								</div>
 								<div class="form-group ">
 									<label for="address" class=" col-form-label">Mối Quan Hệ</label>
@@ -162,7 +162,8 @@
 <script>
 	var profile = new profile(); 
 	    profile.datas={
-	        birthday:"{{$users->birthday}}",
+			birthday:"{{$users->birthday}}",
+			parent_id:"{{Auth::user()->parent_id}}",
 	        routes:{
 	          profile:"{{route('profile')}}",
 			  uploadFile:"{{route('uploadFile')}}",

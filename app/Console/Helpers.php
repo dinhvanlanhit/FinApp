@@ -210,7 +210,11 @@ function  JSON3($data=null,$type=false,$messages=null)
     return json_encode($Responses);
 
 }
-
+function countWallet()
+{
+   return $count =  \App\Models\Wallet::where('idUser','=',idUser())->count();
+   
+}
 function template()
 {
     $agent = new \Jenssegers\Agent\Agent;

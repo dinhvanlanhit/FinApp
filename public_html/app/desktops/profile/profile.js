@@ -44,7 +44,7 @@ function profile(){
             if(UploadFile("input[name=avatar]")){
                 setImgSRC("#changeAvatar","#user_avatar_profile,#user_avatar_sidebar");
             }
-        });
+		});
         $('#birthday').datepicker('setDate', datas.birthday);
         $('#formProfile').validate({
 			rules: {
@@ -52,13 +52,13 @@ function profile(){
 					required: true
 				},
 				email: {
-					required: true
+					required:datas.parent_id==""?true:false
 				},
 				birthday: {
-					required: true
+					required:datas.parent_id==""?true:false
                 },
                 address_1: {
-					required: true
+					required: datas.parent_id==""?true:false
                 }
 			},
 			messages: {

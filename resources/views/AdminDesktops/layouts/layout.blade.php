@@ -38,26 +38,47 @@
       </div>
         @include('AdminDesktops.partials.scripts')
         @yield('javascript')
-        @if (Auth::user()->address_1=='')
-        @if (\Request::route()->getName()!='profile')
-        <script>
-          Swal.fire({
-             title: 'Thông báo',
-             text: "Bạn chưa cập nhật thông tin cá nhân vui lòng cập nhật để sử dụng dịch vụ",
-             icon: 'warning',
-             showCancelButton: true,
-             confirmButtonColor: '#3085d6',
-             cancelButtonColor: '#d33',
-             confirmButtonText: 'Cập Nhật',
-             cancelButtonText: 'Hủy',
-             reverseButtons: true
-           }).then((result) => {
-              if (result.value) {
-                  return window.location.href = "{{route('profile')}}"
-              }
-           });
-       </script>
+        @if (Auth::user()->address_1==''&&Auth::user()->parent_id==null)
+              @if (\Request::route()->getName()!='profile')
+                <script>
+                  Swal.fire({
+                    title: 'Thông báo',
+                    text: "Bạn chưa cập nhật thông tin cá nhân vui lòng cập nhật để sử dụng dịch vụ",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Cập Nhật',
+                    cancelButtonText: 'Hủy',
+                    reverseButtons: true
+                  }).then((result) => {
+                      if (result.value) {
+                          return window.location.href = "{{route('profile')}}"
+                      }
+                  });
+              </script>
+              @endif
+        @elseif(countWallet()==0)
+          @if (\Request::route()->getName()!='wallet')
+            <script>
+              Swal.fire({
+                title: 'Thông báo',
+                text: "Bạn chưa thiết lý ví tiền vui long tạo ví tiền để giao dịch",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Táo ví',
+                cancelButtonText: 'Hủy',
+                reverseButtons: true
+              }).then((result) => {
+                  if (result.value) {
+                      return window.location.href = "{{route('wallet')}}"
+                  }
+              });
+            </script>
+          @endif
         @endif
-        @endif
+         
 </body>
 </html>
