@@ -68,10 +68,10 @@
 									<label for="full_name" class="col-form-label">Họ Và Tên</label>
 									<input type="text" class="form-control" value="{{$users->full_name}}" id="full_name" name="full_name" placeholder="Họ và tên ....">
 								</div>
-								<div class="form-group">
+								<div class="form-group {{Auth::user()->parent_id!=''?'d-none':''}}">
 									<label for="email" class="col-form-label">Email <small class="error-email text-danger"></small>
 									</label>
-									<input type="email" class="form-control" id="email" value="{{$users->email}}" name="email" placeholder="Email">
+									<input type="email" class="form-control " id="email" value="{{$users->email}}" name="email" placeholder="Email">
 								</div>
 								<div class="form-group">
 									<label for="birthday" class="col-form-label">Ngày Sinh</label>
@@ -104,6 +104,7 @@
 									<label for="phone_number" class=" col-form-label">Số Điện Thoại</label>
 									<input type="text" class="form-control" id="phone_number" name="phone_number" value="{{$users->phone_number}}" placeholder="Số ĐT" ... ">
 								</div>
+								
 								<div class="form-group ">
 									<label for="address" class=" col-form-label">Mối Quan Hệ</label>
 									<select name="user_type" class="form-control select2bs4">

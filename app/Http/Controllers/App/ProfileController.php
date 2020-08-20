@@ -55,7 +55,7 @@ class ProfileController extends Controller
     }
     public function postProfile(Request $Request)
     {
-        $isCheckEmail = Users::where('email','=',$Request->email)->where('id','!=',Auth::user()->id)->first();
+        $isCheckEmail = Users::where('email','=',$Request->email)->where('type','!=','membership')->where('id','!=',Auth::user()->id)->first();
         if($isCheckEmail){
             return JSON2(false,'Email đã tồn tại vui lòng nhập Email khác !');
         }else{
