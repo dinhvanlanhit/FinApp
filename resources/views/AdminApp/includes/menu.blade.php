@@ -26,14 +26,14 @@
           <span class="badge badge-danger right" id="countContact">{{countContact()}}</span>
         </a>
       </li>
-      <li class="nav-item menu-open">
+      {{-- <li class="nav-item menu-open">
         <a href="" class="nav-link ">
           <i class="nav-icon fas fa-users"></i>
           <p>
              Thành Viên Hệ Thống
           </p>
         </a>
-      </li>
+      </li> --}}
       <li class="nav-item menu-open">
         <a href="{{route('admin_roles')}}" class="nav-link ">
           <i class="nav-icon fas  fa-check"></i>

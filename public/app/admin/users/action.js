@@ -111,7 +111,8 @@ function users(){
 							buttonloading('.onSave', false);
                             $("#modal-users").modal('hide');
                             $(".full_name_show").text(formData.get('full_name'));
-                            $(".email_show").text(formData.get('email'));
+							$(".email_show").text(formData.get('email'));
+							window.location.href=datas.routes.users;
 							Toast.fire({
 								icon: data.icon,
 								title: data.messages

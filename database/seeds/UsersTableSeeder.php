@@ -14,8 +14,8 @@ class UsersTableSeeder extends Seeder
        $data =  DB::table('users')->insert([
             'idRoles'=>1,
             'idKey'=> '1'.RandomString(5),
-            'email' => 'dinhvanlanh.it@gmail.com',
-            'password' => bcrypt('12345'),
+            'email' => 'demo@gmail.com',
+            'password' => bcrypt('1234'),
             'avatar'=>null,
             'full_name'=>'Đinh Văn Lệ',
             'english_name'=>'Admin Pro',
@@ -46,7 +46,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'idKey'=> '2'.RandomString(5),
             'email' => 'dinhthinamsha@gmail.com',
-            'password' => bcrypt('12345'),
+            'password' => bcrypt('1234'),
             'avatar'=>null,
             'full_name'=>'Đinh Thị Năm',
             'english_name'=>'Đinh Thị Năm',
@@ -81,7 +81,7 @@ class UsersTableSeeder extends Seeder
                 'parent_id'=>1,
                 'email' => $i.'@gmail.com',
                 'username' =>$rs->idKey.'_'.$ABC,
-                'password' => bcrypt('12345'),
+                'password' => bcrypt('1234'),
                 'avatar'=>null,
                 'full_name'=>'Đinh Văn '.$ABC,
                 'english_name'=>'Admin Pro',
