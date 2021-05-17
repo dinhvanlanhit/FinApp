@@ -27,7 +27,7 @@ function users(){
 								title: data.messages
 							});
                             is=data.statusBoolen;
-                           
+
                         }else{
                             Toast.fire({
 								icon: data.icon,
@@ -42,7 +42,7 @@ function users(){
             });
             return is;
         }
-      
+
         $("#changeAvatar").on('change',function(){
             if(UploadFile("input[name=avatar]")){
                 setImgSRC("#changeAvatar","#user_avatar_users,#user_avatar_sidebar");
@@ -112,11 +112,11 @@ function users(){
                             $("#modal-users").modal('hide');
                             $(".full_name_show").text(formData.get('full_name'));
 							$(".email_show").text(formData.get('email'));
-							window.location.href=datas.routes.users;
 							Toast.fire({
 								icon: data.icon,
 								title: data.messages
 							});
+                            return window.location.href=datas.routes.users;
 						} else {
 							Toast.fire({
 								icon: data.icon,

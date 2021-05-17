@@ -69,15 +69,15 @@ class RegisterController extends Controller
                                 $message->to($emailTo, 'Recovery')->subject('Đăng Ký Thành Viên Mới');
                             });
                         }
-                        catch(Exception $ex)
+                        catch(\Exception $exception)
                         {
-                            return JSON2(false,"Đăng ký không thành công !");
+
                         }
                         return JSON2(true,"Đăng ký thành công bạn có thế đăng nhập tài khoản vừa đăng ký");
                      }else{
                          return JSON2(false,"Đăng ký không thành công !");
                      }
-                   
+
                 }
             }
         }else{
@@ -86,7 +86,7 @@ class RegisterController extends Controller
 
 
 
-      
+
     }
     public function generateRandomString($length = 6)
     {
@@ -127,7 +127,7 @@ class RegisterController extends Controller
             {
                 return JSON2(false,"Gửi email xác nhận không thành công !");
             }
-           
+
         }else{
             return JSON2(false,'Email của bạn không tồn tại !');
         }
@@ -140,7 +140,7 @@ class RegisterController extends Controller
         }else{
             return redirect()->route('forgot-password');
         }
-        
+
     }
     public function postRecovercode(Request $request)
     {
@@ -179,14 +179,14 @@ class RegisterController extends Controller
                 return redirect()->route('forgot-password');
             }
         }
-       
-        
-       
+
+
+
     }
     public function postPassword(Request $request)
     {
         if(Session::get('id_session')!=null){
-            if ($request->password . "" === "" || $request->re_password . "" === "") 
+            if ($request->password . "" === "" || $request->re_password . "" === "")
             {
                 return JSON2(false, 'Vui lòng nhập đầy đủ thông tin');
             }else{
@@ -202,7 +202,7 @@ class RegisterController extends Controller
                     }else{
                         return JSON2(false, 'Hệ thống lỗi vui lòng thục hiện lại trong vài phúc sau !');
                     }
-                    
+
                 } else {
                     return JSON2(false, 'Mật khẩu mới không khớp !');
                 }
@@ -210,6 +210,6 @@ class RegisterController extends Controller
         }else{
             return JSON2(false,'Mã xác thực đã hệt hạn !');
         }
-        
+
     }
 }
