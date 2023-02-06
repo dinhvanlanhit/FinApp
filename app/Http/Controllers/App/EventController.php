@@ -189,7 +189,6 @@ class EventController extends Controller
 
         $Event = new Event();
         $Event->idUser = idUser();
-        $Event->idWallet = $Request->idWallet;
         $Event->idTypeEvent = $Request->idTypeEvent;
         $Event->name = $Request->name;
         $Event->address = $Request->address;
@@ -207,13 +206,8 @@ class EventController extends Controller
     public function postUpdate(Request $Request)
     {
         $Event =  Event::find((int)$Request->id);
-        $old_amount = $Event->amount;//Củ
-        $new_amount = $Request->amount;//Mới
-        $old_idWallet = $Event->idWallet;//Củ
-        $new_idWallet = $Request->idWallet;//Mới
         $Event->idUser = idUser();
         $Event->idTypeEvent = $Request->idTypeEvent;
-        $Event->idWallet = $Request->idWallet;
         $Event->name = $Request->name;
         $Event->address = $Request->address;
         $Event->amount = $Request->amount;

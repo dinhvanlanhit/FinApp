@@ -128,7 +128,6 @@ class MyEventController extends Controller
 
         $MyEvent = new MyEvent();
         $MyEvent->idUser = idUser();
-        $MyEvent->idWallet = $Request->idWallet;
         $MyEvent->idGroupMyEvent = $Request->idGroupMyEvent;
         $MyEvent->name = $Request->name;
         $MyEvent->address = $Request->address;
@@ -147,7 +146,6 @@ class MyEventController extends Controller
     {
         $MyEvent =  MyEvent::find((int)$Request->id);
         $MyEvent->idUser = idUser();
-        $MyEvent->idWallet = $Request->idWallet;
         $MyEvent->idGroupMyEvent = $Request->idGroupMyEvent;
         $MyEvent->name = $Request->name;
         $MyEvent->address = $Request->address;

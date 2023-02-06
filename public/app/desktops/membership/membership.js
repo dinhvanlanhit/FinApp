@@ -202,7 +202,7 @@ function membership(){
 			submitHandler: function (e) {
 				var formData = new FormData($("#formAction")[0]);
 				formData.append('id', $("#onSave").attr('data-id'));
-				formData.set('username',datas.idKey+'_'+formData.get('username') );
+				formData.set('username',datas.idKey+'@'+formData.get('username') );
 				var url = $("#onSave").attr('data-url');
 				buttonloading('#onSave', true);
 				$.ajax({

@@ -30,7 +30,7 @@
         </form>
         <div class="row">
           <div class="col-md-12">
-              <table class="table table-bordered row-border hover text-small" id="roles-table"></table>
+              <table class="table table-bordered table-sm row-border hover text-small" id="roles-table"></table>
           </div>
         </div>
         

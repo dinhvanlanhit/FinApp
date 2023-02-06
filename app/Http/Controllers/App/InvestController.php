@@ -110,7 +110,6 @@ class InvestController extends Controller
 
         $Invest = new Invest();
         $Invest->idUser = idUser();
-        $Invest->idWallet= $Request->idWallet;
         $Invest->name= $Request->name;
         $Invest->amount= $Request->amount;
         $Invest->date = $Request->date;
@@ -127,7 +126,6 @@ class InvestController extends Controller
     {
         $Invest =  Invest::find((int)$Request->id);
         $Invest->idUser = idUser();
-        $Invest->idWallet= $Request->idWallet;
         $Invest->name= $Request->name;
         $Invest->amount= $Request->amount;
         $Invest->date = $Request->date;

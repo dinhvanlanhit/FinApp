@@ -22,7 +22,7 @@ return [
     | Or a custom view, e.g. '_partials/breadcrumbs'.
     |
     */
-    'view' => 'AdminDesktops.includes.breadcrumbs',
+    'view' => 'ClientDesktops.includes.breadcrumbs',
 
     /*
     |--------------------------------------------------------------------------

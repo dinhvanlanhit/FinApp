@@ -183,7 +183,6 @@ class SalaryController extends Controller
 
         $Salary = new Salary();
         $Salary->idUser = idUser();
-        $Salary->idWallet = $Request->idWallet;
         $Salary->idTypeSalary = $Request->idTypeSalary;
         $Salary->amount = $Request->amount;
         $Salary->date = $Request->date;
@@ -206,7 +205,6 @@ class SalaryController extends Controller
 
         $Salary =  Salary::find((int)$Request->id);
         $Salary->idUser = idUser();
-        $Salary->idWallet = $Request->idWallet;
         $Salary->company = $Request->company;
         $Salary->idTypeSalary = $Request->idTypeSalary;
         $Salary->amount = $Request->amount;

@@ -35,7 +35,7 @@
       </form>
       <div class="row">
         <div class="col-md-12">
-            <table class="table table-bordered row-border hover text-small" id="contact-table"></table>
+            <table class="table table-bordered table-sm row-border hover text-small" id="contact-table"></table>
         </div>
       </div>
   </div>

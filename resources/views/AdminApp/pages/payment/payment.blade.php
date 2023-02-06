@@ -13,7 +13,7 @@
           <div class="row">
    
               <div class="col-md-3">
-                  @include('AdminDesktops.fromControl.dateRange')
+                  @include('ClientDesktops.fromControl.dateRange')
               </div>
               <div class="col-md-4">
                 <div class="form-group">
@@ -37,7 +37,7 @@
       </form>
       <div class="row">
         <div class="col-md-12">
-            <table class="table table-bordered row-border hover text-small" id="payment-table"></table>
+            <table class="table table-bordered table-sm row-border hover text-small" id="payment-table"></table>
         </div>
       </div>
   </div>

@@ -188,7 +188,6 @@ class DebtController extends Controller
         $Debt = new Debt();
         $Debt->idUser = idUser();
         $Debt->idTypeDebt = $Request->idTypeDebt;
-        $Debt->idWallet = $Request->idWallet;
         $Debt->name= $Request->name;
         $Debt->amount= $Request->amount;
         $Debt->tenor= $Request->tenor;
@@ -209,7 +208,6 @@ class DebtController extends Controller
 
         $Debt =  Debt::find((int)$Request->id);
         $Debt->idUser = idUser();
-        $Debt->idWallet = $Request->idWallet;
         $Debt->idTypeDebt = $Request->idTypeDebt;
         $Debt->name= $Request->name;
         $Debt->amount= $Request->amount;

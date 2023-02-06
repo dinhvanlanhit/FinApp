@@ -138,8 +138,6 @@ function myevent() {
 						$('#idGroupMyEventInput').trigger('change');
 						$('#status').val(data.data.status);
 						$('#status').trigger('change');
-						$('#idWallet').val(data.data.idWallet); 
-						$('#idWallet').trigger('change'); 
 						$("#onSave").attr('data-url', datas.routes.update);
 						$("#onSave").attr('data-id', data.data.id);
 						$("#onSave").attr('data-action', 'update');
@@ -161,13 +159,8 @@ function myevent() {
 		});
 		$("#btn-insert").on("click", function () {
 			$('#modal-action-title').text("Thêm mới");
-
 			$('#idGroupMyEventInput').val("");
 			$('#idGroupMyEventInput').trigger('change');
-			
-			$('#idWallet').val(""); 
-			$('#idWallet').trigger('change'); 
-
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());
@@ -203,9 +196,6 @@ function myevent() {
 		});
 		$('#formAction').validate({
 			rules: {
-				idWallet:{
-					required: true
-				},
 				idGroupMyEventInput: {
 					required: true
 				},
@@ -223,9 +213,6 @@ function myevent() {
 				}
 			},
 			messages: {
-				idWallet:{
-					required: "Vui lòng chọn ví tiền để giao dịch ! ",
-				},
 				idGroupMyEventInput:{
 					required: "Vui lòng chọn nhóm sự kiện ! ",
 				},

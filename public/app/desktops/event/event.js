@@ -125,8 +125,6 @@ function event() {
 					if(data.statusBoolen){
 						$('#idTypeEventInput').val(data.data.idTypeEvent);
 						$('#idTypeEventInput').trigger('change');
-						$('#idWallet').val(data.data.idWallet); 
-						$('#idWallet').trigger('change'); 
 						$("#onSave").attr('data-url', datas.routes.update);
 						$("#onSave").attr('data-id', data.data.id);
 						$("#onSave").attr('data-action', 'update');
@@ -151,8 +149,6 @@ function event() {
 			$('#modal-action-title').text("Thêm mới");
 			$('#idTypeEventInput').val(""); // Select the option with a value of '1'
 			$('#idTypeEventInput').trigger('change'); // Notify any JS components that the value changed
-			$('#idWallet').val(""); // Select the option with a value of '1'
-			$('#idWallet').trigger('change'); // Notify any JS components that the value changed
 			$("#onSave").attr('data-url', datas.routes.insert);
 			$("#onSave").attr('data-action', 'insert');
 			$('#date').datepicker('setDate', new Date());

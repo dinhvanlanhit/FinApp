@@ -124,7 +124,6 @@ class LendloanController extends Controller
 
         $Lendloan = new Lendloan();
         $Lendloan->idUser = idUser();
-        $Lendloan->idWallet = $Request->idWallet;
         $Lendloan->name= $Request->name;
         $Lendloan->birthday = $Request->birthday;
         $Lendloan->sex = $Request->sex;
@@ -148,7 +147,6 @@ class LendloanController extends Controller
     {
         $Lendloan =  Lendloan::find((int)$Request->id);
         $Lendloan->idUser = idUser();
-        $Lendloan->idWallet = $Request->idWallet;
         $Lendloan->name= $Request->name;
         $Lendloan->birthday = $Request->birthday;
         $Lendloan->sex = $Request->sex;

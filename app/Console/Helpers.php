@@ -219,10 +219,10 @@ function template()
 {
     $agent = new \Jenssegers\Agent\Agent;
     $result = $agent->isDesktop();
-    return "AdminDesktops";
+    return "ClientDesktops";
     // $result  = false;
     // if ($result){
-    //     return "AdminDesktops";
+    //     return "ClientDesktops";
     // } 
     // else{
     //     return "AdminMobiles";
