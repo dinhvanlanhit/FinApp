@@ -1,5 +1,7 @@
 <?php
-
+// Route::get('/',function(){
+//     return "1111";
+// });
 Route::group(['namespace' => 'App'], function () {
     Route::get('/login','LoginController@getLogin')->name('login');
     Route::post('/login','LoginController@postLogin')->name('login');
@@ -157,9 +159,7 @@ Route::group(['namespace' => 'App','middleware' => ['CheckAuth']],function (){
         Route::post('contact-send','ContactController@postContact')->name('contact_send');
     });  
 });
-Route::get('/mobile',function(){
-    return view('welcome');
-});
+
 
 
 
