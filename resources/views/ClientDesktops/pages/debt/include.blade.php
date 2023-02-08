@@ -10,15 +10,8 @@
             </button>
             </div>
             <div class="modal-body card-body-dashboard">
-                
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="callout callout-danger">
-                           <p>Nếu bạn muốn số tiền vay của bạn được vào ví tiền vui lòng chọn ví bên dưới !</p>
-                        </div>
-                        <div class="form-group" >
-                            
-                        </div>
                             <div class="form-group" >
                                 <label>Nhóm Nợ</label>
                                 <select class="form-control select2bs4" id="idTypeDebtInput" name="idTypeDebtInput">
