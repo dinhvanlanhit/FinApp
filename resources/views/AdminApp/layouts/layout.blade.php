@@ -1,4 +1,5 @@
 
+@php $user = Auth::user(); @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
