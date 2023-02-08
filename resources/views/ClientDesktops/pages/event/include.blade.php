@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group"> 
-                            <label>Ngày đi </label>
+                            <label>Ngày </label>
                             <div class="input-group">
                                 <input type="text"  id="date" name="date" class="form-control text-center">
                                 <div class="input-group-prepend" >
