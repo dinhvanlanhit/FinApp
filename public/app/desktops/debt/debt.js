@@ -224,9 +224,6 @@ function debt() {
 				
 				date: {
 					required: true
-				},
-				expiration_date: {
-					required: true
 				}
 			},
 			messages: {
@@ -242,9 +239,6 @@ function debt() {
 				
 				date: {
 					required: "Vui lòng nhập ngày vay !",
-				},
-				expiration_date: {
-					required: "Vui lòng nhập ngày hết hạn !",
 				}
 			},
 			errorElement: 'span',

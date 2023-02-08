@@ -253,9 +253,6 @@ function lendloan() {
 				// },
 				date: {
 					required: true
-				},
-				expiration_date: {
-					required: true
 				}
 			},
 			messages: {
@@ -282,9 +279,6 @@ function lendloan() {
 				// },
 				date: {
 					required: "Vui lòng nhập ngày vay !",
-				},
-				expiration_date: {
-					required: "Vui lòng nhập ngày hết hạn !",
 				}
 			},
 			errorElement: 'span',
