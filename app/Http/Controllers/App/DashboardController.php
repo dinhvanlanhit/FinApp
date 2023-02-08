@@ -155,8 +155,7 @@ class DashboardController extends Controller
     }
     public function sumAsset($Between){
         $idUser = idUser();
-        return Asset::where('idUser','=',$idUser)->sum('amount')+surplus();
-        
+        return Asset::where('idUser','=',$idUser)->sum('amount');
     }
 
     public function getCharDashboard(Request $Request)
