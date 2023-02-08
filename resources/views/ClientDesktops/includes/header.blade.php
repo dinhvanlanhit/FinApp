@@ -6,7 +6,7 @@
 		@if (Session::get('view_users')!=null) 
 				<a href="javascript:void(0)" class="nav-link active"><b> {{user()->full_name}}</b></a>
 		@else
-			@if (Auth::user()->type=='membership')
+			@if ($user->type=='membership')
 				<a href="javascript:void(0)" class="nav-link active"><b> {{user()->full_name}}</b></a>
 			@endif
 		@endif
@@ -19,20 +19,20 @@
 			<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle active"> 
 				<i class="fa fa-user-circle "></i>
 				{{-- <img
-				 @if (empty(Auth::user()->avatar)) 
+				 @if (empty($user->avatar)) 
 				 	src="{{asset('./data/default/profile-default.png')}}" 
 				 @else 
-					 @if (file_exists('./data/users/users'.Auth::user()->id.'/'.Auth::user()->avatar)) src="{{asset('./data/users/users'.Auth::user()->id.'/'.Auth::user()->avatar)}}" 
+					 @if (file_exists('./data/users/users'.$user->id.'/'.$user->avatar)) src="{{asset('./data/users/users'.$user->id.'/'.$user->avatar)}}" 
 						 @else src="{{asset('./data/default/profile-default.png')}}"
 					@endif 
 				@endif 
 				class="" width="50px" height="50px" alt="User Image"> --}}
 
-        		<b class="d-none d-sm-inline-block">{{Auth::user()->full_name}} </b>
+        		<b class="d-none d-sm-inline-block">{{$user->full_name}} </b>
 			</a>
 			<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="left: 0px; right: inherit;">
 				<li><a href="{{route('profile')}}" class="dropdown-item"><i class="fas fa-user"></i> Hô Sơ Cá Nhân</a>
-				</li>@if (Auth::user()->type=='admin')
+				</li>@if ($user->type=='admin')
 				<li><a href="{{route('admin_users')}}" class="dropdown-item"><i class="fas fa-cogs"></i> Hệ Thống </a>
 				</li>@endif
 				<li>

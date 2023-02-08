@@ -123,7 +123,7 @@
           </p>
         </a>
       </li>
-      @if (Auth::user()->type!='membership')
+      @if ($user->type!='membership')
       <li class="nav-item menu-open-new">
         <a href="{{route('methods_payment')}}" class="nav-link  ">
           <i class="nav-icon fas fa-money"></i>
@@ -168,7 +168,7 @@
           </ul>
         </li>
       @endif
-      @if (Auth::user()->type=='admin')
+      @if ($user->type=='admin')
       <li class="nav-item menu-open-new">
         <a href="{{route('admin_dashboard')}}" class="nav-link ">
           <i class="nav-icon fa fa-cogs"></i>
