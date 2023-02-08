@@ -40,7 +40,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Kỳ Hạn</label>
-                            <input class="form-control" type="number" id="tenor" name="tenor"/>
+                            <input class="form-control" type="number" value="0" id="tenor" name="tenor"/>
                         </div>
                     </div>
                     <div class="col-md-6">
